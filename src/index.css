@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.cdnfonts.com/css/google-sans");
+@import "tailwindcss";
+
 *,
 *::before,
 *::after {
@@ -20,8 +24,175 @@ body,
 body {
   overflow-x: hidden;
   overflow-y: auto;
+  margin: 0;
+  font-family: "Inter", "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   display: block;
 }
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(157, 11, 15, 0.55);
+  outline-offset: 2px;
+}
+
+button:not(:disabled):not(.cursor-default),
+a[href],
+[role="button"]:not(.cursor-default) {
+  cursor: pointer;
+  transition: filter 180ms ease, transform 140ms ease;
+}
+
+button:not(:disabled):not(.cursor-default):hover,
+a[href]:hover,
+[role="button"]:not(.cursor-default):hover {
+  filter: brightness(0.96);
+}
+
+button:not(:disabled):not(.cursor-default):active,
+a[href]:active,
+[role="button"]:not(.cursor-default):active {
+  transform: scale(0.99);
+}
+
+/* Map Figma exported font tokens to real browser fonts + weights */
+.home-figma [class*="Google_Sans:Regular"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 400 !important;
+}
+.contact-figma [class*="Google_Sans:Regular"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 400 !important;
+}
+.about-figma [class*="Google_Sans:Regular"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 400 !important;
+}
+.product-figma [class*="Google_Sans:Regular"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.home-figma [class*="Google_Sans:Medium"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 500 !important;
+}
+.contact-figma [class*="Google_Sans:Medium"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 500 !important;
+}
+.about-figma [class*="Google_Sans:Medium"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 500 !important;
+}
+.product-figma [class*="Google_Sans:Medium"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 500 !important;
+}
+
+.home-figma [class*="Google_Sans:SemiBold"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 600 !important;
+}
+.contact-figma [class*="Google_Sans:SemiBold"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 600 !important;
+}
+.about-figma [class*="Google_Sans:SemiBold"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 600 !important;
+}
+.product-figma [class*="Google_Sans:SemiBold"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.home-figma [class*="Google_Sans:Bold"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 700 !important;
+}
+.contact-figma [class*="Google_Sans:Bold"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 700 !important;
+}
+.about-figma [class*="Google_Sans:Bold"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 700 !important;
+}
+.product-figma [class*="Google_Sans:Bold"] {
+  font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.home-figma [class*="Inter:Regular"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400 !important;
+}
+.contact-figma [class*="Inter:Regular"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400 !important;
+}
+.product-figma [class*="Inter:Regular"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.home-figma [class*="Inter:Medium"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 500 !important;
+}
+.contact-figma [class*="Inter:Medium"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 500 !important;
+}
+.product-figma [class*="Inter:Medium"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 500 !important;
+}
+
+.home-figma [class*="Inter:Semi_Bold"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+}
+.contact-figma [class*="Inter:Semi_Bold"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+}
+.product-figma [class*="Inter:Semi_Bold"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.home-figma [class*="Inter:Bold"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 700 !important;
+}
+.contact-figma [class*="Inter:Bold"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 700 !important;
+}
+.product-figma [class*="Inter:Bold"] {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 700 !important;
+}
+.contact-figma [class*="Myriad_Pro"] {
+  font-family: "Myriad Pro", "Trebuchet MS", "Inter", sans-serif !important;
+}
+
+/* Keep spacing deterministic for absolutely-positioned Figma text blocks */
+.home-figma p {
+  margin: 0;
+}
+.contact-figma p {
+  margin: 0;
+}
+.product-figma p {
+  margin: 0;
+}
+

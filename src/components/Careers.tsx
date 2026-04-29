@@ -54,7 +54,7 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
               className="relative h-[708px] w-[1942px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-2px_95px] mask-size-[1920px_455px]"
               style={{ maskImage: `url('${heroImageMask}')` }}
             >
-              <img alt="" className="absolute inset-0 size-full -scale-x-100 object-cover" src={heroImage} />
+              <img alt="" className="absolute inset-0 size-full -scale-x-100 object-cover object-left" src={heroImage} />
             </div>
           </div>
         </div>

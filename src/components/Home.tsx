@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 type HomeProps = {
@@ -6,8 +6,15 @@ type HomeProps = {
   onNavigateContact?: () => void;
   onNavigateCareers?: () => void;
   onNavigatePharmacovigilance?: () => void;
-  onNavigateFacility?: () => void;
+  onNavigateFacility?: (section?: 'production' | 'quality') => void;
   onNavigateProducts?: () => void;
+  onNavigateAntibiotics?: () => void;
+  onNavigateAntiInflammatory?: () => void;
+  onNavigateGastrointestinal?: () => void;
+  onNavigateCns?: () => void;
+  onNavigateCardiovascular?: () => void;
+  onNavigateRespiratory?: () => void;
+  onNavigateDermatology?: () => void;
 };
 
 const imgVector = "/assets/figma/fe834eb7-b0e7-4831-97db-d7fc7ec1de7a.svg";
@@ -97,9 +104,34 @@ function CapsuleLine({ className }: { className?: string }) {
   );
 }
 
-export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCareers, onNavigatePharmacovigilance, onNavigateFacility, onNavigateProducts }: HomeProps) {
+export default function Home({
+  onNavigateAbout,
+  onNavigateContact,
+  onNavigateCareers,
+  onNavigatePharmacovigilance,
+  onNavigateFacility,
+  onNavigateProducts,
+  onNavigateAntibiotics,
+  onNavigateAntiInflammatory,
+  onNavigateGastrointestinal,
+  onNavigateCns,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology
+}: HomeProps) {
   const [showCompanyMenu, setShowCompanyMenu] = useState(false)
   const [showProductsMenu, setShowProductsMenu] = useState(false)
+  const [showFacilityMenu, setShowFacilityMenu] = useState(false)
+
+  useEffect(() => {
+    const closeMenus = () => {
+      setShowCompanyMenu(false)
+      setShowProductsMenu(false)
+      setShowFacilityMenu(false)
+    }
+    window.addEventListener('click', closeMenus)
+    return () => window.removeEventListener('click', closeMenus)
+  }, [])
 
   return (
     <div className="flex w-full justify-center overflow-hidden bg-white">
@@ -447,16 +479,16 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
           <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-0 not-italic text-[#010c0d] text-[24px] top-[6px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:443" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={() => onNavigateAbout?.('about')}>
             Our Company
           </button>
-          <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev); setShowProductsMenu(false) }} className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer" data-node-id="47:450" data-name="arrow-down-s-line">
+          <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev); setShowProductsMenu(false); setShowFacilityMenu(false) }} className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer" data-node-id="47:450" data-name="arrow-down-s-line">
             <div className="absolute inset-[35.83%_26.13%_35%_26.14%]" data-node-id="I47:450;8:2046" data-name="Vector">
               <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
             </div>
           </button>
           {showCompanyMenu ? (
             <div className="absolute left-0 top-[75px] w-[270px]">
-              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={() => onNavigateAbout?.('about')}>About Us</button>
-              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={() => onNavigateAbout?.('vision')}>Vision &amp; Mission</button>
-              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={() => onNavigateAbout?.('ims')}>IMS Policy</button>
+              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={() => { onNavigateAbout?.('about'); setShowCompanyMenu(false) }}>About Us</button>
+              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={() => { onNavigateAbout?.('vision'); setShowCompanyMenu(false) }}>Vision &amp; Mission</button>
+              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={() => { onNavigateAbout?.('ims'); setShowCompanyMenu(false) }}>IMS Policy</button>
             </div>
           ) : null}
         </div>
@@ -464,18 +496,20 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
           <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-0 not-italic text-[#010c0d] text-[24px] top-[5px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:445" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={onNavigateProducts}>
             Products
           </button>
-          <button type="button" aria-label="Toggle products menu" onClick={(event) => { event.stopPropagation(); setShowProductsMenu((prev) => !prev); setShowCompanyMenu(false) }} className="absolute left-[95px] top-[-1px] size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer" data-node-id="47:449" data-name="arrow-down-s-line">
+          <button type="button" aria-label="Toggle products menu" onClick={(event) => { event.stopPropagation(); setShowProductsMenu((prev) => !prev); setShowCompanyMenu(false); setShowFacilityMenu(false) }} className="absolute left-[95px] top-[-1px] size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer" data-node-id="47:449" data-name="arrow-down-s-line">
             <div className="absolute inset-[35.83%_26.13%_35%_26.14%]" data-node-id="I47:449;8:2046" data-name="Vector">
               <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
             </div>
           </button>
           {showProductsMenu ? (
             <div className="absolute left-0 top-[74px] w-[365px]">
-              {['Anti-inflammatory / Analgesics', 'Anti-biotics', 'Gastrointestinal Agents', 'CNS / Psychiatric', 'Cardiovascular / Lipid Control', 'Dermatology', 'Respiratory & Antiallergic'].map((item) => (
-                <button key={item} type="button" onClick={onNavigateProducts} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">
-                  {item}
-                </button>
-              ))}
+              <button type="button" onClick={() => { onNavigateAntiInflammatory?.(); setShowProductsMenu(false) }} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-inflammatory / Analgesics</button>
+              <button type="button" onClick={() => { onNavigateAntibiotics?.(); setShowProductsMenu(false) }} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-biotics</button>
+              <button type="button" onClick={() => { onNavigateGastrointestinal?.(); setShowProductsMenu(false) }} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Gastrointestinal Agents</button>
+              <button type="button" onClick={() => { onNavigateCns?.(); setShowProductsMenu(false) }} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">CNS / Psychiatric</button>
+              <button type="button" onClick={() => { onNavigateCardiovascular?.(); setShowProductsMenu(false) }} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Cardiovascular / Lipid Control</button>
+              <button type="button" onClick={() => { onNavigateDermatology?.(); setShowProductsMenu(false) }} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Dermatology</button>
+              <button type="button" onClick={() => { onNavigateRespiratory?.(); setShowProductsMenu(false) }} className="block h-[49px] w-full bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Respiratory &amp; Antiallergic</button>
             </div>
           ) : null}
         </div>
@@ -764,13 +798,26 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
           </div>
         </div>
       </div>
-      <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-[calc(50%+162px)] not-italic text-[#010c0d] text-[24px] top-[77px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:545" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={onNavigateFacility}>
-        Facility
-      </button>
-      <div className="absolute left-[calc(50%+233px)] overflow-clip size-[32px] top-[72px]" data-node-id="47:546" data-name="arrow-down-s-line">
-        <div className="absolute inset-[35.83%_26.13%_35%_26.14%]" data-node-id="I47:546;8:2046" data-name="Vector">
-          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
-        </div>
+      <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px]">
+        <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-0 not-italic text-[#010c0d] text-[24px] top-[5px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:545" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={() => onNavigateFacility?.()}>
+          Facility
+        </button>
+        <button
+          type="button"
+          aria-label="Toggle facility menu"
+          onClick={(event) => { event.stopPropagation(); setShowFacilityMenu((prev) => !prev); setShowCompanyMenu(false); setShowProductsMenu(false) }}
+          className="absolute left-[75px] top-[-1px] size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+        >
+          <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
+          </div>
+        </button>
+        {showFacilityMenu ? (
+          <div className="absolute left-0 top-[74px] w-[270px]">
+            <button type="button" onClick={() => { onNavigateFacility?.('production'); setShowFacilityMenu(false) }} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Production</button>
+            <button type="button" onClick={() => { onNavigateFacility?.('quality'); setShowFacilityMenu(false) }} className="block h-[49px] w-full bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Quality Operations</button>
+          </div>
+        ) : null}
       </div>
       </div>
     </div>

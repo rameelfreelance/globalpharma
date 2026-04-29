@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import Navbar from './Navbar'
 
 const imgHeroMask = '/assets/figma/59a450e9-e908-436e-80c0-39633be13a5a.svg'
 const imgHeroMain = '/assets/figma/d8c342b4-69eb-4b38-b38d-9583786caba9.jpg'
@@ -10,8 +11,6 @@ const imgQhseImage = '/assets/figma/34a4dbbb-cf0d-4ee6-8b7e-8046b281e334.jpg'
 const imgCheck = '/assets/figma/2cb821c2-0de8-45fe-8ece-a9cdde8d3eab.svg'
 const imgHeaderShape = '/assets/figma/d04f65e4-5ecc-4d4e-9331-a4e2afe4baae.svg'
 const imgHeaderMark = '/assets/figma/6daeebfe-331e-45d2-8aa3-5cfc35d501b9.svg'
-const imgArrowDark = '/assets/figma/ffeae501-f025-4ce8-ab30-b5e4b2635968.svg'
-const imgArrowLight = '/assets/figma/87f39614-7293-4298-b70b-ea0666986aee.svg'
 const footerLogo = '/assets/figma/41218b28-412b-4cfa-8ff0-5f853d958f23.svg'
 const footerIconMap = '/assets/figma/05e9d06f-860a-4f47-bee3-db4a49e0f8ee.svg'
 const footerIconPhone = '/assets/figma/58876488-6ee9-4ea9-87e7-033f2cb7a344.svg'
@@ -24,24 +23,43 @@ type AboutUsProps = {
   onNavigateCareers?: () => void
   onNavigateContact?: () => void
   onNavigatePharmacovigilance?: () => void
-  onNavigateFacility?: () => void
+  onNavigateFacility?: (section?: 'production' | 'quality') => void
   onNavigateProducts?: () => void
+  onNavigateAntibiotics?: () => void
+  onNavigateAntiInflammatory?: () => void
+  onNavigateGastrointestinal?: () => void
+  onNavigateCns?: () => void
+  onNavigateCardiovascular?: () => void
+  onNavigateRespiratory?: () => void
+  onNavigateDermatology?: () => void
   initialSection?: 'about' | 'vision' | 'ims'
 }
 
-export default function AboutUs({ onNavigateHome, onNavigateCareers, onNavigateContact, onNavigatePharmacovigilance, onNavigateFacility, onNavigateProducts, initialSection = 'about' }: AboutUsProps) {
+export default function AboutUs({
+  onNavigateHome,
+  onNavigateCareers,
+  onNavigateContact,
+  onNavigatePharmacovigilance,
+  onNavigateFacility,
+  onNavigateProducts,
+  onNavigateAntibiotics,
+  onNavigateAntiInflammatory,
+  onNavigateGastrointestinal,
+  onNavigateCns,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology,
+  initialSection = 'about'
+}: AboutUsProps) {
   const aboutRef = useRef<HTMLDivElement | null>(null)
   const visionRef = useRef<HTMLDivElement | null>(null)
   const imsRef = useRef<HTMLDivElement | null>(null)
-
-  const [showCompanyMenu, setShowCompanyMenu] = useState(false)
 
   const scrollToSection = (section: 'about' | 'vision' | 'ims') => {
     const target = section === 'vision' ? visionRef.current : section === 'ims' ? imsRef.current : aboutRef.current
     if (!target) return
     const top = target.getBoundingClientRect().top + window.scrollY - 205
     window.scrollTo({ top, behavior: 'smooth' })
-    setShowCompanyMenu(false)
   }
 
   useEffect(() => {
@@ -220,37 +238,23 @@ export default function AboutUs({ onNavigateHome, onNavigateCareers, onNavigateC
               <p>Pakistan</p>
             </div>
 
-            <button type="button" onClick={onNavigateHome} className="absolute left-[614.5px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#9d0b0f]">Home</button>
-            <div className="absolute left-[701.5px] top-[72px] z-20 h-[228px] w-[270px]">
-              <p className="absolute left-[24px] top-[5px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white">Our Company</p>
-              <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev) }} className="absolute left-[172px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer">
-                <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
-                  <img alt="" className="size-full" src={imgArrowLight} />
-                </div>
-              </button>
-              {showCompanyMenu ? (
-                <div className="absolute left-0 top-[74px] w-[270px]">
-                  <button type="button" onClick={() => scrollToSection('about')} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">About Us</button>
-                  <button type="button" onClick={() => scrollToSection('vision')} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Vision &amp; Mission</button>
-                  <button type="button" onClick={() => scrollToSection('ims')} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">IMS Policy</button>
-                </div>
-              ) : null}
-            </div>
-            <button type="button" onClick={() => onNavigateProducts?.()} className="absolute left-[960.5px] top-[77px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Products</button>
-            <button type="button" onClick={() => onNavigateFacility?.()} className="absolute left-[1122px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Facility</button>
-            <button type="button" onClick={() => onNavigatePharmacovigilance?.()} className="absolute left-[1263.5px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Pharmacovigilance</button>
-            <button type="button" onClick={() => onNavigateCareers?.()} className="absolute left-[1511.5px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Careers</button>
-            <p className="absolute left-[1643.5px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Contact us</p>
-            <div className="absolute left-[1055.5px] top-[71px] size-[32px] overflow-clip">
-              <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
-                <img alt="" className="size-full" src={imgArrowDark} />
-              </div>
-            </div>
-            <div className="absolute left-[1193px] top-[72px] size-[32px] overflow-clip">
-              <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
-                <img alt="" className="size-full" src={imgArrowDark} />
-              </div>
-            </div>
+            <Navbar
+              activePage="about"
+              onNavigateHome={onNavigateHome}
+              onNavigateAbout={(section = 'about') => scrollToSection(section)}
+              onNavigateProducts={onNavigateProducts}
+              onNavigateAntibiotics={onNavigateAntibiotics}
+              onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+              onNavigateGastrointestinal={onNavigateGastrointestinal}
+              onNavigateCns={onNavigateCns}
+              onNavigateCardiovascular={onNavigateCardiovascular}
+              onNavigateRespiratory={onNavigateRespiratory}
+              onNavigateDermatology={onNavigateDermatology}
+              onNavigateFacility={onNavigateFacility}
+              onNavigatePharmacovigilance={onNavigatePharmacovigilance}
+              onNavigateCareers={onNavigateCareers}
+              onNavigateContact={onNavigateContact}
+            />
           </div>
         </div>
       </div>

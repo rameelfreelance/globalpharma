@@ -1,9 +1,8 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import Navbar from './Navbar'
 
 const heroImg = '/assets/figma/307cc2aa-e172-486a-93bf-59749a3b6a4f.jpg'
 const heroMask = '/assets/figma/70803a9b-0b50-4f42-a0a4-82fe46464ac3.svg'
-const logoShape = '/assets/figma/39cac274-77d4-4dbc-b998-0a05a5abe8f8.svg'
-const logoMark = '/assets/figma/68dd5689-a28f-4f82-9ad9-9369b3fbb16b.svg'
 const imgArrowOutward = '/assets/figma/07e11a05-9865-43e2-8bcb-062aa4c06886.svg'
 const iconProduction = '/assets/figma/f0945ce6-8d2a-4dcd-b384-c77de90ad28d.svg'
 const iconCephalosporin = '/assets/figma/d5c6de74-b496-467d-bd38-82f68591b6b8.svg'
@@ -20,32 +19,36 @@ const footerIconPhone = '/assets/figma/34b848f8-94f8-4073-be44-8edd54df92b4.svg'
 const footerIconMail = '/assets/figma/ed0595b3-8a9e-4815-abcb-63ec79765c4e.svg'
 const footerSoc1 = '/assets/figma/68010953-b6af-4f58-bb96-1930ee60c76f.svg'
 const footerSoc2 = '/assets/figma/b550e449-68b5-4b1c-ab25-3af65147640a.svg'
-const navArrow = '/assets/figma/242146c4-3d16-433b-9c1c-e28b9d6833f1.svg'
 const certSealVector = '/assets/figma/eb8b0789-880d-49e8-801b-39872b0647fe.svg'
 
 type FacilitiesProps = {
   onNavigateHome: () => void
-  onNavigateAbout: () => void
+  onNavigateAbout: (section?: 'about' | 'vision' | 'ims') => void
   onNavigatePharmacovigilance: () => void
   onNavigateCareers: () => void
   onNavigateContact: () => void
   onNavigateProducts: () => void
+  initialSection?: 'production' | 'quality'
 }
 
-export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigatePharmacovigilance, onNavigateCareers, onNavigateContact, onNavigateProducts }: FacilitiesProps) {
-  const [showFacilityMenu, setShowFacilityMenu] = useState(false)
+export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigatePharmacovigilance, onNavigateCareers, onNavigateContact, onNavigateProducts, initialSection = 'production' }: FacilitiesProps) {
   const productionRef = useRef<HTMLDivElement | null>(null)
   const qualityRef = useRef<HTMLDivElement | null>(null)
 
   const scrollToProduction = () => {
     productionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    setShowFacilityMenu(false)
   }
 
   const scrollToQuality = () => {
     qualityRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    setShowFacilityMenu(false)
   }
+
+  useEffect(() => {
+    const target = initialSection === 'quality' ? qualityRef.current : productionRef.current
+    if (!target) return
+    const top = target.getBoundingClientRect().top + window.scrollY - 205
+    window.scrollTo({ top, behavior: 'smooth' })
+  }, [initialSection])
 
   return (
     
@@ -217,50 +220,22 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           <div className="relative h-[188px] w-[1920px]">
             <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />
             <div className="absolute left-[-1px] top-[33px] h-[108px] w-[1922px] bg-white shadow-[0_1px_4px_rgba(25,33,61,0.06)]" />
-            <div className="absolute left-[-3.5px] top-[22px] h-[131px] w-[510.5px]">
-              <img alt="" className="size-full" src={logoShape} />
-            </div>
-            <div className="absolute left-[137px] top-[47px] h-[80.61px] w-[79.34px]">
-              <img alt="" className="size-full" src={logoMark} />
-            </div>
-            <div className="absolute left-[228px] top-[49.61px] font-['Myriad_Pro:Semibold',sans-serif] text-[28px] leading-[28px] text-white">
-              <p>Global</p>
-              <p>Pharmaceuticals</p>
-              <p>Pakistan</p>
-            </div>
-
-            <button type="button" onClick={onNavigateHome} className="absolute left-[612px] top-[77px] border-0 bg-transparent p-0 font-['Google_Sans:Bold',sans-serif] text-[24px] leading-[20px] text-[#9d0b0f]">Home</button>
-            <button type="button" onClick={onNavigateAbout} className="absolute left-[728px] top-[77px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Our Company</button>
-            <button type="button" onClick={onNavigateProducts} className="absolute left-[958px] top-[77px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Products</button>
-            <button type="button" onClick={onNavigatePharmacovigilance} className="absolute left-[1261px] top-[77px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Pharmacovigilance</button>
-            <button type="button" onClick={onNavigateCareers} className="absolute left-[1509px] top-[77px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Careers</button>
-            <button type="button" onClick={onNavigateContact} className="absolute left-[1641px] top-[77px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Contact us</button>
-            <div className="absolute left-[879px] top-[71px] size-[32px] overflow-clip">
-              <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
-                <img alt="" className="size-full" src={navArrow} />
-              </div>
-            </div>
-            <div className="absolute left-[1053px] top-[71px] size-[32px] overflow-clip">
-              <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
-                <img alt="" className="size-full" src={navArrow} />
-              </div>
-            </div>
-
-            <div className="absolute left-[1101px] top-[34px] h-[212px] w-[270px]" onMouseEnter={() => setShowFacilityMenu(true)} onMouseLeave={() => setShowFacilityMenu(false)}>
-              <div className="absolute left-0 top-0 h-[107px] w-[136px] bg-[#9d0b0f]" />
-              <p className="absolute left-[16px] top-[43px] font-['Google_Sans:Bold',sans-serif] text-[24px] leading-[20px] text-white">Facility</p>
-              <div className="absolute left-[96px] top-[37px] size-[32px] overflow-clip">
-                <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
-                  <img alt="" className="size-full" src={navArrow} />
-                </div>
-              </div>
-              {showFacilityMenu ? (
-                <div className="absolute left-0 top-[111px] w-[270px]">
-                  <button type="button" onClick={scrollToProduction} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Production</button>
-                  <button type="button" onClick={scrollToQuality} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Quality Operations</button>
-                </div>
-              ) : null}
-            </div>
+            <Navbar
+              activePage="facility"
+              onNavigateHome={onNavigateHome}
+              onNavigateAbout={onNavigateAbout}
+              onNavigateProducts={onNavigateProducts}
+              onNavigateFacility={(section = 'production') => {
+                if (section === 'quality') {
+                  scrollToQuality()
+                  return
+                }
+                scrollToProduction()
+              }}
+              onNavigatePharmacovigilance={onNavigatePharmacovigilance}
+              onNavigateCareers={onNavigateCareers}
+              onNavigateContact={onNavigateContact}
+            />
           </div>
         </div>
 
@@ -275,7 +250,7 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
                 <p className="font-['Inter:Regular',sans-serif] text-[21.98px] leading-[39px]">We are committed to manufacturing and<br />delivering high-quality pharmaceutical<br />products that meet stringent regulatory<br />standards.</p>
                 <div className="mt-6 flex gap-3"><a href="https://www.facebook.com/globalpharmaceuticalspk" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on Facebook" className="inline-flex rounded-full transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"><img alt="Facebook" className="size-[29px]" src={footerSoc1} /></a><a href="https://www.linkedin.com/company/global-pharmaceuticals-pvt-limited/" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on LinkedIn" className="inline-flex rounded-full transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"><img alt="LinkedIn" className="size-[29px]" src={footerSoc2} /></a></div>
               </div>
-              <div className="w-[228px]"><p className="font-['Inter:Bold',sans-serif] text-[40px]">Quick Links</p><div className="mt-[50px] space-y-[14px] font-['Inter:Regular',sans-serif] text-[21px]"><button type="button" onClick={onNavigateHome} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Home</button><button type="button" onClick={onNavigateAbout} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">About Us</button><button type="button" onClick={() => onNavigateProducts?.()} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Our Products</button><button type="button" onClick={onNavigateCareers} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Career</button><button type="button" onClick={onNavigateContact} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Contact us</button></div></div>
+              <div className="w-[228px]"><p className="font-['Inter:Bold',sans-serif] text-[40px]">Quick Links</p><div className="mt-[50px] space-y-[14px] font-['Inter:Regular',sans-serif] text-[21px]"><button type="button" onClick={onNavigateHome} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Home</button><button type="button" onClick={() => onNavigateAbout('about')} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">About Us</button><button type="button" onClick={() => onNavigateProducts?.()} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Our Products</button><button type="button" onClick={onNavigateCareers} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Career</button><button type="button" onClick={onNavigateContact} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Contact us</button></div></div>
               <div className="w-[292px]"><p className="font-['Inter:Bold',sans-serif] text-[40px]">Quick Links</p><div className="mt-[50px] space-y-[15px] font-['Inter:Regular',sans-serif] text-[21px]"><p>Policy Statement</p><p>Apply for other departments</p><p>Apply for sales</p></div></div>
               <div className="w-[405px]">
                 <p className="font-['Inter:Bold',sans-serif] text-[40px]">Our Location</p>

@@ -1,30 +1,26 @@
-import { useState } from 'react'
+import Navbar from './Navbar'
 
 const logoShape = '/assets/figma/b4a5d6d7-b42c-40e9-9d79-0b211ffa688b.svg'
 const logoMark = '/assets/figma/0679b012-2e3f-4008-8d7a-227ed0ca862d.svg'
 const heroImage = '/assets/figma/77889ecf-8dda-4b36-9c4a-a945d9aa46cb.png'
 const heroImageMask = '/assets/figma/76ef87b2-09c9-473c-b1f4-3428c141bf07.png'
-const imgVector9 = '/assets/figma/46f42ba1-4ac0-4b1a-a075-4b53d9bc720c.svg'
 
 type CareersProps = {
   onNavigateHome: () => void
-  onNavigateAbout: () => void
+  onNavigateAbout: (section?: 'about' | 'vision' | 'ims') => void
   onNavigateContact: () => void
   onNavigatePharmacovigilance?: () => void
-  onNavigateFacility?: () => void
+  onNavigateFacility?: (section?: 'production' | 'quality') => void
   onNavigateProducts?: () => void
 }
 
 export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateContact, onNavigatePharmacovigilance, onNavigateFacility, onNavigateProducts }: CareersProps) {
-  const [showCompanyMenu, setShowCompanyMenu] = useState(false)
-
   return (
     
     <div className="flex w-full justify-center overflow-hidden bg-white">
       <div className="contact-figma relative h-[3454px] w-[1920px] shrink-0 overflow-hidden bg-white">
         <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />
         <div className="absolute left-[-1px] top-[33px] h-[108px] w-[1922px] bg-white shadow-[0_1px_4px_rgba(25,33,61,0.06)]" />
-        <div className="absolute left-[1486px] top-[33px] h-[108px] w-[130px] bg-[#9d0b0f]" />
 
         <div className="absolute left-[-3.5px] top-[22px] h-[131px] w-[510.5px]">
           <img alt="" className="h-full w-full object-fill" src={logoShape} />
@@ -36,23 +32,16 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
           <p>Global</p><p>Pharmaceuticals</p><p>Pakistan</p>
         </div>
 
-        <button type="button" onClick={onNavigateHome} className="absolute left-[612px] top-[77px] m-0 whitespace-nowrap border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#9d0b0f]">Home</button>
-        <div className="absolute left-[728px] top-[71px] z-20 h-[184px] w-[186px]">
-          <button type="button" onClick={onNavigateAbout} className="absolute left-0 top-[6px] m-0 whitespace-nowrap border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Our Company</button>
-          <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev) }} className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="block size-full max-w-none" src={imgVector9} /></div></button>
-          {showCompanyMenu ? (
-            <div className="absolute left-[-27px] top-[75px] w-[270px]">
-              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={onNavigateAbout}>About Us</button>
-              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={onNavigateAbout}>Vision &amp; Mission</button>
-              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={onNavigateAbout}>IMS Policy</button>
-            </div>
-          ) : null}
-        </div>
-        <button type="button" onClick={() => onNavigateProducts?.()} className="absolute left-[958px] top-[77px] m-0 whitespace-nowrap border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Products</button>
-        <button type="button" onClick={onNavigateFacility} className="absolute left-[1130px] top-[77px] m-0 whitespace-nowrap border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] transition-colors hover:text-[#9d0b0f]">Facility</button>
-        <button type="button" onClick={onNavigatePharmacovigilance} className="absolute left-[1261px] top-[77px] m-0 whitespace-nowrap border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] transition-colors hover:text-[#9d0b0f]">Pharmacovigilance</button>
-        <p className="absolute left-[1506px] top-[77px] m-0 whitespace-nowrap font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white">Careers</p>
-        <button type="button" onClick={onNavigateContact} className="absolute left-[1641px] top-[77px] m-0 whitespace-nowrap border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Contact us</button>
+        <Navbar
+          activePage="careers"
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={onNavigateAbout}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateFacility={onNavigateFacility}
+          onNavigatePharmacovigilance={onNavigatePharmacovigilance}
+          onNavigateCareers={() => {}}
+          onNavigateContact={onNavigateContact}
+        />
 
         <p className="absolute left-[195px] top-[238px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">
           Grow Your Career With Global
@@ -147,7 +136,7 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
               </div>
               <div className="w-[228px]">
                 <p className="font-['Inter:Bold',sans-serif] text-[40px]">Quick Links</p>
-                <div className="mt-[50px] space-y-[14px] font-['Inter:Regular',sans-serif] text-[21px]"><button type="button" onClick={onNavigateHome} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Home</button><button type="button" onClick={onNavigateAbout} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">About Us</button><button type="button" onClick={() => onNavigateProducts?.()} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Our Products</button><button type="button" className="block w-full cursor-default text-left">Career</button><button type="button" onClick={onNavigateContact} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Contact Us</button></div>
+                <div className="mt-[50px] space-y-[14px] font-['Inter:Regular',sans-serif] text-[21px]"><button type="button" onClick={onNavigateHome} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Home</button><button type="button" onClick={() => onNavigateAbout('about')} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">About Us</button><button type="button" onClick={() => onNavigateProducts?.()} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Our Products</button><button type="button" className="block w-full cursor-default text-left">Career</button><button type="button" onClick={onNavigateContact} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Contact Us</button></div>
               </div>
               <div className="w-[292px]">
                 <p className="font-['Inter:Bold',sans-serif] text-[40px]">Quick Links</p>

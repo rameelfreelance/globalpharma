@@ -1,11 +1,9 @@
-import { useState } from 'react'
+import Navbar from './Navbar'
 
 const heroMask = '/assets/figma/96f475a0-f388-4434-9401-0ebce11221c2.svg'
 const heroImage = '/assets/figma/42837b36-8b40-4e93-8593-019e4921098f.jpg'
 const logoShape = '/assets/figma/5aae07ba-fca4-4b6c-88a5-b9313dc7594d.svg'
 const logoMark = '/assets/figma/54801a94-07eb-437f-932b-63e38695d851.svg'
-const navArrowDark = '/assets/figma/34839b87-76d1-40f7-a5c5-5faed290452b.svg'
-const navArrowLight = '/assets/figma/9173ba68-9c30-40c7-ba9a-183b2d065375.svg'
 const footerLogo = '/assets/figma/90b558ce-4eb8-4910-b850-9d29697f70cd.svg'
 const footerIconMap = '/assets/figma/e33509ba-de6e-4417-8d63-7ba9dfca5c55.svg'
 const footerIconPhone = '/assets/figma/9222189b-d69a-42b9-bc29-3b2e8850daa8.svg'
@@ -23,11 +21,11 @@ const iconMask = '/assets/figma/f64cded9-f220-4039-825a-ac73fcfec2fa.svg'
 
 type ProductProps = {
   onNavigateHome: () => void
-  onNavigateAbout: () => void
+  onNavigateAbout: (section?: 'about' | 'vision' | 'ims') => void
   onNavigatePharmacovigilance: () => void
   onNavigateCareers: () => void
   onNavigateContact: () => void
-  onNavigateFacility: () => void
+  onNavigateFacility: (section?: 'production' | 'quality') => void
   onNavigateAntibiotics: () => void
   onNavigateAntiInflammatory: () => void
   onNavigateGastrointestinal: () => void
@@ -38,9 +36,6 @@ type ProductProps = {
 }
 
 export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePharmacovigilance, onNavigateCareers, onNavigateContact, onNavigateFacility, onNavigateAntibiotics, onNavigateAntiInflammatory, onNavigateGastrointestinal, onNavigateCns, onNavigateCardiovascular, onNavigateRespiratory, onNavigateDermatology }: ProductProps) {
-  const [showCompanyMenu, setShowCompanyMenu] = useState(false)
-  const [showProductsMenu, setShowProductsMenu] = useState(false)
-
   const cards = [
     {
       left: 255,
@@ -157,7 +152,7 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
                 <p className="font-['Inter:Regular',sans-serif] text-[21.98px] leading-[39px]">We are committed to manufacturing and<br />delivering high-quality pharmaceutical<br />products that meet stringent regulatory<br />standards.</p>
                 <div className="mt-6 flex gap-3"><a href="https://www.facebook.com/globalpharmaceuticalspk" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on Facebook" className="inline-flex rounded-full transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"><img alt="Facebook" className="size-[29px]" src={footerSoc1} /></a><a href="https://www.linkedin.com/company/global-pharmaceuticals-pvt-limited/" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on LinkedIn" className="inline-flex rounded-full transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"><img alt="LinkedIn" className="size-[29px]" src={footerSoc2} /></a></div>
               </div>
-              <div className="w-[228px]"><p className="font-['Inter:Bold',sans-serif] text-[40px]">Quick Links</p><div className="mt-[50px] space-y-[14px] font-['Inter:Regular',sans-serif] text-[21px]"><button type="button" onClick={onNavigateHome} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Home</button><button type="button" onClick={onNavigateAbout} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">About Us</button><button type="button" className="block w-full cursor-default text-left">Our Products</button><button type="button" onClick={onNavigateCareers} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Career</button><button type="button" onClick={onNavigateContact} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Contact us</button></div></div>
+              <div className="w-[228px]"><p className="font-['Inter:Bold',sans-serif] text-[40px]">Quick Links</p><div className="mt-[50px] space-y-[14px] font-['Inter:Regular',sans-serif] text-[21px]"><button type="button" onClick={onNavigateHome} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Home</button><button type="button" onClick={() => onNavigateAbout('about')} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">About Us</button><button type="button" className="block w-full cursor-default text-left">Our Products</button><button type="button" onClick={onNavigateCareers} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Career</button><button type="button" onClick={onNavigateContact} className="block w-full text-left transition-colors duration-200 hover:text-[#f8c9c9]">Contact us</button></div></div>
               <div className="w-[292px]"><p className="font-['Inter:Bold',sans-serif] text-[40px]">Quick Links</p><div className="mt-[50px] space-y-[15px] font-['Inter:Regular',sans-serif] text-[21px]"><p>Policy Statement</p><p>Apply for other departments</p><p>Apply for sales</p></div></div>
               <div className="w-[405px]">
                 <p className="font-['Inter:Bold',sans-serif] text-[40px]">Our Location</p>
@@ -185,43 +180,23 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
             <div className="absolute left-[137px] top-[47px] h-[80.61px] w-[79.34px]"><img alt="" className="size-full" src={logoMark} /></div>
             <div className="absolute left-[228px] top-[49.61px] font-['Myriad_Pro:Semibold',sans-serif] text-[28px] leading-[28px] text-white"><p>Global</p><p>Pharmaceuticals</p><p>Pakistan</p></div>
 
-            <button type="button" onClick={onNavigateHome} className="absolute left-[611px] top-[77px] font-['Google_Sans:Bold',sans-serif] text-[24px] leading-[20px] text-[#9d0b0f]">Home</button>
-            <div className="absolute left-[727px] top-[71px] z-20 h-[229px] w-[194px]">
-              <button type="button" onClick={onNavigateAbout} className="absolute left-0 top-[6px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Our Company</button>
-              <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev) }} className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowDark} /></div></button>
-              {showCompanyMenu ? (
-                <div className="absolute left-0 top-[75px] w-[270px]">
-                  <button type="button" onClick={onNavigateAbout} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">About Us</button>
-                  <button type="button" onClick={onNavigateAbout} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Vision &amp; Mission</button>
-                  <button type="button" onClick={onNavigateAbout} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">IMS Policy</button>
-                </div>
-              ) : null}
-            </div>
-
-            <div className="absolute left-[925px] top-[72px] z-20 h-[440px] w-[205px]">
-              <p className="absolute left-[27px] top-[5px] font-['Google_Sans:Bold',sans-serif] text-[24px] leading-[20px] text-white">Products</p>
-              <button type="button" aria-label="Toggle products menu" onClick={(event) => { event.stopPropagation(); setShowProductsMenu((prev) => !prev) }} className="absolute left-[124px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowLight} /></div></button>
-              {showProductsMenu ? (
-                <div className="absolute left-0 top-[74px] w-[365px]">
-                  {['Anti-inflammatory / Analgesics', 'Anti-biotics', 'Gastrointestinal Agents', 'CNS / Psychiatric', 'Cardiovascular / Lipid Control', 'Dermatology', 'Respiratory & Antiallergic'].map((item) => (
-                    <button
-                      key={item}
-                      type="button"
-                      onClick={item === 'Anti-biotics' ? onNavigateAntibiotics : item === 'Anti-inflammatory / Analgesics' ? onNavigateAntiInflammatory : item === 'Gastrointestinal Agents' ? onNavigateGastrointestinal : item === 'CNS / Psychiatric' ? onNavigateCns : item === 'Cardiovascular / Lipid Control' ? onNavigateCardiovascular : item === 'Dermatology' ? onNavigateDermatology : item === 'Respiratory & Antiallergic' ? onNavigateRespiratory : undefined}
-                      className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]"
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-
-            <button type="button" onClick={onNavigatePharmacovigilance} className="absolute left-[1260px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Pharmacovigilance</button>
-            <button type="button" onClick={onNavigateCareers} className="absolute left-[1508px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Careers</button>
-            <button type="button" onClick={onNavigateContact} className="absolute left-[1640px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Contact us</button>
-            <button type="button" onClick={onNavigateFacility} className="absolute left-[1128px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Facility</button>
-            <div className="absolute left-[1199px] top-[72px] size-[32px] overflow-clip"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowDark} /></div></div>
+            <Navbar
+              activePage="product"
+              onNavigateHome={onNavigateHome}
+              onNavigateAbout={onNavigateAbout}
+              onNavigateProducts={() => {}}
+              onNavigateAntibiotics={onNavigateAntibiotics}
+              onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+              onNavigateGastrointestinal={onNavigateGastrointestinal}
+              onNavigateCns={onNavigateCns}
+              onNavigateCardiovascular={onNavigateCardiovascular}
+              onNavigateRespiratory={onNavigateRespiratory}
+              onNavigateDermatology={onNavigateDermatology}
+              onNavigateFacility={onNavigateFacility}
+              onNavigatePharmacovigilance={onNavigatePharmacovigilance}
+              onNavigateCareers={onNavigateCareers}
+              onNavigateContact={onNavigateContact}
+            />
           </div>
         </div>
       </div>

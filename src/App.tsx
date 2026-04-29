@@ -19,6 +19,7 @@ export default function App() {
   const reduceMotion = useReducedMotion()
   const [page, setPage] = useState<'home' | 'about' | 'contact' | 'careers' | 'pharmacovigilance' | 'facility' | 'product' | 'antibiotics' | 'antiinflammatory' | 'gastrointestinal' | 'cns' | 'cardiovascular' | 'respiratory' | 'dermatology'>('home')
   const [aboutSection, setAboutSection] = useState<'about' | 'vision' | 'ims'>('about')
+  const [facilitySection, setFacilitySection] = useState<'production' | 'quality'>('production')
   const [zoomLevel, setZoomLevel] = useState(1)
 
   useEffect(() => {
@@ -40,19 +41,29 @@ export default function App() {
       onNavigateContact={() => setPage('contact')}
       onNavigateCareers={() => setPage('careers')}
       onNavigatePharmacovigilance={() => setPage('pharmacovigilance')}
-      onNavigateFacility={() => setPage('facility')}
+      onNavigateFacility={(section = 'production') => {
+        setFacilitySection(section)
+        setPage('facility')
+      }}
       onNavigateProducts={() => setPage('product')}
+      onNavigateAntibiotics={() => setPage('antibiotics')}
+      onNavigateAntiInflammatory={() => setPage('antiinflammatory')}
+      onNavigateGastrointestinal={() => setPage('gastrointestinal')}
+      onNavigateCns={() => setPage('cns')}
+      onNavigateCardiovascular={() => setPage('cardiovascular')}
+      onNavigateRespiratory={() => setPage('respiratory')}
+      onNavigateDermatology={() => setPage('dermatology')}
     />
   )
 
   if (page === 'about') {
-    currentPage = <AboutUs onNavigateHome={() => setPage('home')} onNavigateCareers={() => setPage('careers')} onNavigateContact={() => setPage('contact')} onNavigatePharmacovigilance={() => setPage('pharmacovigilance')} onNavigateFacility={() => setPage('facility')} onNavigateProducts={() => setPage('product')} initialSection={aboutSection} />
+    currentPage = <AboutUs onNavigateHome={() => setPage('home')} onNavigateCareers={() => setPage('careers')} onNavigateContact={() => setPage('contact')} onNavigatePharmacovigilance={() => setPage('pharmacovigilance')} onNavigateFacility={(section = 'production') => { setFacilitySection(section); setPage('facility') }} onNavigateProducts={() => setPage('product')} onNavigateAntibiotics={() => setPage('antibiotics')} onNavigateAntiInflammatory={() => setPage('antiinflammatory')} onNavigateGastrointestinal={() => setPage('gastrointestinal')} onNavigateCns={() => setPage('cns')} onNavigateCardiovascular={() => setPage('cardiovascular')} onNavigateRespiratory={() => setPage('respiratory')} onNavigateDermatology={() => setPage('dermatology')} initialSection={aboutSection} />
   } else if (page === 'contact') {
     currentPage = <ContactUs onNavigateHome={() => setPage('home')} onNavigateAbout={() => setPage('about')} onNavigateCareers={() => setPage('careers')} onNavigatePharmacovigilance={() => setPage('pharmacovigilance')} onNavigateFacility={() => setPage('facility')} onNavigateProducts={() => setPage('product')} />
   } else if (page === 'careers') {
     currentPage = <Careers onNavigateHome={() => setPage('home')} onNavigateAbout={() => setPage('about')} onNavigateContact={() => setPage('contact')} onNavigatePharmacovigilance={() => setPage('pharmacovigilance')} onNavigateFacility={() => setPage('facility')} onNavigateProducts={() => setPage('product')} />
   } else if (page === 'facility') {
-    currentPage = <Facilities onNavigateHome={() => setPage('home')} onNavigateAbout={() => setPage('about')} onNavigatePharmacovigilance={() => setPage('pharmacovigilance')} onNavigateCareers={() => setPage('careers')} onNavigateContact={() => setPage('contact')} onNavigateProducts={() => setPage('product')} />
+    currentPage = <Facilities onNavigateHome={() => setPage('home')} onNavigateAbout={() => setPage('about')} onNavigatePharmacovigilance={() => setPage('pharmacovigilance')} onNavigateCareers={() => setPage('careers')} onNavigateContact={() => setPage('contact')} onNavigateProducts={() => setPage('product')} initialSection={facilitySection} />
   } else if (page === 'pharmacovigilance') {
     currentPage = (
       <Pharmacovigilance
@@ -68,11 +79,11 @@ export default function App() {
     currentPage = (
       <Product
         onNavigateHome={() => setPage('home')}
-        onNavigateAbout={() => setPage('about')}
+        onNavigateAbout={(section = 'about') => { setAboutSection(section); setPage('about') }}
         onNavigateContact={() => setPage('contact')}
         onNavigateCareers={() => setPage('careers')}
         onNavigatePharmacovigilance={() => setPage('pharmacovigilance')}
-        onNavigateFacility={() => setPage('facility')}
+        onNavigateFacility={(section = 'production') => { setFacilitySection(section); setPage('facility') }}
         onNavigateAntibiotics={() => setPage('antibiotics')}
         onNavigateAntiInflammatory={() => setPage('antiinflammatory')}
         onNavigateGastrointestinal={() => setPage('gastrointestinal')}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const heroMask = '/assets/figma/a9ddf6d7-55bb-463d-8037-f0152ddfae57.svg'
 const heroImageA = '/assets/figma/9a146c8c-a236-4e40-9787-abf31e9b42ab.jpg'
@@ -45,6 +45,15 @@ export default function CardiovascularLipidControl({
 }: Props) {
   const [showCompanyMenu, setShowCompanyMenu] = useState(false)
   const [showProductsMenu, setShowProductsMenu] = useState(false)
+  
+  useEffect(() => {
+    const closeMenus = () => {
+      setShowCompanyMenu(false)
+      setShowProductsMenu(false)
+    }
+    window.addEventListener('click', closeMenus)
+    return () => window.removeEventListener('click', closeMenus)
+  }, [])
 
   return (
     
@@ -101,12 +110,12 @@ export default function CardiovascularLipidControl({
             <button type="button" onClick={onNavigateHome} className="absolute left-[612px] top-[77px] text-[24px] text-[#9d0b0f]">Home</button>
             <div className="absolute left-[728px] top-[71px] z-20 h-[229px] w-[194px]">
               <button type="button" onClick={onNavigateAbout} className="absolute left-0 top-[6px] text-[24px] text-[#010c0d]">Our Company</button>
-              <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev) }} className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowDark} /></div></button>
+              <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev); setShowProductsMenu(false) }} className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowDark} /></div></button>
               {showCompanyMenu ? <div className="absolute left-0 top-[75px] w-[270px]"><button type="button" onClick={onNavigateAbout} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">About Us</button><button type="button" onClick={onNavigateAbout} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Vision &amp; Mission</button><button type="button" onClick={onNavigateAbout} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">IMS Policy</button></div> : null}
             </div>
             <div className="absolute left-[926px] top-[72px] z-20 h-[440px] w-[205px]">
               <button type="button" onClick={onNavigateProducts} className="absolute left-[27px] top-[5px] border-0 bg-transparent p-0 text-[24px] text-white">Products</button>
-              <button type="button" aria-label="Toggle products menu" onClick={(event) => { event.stopPropagation(); setShowProductsMenu((prev) => !prev) }} className="absolute left-[124px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowLight} /></div></button>
+              <button type="button" aria-label="Toggle products menu" onClick={(event) => { event.stopPropagation(); setShowProductsMenu((prev) => !prev); setShowCompanyMenu(false) }} className="absolute left-[124px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowLight} /></div></button>
               {showProductsMenu ? <div className="absolute left-0 top-[74px] w-[365px]"><button type="button" onClick={onNavigateAntiInflammatory} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-inflammatory / Analgesics</button><button type="button" onClick={onNavigateAntibiotics} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-biotics</button><button type="button" onClick={onNavigateGastrointestinal} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Gastrointestinal Agents</button><button type="button" onClick={onNavigateCns} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">CNS / Psychiatric</button><button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Cardiovascular / Lipid Control</button><button type="button" onClick={onNavigateProducts} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Dermatology</button><button type="button" onClick={onNavigateProducts} className="block h-[49px] w-full bg-[#827f7f] pl-[23px] text-left text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Respiratory &amp; Antiallergic</button></div> : null}
             </div>
             <button type="button" onClick={onNavigatePharmacovigilance} className="absolute left-[1261px] top-[77px] text-[24px] text-[#010c0d]">Pharmacovigilance</button>

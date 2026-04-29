@@ -1,0 +1,200 @@
+import { useState, useEffect } from 'react';
+
+const imgArrowLight = '/assets/figma/87f39614-7293-4298-b70b-ea0666986aee.svg';
+const imgArrowDark = '/assets/figma/7e8a7b0c-6b0c-4b40-9f47-9c71148f7b89.svg';
+
+type NavbarProps = {
+  activePage?: 'home' | 'about' | 'product' | 'facility' | 'pharmacovigilance' | 'careers' | 'contact' | 'antibiotics' | 'antiinflammatory' | 'gastrointestinal' | 'cns' | 'cardiovascular' | 'respiratory' | 'dermatology';
+  onNavigateHome?: () => void;
+  onNavigateAbout?: (section?: 'about' | 'vision' | 'ims') => void;
+  onNavigateProducts?: () => void;
+  onNavigateAntibiotics?: () => void;
+  onNavigateAntiInflammatory?: () => void;
+  onNavigateGastrointestinal?: () => void;
+  onNavigateCns?: () => void;
+  onNavigateCardiovascular?: () => void;
+  onNavigateRespiratory?: () => void;
+  onNavigateDermatology?: () => void;
+  onNavigateFacility?: (section?: 'production' | 'quality') => void;
+  onNavigatePharmacovigilance?: () => void;
+  onNavigateCareers?: () => void;
+  onNavigateContact?: () => void;
+};
+
+export default function Navbar({
+  activePage = 'home',
+  onNavigateHome,
+  onNavigateAbout,
+  onNavigateProducts,
+  onNavigateAntibiotics,
+  onNavigateAntiInflammatory,
+  onNavigateGastrointestinal,
+  onNavigateCns,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology,
+  onNavigateFacility,
+  onNavigatePharmacovigilance,
+  onNavigateCareers,
+  onNavigateContact
+}: NavbarProps) {
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleClick = () => setOpenMenu(null);
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, []);
+
+  const toggleMenu = (e: React.MouseEvent, menu: string) => {
+    e.stopPropagation();
+    setOpenMenu(prev => prev === menu ? null : menu);
+  };
+
+  const btnBase = "absolute top-[77px] z-[2] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] whitespace-nowrap focus-visible:outline-none";
+
+  return (
+    <div className="absolute contents z-[80]">
+      {/* Home */}
+      <button 
+        type="button" 
+        onClick={onNavigateHome} 
+        className={`${btnBase} left-[calc(50%-347px)] ${activePage === 'home' ? "font-['Google_Sans:Bold',sans-serif] text-[#9d0b0f]" : "text-[#010c0d]"}`}
+      >
+        Home
+      </button>
+
+      {/* Our Company */}
+      <div className="absolute left-[calc(50%-231px)] top-[72px] z-20 h-[228px] w-[270px]">
+        {activePage === 'about' && (
+          <div className="absolute left-[-23px] top-[-39px] h-[108px] w-[231px] bg-[#9d0b0f] z-[-1]" />
+        )}
+        <button 
+          type="button" 
+          onClick={(e) => { e.stopPropagation(); onNavigateAbout?.('about'); }}
+          className={`absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'about' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+        >
+          Our Company
+        </button>
+        <button 
+          type="button" 
+          aria-label="Toggle company menu" 
+          onClick={(e) => toggleMenu(e, 'company')} 
+          className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+        >
+          <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
+            <img alt="" className="size-full" src={activePage === 'about' ? imgArrowLight : imgArrowDark} />
+          </div>
+        </button>
+        {openMenu === 'company' && (
+          <div className="absolute left-0 top-[74px] w-[270px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
+            <button type="button" onClick={() => { onNavigateAbout?.('about'); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">About Us</button>
+            <button type="button" onClick={() => { onNavigateAbout?.('vision'); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Vision &amp; Mission</button>
+            <button type="button" onClick={() => { onNavigateAbout?.('ims'); setOpenMenu(null); }} className="block h-[49px] w-full pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">IMS Policy</button>
+          </div>
+        )}
+      </div>
+
+      {/* Products */}
+      <div className="absolute left-[calc(50%-1px)] top-[72px] z-20 h-[440px] w-[365px]">
+        {['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) && (
+          <div className="absolute left-[-23px] top-[-39px] h-[108px] w-[180px] bg-[#9d0b0f] z-[-1]" />
+        )}
+        <button 
+          type="button" 
+          onClick={(e) => { e.stopPropagation(); onNavigateProducts?.(); }} 
+          className={`absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+        >
+          Products
+        </button>
+        <button 
+          type="button" 
+          aria-label="Toggle products menu" 
+          onClick={(e) => toggleMenu(e, 'products')} 
+          className="absolute left-[95px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+        >
+          <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
+            <img alt="" className="size-full" src={['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) ? imgArrowLight : imgArrowDark} />
+          </div>
+        </button>
+        {openMenu === 'products' && (
+          <div className="absolute left-0 top-[74px] w-[365px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
+            <button type="button" onClick={() => { onNavigateAntiInflammatory?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-inflammatory / Analgesics</button>
+            <button type="button" onClick={() => { onNavigateAntibiotics?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-biotics</button>
+            <button type="button" onClick={() => { onNavigateGastrointestinal?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Gastrointestinal Agents</button>
+            <button type="button" onClick={() => { onNavigateCns?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">CNS / Psychiatric</button>
+            <button type="button" onClick={() => { onNavigateCardiovascular?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Cardiovascular / Lipid Control</button>
+            <button type="button" onClick={() => { onNavigateDermatology?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Dermatology</button>
+            <button type="button" onClick={() => { onNavigateRespiratory?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Respiratory &amp; Antiallergic</button>
+          </div>
+        )}
+      </div>
+
+      {/* Facility */}
+      <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px]">
+        {activePage === 'facility' && (
+          <div className="absolute left-[-23px] top-[-39px] h-[108px] w-[150px] bg-[#9d0b0f] z-[-1]" />
+        )}
+        <button 
+          type="button" 
+          onClick={(e) => { e.stopPropagation(); onNavigateFacility?.(); }} 
+          className={`absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'facility' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+        >
+          Facility
+        </button>
+        <button 
+          type="button" 
+          aria-label="Toggle facility menu" 
+          onClick={(e) => toggleMenu(e, 'facility')} 
+          className="absolute left-[75px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+        >
+          <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
+            <img alt="" className="size-full" src={activePage === 'facility' ? imgArrowLight : imgArrowDark} />
+          </div>
+        </button>
+        {openMenu === 'facility' && (
+          <div className="absolute left-0 top-[74px] w-[270px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
+            <button type="button" onClick={() => { onNavigateFacility?.('production'); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Production</button>
+            <button type="button" onClick={() => { onNavigateFacility?.('quality'); setOpenMenu(null); }} className="block h-[49px] w-full pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Quality Operations</button>
+          </div>
+        )}
+      </div>
+
+      {/* Pharmacovigilance */}
+      {activePage === 'pharmacovigilance' && (
+        <div className="absolute left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] bg-[#9d0b0f] z-[1]" />
+      )}
+      <button 
+        type="button" 
+        onClick={onNavigatePharmacovigilance} 
+        className={`${btnBase} left-[calc(50%+302px)] ${activePage === 'pharmacovigilance' ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white" : "text-[#010c0d]"}`}
+      >
+        Pharmacovigilance
+      </button>
+
+      {/* Careers */}
+      {activePage === 'careers' && (
+        <div className="absolute left-[calc(50%+526px)] top-[33px] h-[108px] w-[130px] bg-[#9d0b0f] z-[1]" />
+      )}
+      <button 
+        type="button" 
+        onClick={onNavigateCareers} 
+        className={`${btnBase} left-[calc(50%+550px)] ${activePage === 'careers' ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white" : "text-[#010c0d]"}`}
+      >
+        Careers
+      </button>
+
+      {/* Contact us */}
+      {activePage === 'contact' && (
+        <div className="absolute left-[calc(50%+663px)] top-[33px] h-[108px] w-[153px] bg-[#9d0b0f] z-[1]" />
+      )}
+      <button 
+        type="button" 
+        onClick={onNavigateContact} 
+        className={`${btnBase} left-[calc(50%+682px)] ${activePage === 'contact' ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white" : "text-[#010c0d]"}`}
+      >
+        Contact us
+      </button>
+    </div>
+  );
+}

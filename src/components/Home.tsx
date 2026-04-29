@@ -646,18 +646,18 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
               <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector32} />
             </div>
             <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-608px)] not-italic text-black text-center top-[883px]" data-node-id="47:505">
-            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[23px] left-[calc(50%-607px)] text-[21px] text-center top-[calc(50%-2046px)] w-[42px]" data-node-id="47:506">
+            <p className="-translate-x-1/2 absolute h-[19.183px] left-[calc(50%-607px)] text-[17px] text-center top-[calc(50%-2044px)] w-[39.028px]" data-node-id="47:506" style={{ fontFamily: "'Times New Roman', serif", fontWeight: 700 }}>
                 ISO
               </p>
-            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-607.3px)] text-[6.5px] text-center top-[902.66px] w-[35.72px]" data-node-id="47:507">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-607.3px)] text-[5.5px] text-center top-[901.54px] w-[33.074px]" data-node-id="47:507">
                 14001:2015
               </p>
             </div>
             <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-708px)] not-italic text-black text-center top-[883px]" data-node-id="47:508">
-            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[23px] left-[calc(50%-707px)] text-[21px] text-center top-[calc(50%-2046px)] w-[42px]" data-node-id="47:509">
+            <p className="-translate-x-1/2 absolute h-[19.183px] left-[calc(50%-707px)] text-[17px] text-center top-[calc(50%-2044px)] w-[39.028px]" data-node-id="47:509" style={{ fontFamily: "'Times New Roman', serif", fontWeight: 700 }}>
                 ISO
               </p>
-            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-707.3px)] text-[6.5px] text-center top-[902.66px] w-[35.72px]" data-node-id="47:510">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-707.3px)] text-[5.5px] text-center top-[901.54px] w-[33.074px]" data-node-id="47:510">
                 9001:2008
               </p>
             </div>
@@ -755,10 +755,10 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
             </p>
           </div>
           <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-506px)] not-italic text-black text-center top-[883px]" data-node-id="47:542">
-            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[23px] left-[calc(50%-505px)] text-[21px] text-center top-[calc(50%-2046px)] w-[42px]" data-node-id="47:543">
+            <p className="-translate-x-1/2 absolute h-[19.183px] left-[calc(50%-505px)] text-[17px] text-center top-[calc(50%-2044px)] w-[39.028px]" data-node-id="47:543" style={{ fontFamily: "'Times New Roman', serif", fontWeight: 700 }}>
               ISO
             </p>
-            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-505.3px)] text-[6.5px] text-center top-[902.66px] w-[35.72px]" data-node-id="47:544">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-505.3px)] text-[5.5px] text-center top-[901.54px] w-[33.074px]" data-node-id="47:544">
               45001:2018
             </p>
           </div>

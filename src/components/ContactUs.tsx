@@ -46,7 +46,7 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
 
   return (
     
-    <div className="flex w-screen justify-center overflow-x-auto bg-white">
+    <div className="flex w-full justify-center overflow-hidden bg-white">
       <div className="contact-figma relative h-[2698px] w-[1920px] shrink-0 overflow-hidden bg-white">
         <div className="absolute left-0 top-0 h-[188px] w-[1920px] bg-[#f5f8f9]" />
         <div className="absolute left-[1px] top-[33px] h-[108px] w-[1922px] bg-white shadow-[0_1px_4px_rgba(25,33,61,0.06)]" />

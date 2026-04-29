@@ -188,6 +188,7 @@ export default function App() {
         exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -10 }}
         transition={{ type: 'spring', stiffness: 150, damping: 24 }}
         layout
+        className="overflow-x-hidden w-full max-w-full"
       >
         {currentPage}
       </motion.div>

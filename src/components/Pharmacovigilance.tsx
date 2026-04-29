@@ -29,7 +29,7 @@ type PharmacovigilanceProps = {
 export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onNavigateContact, onNavigateCareers, onNavigateFacility, onNavigateProducts }: PharmacovigilanceProps) {
   return (
     
-    <div className="flex w-screen justify-center overflow-x-auto bg-white">
+    <div className="flex w-full justify-center overflow-hidden bg-white">
       <div className="contact-figma relative h-[4424px] w-[1920px] shrink-0 bg-white">
         <div className="absolute left-[1px] top-[476px] h-[455px] w-[1920px] bg-[#9d0b0f]" />
         <div className="absolute right-[-68px] top-[-210px] h-[1372px] w-[2058px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[71px_686px] mask-size-[1920px_455px]" style={{ maskImage: `url('${imgBsc01235Jpg1}')` }}>

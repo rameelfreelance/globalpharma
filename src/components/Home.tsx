@@ -102,7 +102,7 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
   const [showProductsMenu, setShowProductsMenu] = useState(false)
 
   return (
-    <div className="flex w-screen justify-center overflow-x-auto bg-white">
+    <div className="flex w-full justify-center overflow-hidden bg-white">
       <div className="home-figma relative h-[5858px] w-[1920px] shrink-0 bg-white" data-node-id="47:269" data-name="Home">
       <div className="absolute bg-[#f5f5f5] bottom-[2px] content-stretch flex flex-col items-start left-[3px] w-[1920px]" data-node-id="47:272">
         <div className="bg-[#4e0a0c] content-stretch flex flex-col h-[509px] items-start pb-[99px] pl-[195px] pr-[193px] pt-[98px] relative shrink-0 w-full" data-node-id="47:273">

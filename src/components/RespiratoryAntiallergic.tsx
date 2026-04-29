@@ -41,7 +41,7 @@ export default function RespiratoryAntiallergic({
 
   return (
     
-    <div className="flex w-screen justify-center overflow-x-auto bg-white">
+    <div className="flex w-full justify-center overflow-hidden bg-white">
       <div className="relative h-[2858px] w-[1920px] shrink-0 overflow-hidden bg-white pt-[188px]">
         <div className="absolute left-[1px] top-[476px] h-[455px] w-[1920px] bg-[#9d0b0f]" />
         <div className="absolute left-[-55px] top-[179px] h-[1354px] w-[2031px] -scale-y-100 rotate-180 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[56px_297px] mask-size-[1920px_455px]" style={{ maskImage: `url('${heroMask}')` }}><img alt="" className="size-full object-cover" src={heroImageA} /></div>

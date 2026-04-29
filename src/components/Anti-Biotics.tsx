@@ -43,7 +43,7 @@ export default function AntiBiotics({
 
   return (
     
-    <div className="flex w-screen justify-center overflow-x-auto bg-white">
+    <div className="flex w-full justify-center overflow-hidden bg-white">
       <div className="relative h-[2858px] w-[1920px] shrink-0 overflow-hidden bg-white pt-[188px]">
         <div className="absolute left-[1px] top-[476px] h-[455px] w-[1920px] bg-[#9d0b0f]" />
         <div className="absolute left-[-477px] top-[-252px] h-[1787px] w-[2680px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[478px_728px] mask-size-[1920px_455px]" style={{ maskImage: `url('${heroMask}')` }}>

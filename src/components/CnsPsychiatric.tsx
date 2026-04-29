@@ -75,7 +75,7 @@ export default function CnsPsychiatric({
 
   return (
     
-    <div className="flex w-screen justify-center overflow-x-auto bg-white">
+    <div className="flex w-full justify-center overflow-hidden bg-white">
       <div className="relative h-[5953px] w-[1920px] shrink-0 overflow-hidden bg-white pt-[188px]">
         <div className="absolute left-[-45px] top-[918px] h-[4400px] w-[2011px] border border-[#efefef] bg-[#f5f8f9]" />
         <div className="absolute left-[1px] top-[476px] h-[455px] w-[1920px] bg-[#9d0b0f]" />

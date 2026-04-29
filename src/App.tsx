@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import AboutUs from './components/AboutUs'
 import AntiBiotics from './components/Anti-Biotics'
@@ -19,6 +19,17 @@ export default function App() {
   const reduceMotion = useReducedMotion()
   const [page, setPage] = useState<'home' | 'about' | 'contact' | 'careers' | 'pharmacovigilance' | 'facility' | 'product' | 'antibiotics' | 'antiinflammatory' | 'gastrointestinal' | 'cns' | 'cardiovascular' | 'respiratory' | 'dermatology'>('home')
   const [aboutSection, setAboutSection] = useState<'about' | 'vision' | 'ims'>('about')
+  const [zoomLevel, setZoomLevel] = useState(1)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+      setZoomLevel(width < 1920 ? width / 1920 : 1)
+    }
+    window.addEventListener('resize', handleResize)
+    handleResize()
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   let currentPage = (
     <Home
@@ -180,18 +191,20 @@ export default function App() {
   }
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={page}
-        initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-        animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-        exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -10 }}
-        transition={{ type: 'spring', stiffness: 150, damping: 24 }}
-        layout
-        className="overflow-x-hidden w-full max-w-full"
-      >
-        {currentPage}
-      </motion.div>
-    </AnimatePresence>
+    <div style={{ zoom: zoomLevel }}>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={page}
+          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+          animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -10 }}
+          transition={{ type: 'spring', stiffness: 150, damping: 24 }}
+          layout
+          className="overflow-x-hidden w-full max-w-full"
+        >
+          {currentPage}
+        </motion.div>
+      </AnimatePresence>
+    </div>
   )
 }

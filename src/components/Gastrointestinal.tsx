@@ -140,9 +140,9 @@ export default function Gastrointestinal({
             <div className="absolute left-[229px] top-[50px] font-['Myriad_Pro:Semibold',sans-serif] text-[28px] leading-[28px] text-white"><p>Global</p><p>Pharmaceuticals</p><p>Pakistan</p></div>
 
             <button type="button" onClick={onNavigateHome} className="absolute left-[612px] top-[77px] font-['Google_Sans:Bold',sans-serif] text-[24px] leading-[20px] text-[#9d0b0f]">Home</button>
-            <div className="absolute left-[728px] top-[71px] z-20 h-[229px] w-[180px]" onMouseEnter={() => setShowCompanyMenu(true)} onMouseLeave={() => setShowCompanyMenu(false)}>
+            <div className="absolute left-[728px] top-[71px] z-20 h-[229px] w-[194px]">
               <button type="button" onClick={onNavigateAbout} className="absolute left-0 top-[6px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#010c0d] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f]">Our Company</button>
-              <div className="absolute left-[151px] top-0 size-[32px] overflow-clip"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowDark} /></div></div>
+              <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev) }} className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowDark} /></div></button>
               {showCompanyMenu ? (
                 <div className="absolute left-0 top-[75px] w-[270px]">
                   <button type="button" onClick={onNavigateAbout} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">About Us</button>
@@ -152,9 +152,9 @@ export default function Gastrointestinal({
               ) : null}
             </div>
 
-            <div className="absolute left-[926px] top-[72px] z-20 h-[440px] w-[175px]" onMouseEnter={() => setShowProductsMenu(true)} onMouseLeave={() => setShowProductsMenu(false)}>
+            <div className="absolute left-[926px] top-[72px] z-20 h-[440px] w-[205px]">
               <button type="button" onClick={onNavigateProducts} className="absolute left-[27px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Bold',sans-serif] text-[24px] leading-[20px] text-white">Products</button>
-              <div className="absolute left-[124px] top-0 size-[32px] overflow-clip"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowLight} /></div></div>
+              <button type="button" aria-label="Toggle products menu" onClick={(event) => { event.stopPropagation(); setShowProductsMenu((prev) => !prev) }} className="absolute left-[124px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"><div className="absolute inset-[35.83%_26.13%_35%_26.14%]"><img alt="" className="size-full" src={navArrowLight} /></div></button>
               {showProductsMenu ? (
                 <div className="absolute left-0 top-[74px] w-[365px]">
                   <button type="button" onClick={onNavigateAntiInflammatory} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-inflammatory / Analgesics</button>

@@ -69,8 +69,8 @@ export default function AboutUs({ onNavigateHome, onNavigateCareers, onNavigateC
 
         <div className="absolute left-[-2px] top-[931px] h-[663px] w-[1926px] bg-[#f5f8f9]" />
         <div className="absolute left-[960px] top-[931px] h-[663px] w-[960px] bg-[#d9d9d9]" />
-        <div className="absolute left-[926.26px] top-[931px] h-[684.59px] w-[1026.76px] rotate-[0.36deg] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[38.06px_0px] mask-size-[960px_663px]" style={{ maskImage: `url('${imgVisionMissionRightMask}')` }}>
-          <img alt="" className="absolute inset-0 size-full object-cover" src={imgVisionMissionRight} />
+        <div className="absolute left-[960px] top-[931px] h-[663px] w-[960px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_0px] mask-size-[960px_663px]" style={{ maskImage: `url('${imgVisionMissionRightMask}')` }}>
+          <img alt="" className="absolute inset-0 size-full object-cover object-center" src={imgVisionMissionRight} />
         </div>
         <p className="absolute left-[161.5px] top-[1044px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f]">Quality is the Heart of Everything</p>
         <p className="absolute left-[161px] top-[1318px] h-[275px] w-[629px] text-justify font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[37.5px] text-[#2f4252]">
@@ -221,13 +221,13 @@ export default function AboutUs({ onNavigateHome, onNavigateCareers, onNavigateC
             </div>
 
             <button type="button" onClick={onNavigateHome} className="absolute left-[614.5px] top-[77px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-[#9d0b0f]">Home</button>
-            <div className="absolute left-[701.5px] top-[72px] z-20 h-[228px] w-[270px]" onMouseEnter={() => setShowCompanyMenu(true)} onMouseLeave={() => setShowCompanyMenu(false)}>
+            <div className="absolute left-[701.5px] top-[72px] z-20 h-[228px] w-[270px]">
               <p className="absolute left-[24px] top-[5px] font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white">Our Company</p>
-              <div className="absolute left-[172px] top-0 size-[32px] overflow-clip">
+              <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev) }} className="absolute left-[172px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer">
                 <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
                   <img alt="" className="size-full" src={imgArrowLight} />
                 </div>
-              </div>
+              </button>
               {showCompanyMenu ? (
                 <div className="absolute left-0 top-[74px] w-[270px]">
                   <button type="button" onClick={() => scrollToSection('about')} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">About Us</button>

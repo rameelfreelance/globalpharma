@@ -1,4 +1,4 @@
-
+import { useState } from 'react'
 
 
 type HomeProps = {
@@ -98,6 +98,9 @@ function CapsuleLine({ className }: { className?: string }) {
 }
 
 export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCareers, onNavigatePharmacovigilance, onNavigateFacility, onNavigateProducts }: HomeProps) {
+  const [showCompanyMenu, setShowCompanyMenu] = useState(false)
+  const [showProductsMenu, setShowProductsMenu] = useState(false)
+
   return (
     <div className="flex w-screen justify-center overflow-x-auto bg-white">
       <div className="home-figma relative h-[5858px] w-[1920px] shrink-0 bg-white" data-node-id="47:269" data-name="Home">
@@ -393,27 +396,24 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
       <div className="absolute h-[1124px] left-0 top-0 w-[1925px]" data-node-id="47:397">
         <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgRectangle4} />
       </div>
-      <div className="-translate-x-1/2 absolute contents left-[calc(50%+2.48px)] top-[1232px]" data-node-id="47:398">
-        <p className="-translate-x-1/2 absolute capitalize font-['Roboto:Regular',sans-serif] font-normal leading-[1.02] left-[calc(50%+2.48px)] text-[40px] text-black text-center top-[1232px] tracking-[-0.4px] w-[1354.967px]" data-node-id="47:399" style={{ fontVariationSettings: "'wdth' 100" }}>
-          Our Trusted Group Companies and Strategic Partners
+      <div className="absolute left-0 top-[1126px] h-[152px] w-[1920px] bg-white [border-top-left-radius:50%_100%] [border-top-right-radius:50%_100%]" />
+      <div className="absolute left-[283px] top-[1232px] w-[1355px]" data-node-id="47:398">
+        <p className="w-full text-center font-['Roboto:Regular',sans-serif] text-[40px] leading-[40.8px] tracking-[-0.4px] text-black" data-node-id="47:399" style={{ fontVariationSettings: "'wdth' 100" }}>
+          Our Trusted Group Companies And Strategic Partners
         </p>
-        <div className="-translate-x-1/2 absolute contents left-[calc(50%+2.3px)] top-[1306px]" data-node-id="47:400">
-          <div className="absolute contents left-[calc(50%-671px)] top-[1308.24px]" data-node-id="47:401">
-            <div className="absolute contents left-[calc(50%-671px)] top-[1308.24px]" data-node-id="47:402">
-              <div className="absolute inset-[22.33%_82.02%_76.7%_15.05%]" data-node-id="47:403">
-                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGroup1000000720} />
-              </div>
-              <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Times_New_Roman:Bold',sans-serif] justify-center leading-[0] left-[calc(50%-314.03px)] not-italic text-[#9d0b0f] text-[40px] text-center top-[1336.74px] w-[586px]" data-node-id="47:414">
-                <p className="leading-[23px]">Global Pharmaceuticals Pvt. Ltd.</p>
-              </div>
+        <div className="mt-[74px] flex items-center justify-between" data-node-id="47:400">
+          <div className="flex items-center gap-[8px]">
+            <div className="h-[57px] w-[56px]" data-node-id="47:403">
+              <img alt="" className="h-full w-full object-contain" src={imgGroup1000000720} />
             </div>
+            <p className="whitespace-nowrap font-['Times_New_Roman:Bold',sans-serif] text-[40px] leading-[23px] text-[#9d0b0f]" data-node-id="47:414">
+              Global Pharmaceuticals Pvt. Ltd.
+            </p>
           </div>
-          <div className="absolute inset-[22.29%_14.81%_76.83%_51.88%]" data-node-id="47:415">
-            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGroup1000001909} />
-          </div>
+          <img alt="" className="h-[52px] w-[639px] object-contain" src={imgGroup1000001909} data-node-id="47:415" />
         </div>
       </div>
-      <div className="absolute h-[1257px] left-[-64px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[64px_75px] mask-size-[1925px_1124px] top-[-75px] w-[2050px]" data-node-id="47:421" style={{ maskImage: `url('${imgDsc01471Copy1}')` }} data-name="DSC01471 copy 1">
+      <div className="absolute h-[1199px] left-[-64px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[64px_75px] mask-size-[1925px_1124px] top-[-75px] w-[2050px]" data-node-id="47:421" style={{ maskImage: `url('${imgDsc01471Copy1}')` }} data-name="DSC01471 copy 1">
         <img alt="" className="absolute inset-0 max-w-none object-cover opacity-70 pointer-events-none size-full" src={imgDsc01471Copy2} />
       </div>
       <div className="absolute contents left-[calc(50%-764px)] top-[335px]" data-node-id="47:422">
@@ -443,13 +443,41 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
         <p className="absolute font-['Google_Sans:Bold',sans-serif] leading-[20px] left-[calc(50%-347px)] not-italic text-[#9d0b0f] text-[24px] top-[77px] tracking-[-0.144px] whitespace-nowrap" data-node-id="47:442" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }}>
           Home
         </p>
-        <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-[calc(50%-231px)] not-italic text-[#010c0d] text-[24px] top-[77px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:443" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={() => onNavigateAbout?.('about')}>
-          Our Company
-        </button>
-        <div className="absolute contents left-[calc(50%-1px)] top-[77px]" data-node-id="47:444">
-          <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-[calc(50%-1px)] not-italic text-[#010c0d] text-[24px] top-[77px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:445" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={onNavigateProducts}>
+        <div className="absolute left-[calc(50%-231px)] top-[71px] z-20 h-[228px] w-[270px]">
+          <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-0 not-italic text-[#010c0d] text-[24px] top-[6px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:443" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={() => onNavigateAbout?.('about')}>
+            Our Company
+          </button>
+          <button type="button" aria-label="Toggle company menu" onClick={(event) => { event.stopPropagation(); setShowCompanyMenu((prev) => !prev) }} className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer" data-node-id="47:450" data-name="arrow-down-s-line">
+            <div className="absolute inset-[35.83%_26.13%_35%_26.14%]" data-node-id="I47:450;8:2046" data-name="Vector">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
+            </div>
+          </button>
+          {showCompanyMenu ? (
+            <div className="absolute left-0 top-[75px] w-[270px]">
+              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={() => onNavigateAbout?.('about')}>About Us</button>
+              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={() => onNavigateAbout?.('vision')}>Vision &amp; Mission</button>
+              <button type="button" className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]" onClick={() => onNavigateAbout?.('ims')}>IMS Policy</button>
+            </div>
+          ) : null}
+        </div>
+        <div className="absolute left-[calc(50%-1px)] top-[72px] z-20 h-[440px] w-[365px]" data-node-id="47:444">
+          <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-0 not-italic text-[#010c0d] text-[24px] top-[5px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:445" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={onNavigateProducts}>
             Products
           </button>
+          <button type="button" aria-label="Toggle products menu" onClick={(event) => { event.stopPropagation(); setShowProductsMenu((prev) => !prev) }} className="absolute left-[95px] top-[-1px] size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer" data-node-id="47:449" data-name="arrow-down-s-line">
+            <div className="absolute inset-[35.83%_26.13%_35%_26.14%]" data-node-id="I47:449;8:2046" data-name="Vector">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
+            </div>
+          </button>
+          {showProductsMenu ? (
+            <div className="absolute left-0 top-[74px] w-[365px]">
+              {['Anti-inflammatory / Analgesics', 'Anti-biotics', 'Gastrointestinal Agents', 'CNS / Psychiatric', 'Cardiovascular / Lipid Control', 'Dermatology', 'Respiratory & Antiallergic'].map((item) => (
+                <button key={item} type="button" onClick={onNavigateProducts} className="block h-[49px] w-full border-b border-[#f2f2f2] bg-[#827f7f] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">
+                  {item}
+                </button>
+              ))}
+            </div>
+          ) : null}
         </div>
         <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-[calc(50%+302px)] not-italic text-[#010c0d] text-[24px] top-[77px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:446" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={onNavigatePharmacovigilance}>
           Pharmacovigilance
@@ -460,16 +488,6 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
         <button type="button" className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-[calc(50%+682px)] not-italic text-[#010c0d] text-[24px] top-[77px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]" data-node-id="47:448" style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }} onClick={onNavigateContact}>
           Contact us
         </button>
-        <div className="absolute left-[calc(50%+94px)] overflow-clip size-[32px] top-[71px]" data-node-id="47:449" data-name="arrow-down-s-line">
-          <div className="absolute inset-[35.83%_26.13%_35%_26.14%]" data-node-id="I47:449;8:2046" data-name="Vector">
-            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
-          </div>
-        </div>
-        <div className="absolute left-[calc(50%-80px)] overflow-clip size-[32px] top-[71px]" data-node-id="47:450" data-name="arrow-down-s-line">
-          <div className="absolute inset-[35.83%_26.13%_35%_26.14%]" data-node-id="I47:450;8:2046" data-name="Vector">
-            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector7} />
-          </div>
-        </div>
       </div>
       <div className="absolute inset-[14.74%_77.77%_85.09%_21.65%]" data-node-id="47:451" data-name="Vector">
         <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector8} />
@@ -627,19 +645,19 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
             <div className="absolute inset-[14.9%_81.28%_84.26%_16.17%]" data-node-id="47:504" data-name="Vector">
               <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector32} />
             </div>
-            <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-625px)] not-italic text-black text-center top-[883px]" data-node-id="47:505">
-              <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[23px] left-[calc(50%-625px)] text-[20px] top-[calc(50%-2046px)] w-[42px]" data-node-id="47:506">
+            <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-619px)] not-italic text-black text-center top-[883px]" data-node-id="47:505">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[23px] left-[calc(50%-618px)] text-[21px] top-[calc(50%-2046px)] w-[42px]" data-node-id="47:506">
                 ISO
               </p>
-              <p className="-translate-x-1/2 absolute font-['Inter:Semi_Bold',sans-serif] font-semibold h-[7.938px] left-[calc(50%-624.99px)] text-[6px] top-[902.66px] w-[35.72px]" data-node-id="47:507">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-618.3px)] text-[6.5px] top-[902.66px] w-[35.72px]" data-node-id="47:507">
                 14001:2015
               </p>
             </div>
-            <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-725px)] not-italic text-black text-center top-[883px]" data-node-id="47:508">
-              <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[23px] left-[calc(50%-725px)] text-[20px] top-[calc(50%-2046px)] w-[42px]" data-node-id="47:509">
+            <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-719px)] not-italic text-black text-center top-[883px]" data-node-id="47:508">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[23px] left-[calc(50%-718px)] text-[21px] top-[calc(50%-2046px)] w-[42px]" data-node-id="47:509">
                 ISO
               </p>
-              <p className="-translate-x-1/2 absolute font-['Inter:Semi_Bold',sans-serif] font-semibold h-[7.938px] left-[calc(50%-724.99px)] text-[6px] top-[902.66px] w-[35.72px]" data-node-id="47:510">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-718.3px)] text-[6.5px] top-[902.66px] w-[35.72px]" data-node-id="47:510">
                 9001:2008
               </p>
             </div>
@@ -728,19 +746,19 @@ export default function Home({ onNavigateAbout, onNavigateContact, onNavigateCar
           <div className="absolute inset-[14.9%_70.78%_84.26%_26.67%]" data-node-id="47:538" data-name="Vector">
             <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector32} />
           </div>
-          <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-423.49px)] not-italic text-[#0b0f13] text-center top-[885px]" data-node-id="47:539">
-            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[19.183px] left-[calc(50%-423.49px)] text-[16px] top-[calc(50%-2044px)] w-[39.028px]" data-node-id="47:540">
+          <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-405px)] not-italic text-[#0b0f13] text-center top-[885px]" data-node-id="47:539">
+            <p className="-translate-x-1/2 absolute h-[19.183px] left-[calc(50%-404px)] text-[17px] top-[calc(50%-2044px)] w-[39.028px]" data-node-id="47:540" style={{ fontFamily: "'Times New Roman', serif", fontWeight: 700 }}>
               GMP
             </p>
-            <p className="-translate-x-1/2 absolute font-['Inter:Semi_Bold',sans-serif] font-semibold h-[7.938px] left-[calc(50%-423.82px)] text-[5px] top-[901.54px] w-[33.074px]" data-node-id="47:541">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-404.6px)] text-[5.5px] top-[901.54px] w-[33.074px]" data-node-id="47:541">
               14001:2015
             </p>
           </div>
-          <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-523px)] not-italic text-black text-center top-[883px]" data-node-id="47:542">
-            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[23px] left-[calc(50%-523px)] text-[20px] top-[calc(50%-2046px)] w-[42px]" data-node-id="47:543">
+          <div className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-517px)] not-italic text-black text-center top-[883px]" data-node-id="47:542">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[23px] left-[calc(50%-516px)] text-[21px] top-[calc(50%-2046px)] w-[42px]" data-node-id="47:543">
               ISO
             </p>
-            <p className="-translate-x-1/2 absolute font-['Inter:Semi_Bold',sans-serif] font-semibold h-[7.938px] left-[calc(50%-522.99px)] text-[6px] top-[902.66px] w-[35.72px]" data-node-id="47:544">
+            <p className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-516.3px)] text-[6.5px] top-[902.66px] w-[35.72px]" data-node-id="47:544">
               45001:2018
             </p>
           </div>

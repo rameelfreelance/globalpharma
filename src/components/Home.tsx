@@ -188,6 +188,19 @@ export default function Home({
         data-node-id="47:269"
         data-name="Home"
       >
+        <svg
+          width="0"
+          height="0"
+          aria-hidden="true"
+          focusable="false"
+          style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
+        >
+          <defs>
+            <clipPath id="home-hero-shape" clipPathUnits="userSpaceOnUse">
+              <path d="M64 75H1989V1199C1989 1199 1583.55 1075.4 917.617 1154.85C251.688 1234.3 64 1134.28 64 1134.28V75Z" />
+            </clipPath>
+          </defs>
+        </svg>
         <div
           className="absolute bg-[#f5f5f5] bottom-[2px] content-stretch flex flex-col items-start left-[3px] w-[1920px]"
           data-node-id="47:272"
@@ -500,11 +513,11 @@ export default function Home({
           data-node-id="47:332"
         >
           <p
-            className="absolute font-['Google_Sans:Medium',sans-serif] leading-[1.1] left-[calc(50%-764px)] text-[#9d0b0f] text-[65px] top-[2674px] tracking-[-1.95px] w-[677.417px]"
+            className="absolute font-['Google_Sans:Medium',sans-serif] leading-[1.1] left-[calc(50%-764px)] text-[#9d0b0f] text-[65px] top-[2674px] tracking-[-1.95px] w-[677.417px] clip-wrap"
             data-node-id="47:333"
-          >{`Manufacturing Excellence `}</p>
+          ><span className="clip-line">{`Manufacturing Excellence `}</span></p>
           <p
-            className="absolute font-['Google_Sans:Regular',sans-serif] h-[349px] leading-[1.35] left-[calc(50%-764px)] text-[#2f4252] text-[26px] text-justify top-[2839px] w-[715px]"
+            className="absolute font-['Google_Sans:Regular',sans-serif] h-[349px] leading-[1.35] left-[calc(50%-764px)] text-[#2f4252] text-[26px] text-justify top-[2839px] w-[715px] fade-up d1"
             data-node-id="47:334"
           >{`Our well-structured facility is equipped with advanced production, quality control, warehousing, packaging, and distribution systems, ensuring consistent quality from raw materials to finished products. We specialize in oral and topical formulations, including tablets, capsules (general and cephalosporin), syrups, dry suspensions (for cephalosporin), creams, ointments, and gels. Supported by dedicated air handling systems and controlled environments, our operations meet international standards of safety and efficiency. `}</p>
         </div>
@@ -514,7 +527,7 @@ export default function Home({
           data-name="Mask group"
         >
           <div
-            className="absolute h-[846.328px] left-[-179.37px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[179.368px_50.723px] mask-size-[976px_747px] top-[3253.28px] w-[1269.337px]"
+            className="absolute h-[846.328px] left-[-179.37px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[179.368px_50.723px] mask-size-[976px_747px] top-[3253.28px] w-[1269.337px] scale-in img-zoom"
             data-node-id="47:337"
             style={{ maskImage: `url('${imgAsc00405Jpg1}')` }}
             data-name="ASC00405.jpg 1"
@@ -532,7 +545,7 @@ export default function Home({
           data-name="Mask group"
         >
           <div
-            className="absolute h-[952px] left-[calc(50%-163px)] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[179px_76px] mask-size-[944px_747px] top-[2481px] w-[1429px]"
+            className="absolute h-[952px] left-[calc(50%-163px)] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[179px_76px] mask-size-[944px_747px] top-[2481px] w-[1429px] scale-in d1 img-zoom"
             data-node-id="47:340"
             style={{ maskImage: `url('${imgBsc00308Jpg1}')` }}
             data-name="BSC00308.jpg 1"
@@ -599,7 +612,7 @@ export default function Home({
           <CapsuleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
         </div>
         <div
-          className="absolute content-stretch flex flex-col gap-[10px] items-start left-[calc(50%+248px)] not-italic top-[4425px]"
+          className="absolute content-stretch flex flex-col gap-[10px] items-start left-[calc(50%+248px)] not-italic top-[4425px] fade-up d0"
           data-node-id="47:347"
           data-name="Title"
         >
@@ -633,7 +646,7 @@ export default function Home({
           <MedicineBottleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
         </div>
         <div
-          className="absolute content-stretch flex flex-col gap-[10px] items-start left-[calc(50%+248px)] not-italic top-[4613px]"
+          className="absolute content-stretch flex flex-col gap-[10px] items-start left-[calc(50%+248px)] not-italic top-[4613px] fade-up d1"
           data-node-id="47:353"
           data-name="Title"
         >
@@ -667,7 +680,7 @@ export default function Home({
           <StethoscopeLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
         </div>
         <div
-          className="absolute content-stretch flex flex-col gap-[10px] items-start left-[calc(50%+248px)] not-italic top-[4801px]"
+          className="absolute content-stretch flex flex-col gap-[10px] items-start left-[calc(50%+248px)] not-italic top-[4801px] fade-up d2"
           data-node-id="47:359"
           data-name="Title"
         >
@@ -694,7 +707,7 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute bg-[#808586] h-[785px] left-[calc(50%-764px)] overflow-clip top-[4266px] w-[764px]"
+          className="absolute bg-[#808586] h-[785px] left-[calc(50%-764px)] overflow-clip top-[4266px] w-[764px] scale-in img-zoom"
           data-node-id="47:363"
           data-name="Image"
         >
@@ -716,35 +729,35 @@ export default function Home({
           </div>
         </div>
         <p
-          className="absolute font-['Inter:Medium',sans-serif] font-medium leading-none left-[calc(50%+124px)] not-italic text-[#9d0b0f] text-[25px] top-[4266px] uppercase whitespace-nowrap"
+          className="absolute font-['Inter:Medium',sans-serif] font-medium leading-none left-[calc(50%+124px)] not-italic text-[#9d0b0f] text-[25px] top-[4266px] uppercase whitespace-nowrap fade-up d0"
           data-node-id="47:366"
         >
           Therapeutic Portfolio
         </p>
         <p
-          className="absolute font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[1.4] left-[calc(50%+124px)] not-italic text-[#010c0d] text-[56px] top-[4299px] w-[474px]"
+          className="absolute font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[1.4] left-[calc(50%+124px)] not-italic text-[#010c0d] text-[56px] top-[4299px] w-[474px] clip-wrap"
           data-node-id="47:367"
         >
-          Our Product Line
+          <span className="clip-line d1">Our Product Line</span>
         </p>
         <div
           className="absolute contents left-[calc(50%-764px)] top-[1564px]"
           data-node-id="47:368"
         >
           <p
-            className="absolute font-['Google_Sans:Medium',sans-serif] leading-none left-[calc(50%-228px)] not-italic text-[25px] text-black top-[1564px] tracking-[2.375px] uppercase whitespace-nowrap"
+            className="absolute font-['Google_Sans:Medium',sans-serif] leading-none left-[calc(50%-228px)] not-italic text-[25px] text-black top-[1564px] tracking-[2.375px] uppercase whitespace-nowrap fade-up d0"
             data-node-id="47:369"
           >
             Who We Are
           </p>
           <p
-            className="absolute font-['Google_Sans:Medium',sans-serif] leading-[1.1] left-[calc(50%-228px)] not-italic text-[#9d0b0f] text-[64px] top-[1617px] tracking-[-1.92px] w-[727px]"
+            className="absolute font-['Google_Sans:Medium',sans-serif] leading-[1.1] left-[calc(50%-228px)] not-italic text-[#9d0b0f] text-[64px] top-[1617px] tracking-[-1.92px] w-[727px] clip-wrap"
             data-node-id="47:370"
           >
-            Quality is the Heart of Everything
+            <span className="clip-line d1">Quality is the Heart of Everything</span>
           </p>
           <p
-            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.4] left-[calc(50%-228px)] not-italic text-[#2f4252] text-[25px] text-justify top-[1793px] w-[993px]"
+            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.4] left-[calc(50%-228px)] not-italic text-[#2f4252] text-[25px] text-justify top-[1793px] w-[993px] fade-up d2"
             data-node-id="47:371"
           >
             Global Pharmaceuticals Pakistan is committed to delivering
@@ -755,7 +768,7 @@ export default function Home({
             with a strong focus on innovation and continuous improvement.
           </p>
           <div
-            className="absolute bg-[#f7f4f4] border-0 border-[#dadada] border-solid h-[167px] left-[calc(50%-228px)] top-[2071px] w-[993px]"
+            className="absolute bg-[#f7f4f4] border-0 border-[#dadada] border-solid h-[167px] left-[calc(50%-228px)] top-[2071px] w-[993px] scale-in d0"
             data-node-id="47:372"
           />
           <p
@@ -778,19 +791,19 @@ export default function Home({
             uncompromising standard of pharmaceutical quality and safety.
           </p>
           <div
-            className="absolute bg-white border-0 border-[#c2c2c2] border-solid h-[154px] left-[calc(50%-764px)] top-[2303px] w-[358.458px]"
+            className="absolute bg-white border-0 border-[#c2c2c2] border-solid h-[154px] left-[calc(50%-764px)] top-[2303px] w-[358.458px] scale-in card-hover d0"
             data-node-id="47:376"
           />
           <div
-            className="absolute bg-white border-0 border-[#c2c2c2] border-solid h-[154px] left-[calc(50%+16.36px)] top-[2303px] w-[358.458px]"
+            className="absolute bg-white border-0 border-[#c2c2c2] border-solid h-[154px] left-[calc(50%+16.36px)] top-[2303px] w-[358.458px] scale-in card-hover d2"
             data-node-id="47:377"
           />
           <div
-            className="absolute bg-[#9d0b0f] h-[154px] left-[calc(50%-373.82px)] top-[2303px] w-[358.458px]"
+            className="absolute bg-[#9d0b0f] h-[154px] left-[calc(50%-373.82px)] top-[2303px] w-[358.458px] scale-in card-hover d1"
             data-node-id="47:378"
           />
           <div
-            className="absolute bg-white border-0 border-[#c2c2c2] border-solid h-[154px] left-[calc(50%+406.54px)] top-[2303px] w-[358.458px]"
+            className="absolute bg-white border-0 border-[#c2c2c2] border-solid h-[154px] left-[calc(50%+406.54px)] top-[2303px] w-[358.458px] scale-in card-hover d3"
             data-node-id="47:379"
           />
           <p
@@ -983,14 +996,14 @@ export default function Home({
           data-node-id="47:398"
         >
           <p
-            className="w-full text-center font-['Roboto:Regular',sans-serif] text-[40px] leading-[40.8px] tracking-[-0.4px] text-black"
+            className="w-full text-center font-['Roboto:Regular',sans-serif] text-[40px] leading-[40.8px] tracking-[-0.4px] text-black clip-wrap"
             data-node-id="47:399"
             style={{ fontVariationSettings: "'wdth' 100" }}
           >
-            Our Trusted Group Companies And Strategic Partners
+            <span className="clip-line">Our Trusted Group Companies And Strategic Partners</span>
           </p>
           <div
-            className="mt-[74px] flex items-center justify-between"
+            className="mt-[74px] flex items-center justify-between fade-up d1"
             data-node-id="47:400"
           >
             <div className="flex items-center gap-[8px]">
@@ -1017,14 +1030,23 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute h-[1199px] left-[-64px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[64px_75px] mask-size-[1925px_1124px] top-[-75px] w-[2050px]"
+          className="absolute h-[1124px] left-0 top-0 w-[1925px] overflow-hidden"
           data-node-id="47:421"
-          style={{ maskImage: `url('${imgDsc01471Copy1}')` }}
+          style={{
+            WebkitMaskImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1925 1124' preserveAspectRatio='none'><path d='M0 0H1925V1124C1925 1124 1519.55 1000.4 853.617 1079.85C187.688 1159.3 0 1059.28 0 1059.28V0Z' fill='white'/></svg>\")",
+            WebkitMaskSize: "100% 100%",
+            WebkitMaskRepeat: "no-repeat",
+            maskImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1925 1124' preserveAspectRatio='none'><path d='M0 0H1925V1124C1925 1124 1519.55 1000.4 853.617 1079.85C187.688 1159.3 0 1059.28 0 1059.28V0Z' fill='white'/></svg>\")",
+            maskSize: "100% 100%",
+            maskRepeat: "no-repeat",
+          }}
           data-name="DSC01471 copy 1"
         >
           <img
             alt=""
-            className="absolute inset-0 max-w-none object-cover opacity-70 pointer-events-none size-full"
+            className="absolute left-[-64px] top-[-75px] h-[1199px] w-[2050px] max-w-none object-cover opacity-70 pointer-events-none"
             src={imgDsc01471Copy2}
           />
         </div>
@@ -1426,19 +1448,19 @@ export default function Home({
           data-node-id="47:461"
         >
           <p
-            className="absolute font-['Google_Sans:SemiBold',sans-serif] leading-[1.4] left-[calc(50%-764px)] not-italic text-[25px] text-white top-[335px] whitespace-nowrap"
+            className="absolute font-['Google_Sans:SemiBold',sans-serif] leading-[1.4] left-[calc(50%-764px)] not-italic text-[25px] text-white top-[335px] whitespace-nowrap hero-clip-wrap"
             data-node-id="47:462"
           >
-            Empowering Healthcare
+            <span className="hero-clip-line d0">Empowering Healthcare</span>
           </p>
           <p
-            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.16] left-[calc(50%-764px)] not-italic text-[76px] text-white top-[384px] w-[653px]"
+            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.16] left-[calc(50%-764px)] not-italic text-[76px] text-white top-[384px] w-[653px] hero-clip-wrap"
             data-node-id="47:463"
           >
-            Advancing Lives Through Trusted Medicine
+            <span className="hero-clip-line d1">Advancing Lives Through Trusted Medicine</span>
           </p>
           <p
-            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.42] left-[calc(50%-764px)] not-italic text-[#f8fafa] text-[27px] text-justify top-[662px] w-[808px]"
+            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.42] left-[calc(50%-764px)] not-italic text-[#f8fafa] text-[27px] text-justify top-[662px] w-[808px] fade-up d2"
             data-node-id="47:464"
           >
             Global Pharmaceuticals Pakistan is dedicated to developing and

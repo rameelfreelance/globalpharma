@@ -1307,7 +1307,7 @@ export default function Home({
           </div>
           <button
             type="button"
-            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-[calc(50%+302px)] not-italic text-[#010c0d] text-[24px] top-[77px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]"
+            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] pl-[18px] pt-[44px] not-italic text-left text-[#010c0d] text-[24px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:bg-[#9d0b0f]/5 hover:text-[#9d0b0f] border-0 bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50"
             data-node-id="47:446"
             style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }}
             onClick={onNavigatePharmacovigilance}

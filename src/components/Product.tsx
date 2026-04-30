@@ -105,40 +105,44 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
           <img alt="" className="absolute inset-0 size-full object-cover" src={heroImage} />
         </div>
 
-        <p className="absolute left-[194px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">
-          Expanding therapeutic segments with automated manufacturing
+        <p className="absolute left-[194px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f] hero-clip-wrap">
+          <span className="hero-clip-line d0">Expanding therapeutic segments</span>
+          <span className="hero-clip-line d1">with automated manufacturing</span>
         </p>
         <div className="absolute left-[-1px] top-[931px] h-[1485px] w-[1921px] bg-[#f5f8f9]" />
         <div className="absolute left-[1237px] top-[476px] h-[111px] w-[472px] bg-white" />
-        <p className="absolute left-[1290px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">Our Products</p>
-        <div className="absolute left-[1237px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f]" />
+        <p className="absolute left-[1290px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Our Products</span></p>
+        <div className="absolute left-[1237px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
 
         {cards.map((card) => (
-          <div key={card.title}>
-            <button
-              type="button"
-              onClick={card.onClick}
-              className="absolute h-[320px] w-[450px] bg-white text-left"
-              style={{ left: card.left, top: card.top, cursor: 'pointer' }}
-            />
-            <div className="absolute left-0 top-0 flex h-[20px] w-[20px] items-center justify-center" style={{ left: card.left + 382, top: card.top + 47 }}>
+          <button
+            key={card.title}
+            type="button"
+            onClick={card.onClick}
+            className="product-card group absolute block h-[320px] w-[450px] bg-white text-left scale-in"
+            style={{ left: card.left, top: card.top, cursor: 'pointer' }}
+          >
+            <div className="absolute left-[382px] top-[47px] flex h-[20px] w-[20px] items-center justify-center">
               <img alt="" className="block h-auto w-auto max-h-[20px] max-w-[20px] object-contain" src={iconArrowOutward} />
             </div>
-            <div className="absolute left-0 top-0 flex h-[70px] w-[70px] items-center justify-center overflow-hidden" style={{ left: card.left + 46, top: card.top + 37 }}>
+            <div className="absolute left-[46px] top-[37px] flex h-[70px] w-[70px] items-center justify-center overflow-hidden">
               <img alt="" className="block size-full object-contain" src={card.icon} />
             </div>
-            <p className="absolute w-[359px] font-['Google_Sans:Medium',sans-serif] text-[36px] leading-[37px] text-[#0b0f13]" style={{ left: card.left + 46, top: card.top + 139 }}>
+            <p className="absolute left-[46px] top-[139px] w-[359px] font-['Google_Sans:Medium',sans-serif] text-[36px] leading-[37px] text-[#0b0f13]">
               {card.title}
             </p>
             {card.subtitle ? (
-              <p className="absolute w-[359px] font-['Google_Sans:Medium',sans-serif] text-[21px] leading-[33px] text-[#0b0f13]" style={{ left: card.left + 46, top: card.top + 183 }}>
+              <p className="absolute left-[46px] top-[183px] w-[359px] font-['Google_Sans:Medium',sans-serif] text-[21px] leading-[33px] text-[#0b0f13]">
                 {card.subtitle}
               </p>
             ) : null}
-            <p className="absolute w-[372px] font-['Google_Sans:Regular',sans-serif] text-[17px] font-[400] leading-[28px] text-[#0b0f13]/70" style={{ left: card.left + 46, top: card.subtitle ? card.top + 226 : card.top + 223 }}>
+            <p
+              className="absolute left-[46px] w-[372px] font-['Google_Sans:Regular',sans-serif] text-[17px] font-[400] leading-[28px] text-[#0b0f13]/70"
+              style={{ top: card.subtitle ? 226 : 223 }}
+            >
               {card.body}
             </p>
-          </div>
+          </button>
         ))}
 
         <div className="absolute left-[-1px] top-[2416px] w-[1920px] bg-[#f5f5f5]">

@@ -1,0 +1,214 @@
+/* ═══════════════════════════════════════════════════════
+   GLOBAL ANIMATION SYSTEM
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Keyframes ─────────────────────────────────────────── */
+
+@keyframes heroLineIn {
+  from { opacity: 0; transform: translateY(110%) scale(1.04); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes heroBadgeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Page transition ───────────────────────────────────── */
+
+.page-enter {
+  animation: pageFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pageFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Hero text reveal ──────────────────────────────────── */
+/* Wrap text in .hero-clip-wrap, place text in .hero-clip-line */
+
+.hero-clip-wrap {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 0.1em;
+}
+
+.hero-clip-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(110%) scale(1.04);
+  transform-origin: center bottom;
+  animation: heroLineIn 0.82s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-clip-line.d0 { animation-delay: 0.05s; }
+.hero-clip-line.d1 { animation-delay: 0.22s; }
+.hero-clip-line.d2 { animation-delay: 0.38s; }
+.hero-clip-line.d3 { animation-delay: 0.52s; }
+.hero-clip-line.d4 { animation-delay: 0.66s; }
+
+/* ── Scroll reveal — clip (Refactr style) ──────────────── */
+/* Wrap element: .clip-wrap  |  inner: .clip-line          */
+
+.clip-wrap {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 0.15em;
+}
+
+.clip-line {
+  display: block;
+  transform: translateY(105%);
+  opacity: 0;
+  transform-origin: center bottom;
+  transition:
+    transform 0.78s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity   0.78s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clip-wrap.in-view .clip-line {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── Fade-up (generic scroll reveal) ──────────────────── */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Scale-in (images / cards) ─────────────────────────── */
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.94) translateY(16px);
+  transition:
+    opacity   0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scale-in.in-view {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ── Stagger delays (append to fade-up / scale-in / clip-line) ── */
+
+.d0 { transition-delay: 0s;     }
+.d1 { transition-delay: 0.12s;  }
+.d2 { transition-delay: 0.24s;  }
+.d3 { transition-delay: 0.36s;  }
+.d4 { transition-delay: 0.48s;  }
+.d5 { transition-delay: 0.60s;  }
+
+/* ── Image hover zoom (martindow-style) ────────────────── */
+
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.img-zoom:hover img {
+  transform: scale(1.07);
+}
+
+/* ── Card hover lift ───────────────────────────────────── */
+
+.card-hover {
+  transition:
+    transform  0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Underline hover (nav/links) ───────────────────────── */
+
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 2px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after { width: 100%; }
+
+/* ── Red accent line reveal ────────────────────────────── */
+
+.line-reveal {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.line-reveal.in-view {
+  transform: scaleX(1);
+}
+
+/* ── Box hover — theme colour flash ────────────────────── */
+/* Combine with card-hover for lift + colour change        */
+
+.box-hover {
+  transition:
+    transform     0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow    0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color  0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background    0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.box-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(157, 11, 15, 0.14);
+  border-color: #9d0b0f !important;
+  background-color: rgba(157, 11, 15, 0.035) !important;
+}
+
+/* Variant for dark/red background boxes — hover lightens */
+.box-hover-invert {
+  transition:
+    transform   0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow  0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    filter      0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.box-hover-invert:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  filter: brightness(1.12);
+}
+
+/* ── Product card — smooth red tint on hover, nothing else ── */
+.product-card {
+  transition: background-color 0.3s ease;
+  border: 0;
+}
+
+.product-card:hover {
+  background-color: rgba(157, 11, 15, 0.08);
+}

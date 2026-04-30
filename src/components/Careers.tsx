@@ -67,44 +67,44 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
           {'\n'}As an equal opportunity employer, Global Pharmaceuticals Pakistan welcomes and values high-caliber, talented, and results-driven professionals who demonstrate strong teamwork, effective communication skills, and a solid work ethic.
         </p>
 
-        <p className="absolute left-[195px] top-[1592px] font-['Lato:Regular',sans-serif] text-[18px]">Experience Level</p>
-        <p className="absolute left-[457px] top-[1592px] font-['Lato:Regular',sans-serif] text-[18px]">Location</p>
-        <p className="absolute left-[719px] top-[1592px] font-['Lato:Regular',sans-serif] text-[18px]">Categories</p>
-        <div className="absolute left-[195px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd]"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Experience Level</p><p>▾</p></div>
-        <div className="absolute left-[457px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd]"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Location</p><p>▾</p></div>
-        <div className="absolute left-[719px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd]"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Categories</p><p>▾</p></div>
-        <button type="button" className="absolute left-[981px] top-[1631px] flex items-center gap-[10px] bg-[#0b0f13] px-[40px] py-[20px]"><span className="font-['Inter:Medium',sans-serif] text-[18px] leading-[18px] text-white">View Jobs</span><span className="text-white">→</span></button>
-        <div className="absolute left-[1247px] top-[1631px] h-[64px] w-[463px] border border-[#d0d7dd]" />
+        <p className="absolute left-[195px] top-[1592px] font-['Lato:Regular',sans-serif] text-[18px] fade-up d0">Experience Level</p>
+        <p className="absolute left-[457px] top-[1592px] font-['Lato:Regular',sans-serif] text-[18px] fade-up d1">Location</p>
+        <p className="absolute left-[719px] top-[1592px] font-['Lato:Regular',sans-serif] text-[18px] fade-up d2">Categories</p>
+        <div className="absolute left-[195px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd] fade-up d0"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Experience Level</p><p>▾</p></div>
+        <div className="absolute left-[457px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd] fade-up d1"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Location</p><p>▾</p></div>
+        <div className="absolute left-[719px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd] fade-up d2"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Categories</p><p>▾</p></div>
+        <button type="button" className="group absolute left-[981px] top-[1631px] flex items-center gap-[10px] bg-[#0b0f13] px-[40px] py-[20px] transition-colors duration-200 hover:bg-[#9d0b0f] fade-up d3"><span className="font-['Inter:Medium',sans-serif] text-[18px] leading-[18px] text-white">View Jobs</span><span className="text-white transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
+        <div className="absolute left-[1247px] top-[1631px] h-[64px] w-[463px] border border-[#d0d7dd] line-reveal d4" />
 
-        <div className="absolute left-[213px] top-[1949px] h-[218px] w-[540px] border border-[#9d0b0f] bg-white p-[28px] scale-in card-hover d0">
+        <div className="absolute left-[213px] top-[1949px] h-[218px] w-[540px] border border-transparent hover:border-[#9d0b0f] transition-colors duration-200 cursor-pointer bg-white p-[28px] scale-in card-hover d0">
           <p className="font-['Lato:Bold',sans-serif] text-[22px] text-[#9d0b0f]">Production Pharmacist</p>
           <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
           <p className="mt-4 text-[14px] leading-[22px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
         </div>
-        <div className="absolute left-[213px] top-[2197px] h-[218px] w-[540px] bg-white p-[28px] scale-in card-hover d1">
+        <div className="absolute left-[213px] top-[2197px] h-[218px] w-[540px] border border-transparent hover:border-[#9d0b0f] transition-colors duration-200 cursor-pointer bg-white p-[28px] scale-in card-hover d1">
           <p className="font-['Lato:Bold',sans-serif] text-[22px] text-[#9d0b0f]">Production Pharmacist</p>
           <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
           <p className="mt-4 text-[14px] leading-[22px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
         </div>
-        <div className="absolute left-[213px] top-[2445px] h-[218px] w-[540px] bg-white p-[28px] scale-in card-hover d2">
+        <div className="absolute left-[213px] top-[2445px] h-[218px] w-[540px] border border-transparent hover:border-[#9d0b0f] transition-colors duration-200 cursor-pointer bg-white p-[28px] scale-in card-hover d2">
           <p className="font-['Lato:Bold',sans-serif] text-[22px] text-[#9d0b0f]">Production Pharmacist</p>
           <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
           <p className="mt-4 text-[14px] leading-[22px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
         </div>
 
-        <div className="absolute left-[794px] top-[1949px] h-[714px] w-[914px] bg-white p-[62px]">
-          <p className="font-['Lato:Bold',sans-serif] text-[22px] text-[#040f24]">Production Pharmacist</p>
-          <div className="mt-4 flex gap-2"><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
-          <p className="mt-6 text-[16px] font-semibold leading-[22px] text-[#4f5665]">Primary Responsibility:</p>
-          <p className="mt-1 text-[14px] leading-[22px] text-[#4f5665]">Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases and APIs using technologies such as Node.js, Python, Ruby, or Java.Designing, implementing, and managing databases (SQL or NoSQL) to ensure data integrity and efficient retrieval.Using version control systems like Git to manage code changes and collaborate with other developers.Implementing security best practices to protect applications from vulnerabilities and threats.Automating deployment processes and managing CI/CD pipelines to streamline development and release cycles.Working with cross-functional teams, including designers, product managers, and other developers, to deliver high-quality software.</p>
-          <div className="mt-6 grid grid-cols-3 gap-6 text-[14px] leading-[22px]">
+        <div className="absolute left-[794px] top-[1949px] h-[714px] w-[914px] bg-white p-[62px] fade-up d1">
+          <p className="font-['Lato:Bold',sans-serif] text-[22px] text-[#040f24] fade-up d2">Production Pharmacist</p>
+          <div className="mt-4 flex gap-2 fade-up d3"><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
+          <p className="mt-6 text-[16px] font-semibold leading-[22px] text-[#4f5665] fade-up d3">Primary Responsibility:</p>
+          <p className="mt-1 text-[14px] leading-[22px] text-[#4f5665] fade-up d4">Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases and APIs using technologies such as Node.js, Python, Ruby, or Java.Designing, implementing, and managing databases (SQL or NoSQL) to ensure data integrity and efficient retrieval.Using version control systems like Git to manage code changes and collaborate with other developers.Implementing security best practices to protect applications from vulnerabilities and threats.Automating deployment processes and managing CI/CD pipelines to streamline development and release cycles.Working with cross-functional teams, including designers, product managers, and other developers, to deliver high-quality software.</p>
+          <div className="mt-6 grid grid-cols-3 gap-6 text-[14px] leading-[22px] fade-up d5">
             <div><p className="text-black">Employment Type:</p><p className="text-[#4f5665]">Full-time</p></div>
             <div><p className="text-black">Work place Type:</p><p className="text-[#4f5665]">Hybrid</p></div>
             <div><p className="text-black">Experience Required:</p><p className="text-[#4f5665]">Minimum 3 Years</p></div>
             <div><p className="text-black">Salary:</p><p className="text-[#4f5665]">Commensurate with experience and skills</p></div>
             <div className="col-span-2"><p className="text-black">Job Location:</p><p className="text-[#4f5665]">Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p></div>
           </div>
-          <button type="button" className="mt-8 flex items-center gap-[10px] bg-[#9d0b0f] px-[40px] py-[20px]"><span className="font-['Inter:Medium',sans-serif] text-[18px] leading-[18px] text-white">Apply Now</span><span className="text-white">→</span></button>
+          <button type="button" className="group mt-8 flex items-center gap-[10px] bg-[#9d0b0f] px-[40px] py-[20px] fade-up d5 transition-colors duration-200 hover:bg-[#051c2f]"><span className="font-['Inter:Medium',sans-serif] text-[18px] leading-[18px] text-white transition-colors duration-200 group-hover:text-white">Apply Now</span><span className="text-white transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
         </div>
 
         <div className="absolute left-0 top-[2799px] w-[1920px] bg-[#f5f5f5]">

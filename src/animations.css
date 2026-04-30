@@ -5,8 +5,8 @@
 /* ── Keyframes ─────────────────────────────────────────── */
 
 @keyframes heroLineIn {
-  from { opacity: 0; transform: translateY(110%) scale(1.04); }
-  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+  from { opacity: 0; transform: translateY(110%) rotate(2deg); }
+  to   { opacity: 1; transform: translateY(0)    rotate(0deg); }
 }
 
 @keyframes heroBadgeIn {
@@ -21,7 +21,7 @@
 }
 
 @keyframes pageFadeUp {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(40px); }
   to   { opacity: 1; transform: translateY(0);    }
 }
 
@@ -37,9 +37,9 @@
 .hero-clip-line {
   display: block;
   opacity: 0;
-  transform: translateY(110%) scale(1.04);
+  transform: translateY(110%) rotate(2deg);
   transform-origin: center bottom;
-  animation: heroLineIn 0.82s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: heroLineIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-clip-line.d0 { animation-delay: 0.05s; }
@@ -59,12 +59,12 @@
 
 .clip-line {
   display: block;
-  transform: translateY(105%);
+  transform: translateY(110%) rotate(1deg);
   opacity: 0;
   transform-origin: center bottom;
   transition:
-    transform 0.78s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity   0.78s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .clip-wrap.in-view .clip-line {
@@ -76,10 +76,10 @@
 
 .fade-up {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(40px);
   transition:
-    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity   1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .fade-up.in-view {
@@ -91,10 +91,10 @@
 
 .scale-in {
   opacity: 0;
-  transform: scale(0.94) translateY(16px);
+  transform: scale(0.92) translateY(30px);
   transition:
-    opacity   0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity   1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scale-in.in-view {
@@ -114,10 +114,10 @@
 /* ── Slower reveal for manufacturing process cards ─────── */
 .process-reveal {
   opacity: 0;
-  transform: translateY(46px);
+  transform: translateY(50px);
   transition:
-    opacity   1.15s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity   1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .process-reveal.in-view {

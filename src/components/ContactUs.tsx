@@ -86,31 +86,40 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
         <div className="absolute left-[1238px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
 
         <div className="absolute left-0 top-[930px] h-[774px] w-[1922px] bg-[#f5f8f9]" />
-        <div className="absolute left-[232px] top-[1077px] flex size-[56px] items-center justify-center bg-[#9d0b0f] scale-in box-hover-invert d0">
-          <svg viewBox="0 0 24 24" className="h-[27px] w-[27px]" aria-hidden="true">
-            <path fill="#fff" d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
-          </svg>
-        </div>
-        <div className="absolute left-[232px] top-[1182px] flex size-[56px] items-center justify-center bg-[#9d0b0f] scale-in box-hover-invert d1">
-          <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
-            <path fill="#fff" d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm8 7 8-5H4l8 5zm0 2L4 9v8h16V9l-8 5z" />
-          </svg>
-        </div>
-        <div className="absolute left-[232px] top-[1286px] flex size-[56px] items-center justify-center bg-[#9d0b0f] scale-in box-hover-invert d2">
-          <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
-            <path fill="#fff" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.3 22 2 13.7 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z" />
-          </svg>
-        </div>
-        <p className="absolute left-[316px] top-[1070px] font-['Inter:Regular',sans-serif] text-[25px] leading-[35px] text-black">
-          Plot No.08-A, Street No. S8,
-          <br />
-          RCCI Rawat, Pakistan
-        </p>
-        <a href="mailto:info@globalpharmapk.com" className="absolute left-[316px] top-[1194px] font-['Inter:Regular',sans-serif] text-[25px] leading-[25px] text-black transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">info@globalpharmapk.com</a>
-        <div className="absolute left-[316px] top-[1281px] font-['Inter:Regular',sans-serif] text-[25px] leading-[25px] text-black">
-          <a href="tel:+92514499040" className="transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">+92 51 4499040</a>
-          <br />
-          <a href="tel:+92514499041" className="transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">+92 51 4499041</a>
+        <div className="absolute left-[232px] top-[1070px] flex flex-col gap-[56px]">
+          <div className="flex items-center gap-[28px]">
+            <div className="flex size-[56px] shrink-0 items-center justify-center bg-[#9d0b0f] scale-in box-hover-invert d0">
+              <svg viewBox="0 0 24 24" className="h-[27px] w-[27px]" aria-hidden="true">
+                <path fill="#fff" d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
+              </svg>
+            </div>
+            <p className="font-['Inter:Regular',sans-serif] text-[25px] leading-[35px] text-black fade-up d0">
+              Plot No.08-A, Street No. S8,
+              <br />
+              RCCI Rawat, Pakistan
+            </p>
+          </div>
+
+          <div className="flex items-center gap-[28px]">
+            <div className="flex size-[56px] shrink-0 items-center justify-center bg-[#9d0b0f] scale-in box-hover-invert d1">
+              <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
+                <path fill="#fff" d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm8 7 8-5H4l8 5zm0 2L4 9v8h16V9l-8 5z" />
+              </svg>
+            </div>
+            <a href="mailto:info@globalpharmapk.com" className="font-['Inter:Regular',sans-serif] text-[25px] leading-[25px] text-black transition-colors duration-200 hover:text-[#9d0b0f] hover:underline fade-up d1">info@globalpharmapk.com</a>
+          </div>
+
+          <div className="flex items-center gap-[28px]">
+            <div className="flex size-[56px] shrink-0 items-center justify-center bg-[#9d0b0f] scale-in box-hover-invert d2">
+              <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
+                <path fill="#fff" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.3 22 2 13.7 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z" />
+              </svg>
+            </div>
+            <div className="font-['Inter:Regular',sans-serif] text-[25px] leading-[35px] text-black fade-up d2">
+              <a href="tel:+92514499040" className="block transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">+92 51 4499040</a>
+              <a href="tel:+92514499041" className="block transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">+92 51 4499041</a>
+            </div>
+          </div>
         </div>
 
         <form className="absolute left-[966px] top-[1070px] flex w-[724px] flex-col gap-[20px] fade-up d1" onSubmit={handleSubmit} noValidate>
@@ -178,23 +187,23 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
             />
             {touched.message && errors.message ? <p className="mt-1 pl-[40px] pr-[19px] text-[14px] text-[#9d0b0f]">{errors.message}</p> : null}
           </div>
-          <button type="submit" disabled={isSubmitting} className="h-[62px] w-[191px] bg-[#9d0b0f] font-['Inter:Semi_Bold',sans-serif] text-[14px] text-white transition-transform duration-150 hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70">
+          <button type="submit" disabled={isSubmitting} className="h-[62px] w-[191px] bg-[#0b0f13] font-['Inter:Semi_Bold',sans-serif] text-[14px] text-white transition-all duration-200 hover:bg-[#9d0b0f] hover:-translate-y-[1px] hover:shadow-lg active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70">
             {isSubmitting ? 'Submitting...' : 'Get In Touch'}
           </button>
           {submitMessage ? <p className="text-[15px] text-[#2f4252]">{submitMessage}</p> : null}
         </form>
 
         <div className="absolute left-[1px] top-[1704px] h-[339px] w-[1921px] bg-white" />
-        <p className="absolute left-[283px] top-[1807px] w-[1354px] text-center font-['Google_Sans:Regular',sans-serif] text-[40px] leading-[40.8px] text-[#051c2f]">
-          Our Trusted Group Companies and Strategic Partners
-        </p>
-        <div className="absolute left-[287px] top-[1883px] h-[57px] w-[56px]">
+        <div className="absolute left-[283px] top-[1807px] w-[1354px] text-center font-['Google_Sans:Regular',sans-serif] text-[40px] leading-[40.8px] text-[#051c2f] clip-wrap">
+          <p className="clip-line d0">Our Trusted Group Companies and Strategic Partners</p>
+        </div>
+        <div className="absolute left-[287px] top-[1883px] h-[57px] w-[56px] scale-in d1">
           <img alt="" className="h-full w-full object-contain" src={partnerMark} />
         </div>
-        <p className="absolute left-[351px] top-[1900px] w-[586px] whitespace-nowrap font-['Google_Sans:Bold',sans-serif] text-[40px] font-bold leading-[23px] text-[#9d0b0f]">
+        <p className="absolute left-[351px] top-[1900px] w-[586px] whitespace-nowrap font-['Google_Sans:Bold',sans-serif] text-[40px] font-bold leading-[23px] text-[#9d0b0f] fade-up d2">
           Global Pharmaceuticals Pvt. Ltd.
         </p>
-        <img alt="" className="absolute left-[994px] top-[1881px] h-[52px] w-[639px] object-contain" src={partnerLogo} />
+        <img alt="" className="absolute left-[994px] top-[1881px] h-[52px] w-[639px] object-contain fade-up d3" src={partnerLogo} />
 
         <div className="absolute left-0 top-[2043px] w-[1920px] bg-[#f5f5f5]">
           <div className="h-[509px] bg-[#4e0a0c] px-[195px] pb-[99px] pt-[98px]">

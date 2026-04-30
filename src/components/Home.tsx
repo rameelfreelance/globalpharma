@@ -603,33 +603,25 @@ export default function Home({
             />
           </div>
         </div>
-        <div
-          className="absolute bg-[#9d0b0f] left-[calc(50%+124px)] overflow-clip size-[100px] top-[4423px] fade-up d0 transition-transform duration-200 hover:scale-[1.04]"
-          data-node-id="47:344"
-          data-name="Icon"
+        <button
+          type="button"
+          onClick={onNavigateAntibiotics}
+          className="absolute left-[calc(50%+124px)] top-[4423px] w-[641px] h-[100px] border-0 bg-transparent p-0 text-left cursor-pointer group fade-up d0 focus-visible:outline-none"
         >
-          <CapsuleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
-          <CapsuleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
-        </div>
-        <div
-          className="absolute content-stretch flex flex-col gap-[10px] items-start left-[calc(50%+248px)] not-italic top-[4425px] fade-up d0"
-          data-node-id="47:347"
-          data-name="Title"
-        >
-          <p
-            className="font-['Google_Sans:SemiBold',sans-serif] leading-[1.4] relative shrink-0 text-[#051c2f] text-[24px] w-[360px]"
-            data-node-id="47:348"
-          >
-            Anti-biotics
-          </p>
-          <p
-            className="font-['Inter:Regular',sans-serif] font-normal leading-[1.6] relative shrink-0 text-[#808586] text-[16px] w-[517px]"
-            data-node-id="47:349"
-          >
-            Broad-spectrum antibiotics including Ciprofloxacin, Levofloxacin,
-            and Cefixime.
-          </p>
-        </div>
+          <div className="absolute bg-[#9d0b0f] left-0 overflow-clip size-[100px] top-0 transition-transform duration-200 group-hover:scale-[1.04]">
+            <CapsuleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
+            <CapsuleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
+          </div>
+          <div className="absolute content-stretch flex flex-col gap-[10px] items-start left-[124px] top-[2px]">
+            <p className="font-['Google_Sans:SemiBold',sans-serif] leading-[1.4] relative shrink-0 text-[#051c2f] text-[24px] w-[360px] transition-colors duration-200 group-hover:text-[#9d0b0f]">
+              Anti-biotics
+            </p>
+            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[1.6] relative shrink-0 text-[#808586] text-[16px] w-[517px]">
+              Broad-spectrum antibiotics including Ciprofloxacin, Levofloxacin,
+              and Cefixime.
+            </p>
+          </div>
+        </button>
         <div
           className="absolute h-0 left-[calc(50%+124px)] top-[4567px] w-[624px]"
           data-node-id="47:350"
@@ -638,32 +630,24 @@ export default function Home({
             <img alt="" className="block max-w-none size-full" src={imgLine2} />
           </div>
         </div>
-        <div
-          className="absolute bg-[#9d0b0f] left-[calc(50%+124px)] overflow-clip size-[100px] top-[4611px] fade-up d1 transition-transform duration-200 hover:scale-[1.04]"
-          data-node-id="47:351"
-          data-name="Icon"
+        <button
+          type="button"
+          onClick={onNavigateAntiInflammatory}
+          className="absolute left-[calc(50%+124px)] top-[4611px] w-[641px] h-[100px] border-0 bg-transparent p-0 text-left cursor-pointer group fade-up d1 focus-visible:outline-none"
         >
-          <MedicineBottleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
-        </div>
-        <div
-          className="absolute content-stretch flex flex-col gap-[10px] items-start left-[calc(50%+248px)] not-italic top-[4613px] fade-up d1"
-          data-node-id="47:353"
-          data-name="Title"
-        >
-          <p
-            className="font-['Google_Sans:SemiBold',sans-serif] leading-[1.4] relative shrink-0 text-[#051c2f] text-[24px] w-[360px]"
-            data-node-id="47:354"
-          >
-            Anti-inflammatory / Analgesics
-          </p>
-          <p
-            className="font-['Inter:Regular',sans-serif] font-normal leading-[1.6] relative shrink-0 text-[#808586] text-[16px] w-[495px]"
-            data-node-id="47:355"
-          >
-            Pain relief and anti-inflammatory therapies including Piroxicam,
-            Diclofenac, and Meloxicam.
-          </p>
-        </div>
+          <div className="absolute bg-[#9d0b0f] left-0 overflow-clip size-[100px] top-0 transition-transform duration-200 group-hover:scale-[1.04]">
+            <MedicineBottleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
+          </div>
+          <div className="absolute content-stretch flex flex-col gap-[10px] items-start left-[124px] top-[2px]">
+            <p className="font-['Google_Sans:SemiBold',sans-serif] leading-[1.4] relative shrink-0 text-[#051c2f] text-[24px] w-[360px] transition-colors duration-200 group-hover:text-[#9d0b0f]">
+              Anti-inflammatory / Analgesics
+            </p>
+            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[1.6] relative shrink-0 text-[#808586] text-[16px] w-[495px]">
+              Pain relief and anti-inflammatory therapies including Piroxicam,
+              Diclofenac, and Meloxicam.
+            </p>
+          </div>
+        </button>
         <div
           className="absolute h-0 left-[calc(50%+124px)] top-[4755px] w-[624px]"
           data-node-id="47:356"
@@ -672,32 +656,24 @@ export default function Home({
             <img alt="" className="block max-w-none size-full" src={imgLine2} />
           </div>
         </div>
-        <div
-          className="absolute bg-[#9d0b0f] left-[calc(50%+124px)] overflow-clip size-[100px] top-[4799px] fade-up d2 transition-transform duration-200 hover:scale-[1.04]"
-          data-node-id="47:357"
-          data-name="Icon"
+        <button
+          type="button"
+          onClick={onNavigateGastrointestinal}
+          className="absolute left-[calc(50%+124px)] top-[4799px] w-[641px] h-[100px] border-0 bg-transparent p-0 text-left cursor-pointer group fade-up d2 focus-visible:outline-none"
         >
-          <StethoscopeLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
-        </div>
-        <div
-          className="absolute content-stretch flex flex-col gap-[10px] items-start left-[calc(50%+248px)] not-italic top-[4801px] fade-up d2"
-          data-node-id="47:359"
-          data-name="Title"
-        >
-          <p
-            className="font-['Google_Sans:SemiBold',sans-serif] leading-[1.4] relative shrink-0 text-[#051c2f] text-[24px] w-[360px]"
-            data-node-id="47:360"
-          >
-            Gastrointestinal Agents
-          </p>
-          <p
-            className="font-['Inter:Regular',sans-serif] font-normal leading-[1.6] relative shrink-0 text-[#808586] text-[16px] w-[496px]"
-            data-node-id="47:361"
-          >
-            Acid control and gut protection with Esomeprazole, Omeprazole, and
-            Vonoprazan.
-          </p>
-        </div>
+          <div className="absolute bg-[#9d0b0f] left-0 overflow-clip size-[100px] top-0 transition-transform duration-200 group-hover:scale-[1.04]">
+            <StethoscopeLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
+          </div>
+          <div className="absolute content-stretch flex flex-col gap-[10px] items-start left-[124px] top-[2px]">
+            <p className="font-['Google_Sans:SemiBold',sans-serif] leading-[1.4] relative shrink-0 text-[#051c2f] text-[24px] w-[360px] transition-colors duration-200 group-hover:text-[#9d0b0f]">
+              Gastrointestinal Agents
+            </p>
+            <p className="font-['Inter:Regular',sans-serif] font-normal leading-[1.6] relative shrink-0 text-[#808586] text-[16px] w-[496px]">
+              Acid control and gut protection with Esomeprazole, Omeprazole, and
+              Vonoprazan.
+            </p>
+          </div>
+        </button>
         <div
           className="absolute h-0 left-[calc(50%+124px)] top-[4943px] w-[624px]"
           data-node-id="47:362"

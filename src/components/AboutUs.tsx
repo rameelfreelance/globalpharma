@@ -56,7 +56,11 @@ export default function AboutUs({
   const imsRef = useRef<HTMLDivElement | null>(null)
 
   const scrollToSection = (section: 'about' | 'vision' | 'ims') => {
-    const target = section === 'vision' ? visionRef.current : section === 'ims' ? imsRef.current : aboutRef.current
+    if (section === 'about') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+    const target = section === 'vision' ? visionRef.current : imsRef.current
     if (!target) return
     const top = target.getBoundingClientRect().top + window.scrollY - 205
     window.scrollTo({ top, behavior: 'smooth' })
@@ -120,52 +124,52 @@ export default function AboutUs({
           { left: 809.5, top: 2511, title: 'QC Testing\n& Analysis', n: '3' },
           { left: 1115.5, top: 2571, title: 'Packaging\n& Labeling', n: '4' },
           { left: 1421.5, top: 2631, title: 'Final\nDispatch', n: '5', dim: true },
-        ].map((item) => (
+        ].map((item, index) => (
           <div key={item.n}>
-            <div className={`absolute h-[259px] w-[306px] border-r border-[#e9e9e9] ${item.dim ? 'bg-[#e6e6e6] h-[246px] border-r-0' : 'bg-white'}`} style={{ left: item.left, top: item.top }} />
-            <div className="absolute left-0 top-0 h-[56px] w-[56px] bg-[#9d0b0f]" style={{ left: item.left + 27, top: item.top + 60 }} />
-            <p className="absolute font-['Google_Sans:Medium',sans-serif] text-[40px] leading-[44px] text-white" style={{ left: item.left + 45, top: item.top + 66 }}>{item.n}</p>
-            <p className="absolute whitespace-pre-line font-['Google_Sans:Medium',sans-serif] text-[35px] leading-[38.5px] text-[#051c2f]" style={{ left: item.left + 27, top: item.top + 129 }}>{item.title}</p>
+            <div className={`absolute h-[259px] w-[306px] border-r border-[#e9e9e9] bg-white transition-colors duration-300 ease-out hover:bg-[#e6e6e6] process-reveal pd${index} ${item.dim ? 'h-[246px] border-r-0' : ''}`} style={{ left: item.left, top: item.top }} />
+            <div className={`absolute left-0 top-0 h-[56px] w-[56px] bg-[#9d0b0f] process-reveal pd${index}`} style={{ left: item.left + 27, top: item.top + 60 }} />
+            <p className={`absolute font-['Google_Sans:Medium',sans-serif] text-[40px] leading-[44px] text-white process-reveal pd${index}`} style={{ left: item.left + 45, top: item.top + 66 }}>{item.n}</p>
+            <p className={`absolute whitespace-pre-line font-['Google_Sans:Medium',sans-serif] text-[35px] leading-[38.5px] text-[#051c2f] process-reveal pd${index}`} style={{ left: item.left + 27, top: item.top + 129 }}>{item.title}</p>
           </div>
         ))}
 
-        <button type="button" aria-pressed={false} className="absolute left-[339.5px] top-[2971px] flex h-[70.5px] w-[408.22px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_14px_rgba(82,88,102,0.16)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866]">Quality Control (QC) Laboratory</p>
+        <button type="button" aria-pressed={false} className="group absolute left-[339.5px] top-[2971px] flex h-[70.5px] w-[408.22px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Quality Control (QC) Laboratory</p>
         </button>
-        <button type="button" aria-pressed={true} className="absolute left-[781.84px] top-[2971px] flex h-[70.5px] w-[405.95px] items-center justify-center rounded-[8px] bg-[#9d0b0f] px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:brightness-95 hover:shadow-[0_8px_16px_rgba(40,6,7,0.35)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-white">Quality Assurance (QA)</p>
+        <button type="button" aria-pressed={false} className="group absolute left-[781.84px] top-[2971px] flex h-[70.5px] w-[405.95px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Quality Assurance (QA)</p>
         </button>
-        <button type="button" aria-pressed={false} className="absolute left-[1221.9px] top-[2971px] flex h-[70.5px] w-[361.6px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_14px_rgba(82,88,102,0.16)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866]">Documentation &amp; Retention</p>
+        <button type="button" aria-pressed={false} className="group absolute left-[1221.9px] top-[2971px] flex h-[70.5px] w-[361.6px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Documentation &amp; Retention</p>
         </button>
-        <button type="button" aria-pressed={false} className="absolute left-[396.5px] top-[3081.3px] flex h-[70.5px] w-[525.35px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_14px_rgba(82,88,102,0.16)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866]">Research &amp; Development (R&amp;D) Laboratory</p>
+        <button type="button" aria-pressed={false} className="group absolute left-[396.5px] top-[3081.3px] flex h-[70.5px] w-[525.35px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Research &amp; Development (R&amp;D) Laboratory</p>
         </button>
-        <button type="button" aria-pressed={false} className="absolute left-[955.96px] top-[3081.3px] flex h-[70.5px] w-[210.37px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_14px_rgba(82,88,102,0.16)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866]">Warehousing</p>
+        <button type="button" aria-pressed={false} className="group absolute left-[955.96px] top-[3081.3px] flex h-[70.5px] w-[210.37px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Warehousing</p>
         </button>
-        <button type="button" aria-pressed={false} className="absolute left-[1211.81px] top-[3081.3px] flex h-[70.5px] w-[313.84px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_14px_rgba(82,88,102,0.16)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866]">Regulatory Affairs (RA)</p>
+        <button type="button" aria-pressed={false} className="group absolute left-[1211.81px] top-[3081.3px] flex h-[70.5px] w-[313.84px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Regulatory Affairs (RA)</p>
         </button>
 
         <div className="absolute left-[2.5px] top-[3249px] h-[563px] w-[1921px] bg-[#f5f8f9]" />
-        <p className="absolute left-[196.5px] top-[3343px] font-['Google_Sans:Medium',sans-serif] text-[25px] uppercase tracking-[2.38px] text-black">Regulatory Affairs (RA)</p>
-        <p className="absolute left-[196.5px] top-[3438px] w-[612px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[81.28px] text-[#9d0b0f]">Ensuring Compliance &amp; Global Standards</p>
-        <p className="absolute left-[898.5px] top-[3438px] w-[830px] text-justify font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[40px] text-[#2f4252]">
+        <p className="absolute left-[196.5px] top-[3343px] font-['Google_Sans:Medium',sans-serif] text-[25px] uppercase tracking-[2.38px] text-black fade-up d0">Regulatory Affairs (RA)</p>
+        <p className="absolute left-[196.5px] top-[3438px] w-[612px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[81.28px] text-[#9d0b0f] clip-wrap"><span className="clip-line d1">Ensuring Compliance &amp; Global Standards</span></p>
+        <p className="absolute left-[898.5px] top-[3438px] w-[830px] text-justify font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[40px] text-[#2f4252] fade-up d2">
           In a highly regulated industry, Regulatory Affairs plays a pivotal role as the bridge between Global Pharmaceuticals Pakistan and national health authorities. The RA team ensures full compliance with evolving regulations, prepares precise documentation for product submissions, and supports product registration and lifecycle management. Through proactive engagement with regulators, our RA department safeguards timely product approvals, market access, and continued compliance.
         </p>
 
         <div ref={imsRef} className="absolute left-[197.5px] top-[3930px] h-[1px] w-[1px]" />
-        <p className="absolute left-[197.5px] top-[3930px] w-[612px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[81.28px] text-[#9d0b0f]">QHSE Policy</p>
-        <p className="absolute left-[197.5px] top-[4046px] w-[1538px] text-justify font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[40px] text-[#2f4252]">
+        <p className="absolute left-[197.5px] top-[3930px] w-[612px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[81.28px] text-[#9d0b0f] clip-wrap"><span className="clip-line d0">QHSE Policy</span></p>
+        <p className="absolute left-[197.5px] top-[4046px] w-[1538px] text-justify font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[40px] text-[#2f4252] fade-up d1">
           Global Pharmaceuticals Pakistan is committed to implementing and maintaining an Integrated Management System that integrates Quality, Environmental, Occupational Health, and Safety (QHSE) principles across all operations. We ensure that our systems align with international standards, regulatory requirements, and cGMP guidelines to consistently deliver high-quality pharmaceutical products.
         </p>
-        <div className="absolute left-[197.5px] top-[4209px] h-[623px] w-[680px] bg-[#d9d9d9]" />
-        <div className="absolute left-[-31.5px] top-[4190px] h-[678px] w-[1017px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[229px_19px] mask-size-[680px_623px]" style={{ maskImage: `url('${imgQhseImageMask}')` }}>
+        <div className="absolute left-[197.5px] top-[4209px] h-[623px] w-[680px] bg-[#d9d9d9] scale-in d1" />
+        <div className="absolute left-[-31.5px] top-[4190px] h-[678px] w-[1017px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[229px_19px] mask-size-[680px_623px] scale-in d2 img-zoom" style={{ maskImage: `url('${imgQhseImageMask}')` }}>
           <img alt="" className="absolute inset-0 size-full object-cover" src={imgQhseImage} />
         </div>
 
-        <div className="absolute left-[985.5px] top-[4209px] w-[723px] font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[30px] text-[#2f4252]">
+        <div className="absolute left-[985.5px] top-[4209px] w-[723px] font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[30px] text-[#2f4252] fade-up d2">
           {[
             'Ensuring compliance with all applicable national and international regulatory, legal, and cGMP requirements.',
             'Delivering safe, effective, and high-quality pharmaceutical products that meet customer and patient expectations.',

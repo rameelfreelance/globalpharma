@@ -1,6 +1,6 @@
 /**
  * Scroll-reveal: adds `.in-view` to elements with .fade-up, .scale-in,
- * .clip-wrap, or .line-reveal when they enter the viewport.
+ * .clip-wrap, .line-reveal, or .process-reveal when they enter viewport.
  *
  * Uses getBoundingClientRect + scroll events instead of IntersectionObserver
  * because the parent container uses CSS `zoom`, which breaks IO's intersection
@@ -12,7 +12,7 @@ let rafId: number | null = null;
 
 function checkReveal() {
   const targets = document.querySelectorAll<HTMLElement>(
-    '.fade-up, .scale-in, .clip-wrap, .line-reveal'
+    '.fade-up, .scale-in, .clip-wrap, .line-reveal, .process-reveal'
   );
   const wh = window.innerHeight;
   targets.forEach((el) => {

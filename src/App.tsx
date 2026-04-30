@@ -215,10 +215,10 @@ export default function App() {
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={page}
-          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-          animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -10 }}
-          transition={{ type: 'spring', stiffness: 150, damping: 24 }}
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.995 }}
+          animate={reduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
+          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.995 }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           layout
           className="overflow-x-hidden w-full max-w-full"
         >

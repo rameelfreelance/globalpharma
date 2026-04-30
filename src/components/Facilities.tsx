@@ -19,7 +19,6 @@ const footerIconPhone = '/assets/figma/34b848f8-94f8-4073-be44-8edd54df92b4.svg'
 const footerIconMail = '/assets/figma/ed0595b3-8a9e-4815-abcb-63ec79765c4e.svg'
 const footerSoc1 = '/assets/figma/68010953-b6af-4f58-bb96-1930ee60c76f.svg'
 const footerSoc2 = '/assets/figma/b550e449-68b5-4b1c-ab25-3af65147640a.svg'
-const certSealVector = '/assets/figma/eb8b0789-880d-49e8-801b-39872b0647fe.svg'
 
 type FacilitiesProps = {
   onNavigateHome: () => void
@@ -59,21 +58,20 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           <img alt="" className="absolute inset-0 size-full object-cover" src={heroImg} />
         </div>
 
-        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">
-          Precision Engineering
-          <br />
-          World-Class Excellence
+        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f] hero-clip-wrap">
+          <span className="hero-clip-line d0">Precision Engineering</span>
+          <span className="hero-clip-line d1">World-Class Excellence</span>
         </p>
         <div className="absolute left-[1238px] top-[476px] h-[111px] w-[472px] bg-white" />
-        <p className="absolute left-[1379px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">Facility</p>
-        <div className="absolute left-[1238px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f]" />
+        <p className="absolute left-[1379px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Facility</span></p>
+        <div className="absolute left-[1238px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
 
         <div className="absolute left-[1px] top-[931px] h-[910px] w-[1919px] bg-[#f5f8f9]" />
         <div className="absolute left-[1px] top-[2543px] h-[728px] w-[1920px] bg-[#9d0b0f]" />
         <div className="absolute left-[1px] top-[4257px] h-[539px] w-[1919px] bg-[#f5f8f9]" />
 
-        <p className="absolute left-[256px] top-[1054px] w-[622px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f]">Unidirectional Workflow Philosophy</p>
-        <p className="absolute left-[983px] top-[1069px] w-[551px] text-justify font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[37.5px] text-[#2f4252]">
+        <p className="absolute left-[256px] top-[1054px] w-[622px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line">Unidirectional Workflow Philosophy</span></p>
+        <p className="absolute left-[983px] top-[1069px] w-[551px] text-justify font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[37.5px] text-[#2f4252] fade-up d1">
           Our architecture minimizes cross- contamination through physical separation and strict personnel flow protocols.
         </p>
 
@@ -83,7 +81,7 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           { x: 1216, title: 'Detached\nAdministrative Building', body: 'Independent structural unit for corporate strategy and regulatory compliance teams.', bodySize: 18, icon: iconAdministrative },
         ].map((c) => (
           <div key={c.x}>
-            <div className="absolute top-[1300px] h-[418px] w-[450px] bg-white" style={{ left: c.x }} />
+            <div className="absolute top-[1300px] h-[418px] w-[450px] bg-white scale-in box-hover" style={{ left: c.x }} />
             <div className="absolute top-[1341px] h-[70px] w-[70px]" style={{ left: c.x + 31 }}>
               <img alt="" className="size-full object-contain" src={c.icon} />
             </div>
@@ -97,8 +95,8 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           </div>
         ))}
 
-        <p className="absolute left-[255px] top-[1987px] font-['Google_Sans:Medium',sans-serif] text-[18px] uppercase tracking-[1.71px] text-black">Logistics Excellence</p>
-        <p className="absolute left-[255px] top-[2039px] w-[589px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f]">Smart Warehousing Ecosystem</p>
+        <p className="absolute left-[255px] top-[1987px] font-['Google_Sans:Medium',sans-serif] text-[18px] uppercase tracking-[1.71px] text-black fade-up d0">Logistics Excellence</p>
+        <p className="absolute left-[255px] top-[2039px] w-[589px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line d1">Smart Warehousing Ecosystem</span></p>
         <img alt="" className="absolute left-[251px] top-[2177px] h-[300px] w-[533px] -scale-x-100 object-cover mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[4px_35px] mask-size-[565px_186px]" style={{ maskImage: `url('${imgWarehouse}')` }} src={imgWarehouse} />
 
         {[
@@ -108,7 +106,7 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           { n: '4', t: 'Rejected Materials', d: 'Strictly controlled, gated access area for materials failing rigorous QA protocols.', x: 1335, y: 2225 },
         ].map((i) => (
           <div key={i.n}>
-            <div className="absolute size-[56px] bg-[#9d0b0f]" style={{ left: i.x, top: i.y }} />
+            <div className="absolute size-[56px] bg-[#9d0b0f] scale-in box-hover-invert" style={{ left: i.x, top: i.y }} />
             <p className="absolute font-['Google_Sans:SemiBold',sans-serif] text-[40px] leading-[44px] text-white" style={{ left: i.x + 18, top: i.y + 6 }}>{i.n}</p>
             <p className="absolute font-['Google_Sans:Medium',sans-serif] text-[35px] leading-[38.5px] text-[#051c2f]" style={{ left: i.x, top: i.y + 69 }}>{i.t}</p>
             <p className="absolute w-[330px] font-['Google_Sans:Regular',sans-serif] text-[16px] leading-[25.6px] text-[#808586]" style={{ left: i.x, top: i.y + 121 }}>{i.d}</p>
@@ -126,16 +124,16 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           { x: 1211, v: '100%', l: 'Compliance Rate' },
         ].map((s) => (
           <div key={s.x}>
-            <div className="absolute top-[2922px] size-[165px] bg-white" style={{ left: s.x }} />
+            <div className="absolute top-[2922px] size-[165px] bg-white scale-in box-hover" style={{ left: s.x }} />
             <p className="absolute top-[2973px] w-[199px] text-center font-['Google_Sans:Bold',sans-serif] text-[50px] leading-[40px] text-[#9d0b0f]" style={{ left: s.x - 17 }}>{s.v}</p>
             <p className="absolute top-[3022px] w-[199px] text-center font-['Google_Sans:Bold',sans-serif] text-[14px] leading-[14px] text-black" style={{ left: s.x - 17 }}>{s.l}</p>
           </div>
         ))}
 
         <div ref={productionRef} className="absolute left-[203px] top-[3381px] h-[1px] w-[1px]" />
-        <p className="absolute left-[203px] top-[3381px] font-['Google_Sans:Medium',sans-serif] text-[18px] uppercase tracking-[1.71px] text-black">Our Capabilities</p>
-        <p className="absolute left-[203px] top-[3444px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f]">Production &amp; Quality Facilities</p>
-        <p className="absolute left-[203px] top-[3629px] w-[542px] font-['Google_Sans:Regular',sans-serif] text-[27px] leading-[40.5px] text-[#2f4252]">
+        <p className="absolute left-[203px] top-[3381px] font-['Google_Sans:Medium',sans-serif] text-[18px] uppercase tracking-[1.71px] text-black fade-up d0">Our Capabilities</p>
+        <p className="absolute left-[203px] top-[3444px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line d1">Production &amp; Quality Facilities</span></p>
+        <p className="absolute left-[203px] top-[3629px] w-[542px] font-['Google_Sans:Regular',sans-serif] text-[27px] leading-[40.5px] text-[#2f4252] fade-up d2">
           Global Pharmaceuticals Pakistan operates cGMP-compliant, automated manufacturing facilities across multiple therapeutic categories built to meet national and international regulatory standards.
         </p>
 
@@ -146,7 +144,7 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
             { img: imgSyrup, t: 'Syrup & Liquid', d: 'Liquid dosage manufacturing with precision filling, sealing, and quality checkpoints at each stage.' },
             { img: imgCepha, t: 'Cephalosporin Section', d: 'Strictly segregated area for dry suspensions and capsules, ensuring cross-contamination prevention and regulatory compliance.' },
           ].map((c) => (
-            <div key={c.t} className="relative h-[359px] w-[437px]">
+            <div key={c.t} className="relative h-[359px] w-[437px] scale-in box-hover">
               <img alt="" className="absolute left-0 top-0 h-[203px] w-[437px] object-cover mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_0px] mask-size-[437px_203px]" style={{ maskImage: `url('${imgCardMask}')` }} src={c.img} />
               <div className="absolute left-0 top-[203px] h-[155px] w-[437px] bg-[#f5f8f9] p-[22px]">
                 <p className="font-['Google_Sans:Medium',sans-serif] text-[30px] text-[#0b0f13]">{c.t}</p>
@@ -189,33 +187,16 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
         </p>
 
         <div ref={qualityRef} className="absolute left-[203px] top-[4373px] h-[1px] w-[1px]" />
-        <p className="absolute left-[203px] top-[4373px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f]">Quality Operations</p>
+        <p className="absolute left-[203px] top-[4373px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line">Quality Operations</span></p>
         <p className="absolute left-[203px] top-[4470px] w-[724px] font-['Google_Sans:Regular',sans-serif] text-[27px] leading-[40.5px] text-[#2f4252]">
           Our Quality Management System (QMS) is backed by state-of-the-art analytical instruments, stability chambers, and highly trained professionals. All processes follow Good Laboratory Practices (GLP) with emphasis on validation, quality assurance, and product stability.
         </p>
         <p className="absolute left-[1242px] top-[4443px] font-['Google_Sans:Medium',sans-serif] text-[18px] uppercase tracking-[1.71px] text-[#9d0b0f]">Certifications &amp; compliance</p>
-        <div className="absolute left-[1114px] top-[4507px] flex gap-[23px]">
-          <div className="relative h-[122px] w-[122px] bg-[#2f4252]">
-            <img alt="" className="absolute left-0 top-0 h-[122px] w-[122px]" src={certSealVector} />
-            <p className="absolute left-1/2 top-[38px] -translate-x-1/2 font-['Times_New_Roman:Bold',serif] text-[30px] leading-[30px] text-white">ISO</p>
-            <p className="absolute left-1/2 top-[66px] -translate-x-1/2 font-['Inter:Semi_Bold',sans-serif] text-[10px] leading-[10px] text-white">9001:2008</p>
-          </div>
-          <div className="relative h-[122px] w-[122px] bg-[#2f4252]">
-            <img alt="" className="absolute left-0 top-0 h-[122px] w-[122px]" src={certSealVector} />
-            <p className="absolute left-1/2 top-[38px] -translate-x-1/2 font-['Times_New_Roman:Bold',serif] text-[30px] leading-[30px] text-white">ISO</p>
-            <p className="absolute left-1/2 top-[66px] -translate-x-1/2 font-['Inter:Semi_Bold',sans-serif] text-[10px] leading-[10px] text-white">14001:2015</p>
-          </div>
-          <div className="relative h-[122px] w-[122px] bg-[#2f4252]">
-            <img alt="" className="absolute left-0 top-0 h-[122px] w-[122px]" src={certSealVector} />
-            <p className="absolute left-1/2 top-[38px] -translate-x-1/2 font-['Times_New_Roman:Bold',serif] text-[30px] leading-[30px] text-white">ISO</p>
-            <p className="absolute left-1/2 top-[66px] -translate-x-1/2 font-['Inter:Semi_Bold',sans-serif] text-[10px] leading-[10px] text-white">45001:2018</p>
-          </div>
-          <div className="relative h-[122px] w-[122px] bg-[#2f4252]">
-            <img alt="" className="absolute left-0 top-0 h-[122px] w-[122px]" src={certSealVector} />
-            <p className="absolute left-1/2 top-[36px] -translate-x-1/2 font-['Times_New_Roman:Bold',serif] text-[34px] leading-[28px] text-white">GMP</p>
-            <p className="absolute left-1/2 top-[66px] w-[76px] -translate-x-1/2 text-center font-['Inter:Semi_Bold',sans-serif] text-[5px] leading-[6px] text-white">Good Manufacturing Practices</p>
-          </div>
-        </div>
+        <img
+          alt="ISO 9001, ISO 14001, ISO 45001, and GMP certifications"
+          src="/assets/certifications.png"
+          className="absolute left-[1114px] top-[4507px] h-[122px] w-[557px] object-contain"
+        />
         <div className="fixed inset-x-0 top-0 z-[70] flex justify-center">
           <div className="relative h-[188px] w-[1920px]">
             <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />

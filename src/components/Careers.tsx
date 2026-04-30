@@ -43,10 +43,9 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
           onNavigateContact={onNavigateContact}
         />
 
-        <p className="absolute left-[195px] top-[238px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">
-          Grow Your Career With Global
-          <br />
-          Pharmaceutical Pakistan
+        <p className="absolute left-[195px] top-[238px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f] hero-clip-wrap">
+          <span className="hero-clip-line d0">Grow Your Career With Global</span>
+          <span className="hero-clip-line d1">Pharmaceutical Pakistan</span>
         </p>
         <div className="absolute left-[3px] top-[381px] flex h-[708px] w-[1942px] items-center justify-center">
           <div>
@@ -54,15 +53,15 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
               className="relative h-[708px] w-[1942px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-2px_95px] mask-size-[1920px_455px]"
               style={{ maskImage: `url('${heroImageMask}')` }}
             >
-              <img alt="" className="absolute inset-0 size-full -scale-x-100 object-cover object-left" src={heroImage} />
+              <img alt="" className="absolute inset-0 size-full object-cover object-left" style={{ transform: 'scaleX(-1)' }} src={heroImage} />
             </div>
           </div>
         </div>
         <div className="absolute left-[1238px] top-[476px] h-[111px] w-[472px] bg-white" />
-        <p className="absolute left-[1366px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">Careers</p>
-        <div className="absolute left-[1238px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f]" />
+        <p className="absolute left-[1366px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Careers</span></p>
+        <div className="absolute left-[1238px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
 
-        <p className="absolute left-[195px] top-[1043px] h-[431px] w-[1515px] text-justify font-['Google_Sans:Regular',sans-serif] text-[34px] leading-[47.6px] text-[#2f4252]">
+        <p className="absolute left-[195px] top-[1043px] h-[431px] w-[1515px] text-justify font-['Google_Sans:Regular',sans-serif] text-[34px] leading-[47.6px] text-[#2f4252] fade-up d0">
           Global Pharmaceuticals Pakistan offers a dynamic and growth-oriented work environment that fosters both individual and professional development. We firmly believe that attracting and nurturing top talent is the cornerstone of our continued success.
           {'\n'}At Global Pharmaceuticals, every employee is valued as an integral part of our organization, contributing meaningfully to our shared goals. We are committed to maintaining a culture of respect, collaboration, and excellence.
           {'\n'}As an equal opportunity employer, Global Pharmaceuticals Pakistan welcomes and values high-caliber, talented, and results-driven professionals who demonstrate strong teamwork, effective communication skills, and a solid work ethic.
@@ -77,17 +76,17 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
         <button type="button" className="absolute left-[981px] top-[1631px] flex items-center gap-[10px] bg-[#0b0f13] px-[40px] py-[20px]"><span className="font-['Inter:Medium',sans-serif] text-[18px] leading-[18px] text-white">View Jobs</span><span className="text-white">→</span></button>
         <div className="absolute left-[1247px] top-[1631px] h-[64px] w-[463px] border border-[#d0d7dd]" />
 
-        <div className="absolute left-[213px] top-[1949px] h-[218px] w-[540px] border border-[#9d0b0f] bg-white p-[28px]">
+        <div className="absolute left-[213px] top-[1949px] h-[218px] w-[540px] border border-[#9d0b0f] bg-white p-[28px] scale-in card-hover d0">
           <p className="font-['Lato:Bold',sans-serif] text-[22px] text-[#9d0b0f]">Production Pharmacist</p>
           <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
           <p className="mt-4 text-[14px] leading-[22px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
         </div>
-        <div className="absolute left-[213px] top-[2197px] h-[218px] w-[540px] bg-white p-[28px]">
+        <div className="absolute left-[213px] top-[2197px] h-[218px] w-[540px] bg-white p-[28px] scale-in card-hover d1">
           <p className="font-['Lato:Bold',sans-serif] text-[22px] text-[#9d0b0f]">Production Pharmacist</p>
           <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
           <p className="mt-4 text-[14px] leading-[22px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
         </div>
-        <div className="absolute left-[213px] top-[2445px] h-[218px] w-[540px] bg-white p-[28px]">
+        <div className="absolute left-[213px] top-[2445px] h-[218px] w-[540px] bg-white p-[28px] scale-in card-hover d2">
           <p className="font-['Lato:Bold',sans-serif] text-[22px] text-[#9d0b0f]">Production Pharmacist</p>
           <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
           <p className="mt-4 text-[14px] leading-[22px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>

@@ -64,8 +64,8 @@ export default function AntiBiotics({
         </p>
         <div className="absolute left-[-1px] top-[917px] h-[1286px] w-[1921px] border border-[#efefef] bg-[#f5f8f9]" />
         <div className="absolute left-[1196px] top-[476px] h-[111px] w-[556px] bg-white" />
-        <p className="absolute left-[1315px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">Anti-biotics</p>
-        <div className="absolute left-[1196px] top-[595px] h-[12px] w-[556px] bg-[#9d0b0f]" />
+        <p className="absolute left-[1315px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Anti-biotics</span></p>
+        <div className="absolute left-[1196px] top-[595px] h-[12px] w-[556px] bg-[#9d0b0f] line-reveal" />
 
         <button
           type="button"
@@ -88,7 +88,7 @@ export default function AntiBiotics({
           </div>
         </button>
 
-        <div className="absolute left-[737px] top-[1060px] h-[475px] w-[422px] bg-white" />
+        <div className="absolute left-[737px] top-[1060px] h-[475px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[754px] top-[1076px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[789px] top-[1075px] h-[275px] w-[312px] object-contain" src={productImg1} />
         <div className="absolute left-[758px] top-[1369px] w-[379px]">
@@ -96,7 +96,7 @@ export default function AntiBiotics({
           <p className="mt-2 font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[28px] text-[#0b0f13]/70">Cefixime (as trihydrate)...100mg</p>
         </div>
 
-        <div className="absolute left-[1228px] top-[1060px] h-[475px] w-[422px] bg-white" />
+        <div className="absolute left-[1228px] top-[1060px] h-[475px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[1245px] top-[1076px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[1143px] top-[1019px] h-[396px] w-[594px] object-contain" src={productImg2} />
         <div className="absolute left-[1249px] top-[1369px] w-[379px]">

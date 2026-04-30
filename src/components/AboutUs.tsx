@@ -78,36 +78,37 @@ export default function AboutUs({
           <img alt="" className="absolute inset-0 size-full object-cover" src={imgHeroOverlay} />
         </div>
 
-        <p className="absolute left-[197.5px] top-[241px] w-[1117px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">
-          Committed to Quality, Innovation &amp; Trusted Medicine
+        <p className="absolute left-[197.5px] top-[241px] w-[1117px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f] hero-clip-wrap">
+          <span className="hero-clip-line d0">Committed to Quality,</span>
+          <span className="hero-clip-line d1">Innovation &amp; Trusted Medicine</span>
         </p>
         <div ref={aboutRef} className="absolute left-[1240.5px] top-[476px] h-[111px] w-[472px] bg-white" />
-        <div className="absolute left-[1240.5px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f]" />
-        <p className="absolute left-[1353.5px] top-[494px] text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051C2F]">About us</p>
+        <div className="absolute left-[1240.5px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
+        <p className="absolute left-[1353.5px] top-[494px] text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051C2F] hero-clip-wrap"><span className="hero-clip-line d2">About us</span></p>
 
         <div className="absolute left-[-2px] top-[931px] h-[663px] w-[1926px] bg-[#f5f8f9]" />
         <div className="absolute left-[960px] top-[931px] h-[663px] w-[960px] bg-[#d9d9d9]" />
-        <div className="absolute left-[960px] top-[931px] h-[663px] w-[960px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_0px] mask-size-[960px_663px]" style={{ maskImage: `url('${imgVisionMissionRightMask}')` }}>
+        <div className="absolute left-[960px] top-[931px] h-[663px] w-[960px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_0px] mask-size-[960px_663px] scale-in img-zoom" style={{ maskImage: `url('${imgVisionMissionRightMask}')` }}>
           <img alt="" className="absolute inset-0 size-full object-cover object-center" src={imgVisionMissionRight} />
         </div>
-        <p className="absolute left-[161.5px] top-[1044px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f]">Quality is the Heart of Everything</p>
-        <p className="absolute left-[161px] top-[1318px] h-[275px] w-[629px] text-justify font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[37.5px] text-[#2f4252]">
+        <p className="absolute left-[161.5px] top-[1044px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line">Quality is the Heart of Everything</span></p>
+        <p className="absolute left-[161px] top-[1318px] h-[275px] w-[629px] text-justify font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[37.5px] text-[#2f4252] fade-up d1">
           Global Pharmaceuticals Pakistan is a quality-driven pharmaceutical manufacturer committed to delivering safe, effective, and affordable medicines worldwide. We operate under strict cGMP compliance and international quality standards to ensure consistency, safety, and reliability. Our portfolio includes oral and topical dosage forms designed to meet diverse therapeutic needs.
         </p>
 
         <div ref={visionRef} className="absolute left-[2.5px] top-[1594px] h-[603px] w-[960px] bg-white" />
         <div className="absolute left-[961.5px] top-[1594px] h-[603px] w-[960px] bg-[#fff6f6]" />
-        <p className="absolute left-[161.5px] top-[1759px] w-[522px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f]">Our Vision</p>
-        <p className="absolute left-[161.5px] top-[1850px] h-[183px] w-[642px] font-['Google_Sans:Regular',sans-serif] text-[30px] leading-[46.2px] tracking-[0.9px] text-[#2f4252]">
+        <p className="absolute left-[161.5px] top-[1759px] w-[522px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line d0">Our Vision</span></p>
+        <p className="absolute left-[161.5px] top-[1850px] h-[183px] w-[642px] font-['Google_Sans:Regular',sans-serif] text-[30px] leading-[46.2px] tracking-[0.9px] text-[#2f4252] fade-up d1">
           To be a globally recognized pharmaceutical company known for uncompromising quality, innovation, and ethical excellence in healthcare.
         </p>
-        <p className="absolute left-[1108.5px] top-[1759px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f]">Our Mission</p>
-        <p className="absolute left-[1108.5px] top-[1850px] h-[183px] w-[666px] font-['Google_Sans:Regular',sans-serif] text-[30px] leading-[46.2px] tracking-[0.9px] text-[#2f4252]">
+        <p className="absolute left-[1108.5px] top-[1759px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line d1">Our Mission</span></p>
+        <p className="absolute left-[1108.5px] top-[1850px] h-[183px] w-[666px] font-['Google_Sans:Regular',sans-serif] text-[30px] leading-[46.2px] tracking-[0.9px] text-[#2f4252] fade-up d2">
           To provide safe, effective, and affordable medicines through world-class manufacturing standards, continuous improvement, and strong global partnerships built on trust.
         </p>
 
         <div className="absolute left-[2.5px] top-[2197px] h-[434px] w-[1921px] bg-[#f5f8f9]" />
-        <div className="absolute left-[-8.5px] top-[1614px] h-[1104px] w-[1963px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[11px_583px] mask-size-[1921px_434px]" style={{ maskImage: `url('${imgHeroMask}')` }}>
+        <div className="absolute left-[-8.5px] top-[1614px] h-[1104px] w-[1963px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[11px_583px] mask-size-[1921px_434px] scale-in img-zoom" style={{ maskImage: `url('${imgHeroMask}')` }}>
           <img alt="" className="absolute inset-0 size-full object-cover" src={imgHeroMain} />
         </div>
         <div className="absolute left-[2.5px] top-[2197px] h-[434px] w-[1920px] bg-black/30" />

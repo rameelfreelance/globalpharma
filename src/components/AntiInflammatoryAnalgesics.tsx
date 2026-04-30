@@ -76,8 +76,8 @@ export default function AntiInflammatoryAnalgesics({
         </p>
         <div className="absolute left-[-1px] top-[917px] h-[2641px] w-[1921px] border border-[#efefef] bg-[#f5f8f9]" />
         <div className="absolute left-[863px] top-[476px] h-[111px] w-[889px] bg-white" />
-        <p className="absolute left-[887px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">Anti-inflammatory / Analgesics</p>
-        <div className="absolute left-[863px] top-[595px] h-[12px] w-[889px] bg-[#9d0b0f]" />
+        <p className="absolute left-[887px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Anti-inflammatory / Analgesics</span></p>
+        <div className="absolute left-[863px] top-[595px] h-[12px] w-[889px] bg-[#9d0b0f] line-reveal" />
 
         <button type="button" onClick={onNavigateProducts} className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left">
           <div className="absolute left-[39px] top-[37px] h-[70px] w-[70px] overflow-hidden"><img alt="" className="size-full object-contain" src={cardIcon} /></div>
@@ -88,7 +88,7 @@ export default function AntiInflammatoryAnalgesics({
           </p>
         </button>
 
-        <div className="absolute left-[736px] top-[1060px] h-[450px] w-[422px] bg-white" />
+        <div className="absolute left-[736px] top-[1060px] h-[450px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[753px] top-[1076px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[651px] top-[1017px] h-[396px] w-[594px] object-contain" src={imgDroxona} />
         <div className="absolute left-[757px] top-[1369px] w-[379px]">
@@ -96,7 +96,7 @@ export default function AntiInflammatoryAnalgesics({
           <p className="mt-2 font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[28px] text-[#0b0f13]/70">Each ml contains:<br />Keterolac Tromethamine......30mg</p>
         </div>
 
-        <div className="absolute left-[1228px] top-[1060px] h-[450px] w-[422px] bg-white" />
+        <div className="absolute left-[1228px] top-[1060px] h-[450px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[1245px] top-[1076px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[1240px] top-[1062px] h-[340px] w-[388px] object-contain" src={imgIrosur} />
         <div className="absolute left-[1249px] top-[1369px] w-[379px]">
@@ -104,7 +104,7 @@ export default function AntiInflammatoryAnalgesics({
           <p className="mt-2 font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[28px] text-[#0b0f13]/70">Iron Sucrose<br />Complex.........100mg</p>
         </div>
 
-        <div className="absolute left-[736px] top-[1603px] h-[450px] w-[422px] bg-white" />
+        <div className="absolute left-[736px] top-[1603px] h-[450px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[753px] top-[1619px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[655px] top-[1559px] h-[396px] w-[594px] object-contain" src={imgRelisulide} />
         <div className="absolute left-[757px] top-[1912px] w-[379px]">
@@ -112,7 +112,7 @@ export default function AntiInflammatoryAnalgesics({
           <p className="mt-2 font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[28px] text-[#0b0f13]/70">Each film coated tablet contains: Nimesulide......100mg</p>
         </div>
 
-        <div className="absolute left-[1228px] top-[1603px] h-[450px] w-[422px] bg-white" />
+        <div className="absolute left-[1228px] top-[1603px] h-[450px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[1245px] top-[1619px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[1222px] top-[1603px] h-[350px] w-[400px] object-contain" src={imgBetaLib} />
         <div className="absolute left-[1249px] top-[1912px] w-[379px]">
@@ -120,7 +120,7 @@ export default function AntiInflammatoryAnalgesics({
           <p className="mt-2 font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[28px] text-[#0b0f13]/70">Each talet contains: Piroxicam beta cyclodextrin eq. to Piroxicam.....20mg</p>
         </div>
 
-        <div className="absolute left-[736px] top-[2146px] h-[450px] w-[422px] bg-white" />
+        <div className="absolute left-[736px] top-[2146px] h-[450px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[753px] top-[2162px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <div className="absolute left-[757px] top-[2224px] h-[201px] w-[371px] bg-[#f5f8f9]" />
         <div className="absolute left-[646px] top-[2163px] h-[324px] w-[594px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[111px_61px] mask-size-[371px_201px]" style={{ maskImage: `url('${imgGenbetMask}')` }}>
@@ -131,7 +131,7 @@ export default function AntiInflammatoryAnalgesics({
           <p className="mt-2 font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[28px] text-[#0b0f13]/70">Gentamycin............0.1%<br />Betamethasone...........0.05%</p>
         </div>
 
-        <div className="absolute left-[1228px] top-[2146px] h-[450px] w-[422px] bg-white" />
+        <div className="absolute left-[1228px] top-[2146px] h-[450px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[1245px] top-[2162px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[1142px] top-[2101px] h-[396px] w-[594px] object-contain" src={imgReliChole} />
         <div className="absolute left-[1249px] top-[2455px] w-[379px]">

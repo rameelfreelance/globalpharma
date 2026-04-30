@@ -73,8 +73,8 @@ export default function Gastrointestinal({
         </p>
         <div className="absolute left-[-1px] top-[917px] h-[1286px] w-[1921px] border border-[#efefef] bg-[#f5f8f9]" />
         <div className="absolute left-[1055px] top-[476px] h-[111px] w-[697px] bg-white" />
-        <p className="absolute left-[1082px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">Gastrointestinal Agents</p>
-        <div className="absolute left-[1055px] top-[595px] h-[12px] w-[697px] bg-[#9d0b0f]" />
+        <p className="absolute left-[1082px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Gastrointestinal Agents</span></p>
+        <div className="absolute left-[1055px] top-[595px] h-[12px] w-[697px] bg-[#9d0b0f] line-reveal" />
 
         <button type="button" onClick={onNavigateProducts} className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left">
           <div className="absolute left-[46px] top-[37px] h-[70px] w-[70px] overflow-hidden"><img alt="" className="size-full object-contain" src={cardIcon} /></div>
@@ -85,7 +85,7 @@ export default function Gastrointestinal({
           </div>
         </button>
 
-        <div className="absolute left-[737px] top-[1060px] h-[475px] w-[422px] bg-white" />
+        <div className="absolute left-[737px] top-[1060px] h-[475px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[754px] top-[1076px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[652px] top-[1019px] h-[396px] w-[594px] object-contain" src={imgSozo20} />
         <div className="absolute left-[758px] top-[1369px] w-[379px]">
@@ -93,7 +93,7 @@ export default function Gastrointestinal({
           <p className="mt-2 font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[28px] text-[#0b0f13]/70">Each Capsule Contains: Enteric Coated Pellets of Esomeprazole Magnesium Trihydrate eq. to Esomeprazole.... 20mg</p>
         </div>
 
-        <div className="absolute left-[1228px] top-[1060px] h-[475px] w-[422px] bg-white" />
+        <div className="absolute left-[1228px] top-[1060px] h-[475px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[1245px] top-[1076px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[1151px] top-[1019px] h-[396px] w-[594px] object-contain" src={imgSozo40} />
         <div className="absolute left-[1249px] top-[1369px] w-[379px]">
@@ -101,7 +101,7 @@ export default function Gastrointestinal({
           <p className="mt-2 font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[28px] text-[#0b0f13]/70">Each Capsule Contains: Enteric Coated Pellets of Esomeprazole Magnesium Trihydrate eq. to Esomeprazole.... 40mg</p>
         </div>
 
-        <div className="absolute left-[736px] top-[1601px] h-[450px] w-[422px] bg-white" />
+        <div className="absolute left-[736px] top-[1601px] h-[450px] w-[422px] bg-white scale-in box-hover" />
         <div className="absolute left-[753px] top-[1617px] h-[274px] w-[389px] bg-[#f5f8f9]" />
         <img alt="" className="absolute left-[651px] top-[1560px] h-[396px] w-[594px] object-contain" src={imgMisotal} />
         <div className="absolute left-[757px] top-[1910px] w-[379px]">

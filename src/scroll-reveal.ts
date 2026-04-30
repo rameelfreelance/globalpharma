@@ -1,0 +1,68 @@
+/**
+ * Scroll-reveal: adds `.in-view` to elements with .fade-up, .scale-in,
+ * .clip-wrap, or .line-reveal when they enter the viewport.
+ *
+ * Uses getBoundingClientRect + scroll events instead of IntersectionObserver
+ * because the parent container uses CSS `zoom`, which breaks IO's intersection
+ * calculations in all browsers.
+ */
+
+let scrollHandler: (() => void) | null = null;
+let rafId: number | null = null;
+
+function checkReveal() {
+  const targets = document.querySelectorAll<HTMLElement>(
+    '.fade-up, .scale-in, .clip-wrap, .line-reveal'
+  );
+  const wh = window.innerHeight;
+  targets.forEach((el) => {
+    if (el.classList.contains('in-view')) return;
+    const rect = el.getBoundingClientRect();
+    // Trigger when top edge is within 92% of viewport height
+    if (rect.top < wh * 0.92 && rect.bottom > 0) {
+      el.classList.add('in-view');
+    }
+  });
+}
+
+export function initScrollReveal() {
+  // Clean up any previous listener
+  if (scrollHandler) {
+    window.removeEventListener('scroll', scrollHandler, false);
+    scrollHandler = null;
+  }
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  // Remove stale in-view classes from previous page
+  document.querySelectorAll('.in-view').forEach((el) =>
+    el.classList.remove('in-view')
+  );
+
+  // Initial check — catches everything already visible on load
+  checkReveal();
+
+  // Throttled scroll listener
+  scrollHandler = () => {
+    if (rafId !== null) return;
+    rafId = requestAnimationFrame(() => {
+      checkReveal();
+      rafId = null;
+    });
+  };
+
+  window.addEventListener('scroll', scrollHandler, { passive: true });
+}
+
+export function destroyScrollReveal() {
+  if (scrollHandler) {
+    window.removeEventListener('scroll', scrollHandler, false);
+    scrollHandler = null;
+  }
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+}

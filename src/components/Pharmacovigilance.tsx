@@ -32,14 +32,13 @@ export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onN
         <div className="absolute right-[-68px] top-[-210px] h-[1372px] w-[2058px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[71px_686px] mask-size-[1920px_455px]" style={{ maskImage: `url('${imgBsc01235Jpg1}')` }}>
           <img alt="" className="absolute inset-0 size-full object-cover" src={imgBsc01235Jpg2} />
         </div>
-        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] tracking-[-2.4px] text-[#051c2f]">
-          Ensuring Drug Safety Through
-          <br />
-          Pharmacovigilance
+        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] tracking-[-2.4px] text-[#051c2f] hero-clip-wrap">
+          <span className="hero-clip-line d0">Ensuring Drug Safety Through</span>
+          <span className="hero-clip-line d1">Pharmacovigilance</span>
         </p>
         <div className="absolute left-[1153px] top-[476px] h-[111px] w-[557px] bg-white" />
-        <p className="absolute left-[1173px] top-[498px] whitespace-nowrap text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] tracking-[-0.6px] text-[#051c2f]">Pharmacovigilance</p>
-        <div className="absolute left-[1153px] top-[595px] h-[12px] w-[557px] bg-[#9d0b0f]" />
+        <p className="absolute left-[1173px] top-[498px] whitespace-nowrap text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] tracking-[-0.6px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Pharmacovigilance</span></p>
+        <div className="absolute left-[1153px] top-[595px] h-[12px] w-[557px] bg-[#9d0b0f] line-reveal" />
 
         <div className="absolute left-[91px] top-[1005px] h-[2353px] w-[1677px] bg-[#f5f8f9]" />
         <div className="absolute left-[157px] top-[1041px] h-[2272px] w-[1607px]">

@@ -96,8 +96,8 @@ export default function CnsPsychiatric({
         </div>
         <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">Expanding therapeutic segments with automated manufacturing</p>
         <div className="absolute left-[1196px] top-[476px] h-[111px] w-[556px] bg-white" />
-        <p className="absolute left-[1243px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">CNS / Psychiatric</p>
-        <div className="absolute left-[1196px] top-[595px] h-[12px] w-[556px] bg-[#9d0b0f]" />
+        <p className="absolute left-[1243px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">CNS / Psychiatric</span></p>
+        <div className="absolute left-[1196px] top-[595px] h-[12px] w-[556px] bg-[#9d0b0f] line-reveal" />
 
         <button type="button" onClick={onNavigateProducts} className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left">
           <div className="absolute left-[241px] top-[1099px] h-[64px] w-[70px] overflow-hidden" />
@@ -109,7 +109,7 @@ export default function CnsPsychiatric({
 
         {products.map((p) => (
           <div key={`${p.title}-${p.x}-${p.y}`}>
-            <div className="absolute h-[450px] w-[422px] bg-white" style={{ left: p.x, top: p.y }} />
+            <div className="absolute h-[450px] w-[422px] bg-white scale-in box-hover" style={{ left: p.x, top: p.y }} />
             <div className="absolute h-[274px] w-[389px] bg-[#f5f8f9]" style={{ left: p.x + 17, top: p.y + 16 }} />
             <img alt="" className="absolute object-contain" src={p.img} style={{ left: p.imgPos[0], top: p.imgPos[1], width: p.imgPos[2], height: p.imgPos[3] }} />
             <div className="absolute w-[379px]" style={{ left: p.x + 21, top: p.y + (p.y === 4679 ? 309 : p.y === 1060 || p.y === 2610 ? 309 : 309) }}>

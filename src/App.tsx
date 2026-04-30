@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { initScrollReveal } from './scroll-reveal'
 import AboutUs from './components/AboutUs'
 import AntiBiotics from './components/Anti-Biotics'
 import AntiInflammatoryAnalgesics from './components/AntiInflammatoryAnalgesics'
@@ -31,6 +32,14 @@ export default function App() {
     handleResize()
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  // Re-run scroll observer on every page change (after DOM settles)
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      setTimeout(initScrollReveal, 80)
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [page])
 
   let currentPage = (
     <Home

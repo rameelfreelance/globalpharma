@@ -69,8 +69,8 @@ export default function CardiovascularLipidControl({
         <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">Expanding therapeutic segments with automated manufacturing</p>
         <div className="absolute left-[-1px] top-[917px] h-[1286px] w-[1921px] border border-[#efefef] bg-[#f5f8f9]" />
         <div className="absolute left-[888px] top-[476px] h-[111px] w-[864px] bg-white" />
-        <p className="absolute left-[918px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">Cardiovascular / Lipid Control</p>
-        <div className="absolute left-[888px] top-[595px] h-[12px] w-[864px] bg-[#9d0b0f]" />
+        <p className="absolute left-[918px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Cardiovascular / Lipid Control</span></p>
+        <div className="absolute left-[888px] top-[595px] h-[12px] w-[864px] bg-[#9d0b0f] line-reveal" />
 
         <button type="button" onClick={onNavigateProducts} className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left">
           <div className="absolute left-[46px] top-[39px] h-[70px] w-[70px] overflow-hidden"><img alt="" className="size-full object-contain" src={tubeIcon} /></div>

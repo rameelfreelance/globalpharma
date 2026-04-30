@@ -73,31 +73,30 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
           onNavigateContact={() => {}}
         />
 
-        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">
-          Contact us for more
-          <br />
-          information or support
+        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f] hero-clip-wrap">
+          <span className="hero-clip-line d0">Contact us for more</span>
+          <span className="hero-clip-line d1">information or support</span>
         </p>
         <div className="absolute left-[1px] top-[476px] h-[455px] w-[1920px] bg-[#9d0b0f]" />
         <div className="absolute left-[1px] top-[370px] h-[1293px] w-[1940px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[10px_106px] mask-size-[1920px_455px]" style={{ maskImage: `url('${heroImageMask}')` }}>
           <img alt="" className="absolute inset-0 size-full object-cover" src={heroImage} />
         </div>
         <div className="absolute left-[1238px] top-[476px] h-[111px] w-[472px] bg-white" />
-        <p className="absolute left-[1325px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">Contact us</p>
-        <div className="absolute left-[1238px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f]" />
+        <p className="absolute left-[1325px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Contact us</span></p>
+        <div className="absolute left-[1238px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
 
         <div className="absolute left-0 top-[930px] h-[774px] w-[1922px] bg-[#f5f8f9]" />
-        <div className="absolute left-[232px] top-[1077px] flex size-[56px] items-center justify-center bg-[#9d0b0f]">
+        <div className="absolute left-[232px] top-[1077px] flex size-[56px] items-center justify-center bg-[#9d0b0f] scale-in box-hover-invert d0">
           <svg viewBox="0 0 24 24" className="h-[27px] w-[27px]" aria-hidden="true">
             <path fill="#fff" d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
           </svg>
         </div>
-        <div className="absolute left-[232px] top-[1182px] flex size-[56px] items-center justify-center bg-[#9d0b0f]">
+        <div className="absolute left-[232px] top-[1182px] flex size-[56px] items-center justify-center bg-[#9d0b0f] scale-in box-hover-invert d1">
           <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
             <path fill="#fff" d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm8 7 8-5H4l8 5zm0 2L4 9v8h16V9l-8 5z" />
           </svg>
         </div>
-        <div className="absolute left-[232px] top-[1286px] flex size-[56px] items-center justify-center bg-[#9d0b0f]">
+        <div className="absolute left-[232px] top-[1286px] flex size-[56px] items-center justify-center bg-[#9d0b0f] scale-in box-hover-invert d2">
           <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
             <path fill="#fff" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.3 22 2 13.7 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z" />
           </svg>
@@ -114,7 +113,7 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
           <a href="tel:+92514499041" className="transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">+92 51 4499041</a>
         </div>
 
-        <form className="absolute left-[966px] top-[1070px] flex w-[724px] flex-col gap-[20px]" onSubmit={handleSubmit} noValidate>
+        <form className="absolute left-[966px] top-[1070px] flex w-[724px] flex-col gap-[20px] fade-up d1" onSubmit={handleSubmit} noValidate>
           <div>
             <input
               value={form.name}

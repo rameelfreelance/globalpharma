@@ -114,46 +114,69 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
         </div>
 
         <form className="absolute left-[966px] top-[1070px] flex w-[724px] flex-col gap-[20px] fade-up d1" onSubmit={handleSubmit} noValidate>
-          <div>
+          <div className="relative">
+            <div className="pointer-events-none absolute left-[10px] top-1/2 -translate-y-1/2 text-black">
+              <svg viewBox="0 0 24 24" className="h-[17px] w-[17px]" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 21a8 8 0 0 0-16 0" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
             <input
               value={form.name}
               onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
               onBlur={() => setTouched((prev) => ({ ...prev, name: true }))}
               placeholder="Name"
-              className="w-full border-0 border-b border-[#d0d5dd] px-[19px] py-[14px] text-[20px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]"
+              className="w-full border-0 border-b border-[#d0d5dd] pl-[40px] pr-[19px] py-[14px] text-[20px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]"
             />
-            {touched.name && errors.name ? <p className="mt-1 px-[19px] text-[14px] text-[#9d0b0f]">{errors.name}</p> : null}
+            {touched.name && errors.name ? <p className="mt-1 pl-[40px] pr-[19px] text-[14px] text-[#9d0b0f]">{errors.name}</p> : null}
           </div>
-          <div>
+          <div className="relative">
+            <div className="pointer-events-none absolute left-[10px] top-1/2 -translate-y-1/2 text-black">
+              <svg viewBox="0 0 24 24" className="h-[17px] w-[17px]" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 8l9 6 9-6" />
+              </svg>
+            </div>
             <input
               type="email"
               value={form.email}
               onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
               onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
               placeholder="Email Address"
-              className="w-full border-0 border-b border-[#d0d5dd] px-[19px] py-[14px] text-[20px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]"
+              className="w-full border-0 border-b border-[#d0d5dd] pl-[40px] pr-[19px] py-[14px] text-[20px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]"
             />
-            {touched.email && errors.email ? <p className="mt-1 px-[19px] text-[14px] text-[#9d0b0f]">{errors.email}</p> : null}
+            {touched.email && errors.email ? <p className="mt-1 pl-[40px] pr-[19px] text-[14px] text-[#9d0b0f]">{errors.email}</p> : null}
           </div>
-          <div>
+          <div className="relative">
+            <div className="pointer-events-none absolute left-[10px] top-1/2 -translate-y-1/2 text-black">
+              <svg viewBox="0 0 24 24" className="h-[17px] w-[17px]" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.87 19.87 0 0 1-8.63-3.07 19.52 19.52 0 0 1-6-6A19.87 19.87 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </div>
             <input
               value={form.phone}
               onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))}
               onBlur={() => setTouched((prev) => ({ ...prev, phone: true }))}
               placeholder="Phone"
-              className="w-full border-0 border-b border-[#d0d5dd] px-[19px] py-[14px] text-[20px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]"
+              className="w-full border-0 border-b border-[#d0d5dd] pl-[40px] pr-[19px] py-[14px] text-[20px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]"
             />
-            {touched.phone && errors.phone ? <p className="mt-1 px-[19px] text-[14px] text-[#9d0b0f]">{errors.phone}</p> : null}
+            {touched.phone && errors.phone ? <p className="mt-1 pl-[40px] pr-[19px] text-[14px] text-[#9d0b0f]">{errors.phone}</p> : null}
           </div>
-          <div>
+          <div className="relative">
+            <div className="pointer-events-none absolute left-[10px] top-[22px] text-black">
+              <svg viewBox="0 0 24 24" className="h-[17px] w-[17px]" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 21l3.75-.75L19 8a2 2 0 0 0 0-2.83l-.17-.17a2 2 0 0 0-2.83 0L3.75 17.25 3 21z" />
+                <path d="M14.5 6.5l3 3" />
+              </svg>
+            </div>
             <textarea
               value={form.message}
               onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
               onBlur={() => setTouched((prev) => ({ ...prev, message: true }))}
               placeholder="How can we help you ? Feel free to get in touch!"
-              className="h-[152px] w-full resize-none border-0 border-b border-[#d0d5dd] px-[19px] py-[14px] text-[20px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]"
+              className="h-[152px] w-full resize-none border-0 border-b border-[#d0d5dd] pl-[40px] pr-[19px] py-[14px] text-[20px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]"
             />
-            {touched.message && errors.message ? <p className="mt-1 px-[19px] text-[14px] text-[#9d0b0f]">{errors.message}</p> : null}
+            {touched.message && errors.message ? <p className="mt-1 pl-[40px] pr-[19px] text-[14px] text-[#9d0b0f]">{errors.message}</p> : null}
           </div>
           <button type="submit" disabled={isSubmitting} className="h-[62px] w-[191px] bg-[#9d0b0f] font-['Inter:Semi_Bold',sans-serif] text-[14px] text-white transition-transform duration-150 hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70">
             {isSubmitting ? 'Submitting...' : 'Get In Touch'}

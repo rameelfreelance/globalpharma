@@ -3,6 +3,8 @@ import Navbar from './Navbar'
 
 const heroImg = '/assets/figma/307cc2aa-e172-486a-93bf-59749a3b6a4f.jpg'
 const heroMask = '/assets/figma/70803a9b-0b50-4f42-a0a4-82fe46464ac3.svg'
+const logoShape = '/assets/figma/b4a5d6d7-b42c-40e9-9d79-0b211ffa688b.svg'
+const logoMark = '/assets/figma/0679b012-2e3f-4008-8d7a-227ed0ca862d.svg'
 const imgArrowOutward = '/assets/figma/07e11a05-9865-43e2-8bcb-062aa4c06886.svg'
 const iconProduction = '/assets/figma/f0945ce6-8d2a-4dcd-b384-c77de90ad28d.svg'
 const iconCephalosporin = '/assets/figma/d5c6de74-b496-467d-bd38-82f68591b6b8.svg'
@@ -201,6 +203,26 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           <div className="relative h-[188px] w-[1920px]">
             <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />
             <div className="absolute left-[-1px] top-[33px] h-[108px] w-[1922px] bg-white shadow-[0_1px_4px_rgba(25,33,61,0.06)]" />
+            <div className="absolute left-[-3.5px] top-[22px] h-[131px] w-[510.5px]">
+              <img alt="" className="h-full w-full object-fill" src={logoShape} />
+            </div>
+            <button
+              type="button"
+              onClick={onNavigateHome}
+              aria-label="Global Pharmaceuticals Pakistan home"
+              className="absolute left-[137px] top-[47px] h-[80.61px] w-[79.34px] cursor-pointer border-0 bg-transparent p-0 focus-visible:outline-none"
+            >
+              <img alt="" className="h-full w-full object-contain" src={logoMark} />
+            </button>
+            <button
+              type="button"
+              onClick={onNavigateHome}
+              className="absolute left-[228px] top-[49.61px] cursor-pointer border-0 bg-transparent p-0 text-left font-['Myriad_Pro:Semibold',sans-serif] text-[28px] leading-[28px] text-white focus-visible:outline-none"
+            >
+              <p>Global</p>
+              <p>Pharmaceuticals</p>
+              <p>Pakistan</p>
+            </button>
             <Navbar
               activePage="facility"
               onNavigateHome={onNavigateHome}

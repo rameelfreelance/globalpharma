@@ -65,29 +65,29 @@ export default function Navbar({
       </button>
 
       {/* Our Company */}
-      <div className="absolute left-[calc(50%-231px)] top-[72px] z-20 h-[228px] w-[270px]">
+      <div className="absolute left-[calc(50%-231px)] top-[72px] z-20 h-[228px] w-[270px] pointer-events-none">
         {activePage === 'about' && (
           <div className="absolute left-[-23px] top-[-39px] h-[108px] w-[231px] bg-[#9d0b0f] z-[-1]" />
         )}
-        <button 
-          type="button" 
+        <button
+          type="button"
           onClick={(e) => { e.stopPropagation(); onNavigateAbout?.('about'); }}
-          className={`absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'about' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+          className={`pointer-events-auto absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'about' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
         >
           Our Company
         </button>
-        <button 
-          type="button" 
-          aria-label="Toggle company menu" 
-          onClick={(e) => toggleMenu(e, 'company')} 
-          className="absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+        <button
+          type="button"
+          aria-label="Toggle company menu"
+          onClick={(e) => toggleMenu(e, 'company')}
+          className="pointer-events-auto absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
         >
           <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
             <img alt="" className="size-full" src={activePage === 'about' ? imgArrowLight : imgArrowDark} />
           </div>
         </button>
         {openMenu === 'company' && (
-          <div className="absolute left-0 top-[74px] w-[270px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
+          <div className="pointer-events-auto absolute left-0 top-[74px] w-[270px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
             <button type="button" onClick={() => { onNavigateAbout?.('about'); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">About Us</button>
             <button type="button" onClick={() => { onNavigateAbout?.('vision'); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Vision &amp; Mission</button>
             <button type="button" onClick={() => { onNavigateAbout?.('ims'); setOpenMenu(null); }} className="block h-[49px] w-full pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">IMS Policy</button>
@@ -96,29 +96,29 @@ export default function Navbar({
       </div>
 
       {/* Products */}
-      <div className="absolute left-[calc(50%-1px)] top-[72px] z-20 h-[440px] w-[365px]">
+      <div className="absolute left-[calc(50%-1px)] top-[72px] z-20 h-[440px] w-[365px] pointer-events-none">
         {['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) && (
           <div className="absolute left-[-23px] top-[-39px] h-[108px] w-[180px] bg-[#9d0b0f] z-[-1]" />
         )}
-        <button 
-          type="button" 
-          onClick={(e) => { e.stopPropagation(); onNavigateProducts?.(); }} 
-          className={`absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); onNavigateProducts?.(); }}
+          className={`pointer-events-auto absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
         >
           Products
         </button>
-        <button 
-          type="button" 
-          aria-label="Toggle products menu" 
-          onClick={(e) => toggleMenu(e, 'products')} 
-          className="absolute left-[95px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+        <button
+          type="button"
+          aria-label="Toggle products menu"
+          onClick={(e) => toggleMenu(e, 'products')}
+          className="pointer-events-auto absolute left-[95px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
         >
           <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
             <img alt="" className="size-full" src={['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) ? imgArrowLight : imgArrowDark} />
           </div>
         </button>
         {openMenu === 'products' && (
-          <div className="absolute left-0 top-[74px] w-[365px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
+          <div className="pointer-events-auto absolute left-0 top-[74px] w-[365px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
             <button type="button" onClick={() => { onNavigateAntiInflammatory?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-inflammatory / Analgesics</button>
             <button type="button" onClick={() => { onNavigateAntibiotics?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-biotics</button>
             <button type="button" onClick={() => { onNavigateGastrointestinal?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Gastrointestinal Agents</button>
@@ -131,29 +131,29 @@ export default function Navbar({
       </div>
 
       {/* Facility */}
-      <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px]">
+      <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px] pointer-events-none">
         {activePage === 'facility' && (
           <div className="absolute left-[-23px] top-[-39px] h-[108px] w-[150px] bg-[#9d0b0f] z-[-1]" />
         )}
-        <button 
-          type="button" 
-          onClick={(e) => { e.stopPropagation(); onNavigateFacility?.(); }} 
-          className={`absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'facility' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); onNavigateFacility?.(); }}
+          className={`pointer-events-auto absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'facility' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
         >
           Facility
         </button>
-        <button 
-          type="button" 
-          aria-label="Toggle facility menu" 
-          onClick={(e) => toggleMenu(e, 'facility')} 
-          className="absolute left-[75px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+        <button
+          type="button"
+          aria-label="Toggle facility menu"
+          onClick={(e) => toggleMenu(e, 'facility')}
+          className="pointer-events-auto absolute left-[75px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
         >
           <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
             <img alt="" className="size-full" src={activePage === 'facility' ? imgArrowLight : imgArrowDark} />
           </div>
         </button>
         {openMenu === 'facility' && (
-          <div className="absolute left-0 top-[74px] w-[270px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
+          <div className="pointer-events-auto absolute left-0 top-[74px] w-[270px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
             <button type="button" onClick={() => { onNavigateFacility?.('production'); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Production</button>
             <button type="button" onClick={() => { onNavigateFacility?.('quality'); setOpenMenu(null); }} className="block h-[49px] w-full pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Quality Operations</button>
           </div>

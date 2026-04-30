@@ -111,7 +111,7 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
         </p>
         <div className="absolute left-[1238px] top-[476px] h-[111px] w-[472px] bg-white" />
         <p className="absolute left-[1379px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Facility</span></p>
-        <div className="absolute left-[1238px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
+        <div className="absolute left-[1238px] top-[587px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
 
         <div className="absolute left-[1px] top-[931px] h-[910px] w-[1919px] bg-[#f5f8f9]" />
         <div ref={statsRef} className="absolute left-[1px] top-[2543px] h-[728px] w-[1920px] bg-[#9d0b0f]" />

@@ -97,7 +97,7 @@ export default function CnsPsychiatric({
         <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">Expanding therapeutic segments with automated manufacturing</p>
         <div className="absolute left-[1196px] top-[476px] h-[111px] w-[556px] bg-white" />
         <p className="absolute left-[1243px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">CNS / Psychiatric</span></p>
-        <div className="absolute left-[1196px] top-[595px] h-[12px] w-[556px] bg-[#9d0b0f] line-reveal" />
+        <div className="absolute left-[1196px] top-[587px] h-[12px] w-[556px] bg-[#9d0b0f] line-reveal" />
 
         <button type="button" onClick={onNavigateProducts} className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left">
           <div className="absolute left-[241px] top-[1099px] h-[64px] w-[70px] overflow-hidden" />

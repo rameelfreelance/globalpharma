@@ -112,7 +112,7 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
         <div className="absolute left-[-1px] top-[931px] h-[1485px] w-[1921px] bg-[#f5f8f9]" />
         <div className="absolute left-[1237px] top-[476px] h-[111px] w-[472px] bg-white" />
         <p className="absolute left-[1290px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Our Products</span></p>
-        <div className="absolute left-[1237px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
+        <div className="absolute left-[1237px] top-[587px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
 
         {cards.map((card) => (
           <button

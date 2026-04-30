@@ -87,7 +87,7 @@ export default function AboutUs({
           <span className="hero-clip-line d1">Innovation &amp; Trusted Medicine</span>
         </p>
         <div ref={aboutRef} className="absolute left-[1240.5px] top-[476px] h-[111px] w-[472px] bg-white" />
-        <div className="absolute left-[1240.5px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
+        <div className="absolute left-[1240.5px] top-[587px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
         <p className="absolute left-[1353.5px] top-[494px] text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051C2F] hero-clip-wrap"><span className="hero-clip-line d2">About us</span></p>
 
         <div className="absolute left-[-2px] top-[931px] h-[663px] w-[1926px] bg-[#f5f8f9]" />

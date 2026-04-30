@@ -38,7 +38,7 @@ export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onN
         </p>
         <div className="absolute left-[1153px] top-[476px] h-[111px] w-[557px] bg-white" />
         <p className="absolute left-[1173px] top-[498px] whitespace-nowrap text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] tracking-[-0.6px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Pharmacovigilance</span></p>
-        <div className="absolute left-[1153px] top-[595px] h-[12px] w-[557px] bg-[#9d0b0f] line-reveal" />
+        <div className="absolute left-[1153px] top-[587px] h-[12px] w-[557px] bg-[#9d0b0f] line-reveal" />
 
         <div className="absolute left-[91px] top-[1005px] h-[2353px] w-[1677px] bg-[#f5f8f9]" />
         <div className="absolute left-[157px] top-[1041px] h-[2272px] w-[1607px]">

@@ -790,162 +790,68 @@ export default function Home({
             Every batch, every product, every partner held to the same
             uncompromising standard of pharmaceutical quality and safety.
           </p>
-          <div
-            className="absolute bg-white border-0 border-[#c2c2c2] border-solid h-[154px] left-[calc(50%-764px)] top-[2303px] w-[358.458px] scale-in card-hover d0"
-            data-node-id="47:376"
-          />
-          <div
-            className="absolute bg-white border-0 border-[#c2c2c2] border-solid h-[154px] left-[calc(50%+16.36px)] top-[2303px] w-[358.458px] scale-in card-hover d2"
-            data-node-id="47:377"
-          />
-          <div
-            className="absolute bg-[#9d0b0f] h-[154px] left-[calc(50%-373.82px)] top-[2303px] w-[358.458px] scale-in card-hover d1"
-            data-node-id="47:378"
-          />
-          <div
-            className="absolute bg-white border-0 border-[#c2c2c2] border-solid h-[154px] left-[calc(50%+406.54px)] top-[2303px] w-[358.458px] scale-in card-hover d3"
-            data-node-id="47:379"
-          />
-          <p
-            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[calc(50%-688.92px)] not-italic text-[#9d0b0f] text-[25px] top-[2338px] w-[225.226px]"
-            data-node-id="47:380"
-          >
-            cGMP Operations
-          </p>
-          <p
-            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[calc(50%+91.44px)] not-italic text-[#9d0b0f] text-[25px] top-[2338px] w-[265.407px]"
-            data-node-id="47:381"
-          >
-            Quality Management
-          </p>
-          <p
-            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[calc(50%-298.74px)] not-italic text-[25px] text-white top-[2338px] w-[270.694px]"
-            data-node-id="47:382"
-          >
-            Regulatory Approved
-          </p>
-          <p
-            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[calc(50%+481.62px)] not-italic text-[#9d0b0f] text-[25px] top-[2338px] w-[249.546px]"
-            data-node-id="47:383"
-          >
-            Sustainable Growth
-          </p>
-          <p
-            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.4] left-[calc(50%-688.92px)] not-italic text-[#2f4252] text-[18px] top-[2378px] w-[248.489px]"
-            data-node-id="47:384"
-          >
-            Strictly compliant with global manufacturing standards
-          </p>
-          <p
-            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.4] left-[calc(50%+91.44px)] not-italic text-[#2f4252] text-[18px] top-[2378px] w-[248.489px]"
-            data-node-id="47:385"
-          >
-            End-to-end QMS from raw material to final release
-          </p>
-          <p
-            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.4] left-[calc(50%-298.74px)] not-italic text-[18px] text-white top-[2378px] w-[263.293px]"
-            data-node-id="47:386"
-          >
-            Inspected and approved by leading regulatory authorities
-          </p>
-          <p
-            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.4] left-[calc(50%+481.62px)] not-italic text-[#2f4252] text-[18px] top-[2378px] w-[272.809px]"
-            data-node-id="47:387"
-          >
-            Facility designed for consistent and scalable supply
-          </p>
-          <div
-            className="absolute bg-[#eaeef1] content-stretch flex items-center justify-center left-[calc(50%-742px)] overflow-clip p-[10px] rounded-[96px] top-[2338px] w-[40px]"
-            data-node-id="47:388"
-            data-name="Key Icons [1.0]"
-          >
+          {[
+            {
+              title: 'cGMP Operations',
+              desc: 'Strictly compliant with global manufacturing standards',
+              iconSrc: imgVector3,
+              inset: 'inset-[12.5%_16.25%]',
+              left: 'calc(50% - 764px)',
+              d: 'd0',
+              titleW: 'w-[225.226px]',
+              descW: 'w-[248.489px]'
+            },
+            {
+              title: 'Regulatory Approved',
+              desc: 'Inspected and approved by leading regulatory authorities',
+              iconSrc: imgVector5,
+              inset: 'inset-[16.25%]',
+              left: 'calc(50% - 373.82px)',
+              d: 'd1',
+              titleW: 'w-[270.694px]',
+              descW: 'w-[263.293px]'
+            },
+            {
+              title: 'Quality Management',
+              desc: 'End-to-end QMS from raw material to final release',
+              iconSrc: imgVector4,
+              inset: 'inset-[27.42%_17.72%_27.5%_18.64%]',
+              left: 'calc(50% + 16.36px)',
+              d: 'd2',
+              titleW: 'w-[265.407px]',
+              descW: 'w-[248.489px]'
+            },
+            {
+              title: 'Sustainable Growth',
+              desc: 'Facility designed for consistent and scalable supply',
+              iconSrc: imgVector6,
+              inset: 'inset-[16.25%_12.5%]',
+              left: 'calc(50% + 406.54px)',
+              d: 'd3',
+              titleW: 'w-[249.546px]',
+              descW: 'w-[272.809px]'
+            }
+          ].map((c, i) => (
             <div
-              className="overflow-clip relative shrink-0 size-[20px]"
-              data-node-id="I47:388;8751:126791"
-              data-name="survey-line"
+              key={i}
+              className={`absolute border-0 border-[#c2c2c2] border-solid h-[154px] top-[2303px] w-[358.458px] scale-in card-hover ${c.d} bg-white transition-colors duration-300 hover:bg-[#9d0b0f] group cursor-default`}
+              style={{ left: c.left }}
             >
-              <div
-                className="absolute inset-[12.5%_16.25%]"
-                data-node-id="I47:388;8751:126791;320:848"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector3}
-                />
+              <div className="absolute bg-[#eaeef1] content-stretch flex items-center justify-center left-[22px] overflow-clip p-[10px] rounded-[96px] top-[35px] w-[40px]">
+                <div className="overflow-clip relative shrink-0 size-[20px]">
+                  <div className={`absolute ${c.inset}`}>
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={c.iconSrc} />
+                  </div>
+                </div>
               </div>
+              <p className={`absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[75px] not-italic text-[#9d0b0f] group-hover:text-white transition-colors duration-300 text-[25px] top-[35px] ${c.titleW}`}>
+                {c.title}
+              </p>
+              <p className={`absolute font-['Google_Sans:Regular',sans-serif] leading-[1.4] left-[75px] not-italic text-[#2f4252] group-hover:text-white transition-colors duration-300 text-[18px] top-[75px] ${c.descW}`}>
+                {c.desc}
+              </p>
             </div>
-          </div>
-          <div
-            className="absolute bg-[#eaeef1] content-stretch flex items-center justify-center left-[calc(50%+39px)] overflow-clip p-[10px] rounded-[96px] top-[2338px] w-[40px]"
-            data-node-id="47:389"
-            data-name="Key Icons [1.0]"
-          >
-            <div
-              className="overflow-clip relative shrink-0 size-[20px]"
-              data-node-id="I47:389;8751:126797"
-              data-name="check-fill"
-            >
-              <div
-                className="absolute inset-[27.42%_17.72%_27.5%_18.64%]"
-                data-node-id="I47:389;8751:126797;320:845"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector4}
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className="absolute bg-[#eaeef1] content-stretch flex items-center justify-center left-[calc(50%-352px)] overflow-clip p-[10px] rounded-[96px] top-[2338px] w-[40px]"
-            data-node-id="47:390"
-            data-name="Key Icons [1.0]"
-          >
-            <div
-              className="overflow-clip relative shrink-0 size-[20px]"
-              data-node-id="I47:390;8751:126793"
-              data-name="organization-chart"
-            >
-              <div
-                className="absolute inset-[16.25%]"
-                data-node-id="I47:390;8751:126793;322:856"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector5}
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className="absolute bg-[#eaeef1] content-stretch flex items-center justify-center left-[calc(50%+429px)] overflow-clip p-[10px] rounded-[96px] top-[2338px] w-[40px]"
-            data-node-id="47:391"
-            data-name="Key Icons [1.0]"
-          >
-            <div
-              className="overflow-clip relative shrink-0 size-[20px]"
-              data-node-id="I47:391;8751:126801"
-              data-name="funds-box-line"
-            >
-              <div
-                className="absolute inset-[16.25%_12.5%]"
-                data-node-id="I47:391;8751:126801;322:859"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector6}
-                />
-              </div>
-            </div>
-          </div>
+          ))}
           <div
             className="absolute contents left-[calc(50%-764px)] top-[1564px]"
             data-node-id="47:392"

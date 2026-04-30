@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Navbar from './Navbar'
 
 const heroImg = '/assets/figma/307cc2aa-e172-486a-93bf-59749a3b6a4f.jpg'
@@ -35,6 +35,9 @@ type FacilitiesProps = {
 export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigatePharmacovigilance, onNavigateCareers, onNavigateContact, onNavigateProducts, initialSection = 'production' }: FacilitiesProps) {
   const productionRef = useRef<HTMLDivElement | null>(null)
   const qualityRef = useRef<HTMLDivElement | null>(null)
+  const statsRef = useRef<HTMLDivElement | null>(null)
+  const [startStatsCounter, setStartStatsCounter] = useState(false)
+  const [statsValues, setStatsValues] = useState({ production: 0, hvac: 0, iso: 0, compliance: 0 })
 
   const scrollToProduction = () => {
     productionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -45,11 +48,53 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
   }
 
   useEffect(() => {
-    const target = initialSection === 'quality' ? qualityRef.current : productionRef.current
+    if (initialSection === 'production') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+    const target = qualityRef.current
     if (!target) return
     const top = target.getBoundingClientRect().top + window.scrollY - 205
     window.scrollTo({ top, behavior: 'smooth' })
   }, [initialSection])
+
+  useEffect(() => {
+    const checkInView = () => {
+      if (startStatsCounter || !statsRef.current) return
+      const rect = statsRef.current.getBoundingClientRect()
+      const viewportHeight = window.innerHeight
+      const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0)
+      const visibilityRatio = Math.max(0, visibleHeight) / Math.max(rect.height, 1)
+      if (visibilityRatio >= 0.6) {
+        setStartStatsCounter(true)
+      }
+    }
+
+    checkInView()
+    window.addEventListener('scroll', checkInView, { passive: true })
+    return () => window.removeEventListener('scroll', checkInView)
+  }, [startStatsCounter])
+
+  useEffect(() => {
+    if (!startStatsCounter) return
+    const duration = 2400
+    const start = performance.now()
+
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setStatsValues({
+        production: Math.round(12 * eased),
+        hvac: Math.round(24 * eased),
+        iso: Math.round(8 * eased),
+        compliance: Math.round(100 * eased),
+      })
+      if (progress < 1) requestAnimationFrame(tick)
+    }
+
+    const raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [startStatsCounter])
 
   return (
     
@@ -69,7 +114,7 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
         <div className="absolute left-[1238px] top-[595px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
 
         <div className="absolute left-[1px] top-[931px] h-[910px] w-[1919px] bg-[#f5f8f9]" />
-        <div className="absolute left-[1px] top-[2543px] h-[728px] w-[1920px] bg-[#9d0b0f]" />
+        <div ref={statsRef} className="absolute left-[1px] top-[2543px] h-[728px] w-[1920px] bg-[#9d0b0f]" />
         <div className="absolute left-[1px] top-[4257px] h-[539px] w-[1919px] bg-[#f5f8f9]" />
 
         <p className="absolute left-[256px] top-[1054px] w-[622px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line">Unidirectional Workflow Philosophy</span></p>
@@ -120,13 +165,13 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           Our facility is not just a building; it's a modular ecosystem ready to adapt to the next generation of medicinal science.
         </p>
         {[
-          { x: 560, v: '12+', l: 'Production Lines' },
-          { x: 777, v: '24/7', l: 'HVAC Monitoring' },
-          { x: 994, v: 'ISO 8', l: 'Cleanroom Grading' },
-          { x: 1211, v: '100%', l: 'Compliance Rate' },
+          { x: 560, v: `${statsValues.production}+`, l: 'Production Lines' },
+          { x: 777, v: `${statsValues.hvac}/7`, l: 'HVAC Monitoring' },
+          { x: 994, v: `ISO ${statsValues.iso}`, l: 'Cleanroom Grading' },
+          { x: 1211, v: `${statsValues.compliance}%`, l: 'Compliance Rate' },
         ].map((s) => (
           <div key={s.x}>
-            <div className="absolute top-[2922px] size-[165px] bg-white scale-in box-hover" style={{ left: s.x }} />
+            <div className="absolute top-[2922px] size-[165px] bg-white scale-in" style={{ left: s.x }} />
             <p className="absolute top-[2973px] w-[199px] text-center font-['Google_Sans:Bold',sans-serif] text-[50px] leading-[40px] text-[#9d0b0f]" style={{ left: s.x - 17 }}>{s.v}</p>
             <p className="absolute top-[3022px] w-[199px] text-center font-['Google_Sans:Bold',sans-serif] text-[14px] leading-[14px] text-black" style={{ left: s.x - 17 }}>{s.l}</p>
           </div>

@@ -579,32 +579,32 @@ export default function Home({
           <span className="leading-[1.6]">{`, reflecting our commitment to quality, trust, and industry excellence. Through these strategic relationships and strong engagement with healthcare professionals, we continue to strengthen our position in key therapeutic segments and deliver reliable healthcare solutions worldwide `}</span>
         </p>
         <div
-          className="absolute bg-[#0b0f13] content-stretch flex gap-[10px] items-center justify-center left-[calc(50%+124px)] pl-[40px] pr-[34px] py-[20px] top-[4987px]"
+          className="group absolute bg-[#0b0f13] content-stretch flex gap-[10px] items-center justify-center left-[calc(50%+124px)] pl-[40px] pr-[34px] py-[20px] top-[4987px] transition-all duration-200 hover:bg-[#9d0b0f] hover:-translate-y-[1px] hover:shadow-[0_10px_22px_rgba(157,11,15,0.3)]"
           data-node-id="47:343"
           data-name="Button"
         >
           <button
             type="button"
-            className="font-['Inter:Medium',sans-serif] font-medium leading-none not-italic relative shrink-0 text-[18px] text-white whitespace-nowrap border-0 bg-transparent p-0 cursor-pointer transition-colors duration-200 hover:text-[#e4e7ea] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-[2px]"
+            className="font-['Inter:Medium',sans-serif] font-medium leading-none not-italic relative shrink-0 text-[18px] text-white whitespace-nowrap border-0 bg-transparent p-0 cursor-pointer transition-colors duration-200 group-hover:text-[#ffffff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-[2px]"
             data-node-id="I47:343;3:127"
             onClick={onNavigateProducts}
           >
             All Products
           </button>
           <div
-            className="relative shrink-0 size-[24px]"
+            className="relative shrink-0 size-[24px] transition-transform duration-200 group-hover:translate-x-[3px]"
             data-node-id="I47:343;3:128"
             data-name="arrow-right"
           >
             <img
               alt=""
-              className="absolute block inset-0 max-w-none size-full"
+              className="absolute block inset-0 max-w-none size-full transition duration-200 group-hover:brightness-125"
               src={imgArrowRight}
             />
           </div>
         </div>
         <div
-          className="absolute bg-[#9d0b0f] left-[calc(50%+124px)] overflow-clip size-[100px] top-[4423px]"
+          className="absolute bg-[#9d0b0f] left-[calc(50%+124px)] overflow-clip size-[100px] top-[4423px] fade-up d0 transition-transform duration-200 hover:scale-[1.04]"
           data-node-id="47:344"
           data-name="Icon"
         >
@@ -639,7 +639,7 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute bg-[#9d0b0f] left-[calc(50%+124px)] overflow-clip size-[100px] top-[4611px]"
+          className="absolute bg-[#9d0b0f] left-[calc(50%+124px)] overflow-clip size-[100px] top-[4611px] fade-up d1 transition-transform duration-200 hover:scale-[1.04]"
           data-node-id="47:351"
           data-name="Icon"
         >
@@ -673,7 +673,7 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute bg-[#9d0b0f] left-[calc(50%+124px)] overflow-clip size-[100px] top-[4799px]"
+          className="absolute bg-[#9d0b0f] left-[calc(50%+124px)] overflow-clip size-[100px] top-[4799px] fade-up d2 transition-transform duration-200 hover:scale-[1.04]"
           data-node-id="47:357"
           data-name="Icon"
         >

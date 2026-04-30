@@ -161,14 +161,21 @@ export default function Navbar({
       </div>
 
       {/* Pharmacovigilance */}
+      {activePage === 'pharmacovigilance' && (
+        <div className="absolute left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] bg-[#9d0b0f] z-[1]" />
+      )}
       <button
         type="button"
+        aria-label="Pharmacovigilance"
         onClick={onNavigatePharmacovigilance}
-        className={`absolute left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] z-[2] border-0 p-0 pl-[18px] pt-[44px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 whitespace-nowrap focus-visible:outline-none ${
-          activePage === 'pharmacovigilance'
-            ? "bg-[#9d0b0f] font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
-            : 'bg-transparent text-[#010c0d] hover:text-[#9d0b0f]'
-        }`}
+        className="absolute left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] z-[2] border-0 bg-transparent p-0 cursor-pointer focus-visible:outline-none"
+      />
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-hidden="true"
+        onClick={onNavigatePharmacovigilance}
+        className={`${btnBase} left-[calc(50%+302px)] z-[3] ${activePage === 'pharmacovigilance' ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white" : "text-[#010c0d]"}`}
       >
         Pharmacovigilance
       </button>

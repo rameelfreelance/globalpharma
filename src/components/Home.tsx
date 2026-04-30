@@ -1308,14 +1308,7 @@ export default function Home({
           <button
             type="button"
             aria-label="Pharmacovigilance"
-            onClick={onNavigatePharmacovigilance}
-            className="absolute left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] z-[2] border-0 bg-transparent p-0 cursor-pointer focus-visible:outline-none"
-          />
-          <button
-            type="button"
-            tabIndex={-1}
-            aria-hidden="true"
-            className="absolute z-[3] font-['Google_Sans:Regular',sans-serif] leading-[20px] left-[calc(50%+302px)] not-italic text-[#010c0d] text-[24px] top-[77px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]"
+            className="absolute z-[30] left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] pl-[18px] text-left font-['Google_Sans:Regular',sans-serif] leading-[20px] not-italic text-[#010c0d] text-[24px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]"
             data-node-id="47:446"
             style={{ fontFeatureSettings: "'calt' 0, 'liga' 0" }}
             onClick={onNavigatePharmacovigilance}

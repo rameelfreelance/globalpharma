@@ -168,14 +168,7 @@ export default function Navbar({
         type="button"
         aria-label="Pharmacovigilance"
         onClick={onNavigatePharmacovigilance}
-        className="absolute left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] z-[2] border-0 bg-transparent p-0 cursor-pointer focus-visible:outline-none"
-      />
-      <button
-        type="button"
-        tabIndex={-1}
-        aria-hidden="true"
-        onClick={onNavigatePharmacovigilance}
-        className={`${btnBase} left-[calc(50%+302px)] z-[3] ${activePage === 'pharmacovigilance' ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white" : "text-[#010c0d]"}`}
+        className={`absolute left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] z-[3] border-0 bg-transparent pl-[18px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] whitespace-nowrap focus-visible:outline-none ${activePage === 'pharmacovigilance' ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white" : "text-[#010c0d]"}`}
       >
         Pharmacovigilance
       </button>

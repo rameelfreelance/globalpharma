@@ -147,6 +147,9 @@ export default function ProductTemplate({
       : productMenuLinks.find((l) => l.isActive)?.label.toLowerCase().includes('dermatology')
       ? 'dermatology'
       : 'product'
+  const desktopCategoryBannerWidth =
+    activeProductPage === 'dermatology' || activeProductPage === 'antibiotics' ? 520 : 842
+  const desktopCategoryBannerLeft = 1710 - desktopCategoryBannerWidth
 
   if (isMobileLayout) {
     return (
@@ -304,14 +307,20 @@ export default function ProductTemplate({
             ) : null}
           </div>
 
-          <div className="absolute left-[868px] top-[288px] h-[111px] w-[842px] bg-white">
+          <div
+            className="absolute top-[288px] h-[111px] bg-white"
+            style={{ left: `${desktopCategoryBannerLeft}px`, width: `${desktopCategoryBannerWidth}px` }}
+          >
             <div className="px-[30px] py-[8px]">
               <p className="hero-clip-wrap whitespace-nowrap text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">
                 <span className="hero-clip-line d2">{categoryTitle}</span>
               </p>
             </div>
           </div>
-          <div className="absolute left-[868px] top-[399px] h-[12px] w-[842px] bg-[#9d0b0f] line-reveal" />
+          <div
+            className="absolute top-[399px] h-[12px] bg-[#9d0b0f] line-reveal"
+            style={{ left: `${desktopCategoryBannerLeft}px`, width: `${desktopCategoryBannerWidth}px` }}
+          />
         </section>
 
         <section className="py-14" style={{ backgroundColor: 'var(--color-bg-section)' }}>

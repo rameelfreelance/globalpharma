@@ -217,7 +217,7 @@ export default function App() {
   }
 
   return (
-    <div className="overflow-x-hidden w-full max-w-[100vw]">
+    <div className="overflow-x-hidden w-full min-h-screen bg-white">
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={page}

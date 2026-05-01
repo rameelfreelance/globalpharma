@@ -223,9 +223,12 @@ export default function Home({
   }, []);
 
   return (
-    <div className="flex w-full justify-center overflow-hidden bg-white">
+    <div className="w-full overflow-x-hidden bg-white min-h-screen flex justify-center">
+      <style dangerouslySetInnerHTML={{ __html: `
+        html, body, #root { background-color: white !important; margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+      ` }} />
       <div
-        className="home-figma relative h-[5858px] w-[1920px] shrink-0 bg-white"
+        className="home-figma relative h-[5858px] w-[1920px] shrink-0"
         data-node-id="47:269"
         data-name="Home"
       >
@@ -238,12 +241,13 @@ export default function Home({
         >
           <defs>
             <clipPath id="home-hero-shape" clipPathUnits="userSpaceOnUse">
-              <path d="M64 75H1989V1199C1989 1199 1583.55 1075.4 917.617 1154.85C251.688 1234.3 64 1134.28 64 1134.28V75Z" />
+              <path d="M0 75H1920V1199C1920 1199 1583.55 1075.4 917.617 1154.85C251.688 1234.3 0 1134.28 0 1134.28V75Z" />
             </clipPath>
           </defs>
         </svg>
+        <div className="absolute inset-0 bg-white -z-10 w-[200vw] left-1/2 -translate-x-1/2" />
         <div
-          className="absolute bg-[#f5f5f5] bottom-[2px] content-stretch flex flex-col items-start left-[3px] w-[1920px]"
+          className="absolute bg-[#f5f5f5] bottom-[2px] content-stretch flex flex-col items-start left-1/2 -translate-x-1/2 w-[100vw]"
           data-node-id="47:272"
         >
           <div
@@ -532,7 +536,7 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute bg-[#f5f8f9] h-[1093px] left-[2px] top-[1464px] w-[1921px]"
+          className="absolute bg-[#f5f8f9] h-[1093px] left-1/2 -translate-x-1/2 w-[100vw] top-[1464px]"
           data-node-id="47:328"
         />
         <div
@@ -544,7 +548,7 @@ export default function Home({
             data-node-id="47:330"
           >
             <div
-              className="absolute bg-[#f5f8f9] h-[1147px] left-[2px] top-[4051px] w-[1921px]"
+              className="absolute bg-[#f5f8f9] h-[1147px] left-1/2 -translate-x-1/2 w-[100vw] top-[4051px]"
               data-node-id="47:331"
             />
           </div>
@@ -905,12 +909,12 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute h-[1124px] left-0 top-0 w-[1925px]"
+          className="absolute h-[1124px] left-1/2 -translate-x-1/2 w-[110vw] top-0 bg-white"
           data-node-id="47:397"
         >
           <img
             alt=""
-            className="absolute block inset-0 max-w-none size-full"
+            className="absolute block inset-0 max-w-none size-full object-cover"
             src={imgRectangle4}
           />
         </div>
@@ -954,15 +958,15 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute h-[1124px] left-0 top-0 w-[1925px] overflow-hidden"
+          className="absolute h-[1124px] left-1/2 -translate-x-1/2 w-[110vw] top-0 overflow-hidden bg-white"
           data-node-id="47:421"
           style={{
             WebkitMaskImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1925 1124' preserveAspectRatio='none'><path d='M0 0H1925V1124C1925 1124 1519.55 1000.4 853.617 1079.85C187.688 1159.3 0 1059.28 0 1059.28V0Z' fill='white'/></svg>\")",
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1124' preserveAspectRatio='none'><path d='M0 0H1920V1124C1920 1124 1519.55 1000.4 853.617 1079.85C187.688 1159.3 0 1059.28 0 1059.28V0Z' fill='white'/></svg>\")",
             WebkitMaskSize: "100% 100%",
             WebkitMaskRepeat: "no-repeat",
             maskImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1925 1124' preserveAspectRatio='none'><path d='M0 0H1925V1124C1925 1124 1519.55 1000.4 853.617 1079.85C187.688 1159.3 0 1059.28 0 1059.28V0Z' fill='white'/></svg>\")",
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1124' preserveAspectRatio='none'><path d='M0 0H1920V1124C1920 1124 1519.55 1000.4 853.617 1079.85C187.688 1159.3 0 1059.28 0 1059.28V0Z' fill='white'/></svg>\")",
             maskSize: "100% 100%",
             maskRepeat: "no-repeat",
           }}
@@ -970,7 +974,7 @@ export default function Home({
         >
           <img
             alt=""
-            className="absolute left-[-64px] top-[-75px] h-[1199px] w-[2050px] max-w-none object-cover opacity-70 pointer-events-none"
+            className="absolute inset-0 size-full max-w-none object-cover pointer-events-none"
             src={imgDsc01471Copy2}
           />
         </div>
@@ -979,7 +983,7 @@ export default function Home({
           data-node-id="47:422"
         >
           <div
-            className="absolute h-[479px] left-[calc(50%-764px)] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-196px_-335px] mask-size-[1925px_1124px] top-[335px] w-[808px]"
+            className="absolute h-[479px] left-[calc(50%-764px)] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-196px_-335px] mask-size-[1920px_1124px] top-[335px] w-[808px]"
             data-node-id="47:423"
             style={{ maskImage: `url('${imgDsc01471Copy1}')` }}
             data-name="Title"
@@ -990,9 +994,8 @@ export default function Home({
           data-node-id="47:424"
         >
           <div
-            className="absolute bg-white h-[108px] left-px mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-1px_-33px] mask-size-[1925px_1124px] shadow-[0px_1px_4px_0px_rgba(25,33,61,0.06)] top-[33px] w-[1921px]"
+            className="absolute bg-white h-[108px] left-1/2 -translate-x-1/2 w-[120vw] shadow-[0px_1px_4px_0px_rgba(25,33,61,0.06)] top-[33px]"
             data-node-id="47:425"
-            style={{ maskImage: `url('${imgDsc01471Copy1}')` }}
           />
         </div>
         <div

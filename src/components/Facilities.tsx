@@ -40,12 +40,19 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
   const [startStatsCounter, setStartStatsCounter] = useState(false)
   const [statsValues, setStatsValues] = useState({ production: 0, hvac: 0, iso: 0, compliance: 0 })
 
+  const scrollToRefWithOffset = (node: HTMLDivElement | null) => {
+    if (!node) return
+    const offset = isMobileLayout ? 16 : 205
+    const top = node.getBoundingClientRect().top + window.scrollY - offset
+    window.scrollTo({ top, behavior: 'smooth' })
+  }
+
   const scrollToProduction = () => {
-    productionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToRefWithOffset(productionRef.current)
   }
 
   const scrollToQuality = () => {
-    qualityRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToRefWithOffset(qualityRef.current)
   }
 
   useEffect(() => {
@@ -56,15 +63,16 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
   }, [])
 
   useEffect(() => {
-    if (initialSection === 'production') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      return
+    const run = () => {
+      if (initialSection === 'quality') {
+        scrollToQuality()
+        return
+      }
+      scrollToProduction()
     }
-    const target = qualityRef.current
-    if (!target) return
-    const top = target.getBoundingClientRect().top + window.scrollY - 205
-    window.scrollTo({ top, behavior: 'smooth' })
-  }, [initialSection])
+    const id = window.setTimeout(run, 0)
+    return () => window.clearTimeout(id)
+  }, [initialSection, isMobileLayout])
 
   useEffect(() => {
     if (startStatsCounter || !statsRef.current) return

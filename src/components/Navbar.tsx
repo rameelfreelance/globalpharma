@@ -108,8 +108,8 @@ export default function Navbar({
             </div>
 
             <div className="px-3 py-2 text-white">
-              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateHome?.(); setMobileOpen(false); }}>Home</button>
-              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === 'company' ? null : 'company')}>Our Company</button>
+              <button type="button" className="block w-full border-b border-white/15 py-2.5 text-center font-['Google_Sans:Regular',sans-serif] text-[clamp(1.2rem,4.8vw,1.55rem)] leading-[1.15] tracking-[-0.01em] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateHome?.(); setMobileOpen(false); }}>Home</button>
+              <button type="button" className="block w-full border-b border-white/15 py-2.5 text-center font-['Google_Sans:Regular',sans-serif] text-[clamp(1.2rem,4.8vw,1.55rem)] leading-[1.15] tracking-[-0.01em] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === 'company' ? null : 'company')}>Our Company</button>
               {mobileSection === 'company' ? (
                 <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
                   <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.('about'); setMobileOpen(false); }}>About Us</button>
@@ -118,7 +118,7 @@ export default function Navbar({
                 </div>
               ) : null}
 
-              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === 'products' ? null : 'products')}>Products</button>
+              <button type="button" className="block w-full border-b border-white/15 py-2.5 text-center font-['Google_Sans:Regular',sans-serif] text-[clamp(1.2rem,4.8vw,1.55rem)] leading-[1.15] tracking-[-0.01em] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === 'products' ? null : 'products')}>Products</button>
               {mobileSection === 'products' ? (
                 <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
                   <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateProducts?.(); setMobileOpen(false); }}>All Products</button>
@@ -132,17 +132,17 @@ export default function Navbar({
                 </div>
               ) : null}
 
-              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === 'facility' ? null : 'facility')}>Manufacturing Facilities</button>
+              <button type="button" className="block w-full border-b border-white/15 py-2.5 text-center font-['Google_Sans:Regular',sans-serif] text-[clamp(1.2rem,4.8vw,1.55rem)] leading-[1.15] tracking-[-0.01em] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === 'facility' ? null : 'facility')}>Facility</button>
               {mobileSection === 'facility' ? (
-                <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
-                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateFacility?.('production'); setMobileOpen(false); }}>Production</button>
-                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateFacility?.('quality'); setMobileOpen(false); }}>Quality Operations</button>
+                <div className="space-y-1 border-b border-white/15 pb-2">
+                  <button type="button" className="block w-full py-2 text-center text-base" onClick={() => { onNavigateFacility?.('production'); setMobileOpen(false); }}>Production</button>
+                  <button type="button" className="block w-full py-2 text-center text-base" onClick={() => { onNavigateFacility?.('quality'); setMobileOpen(false); }}>Quality Operations</button>
                 </div>
               ) : null}
 
-              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigatePharmacovigilance?.(); setMobileOpen(false); }}>Pharmacovigilance</button>
-              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateCareers?.(); setMobileOpen(false); }}>Careers</button>
-              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateContact?.(); setMobileOpen(false); }}>Contact us</button>
+              <button type="button" className="block w-full border-b border-white/15 py-2.5 text-center font-['Google_Sans:Regular',sans-serif] text-[clamp(1.2rem,4.8vw,1.55rem)] leading-[1.15] tracking-[-0.01em] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigatePharmacovigilance?.(); setMobileOpen(false); }}>Pharmacovigilance</button>
+              <button type="button" className="block w-full border-b border-white/15 py-2.5 text-center font-['Google_Sans:Regular',sans-serif] text-[clamp(1.2rem,4.8vw,1.55rem)] leading-[1.15] tracking-[-0.01em] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateCareers?.(); setMobileOpen(false); }}>Careers</button>
+              <button type="button" className="block w-full border-b border-white/15 py-2.5 text-center font-['Google_Sans:Regular',sans-serif] text-[clamp(1.2rem,4.8vw,1.55rem)] leading-[1.15] tracking-[-0.01em] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateContact?.(); setMobileOpen(false); }}>Contact us</button>
             </div>
           </div>
         </div>

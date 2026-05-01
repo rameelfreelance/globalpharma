@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Navbar from './Navbar'
 
 const imgHeroMask = '/assets/figma/59a450e9-e908-436e-80c0-39633be13a5a.svg'
@@ -51,6 +51,7 @@ export default function AboutUs({
   onNavigateDermatology,
   initialSection = 'about'
 }: AboutUsProps) {
+  const [isMobileLayout, setIsMobileLayout] = useState(false)
   const aboutRef = useRef<HTMLDivElement | null>(null)
   const visionRef = useRef<HTMLDivElement | null>(null)
   const imsRef = useRef<HTMLDivElement | null>(null)
@@ -62,13 +63,168 @@ export default function AboutUs({
     }
     const target = section === 'vision' ? visionRef.current : imsRef.current
     if (!target) return
-    const top = target.getBoundingClientRect().top + window.scrollY - 205
+    const top = target.getBoundingClientRect().top + window.scrollY - (isMobileLayout ? 70 : 205)
     window.scrollTo({ top, behavior: 'smooth' })
   }
 
   useEffect(() => {
-    scrollToSection(initialSection)
-  }, [initialSection])
+    const applyViewportLayout = () => {
+      setIsMobileLayout(window.innerWidth < 1024)
+    }
+    applyViewportLayout()
+    window.addEventListener('resize', applyViewportLayout)
+    return () => window.removeEventListener('resize', applyViewportLayout)
+  }, [])
+
+  useEffect(() => {
+    const id = window.setTimeout(() => scrollToSection(initialSection), 0)
+    return () => window.clearTimeout(id)
+  }, [initialSection, isMobileLayout])
+
+  if (isMobileLayout) {
+    return (
+      <div className="min-h-screen w-full bg-white">
+        <Navbar
+          activePage="about"
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={(section = 'about') => scrollToSection(section)}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateAntibiotics={onNavigateAntibiotics}
+          onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+          onNavigateGastrointestinal={onNavigateGastrointestinal}
+          onNavigateCns={onNavigateCns}
+          onNavigateCardiovascular={onNavigateCardiovascular}
+          onNavigateRespiratory={onNavigateRespiratory}
+          onNavigateDermatology={onNavigateDermatology}
+          onNavigateFacility={onNavigateFacility}
+          onNavigatePharmacovigilance={onNavigatePharmacovigilance}
+          onNavigateCareers={onNavigateCareers}
+          onNavigateContact={onNavigateContact}
+        />
+
+        <section ref={aboutRef} className="relative h-[430px] overflow-hidden bg-[#f5f8f9]">
+          <img alt="" className="absolute inset-0 h-full w-full object-cover img-zoom" src={imgHeroMain} />
+          <img alt="" className="absolute inset-0 h-full w-full object-cover opacity-55" src={imgHeroOverlay} />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="relative z-10 px-5 pb-8 pt-24 text-white">
+            <p className="text-xs uppercase tracking-[1.8px] fade-up d0">About us</p>
+            <h1 className="mt-3 text-[34px] leading-[1.12] hero-clip-wrap">
+              <span className="hero-clip-line d1">Committed to Quality,</span>
+              <span className="hero-clip-line d2">Innovation &amp; Trusted Medicine</span>
+            </h1>
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <h2 className="text-[32px] leading-[1.15] text-[#9d0b0f] clip-wrap">
+            <span className="clip-line d0">Quality is the Heart of Everything</span>
+          </h2>
+          <p className="mt-4 text-[15px] leading-7 text-[#2f4252] fade-up d1">
+            Global Pharmaceuticals Pakistan is a quality-driven pharmaceutical manufacturer committed to delivering safe, effective, and affordable medicines worldwide. We operate under strict cGMP compliance and international quality standards to ensure consistency, safety, and reliability.
+          </p>
+          <div className="mt-6 h-[220px] overflow-hidden scale-in d2">
+            <img alt="" className="h-full w-full object-cover img-zoom" src={imgVisionMissionRight} />
+          </div>
+        </section>
+
+        <section ref={visionRef} className="bg-white px-5 py-10">
+          <div className="rounded bg-[#fff6f6] p-5">
+            <h3 className="text-[30px] leading-[1.1] text-[#9d0b0f] clip-wrap"><span className="clip-line d0">Our Vision</span></h3>
+            <p className="mt-3 text-[16px] leading-7 text-[#2f4252] fade-up d1">
+              To be a globally recognized pharmaceutical company known for uncompromising quality, innovation, and ethical excellence in healthcare.
+            </p>
+          </div>
+          <div className="mt-4 rounded bg-[#fff6f6] p-5">
+            <h3 className="text-[30px] leading-[1.1] text-[#9d0b0f] clip-wrap"><span className="clip-line d1">Our Mission</span></h3>
+            <p className="mt-3 text-[16px] leading-7 text-[#2f4252] fade-up d2">
+              To provide safe, effective, and affordable medicines through world-class manufacturing standards, continuous improvement, and strong global partnerships built on trust.
+            </p>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden bg-[#4e0a0c] px-5 py-10 text-white">
+          <img alt="" className="absolute inset-0 h-full w-full object-cover opacity-35 img-zoom" src={imgHeroMain} />
+          <div className="relative z-10">
+            <p className="text-xs uppercase tracking-[2px] fade-up d0">Manufacturing Process</p>
+            <div className="mt-5 space-y-3">
+              {[
+                '1. Weighing & Dispensing',
+                '2. Manufacturing Suites',
+                '3. QC Testing & Analysis',
+                '4. Packaging & Labeling',
+                '5. Final Dispatch',
+              ].map((step, idx) => (
+                <div key={step} className={`rounded bg-white/95 p-4 text-[#051c2f] fade-up d${idx}`}>
+                  <p className="text-[17px] font-['Google_Sans:Medium',sans-serif]">{step}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <p className="text-xs uppercase tracking-[2px] text-black fade-up d0">Regulatory Affairs (RA)</p>
+          <h3 className="mt-3 text-[30px] leading-[1.15] text-[#9d0b0f] clip-wrap">
+            <span className="clip-line d1">Ensuring Compliance &amp; Global Standards</span>
+          </h3>
+          <p className="mt-4 text-[15px] leading-7 text-[#2f4252] fade-up d2">
+            In a highly regulated industry, Regulatory Affairs plays a pivotal role as the bridge between Global Pharmaceuticals Pakistan and national health authorities. The RA team ensures full compliance with evolving regulations, prepares precise documentation for product submissions, and supports product registration and lifecycle management.
+          </p>
+        </section>
+
+        <section ref={imsRef} className="bg-white px-5 py-10">
+          <h3 className="text-[30px] leading-[1.15] text-[#9d0b0f] clip-wrap"><span className="clip-line d0">QHSE Policy</span></h3>
+          <p className="mt-4 text-[15px] leading-7 text-[#2f4252] fade-up d1">
+            Global Pharmaceuticals Pakistan is committed to implementing and maintaining an Integrated Management System that integrates Quality, Environmental, Occupational Health, and Safety (QHSE) principles across all operations.
+          </p>
+          <div className="mt-6 h-[230px] overflow-hidden scale-in d1">
+            <img alt="" className="h-full w-full object-cover img-zoom" src={imgQhseImage} />
+          </div>
+          <div className="mt-6 space-y-3">
+            {[
+              'Compliance with applicable regulatory, legal, and cGMP requirements.',
+              'Delivering safe, effective, and high-quality pharmaceutical products.',
+              'Providing a safe and healthy workplace.',
+              'Promoting environmental responsibility and sustainable resource use.',
+              'Continually improving systems and performance.',
+              'Enhancing employee competence through training and development.',
+              'Encouraging a culture of quality, responsibility, and ethics.',
+              'Ensuring customer satisfaction through reliability and timely delivery.',
+            ].map((line, index) => (
+              <div key={line} className={`flex items-start gap-3 fade-up d${index}`}>
+                <div className="mt-1 h-5 w-5 shrink-0 bg-[#9d0b0f] p-1">
+                  <img alt="" className="h-full w-full" src={imgCheck} />
+                </div>
+                <p className="text-[14px] leading-6 text-[#2f4252]">{line}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
+          <p className="text-[22px] font-semibold">Global Pharmaceuticals Pakistan</p>
+          <p className="mt-2 text-sm leading-7 text-white/90">
+            We are committed to manufacturing and delivering high-quality pharmaceutical products that meet stringent regulatory standards.
+          </p>
+          <div className="mt-4 space-y-2 text-sm">
+            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
+            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">
+              info@globalpharmaceuticalspk.com
+            </a>
+          </div>
+          <div className="mt-5 flex gap-3">
+            <a href="https://www.facebook.com/globalpharmaceuticalspk" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on Facebook">
+              <img alt="Facebook" className="size-[28px]" src={footerSoc1} />
+            </a>
+            <a href="https://www.linkedin.com/company/global-pharmaceuticals-pvt-limited/" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on LinkedIn">
+              <img alt="LinkedIn" className="size-[28px]" src={footerSoc2} />
+            </a>
+          </div>
+          <p className="mt-5 text-xs text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
+        </footer>
+      </div>
+    )
+  }
 
   return (
     

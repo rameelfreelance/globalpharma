@@ -1,4 +1,4 @@
-import { type FormEvent, useState } from 'react'
+import { type FormEvent, useEffect, useState } from 'react'
 import Navbar from './Navbar'
 
 const heroImage = '/assets/figma/0044fa93-564e-4e4c-aed2-9f21699640a2.jpg'
@@ -18,6 +18,7 @@ type ContactUsProps = {
 }
 
 export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateCareers, onNavigatePharmacovigilance, onNavigateFacility, onNavigateProducts }: ContactUsProps) {
+  const [isMobileLayout, setIsMobileLayout] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [touched, setTouched] = useState<Record<string, boolean>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -41,6 +42,151 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
     setSubmitMessage('Thanks! Your message has been submitted.')
     setForm({ name: '', email: '', phone: '', message: '' })
     setTouched({})
+  }
+
+  useEffect(() => {
+    const applyViewportLayout = () => setIsMobileLayout(window.innerWidth < 1024)
+    applyViewportLayout()
+    window.addEventListener('resize', applyViewportLayout)
+    return () => window.removeEventListener('resize', applyViewportLayout)
+  }, [])
+
+  if (isMobileLayout) {
+    return (
+      <div className="min-h-screen w-full bg-white">
+        <Navbar
+          activePage="contact"
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={onNavigateAbout}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateFacility={onNavigateFacility}
+          onNavigatePharmacovigilance={onNavigatePharmacovigilance}
+          onNavigateCareers={onNavigateCareers}
+          onNavigateContact={() => {}}
+        />
+
+        <section className="relative h-[360px] overflow-hidden bg-[#9d0b0f]">
+          <div className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]" style={{ maskImage: `url('${heroImageMask}')` }}>
+            <img alt="" className="h-full w-full object-cover opacity-90 img-zoom" src={heroImage} />
+          </div>
+          <div className="relative z-10 px-5 pt-22 text-white">
+            <h1 className="hero-clip-wrap text-[36px] font-semibold leading-[1.12]">
+              <span className="hero-clip-line d0">Contact us for more</span>
+              <span className="hero-clip-line d1">information or support</span>
+            </h1>
+            <p className="mt-3 inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+              <span className="clip-line d2">Contact us</span>
+            </p>
+            <div className="mt-1 h-[8px] w-[132px] bg-[#9d0b0f] line-reveal" />
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <div className="space-y-6">
+            <div className="flex items-start gap-4 fade-up d0">
+              <div className="mt-1 flex size-[48px] shrink-0 items-center justify-center bg-[#9d0b0f] box-hover-invert">
+                <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
+                  <path fill="#fff" d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
+                </svg>
+              </div>
+              <p className="text-[16px] leading-7 text-black">Plot No.08-A, Street No. S8, RCCI Rawat, Pakistan</p>
+            </div>
+            <div className="flex items-center gap-4 fade-up d1">
+              <div className="flex size-[48px] shrink-0 items-center justify-center bg-[#9d0b0f] box-hover-invert">
+                <svg viewBox="0 0 24 24" className="h-[22px] w-[22px]" aria-hidden="true">
+                  <path fill="#fff" d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm8 7 8-5H4l8 5zm0 2L4 9v8h16V9l-8 5z" />
+                </svg>
+              </div>
+              <a href="mailto:info@globalpharmapk.com" className="text-[16px] text-black transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">info@globalpharmapk.com</a>
+            </div>
+            <div className="flex items-start gap-4 fade-up d2">
+              <div className="mt-1 flex size-[48px] shrink-0 items-center justify-center bg-[#9d0b0f] box-hover-invert">
+                <svg viewBox="0 0 24 24" className="h-[22px] w-[22px]" aria-hidden="true">
+                  <path fill="#fff" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.3 22 2 13.7 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z" />
+                </svg>
+              </div>
+              <div className="text-[16px] leading-7 text-black">
+                <a href="tel:+92514499040" className="block transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">+92 51 4499040</a>
+                <a href="tel:+92514499041" className="block transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">+92 51 4499041</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-10">
+          <form className="flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
+            <div className="relative fade-up d0">
+              <div className="pointer-events-none absolute left-[10px] top-1/2 -translate-y-1/2 text-black">
+                <svg viewBox="0 0 24 24" className="h-[16px] w-[16px]" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 21a8 8 0 0 0-16 0" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
+              <input value={form.name} onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))} onBlur={() => setTouched((prev) => ({ ...prev, name: true }))} placeholder="Name" className="w-full border-0 border-b border-[#d0d5dd] pl-[36px] pr-[12px] py-[14px] text-[17px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]" />
+              {touched.name && errors.name ? <p className="mt-1 pl-[36px] text-[13px] text-[#9d0b0f]">{errors.name}</p> : null}
+            </div>
+            <div className="relative fade-up d1">
+              <div className="pointer-events-none absolute left-[10px] top-1/2 -translate-y-1/2 text-black">
+                <svg viewBox="0 0 24 24" className="h-[16px] w-[16px]" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 8l9 6 9-6" />
+                </svg>
+              </div>
+              <input type="email" value={form.email} onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))} onBlur={() => setTouched((prev) => ({ ...prev, email: true }))} placeholder="Email Address" className="w-full border-0 border-b border-[#d0d5dd] pl-[36px] pr-[12px] py-[14px] text-[17px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]" />
+              {touched.email && errors.email ? <p className="mt-1 pl-[36px] text-[13px] text-[#9d0b0f]">{errors.email}</p> : null}
+            </div>
+            <div className="relative fade-up d2">
+              <div className="pointer-events-none absolute left-[10px] top-1/2 -translate-y-1/2 text-black">
+                <svg viewBox="0 0 24 24" className="h-[16px] w-[16px]" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.87 19.87 0 0 1-8.63-3.07 19.52 19.52 0 0 1-6-6A19.87 19.87 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <input value={form.phone} onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))} onBlur={() => setTouched((prev) => ({ ...prev, phone: true }))} placeholder="Phone" className="w-full border-0 border-b border-[#d0d5dd] pl-[36px] pr-[12px] py-[14px] text-[17px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]" />
+              {touched.phone && errors.phone ? <p className="mt-1 pl-[36px] text-[13px] text-[#9d0b0f]">{errors.phone}</p> : null}
+            </div>
+            <div className="relative fade-up d3">
+              <div className="pointer-events-none absolute left-[10px] top-[20px] text-black">
+                <svg viewBox="0 0 24 24" className="h-[16px] w-[16px]" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.85" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21l3.75-.75L19 8a2 2 0 0 0 0-2.83l-.17-.17a2 2 0 0 0-2.83 0L3.75 17.25 3 21z" />
+                  <path d="M14.5 6.5l3 3" />
+                </svg>
+              </div>
+              <textarea value={form.message} onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))} onBlur={() => setTouched((prev) => ({ ...prev, message: true }))} placeholder="How can we help you ? Feel free to get in touch!" className="h-[144px] w-full resize-none border-0 border-b border-[#d0d5dd] pl-[36px] pr-[12px] py-[14px] text-[17px] text-[#6d6d6d] outline-none transition-colors duration-200 focus:border-[#9d0b0f]" />
+              {touched.message && errors.message ? <p className="mt-1 pl-[36px] text-[13px] text-[#9d0b0f]">{errors.message}</p> : null}
+            </div>
+            <button type="submit" disabled={isSubmitting} className="h-[56px] w-full bg-[#0b0f13] text-[16px] font-semibold text-white fade-up d4 transition-all duration-300 hover:bg-[#9d0b0f] hover:-translate-y-px hover:shadow-[0_10px_22px_rgba(157,11,15,0.3)] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70">
+              {isSubmitting ? 'Submitting...' : 'Get In Touch'}
+            </button>
+            {submitMessage ? <p className="text-[15px] text-[#2f4252] fade-up d5">{submitMessage}</p> : null}
+          </form>
+        </section>
+
+        <section className="bg-white px-5 py-10">
+          <p className="text-center font-['Google_Sans:Regular',sans-serif] text-[22px] leading-[1.25] text-[#051c2f] clip-wrap">
+            <span className="clip-line d0">Our Trusted Group Companies and Strategic Partners</span>
+          </p>
+          <div className="mt-6 space-y-4 fade-up d1">
+            <div className="flex items-center justify-center gap-2">
+              <img alt="" className="h-[28px] w-[28px] object-contain" src={partnerMark} />
+              <p className="text-[17px] font-semibold text-[#9d0b0f]">Global Pharmaceuticals Pvt. Ltd.</p>
+            </div>
+            <div className="mx-auto flex h-[84px] w-full max-w-[300px] items-center justify-center overflow-hidden rounded-sm bg-white">
+              <img alt="" className="max-h-[60px] w-auto max-w-full object-contain" src={partnerLogo} />
+            </div>
+          </div>
+        </section>
+
+        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
+          <p className="text-[30px] font-semibold leading-[1.15]">Global Pharmaceuticals Pakistan</p>
+          <p className="mt-3 text-[16px] leading-8 text-white/90">We are committed to manufacturing and delivering high-quality pharmaceutical products.</p>
+          <div className="mt-5 space-y-3 text-[16px]">
+            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
+            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">info@globalpharmaceuticalspk.com</a>
+          </div>
+          <p className="mt-6 text-[13px] text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
+        </footer>
+      </div>
+    )
   }
 
   return (

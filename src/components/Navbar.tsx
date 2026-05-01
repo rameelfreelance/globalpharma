@@ -39,11 +39,26 @@ export default function Navbar({
   onNavigateContact
 }: NavbarProps) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleClick = () => setOpenMenu(null);
+    const handleClick = () => {
+      setOpenMenu(null);
+    };
     window.addEventListener('click', handleClick);
     return () => window.removeEventListener('click', handleClick);
+  }, []);
+
+  useEffect(() => {
+    const closeMobileOnDesktop = () => {
+      if (window.innerWidth >= 1280) {
+        setMobileOpen(false);
+        setMobileSection(null);
+      }
+    };
+    window.addEventListener('resize', closeMobileOnDesktop);
+    return () => window.removeEventListener('resize', closeMobileOnDesktop);
   }, []);
 
   const toggleMenu = (e: React.MouseEvent, menu: string) => {
@@ -55,7 +70,85 @@ export default function Navbar({
     "pointer-events-auto absolute left-0 top-[-39px] z-[1] flex h-[108px] items-center gap-[8px]";
 
   return (
-    <div className="absolute contents z-[80]">
+    <>
+      <button
+        type="button"
+        aria-label="Open menu"
+        onClick={() => setMobileOpen(true)}
+        className="fixed right-4 top-12 z-[140] flex h-10 w-10 items-center justify-center rounded-md border border-[#9d0b0f]/35 bg-white text-[#9d0b0f] shadow-sm xl:hidden"
+      >
+        <span className="text-[20px] leading-none">≡</span>
+      </button>
+
+      {mobileOpen ? (
+        <div className="fixed inset-0 z-[150] xl:hidden" role="dialog" aria-modal="true">
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/35"
+            aria-label="Close menu overlay"
+            onClick={() => {
+              setMobileOpen(false);
+              setMobileSection(null);
+            }}
+          />
+          <div className="absolute right-0 top-0 h-full w-[min(88vw,360px)] overflow-y-auto bg-[#92050b] shadow-2xl">
+            <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-3 py-2.5">
+              <p className="font-['Google_Sans:Bold',sans-serif] text-[14px] leading-[1.15] text-[#9d0b0f]">Global Pharmaceuticals (Pvt) Ltd.</p>
+              <button
+                type="button"
+                aria-label="Close menu"
+                className="px-2 py-1 text-[28px] leading-none text-[#9d0b0f]"
+                onClick={() => {
+                  setMobileOpen(false);
+                  setMobileSection(null);
+                }}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="px-3 py-2 text-white">
+              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateHome?.(); setMobileOpen(false); }}>Home</button>
+              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === 'company' ? null : 'company')}>Our Company</button>
+              {mobileSection === 'company' ? (
+                <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.('about'); setMobileOpen(false); }}>About Us</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.('vision'); setMobileOpen(false); }}>Vision & Mission</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.('ims'); setMobileOpen(false); }}>IMS Policy</button>
+                </div>
+              ) : null}
+
+              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === 'products' ? null : 'products')}>Products</button>
+              {mobileSection === 'products' ? (
+                <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateProducts?.(); setMobileOpen(false); }}>All Products</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAntiInflammatory?.(); setMobileOpen(false); }}>Anti-inflammatory / Analgesics</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAntibiotics?.(); setMobileOpen(false); }}>Anti-biotics</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateGastrointestinal?.(); setMobileOpen(false); }}>Gastrointestinal Agents</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateCns?.(); setMobileOpen(false); }}>CNS / Psychiatric</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateCardiovascular?.(); setMobileOpen(false); }}>Cardiovascular / Lipid Control</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateDermatology?.(); setMobileOpen(false); }}>Dermatology</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateRespiratory?.(); setMobileOpen(false); }}>Respiratory & Antiallergic</button>
+                </div>
+              ) : null}
+
+              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === 'facility' ? null : 'facility')}>Manufacturing Facilities</button>
+              {mobileSection === 'facility' ? (
+                <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateFacility?.('production'); setMobileOpen(false); }}>Production</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateFacility?.('quality'); setMobileOpen(false); }}>Quality Operations</button>
+                </div>
+              ) : null}
+
+              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigatePharmacovigilance?.(); setMobileOpen(false); }}>Pharmacovigilance</button>
+              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateCareers?.(); setMobileOpen(false); }}>Careers</button>
+              <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateContact?.(); setMobileOpen(false); }}>Contact us</button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      <div className="absolute contents z-[80] max-xl:hidden">
       {/* Home */}
       {activePage === 'home' && (
         <div className="absolute left-[calc(50%-368px)] top-[33px] h-[108px] w-[112px] bg-[#9d0b0f] z-[1]" />
@@ -242,6 +335,7 @@ export default function Navbar({
       >
         Contact us
       </button>
-    </div>
+      </div>
+    </>
   );
 }

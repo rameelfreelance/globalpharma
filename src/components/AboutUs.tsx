@@ -73,7 +73,10 @@ export default function AboutUs({
   return (
     
     <div className="flex w-full justify-center overflow-hidden bg-white">
-      <div className="about-figma relative h-[5679px] w-[1920px] shrink-0 overflow-hidden bg-white pt-[188px]">
+      <div
+        className="figma-page about-figma relative shrink-0 overflow-hidden bg-white pt-[188px]"
+        style={{ "--figma-page-width": 1920, "--figma-page-height": 5679 } as any}
+      >
         <div className="absolute left-[-14.9px] top-0 h-[459px] w-[1938.9px] bg-white" />
         <div className="absolute left-[-362.61px] top-[-90.35px] h-[1603px] w-[2612.77px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[347.71px_566.35px] mask-size-[1938.9px_459px]" style={{ maskImage: `url('${imgHeroMask}')` }}>
           <img alt="" className="absolute inset-0 size-full object-cover" src={imgHeroMain} />

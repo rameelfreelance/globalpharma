@@ -27,7 +27,10 @@ export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onN
   return (
     
     <div className="flex w-full justify-center overflow-hidden bg-white">
-      <div className="contact-figma relative h-[4424px] w-[1920px] shrink-0 bg-white">
+      <div
+        className="figma-page contact-figma relative shrink-0 bg-white"
+        style={{ "--figma-page-width": 1920, "--figma-page-height": 4424 } as any}
+      >
         <div className="absolute left-[1px] top-[476px] h-[455px] w-[1920px] bg-[#9d0b0f]" />
         <div className="absolute right-[-68px] top-[-210px] h-[1372px] w-[2058px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[71px_686px] mask-size-[1920px_455px]" style={{ maskImage: `url('${imgBsc01235Jpg1}')` }}>
           <img alt="" className="absolute inset-0 size-full object-cover" src={imgBsc01235Jpg2} />

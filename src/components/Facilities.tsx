@@ -99,7 +99,10 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
   return (
     
     <div className="flex w-full justify-center overflow-hidden bg-white">
-      <div className="contact-figma relative h-[5450px] w-[1920px] shrink-0 overflow-hidden bg-white pt-[188px]">
+      <div
+        className="figma-page contact-figma relative shrink-0 overflow-hidden bg-white pt-[188px]"
+        style={{ "--figma-page-width": 1920, "--figma-page-height": 5450 } as any}
+      >
         <div className="absolute left-[1px] top-[476px] h-[455px] w-[1920px] bg-[#9d0b0f]" />
         <div className="absolute left-[-25px] top-[-209px] h-[1320px] w-[1979px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[26px_685px] mask-size-[1920px_455px]" style={{ maskImage: `url('${heroMask}')` }}>
           <img alt="" className="absolute inset-0 size-full object-cover" src={heroImg} />

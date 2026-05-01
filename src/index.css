@@ -199,3 +199,18 @@ a[href]:active,
   margin: 0;
 }
 
+/* Responsive fallback for fixed-width Figma pages */
+.figma-page {
+  width: calc(var(--figma-page-width, 1920) * 1px);
+  height: calc(var(--figma-page-height, 3000) * 1px);
+}
+
+@media (max-width: 1919px) {
+  .figma-page {
+    --figma-scale: calc(100vw / (var(--figma-page-width, 1920) * 1px));
+    transform: scale(var(--figma-scale));
+    transform-origin: top center;
+    height: calc(var(--figma-page-height, 3000) * 1px * var(--figma-scale));
+  }
+}
+

@@ -142,11 +142,17 @@ export default function Home({
   onNavigateRespiratory,
   onNavigateDermatology,
 }: HomeProps) {
+  const [isMobileLayout, setIsMobileLayout] = useState(false);
   const [showCompanyMenu, setShowCompanyMenu] = useState(false);
   const [showProductsMenu, setShowProductsMenu] = useState(false);
   const [showFacilityMenu, setShowFacilityMenu] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<"company" | "products" | "facility" | null>(null);
+  const [activeMobileCard, setActiveMobileCard] = useState<string | null>(null);
+  const [mobileAllProductsActive, setMobileAllProductsActive] = useState(false);
   const [commitmentPercent, setCommitmentPercent] = useState(0);
   const commitmentCounterRef = useRef<HTMLParagraphElement>(null);
+  const mobileCounterRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const el = commitmentCounterRef.current;
@@ -213,6 +219,47 @@ export default function Home({
   }, []);
 
   useEffect(() => {
+    if (!isMobileLayout) return;
+    const el = mobileCounterRef.current;
+    if (!el) return;
+
+    let started = false;
+    let raf = 0;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (!entry?.isIntersecting || started) return;
+        started = true;
+        const durationMs = 1400;
+        const t0 = performance.now();
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - t0) / durationMs);
+          const eased = 1 - (1 - t) ** 3;
+          setCommitmentPercent(Math.round(eased * 100));
+          if (t < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+        observer.disconnect();
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+    );
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [isMobileLayout]);
+
+  useEffect(() => {
+    const applyViewportLayout = () => {
+      setIsMobileLayout(window.innerWidth < 1024);
+    };
+    applyViewportLayout();
+    window.addEventListener("resize", applyViewportLayout);
+    return () => window.removeEventListener("resize", applyViewportLayout);
+  }, []);
+
+  useEffect(() => {
     const closeMenus = () => {
       setShowCompanyMenu(false);
       setShowProductsMenu(false);
@@ -222,13 +269,324 @@ export default function Home({
     return () => window.removeEventListener("click", closeMenus);
   }, []);
 
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1280) {
+        setMobileMenuOpen(false);
+        setMobileSection(null);
+      }
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  if (isMobileLayout) {
+    return (
+      <div className="min-h-screen w-full bg-white">
+        <div className="relative h-[420px] overflow-hidden bg-[#4e0a0c]">
+          <img
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover opacity-70 img-zoom"
+            src={imgDsc01471Copy2}
+          />
+          <button
+            type="button"
+            aria-label="Open menu"
+            onClick={() => setMobileMenuOpen(true)}
+            className="absolute right-4 top-4 z-30 flex h-10 w-10 items-center justify-center rounded-md border border-white/60 bg-white/95 text-[#9d0b0f] shadow-sm"
+          >
+            <span className="text-[20px] leading-none">≡</span>
+          </button>
+          <div className="relative z-10 px-5 pt-20 text-white">
+            <p className="text-sm font-medium uppercase tracking-[1.5px] hero-clip-wrap">
+              <span className="hero-clip-line d0">Empowering Healthcare</span>
+            </p>
+            <h1 className="mt-3 text-[34px] font-bold leading-[1.12] hero-clip-wrap">
+              <span className="hero-clip-line d1">Advancing Lives Through Trusted Medicine</span>
+            </h1>
+            <p className="mt-3 text-sm leading-6 text-white/95 fade-up d2">
+              Global Pharmaceuticals Pakistan is dedicated to developing and delivering
+              high-quality, safe, and effective medicines.
+            </p>
+            <div className="mt-4 w-[min(270px,82vw)] scale-in d3">
+              <img
+                alt="ISO and GMP certifications"
+                className="h-auto w-full object-contain"
+                src="/assets/group-1000002029.png"
+              />
+            </div>
+          </div>
+        </div>
+
+        {mobileMenuOpen ? (
+          <div className="fixed inset-0 z-[170]" role="dialog" aria-modal="true">
+            <button
+              type="button"
+              className="absolute inset-0 bg-black/35"
+              aria-label="Close menu overlay"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setMobileSection(null);
+              }}
+            />
+            <div className="absolute right-0 top-0 h-full w-[min(88vw,360px)] overflow-y-auto bg-[#92050b] shadow-2xl">
+            <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-3 py-2.5">
+                <p className="font-['Google_Sans:Bold',sans-serif] text-[14px] leading-[1.15] text-[#9d0b0f]">Global Pharmaceuticals (Pvt) Ltd.</p>
+                <button type="button" className="px-2 py-1 text-[28px] leading-none text-[#9d0b0f]" onClick={() => { setMobileMenuOpen(false); setMobileSection(null); }}>×</button>
+              </div>
+              <div className="px-3 py-2 text-white">
+                <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setMobileMenuOpen(false); }}>Home</button>
+                <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === "company" ? null : "company")}>Our Company</button>
+                {mobileSection === "company" ? (
+                  <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.("about"); setMobileMenuOpen(false); }}>About Us</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.("vision"); setMobileMenuOpen(false); }}>Vision & Mission</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.("ims"); setMobileMenuOpen(false); }}>IMS Policy</button>
+                  </div>
+                ) : null}
+
+                <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === "products" ? null : "products")}>Products</button>
+                {mobileSection === "products" ? (
+                  <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateProducts?.(); setMobileMenuOpen(false); }}>All Products</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAntiInflammatory?.(); setMobileMenuOpen(false); }}>Anti-inflammatory / Analgesics</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAntibiotics?.(); setMobileMenuOpen(false); }}>Anti-biotics</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateGastrointestinal?.(); setMobileMenuOpen(false); }}>Gastrointestinal Agents</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateCns?.(); setMobileMenuOpen(false); }}>CNS / Psychiatric</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateCardiovascular?.(); setMobileMenuOpen(false); }}>Cardiovascular / Lipid Control</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateDermatology?.(); setMobileMenuOpen(false); }}>Dermatology</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateRespiratory?.(); setMobileMenuOpen(false); }}>Respiratory & Antiallergic</button>
+                  </div>
+                ) : null}
+
+                <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => setMobileSection((p) => p === "facility" ? null : "facility")}>Manufacturing Facilities</button>
+                {mobileSection === "facility" ? (
+                  <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateFacility?.("production"); setMobileMenuOpen(false); }}>Production</button>
+                    <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateFacility?.("quality"); setMobileMenuOpen(false); }}>Quality Operations</button>
+                  </div>
+                ) : null}
+
+                <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigatePharmacovigilance?.(); setMobileMenuOpen(false); }}>Pharmacovigilance</button>
+                <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateCareers?.(); setMobileMenuOpen(false); }}>Careers</button>
+                <button type="button" className="block w-full border-b border-white/15 py-3 text-center text-[clamp(1.6rem,6.2vw,2rem)] font-semibold leading-[1.08] transition-opacity hover:opacity-90 active:opacity-80" onClick={() => { onNavigateContact?.(); setMobileMenuOpen(false); }}>Contact us</button>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        <section className="bg-white px-5 py-10">
+          <p className="text-center font-['Roboto:Regular',sans-serif] text-[20px] leading-[1.25] text-[#051c2f] clip-wrap">
+            <span className="clip-line d0">Our Trusted Group Companies And Strategic Partners</span>
+          </p>
+          <div className="mt-6 space-y-5 fade-up d1">
+            <div className="flex items-center justify-center gap-2">
+              <img alt="" className="h-[28px] w-[28px] object-contain" src={imgGroup1000000720} />
+              <p className="text-[17px] font-semibold leading-[1.2] text-[#9d0b0f]">
+                Global Pharmaceuticals Pvt. Ltd.
+              </p>
+            </div>
+            <div className="mx-auto flex h-[88px] w-full max-w-[300px] items-center justify-center overflow-hidden rounded-sm bg-white">
+              <img
+                alt=""
+                className="max-h-[64px] w-auto max-w-full object-contain"
+                src={imgGroup1000001909}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-10">
+          <p className="text-xs uppercase tracking-[2px] text-black fade-up d0">Who We Are</p>
+          <h2 className="mt-3 text-[30px] leading-[1.15] text-[#9d0b0f] clip-wrap"><span className="clip-line d1">Quality is the Heart of Everything</span></h2>
+          <p className="mt-4 text-[15px] leading-7 text-[#2f4252] fade-up d2">
+            Global Pharmaceuticals Pakistan is committed to delivering high-quality, safe,
+            and affordable medicines while operating in full compliance with cGMP.
+          </p>
+          <div className="mt-6 rounded bg-[#f7f4f4] p-4 scale-in d1">
+            <p ref={mobileCounterRef} className="text-[30px] font-bold text-[#9d0b0f]">{commitmentPercent}%</p>
+            <p className="text-base text-[#051c2f]">Commitment to Excellence</p>
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-4">
+            <div
+              className={`rounded bg-white p-4 shadow-sm transition-all duration-300 ${activeMobileCard === "cgmp" ? "bg-[#9d0b0f] text-white" : "box-hover"}`}
+              onTouchStart={() => setActiveMobileCard("cgmp")}
+              onTouchEnd={() => setActiveMobileCard(null)}
+            >
+              <p className={`text-lg font-semibold ${activeMobileCard === "cgmp" ? "text-white" : "text-[#9d0b0f]"}`}>cGMP Operations</p>
+              <p className={`mt-1 text-sm ${activeMobileCard === "cgmp" ? "text-white/90" : "text-[#2f4252]"}`}>Strictly compliant with global manufacturing standards.</p>
+            </div>
+            <div
+              className={`rounded bg-white p-4 shadow-sm transition-all duration-300 ${activeMobileCard === "reg" ? "bg-[#9d0b0f] text-white" : "box-hover"}`}
+              onTouchStart={() => setActiveMobileCard("reg")}
+              onTouchEnd={() => setActiveMobileCard(null)}
+            >
+              <p className={`text-lg font-semibold ${activeMobileCard === "reg" ? "text-white" : "text-[#9d0b0f]"}`}>Regulatory Approved</p>
+              <p className={`mt-1 text-sm ${activeMobileCard === "reg" ? "text-white/90" : "text-[#2f4252]"}`}>Inspected and approved by leading authorities.</p>
+            </div>
+            <div
+              className={`rounded bg-white p-4 shadow-sm transition-all duration-300 ${activeMobileCard === "qms" ? "bg-[#9d0b0f] text-white" : "box-hover"}`}
+              onTouchStart={() => setActiveMobileCard("qms")}
+              onTouchEnd={() => setActiveMobileCard(null)}
+            >
+              <p className={`text-lg font-semibold ${activeMobileCard === "qms" ? "text-white" : "text-[#9d0b0f]"}`}>Quality Management</p>
+              <p className={`mt-1 text-sm ${activeMobileCard === "qms" ? "text-white/90" : "text-[#2f4252]"}`}>QMS from raw material to final release.</p>
+            </div>
+            <div
+              className={`rounded bg-white p-4 shadow-sm transition-all duration-300 ${activeMobileCard === "growth" ? "bg-[#9d0b0f] text-white" : "box-hover"}`}
+              onTouchStart={() => setActiveMobileCard("growth")}
+              onTouchEnd={() => setActiveMobileCard(null)}
+            >
+              <p className={`text-lg font-semibold ${activeMobileCard === "growth" ? "text-white" : "text-[#9d0b0f]"}`}>Sustainable Growth</p>
+              <p className={`mt-1 text-sm ${activeMobileCard === "growth" ? "text-white/90" : "text-[#2f4252]"}`}>Designed for consistent and scalable supply.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <h3 className="text-[32px] leading-[1.1] text-[#9d0b0f] clip-wrap"><span className="clip-line d0">Manufacturing Excellence</span></h3>
+          <p className="mt-4 text-[15px] leading-7 text-[#2f4252] fade-up d1">
+            Our facility is equipped with advanced production, quality control, warehousing,
+            packaging, and distribution systems to ensure quality from raw materials to finished products.
+          </p>
+          <div className="mt-6 h-[220px] w-full overflow-hidden img-zoom">
+            <img alt="" className="h-[220px] w-full object-cover" src={imgBsc00308Jpg2} />
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-10">
+          <h3 className="text-[32px] leading-[1.1] text-[#9d0b0f] clip-wrap"><span className="clip-line d0">Market Presence</span></h3>
+          <p className="mt-4 text-[15px] leading-7 text-[#2f4252] fade-up d1">
+            We are expanding in local and international markets with strategic collaborations
+            and strong engagement with healthcare professionals.
+          </p>
+          <div className="mt-6 h-[220px] w-full overflow-hidden img-zoom">
+            <img alt="" className="h-[220px] w-full object-cover" src={imgAsc00405Jpg2} />
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <p className="text-sm font-medium uppercase tracking-[1.2px] text-[#9d0b0f] fade-up d0">Therapeutic Portfolio</p>
+          <h3 className="mt-3 text-[34px] leading-[1.1] text-[#010c0d] clip-wrap"><span className="clip-line d1">Our Product Line</span></h3>
+          <div className="mt-6 space-y-4">
+            {[
+              { title: "Anti-biotics", desc: "Ciprofloxacin, Levofloxacin, and Cefixime.", onClick: onNavigateAntibiotics },
+              { title: "Anti-inflammatory / Analgesics", desc: "Piroxicam, Diclofenac, and Meloxicam.", onClick: onNavigateAntiInflammatory },
+              { title: "Gastrointestinal Agents", desc: "Esomeprazole, Omeprazole, and Vonoprazan.", onClick: onNavigateGastrointestinal },
+            ].map((item) => (
+              <button
+                key={item.title}
+                type="button"
+                onClick={item.onClick}
+                className={`group w-full rounded p-4 text-left shadow-sm transition-all duration-300 active:scale-[0.99] ${activeMobileCard === item.title ? "bg-[#9d0b0f]" : "bg-white hover:bg-[#9d0b0f]"}`}
+                onTouchStart={() => setActiveMobileCard(item.title)}
+                onTouchEnd={() => setActiveMobileCard(null)}
+              >
+                <p className={`text-lg font-semibold transition-colors duration-300 group-hover:text-white ${activeMobileCard === item.title ? "text-white" : "text-[#051c2f]"}`}>{item.title}</p>
+                <p className={`mt-1 text-sm transition-colors duration-300 group-hover:text-white/90 ${activeMobileCard === item.title ? "text-white/90" : "text-[#808586]"}`}>{item.desc}</p>
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={onNavigateProducts}
+            className={`mt-6 w-full rounded px-5 py-3 text-white transition-all duration-200 hover:-translate-y-px hover:bg-[#9d0b0f] hover:shadow-[0_10px_22px_rgba(157,11,15,0.3)] active:scale-[0.99] ${mobileAllProductsActive ? "bg-[#9d0b0f]" : "bg-[#0b0f13]"}`}
+            onTouchStart={() => setMobileAllProductsActive(true)}
+            onTouchEnd={() => setMobileAllProductsActive(false)}
+          >
+            All Products
+          </button>
+        </section>
+
+        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
+          <p className="text-[22px] font-semibold">Global Pharmaceuticals Pakistan</p>
+          <p className="mt-2 text-sm leading-7 text-white/90">
+            We are committed to manufacturing and delivering high-quality pharmaceutical products.
+          </p>
+          <div className="mt-4 space-y-2 text-sm">
+            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
+            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">
+              info@globalpharmaceuticalspk.com
+            </a>
+          </div>
+          <p className="mt-5 text-xs text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
+        </footer>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full overflow-x-hidden bg-white min-h-screen flex justify-center">
+      <button
+        type="button"
+        aria-label="Open menu"
+        onClick={() => setMobileMenuOpen(true)}
+        className="fixed right-4 top-12 z-[160] flex h-10 w-10 items-center justify-center rounded-md border border-[#9d0b0f]/35 bg-white text-[#9d0b0f] shadow-sm xl:hidden"
+      >
+        <span className="text-[20px] leading-none">≡</span>
+      </button>
+      {mobileMenuOpen ? (
+        <div className="fixed inset-0 z-[170] xl:hidden" role="dialog" aria-modal="true">
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/35"
+            aria-label="Close menu overlay"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              setMobileSection(null);
+            }}
+          />
+          <div className="absolute right-0 top-0 h-full w-[min(88vw,360px)] overflow-y-auto bg-[#92050b] shadow-2xl">
+            <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-3 py-2.5">
+              <p className="font-['Google_Sans:Bold',sans-serif] text-[14px] leading-[1.15] text-[#9d0b0f]">Global Pharmaceuticals (Pvt) Ltd.</p>
+              <button type="button" className="px-2 py-1 text-[28px] leading-none text-[#9d0b0f]" onClick={() => { setMobileMenuOpen(false); setMobileSection(null); }}>×</button>
+            </div>
+            <div className="px-3 py-2 text-left text-white">
+              <button type="button" className="block w-full border-b border-white/15 py-4 text-[31px] font-semibold leading-[1.15]" onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setMobileMenuOpen(false); }}>Home</button>
+              <button type="button" className="block w-full border-b border-white/15 py-4 text-[31px] font-semibold leading-[1.15]" onClick={() => setMobileSection((p) => p === "company" ? null : "company")}>Our Company</button>
+              {mobileSection === "company" ? (
+                <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.("about"); setMobileMenuOpen(false); }}>About Us</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.("vision"); setMobileMenuOpen(false); }}>Vision & Mission</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAbout?.("ims"); setMobileMenuOpen(false); }}>IMS Policy</button>
+                </div>
+              ) : null}
+
+              <button type="button" className="block w-full border-b border-white/15 py-4 text-[31px] font-semibold leading-[1.15]" onClick={() => setMobileSection((p) => p === "products" ? null : "products")}>Products</button>
+              {mobileSection === "products" ? (
+                <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateProducts?.(); setMobileMenuOpen(false); }}>All Products</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAntiInflammatory?.(); setMobileMenuOpen(false); }}>Anti-inflammatory / Analgesics</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateAntibiotics?.(); setMobileMenuOpen(false); }}>Anti-biotics</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateGastrointestinal?.(); setMobileMenuOpen(false); }}>Gastrointestinal Agents</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateCns?.(); setMobileMenuOpen(false); }}>CNS / Psychiatric</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateCardiovascular?.(); setMobileMenuOpen(false); }}>Cardiovascular / Lipid Control</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateDermatology?.(); setMobileMenuOpen(false); }}>Dermatology</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateRespiratory?.(); setMobileMenuOpen(false); }}>Respiratory & Antiallergic</button>
+                </div>
+              ) : null}
+
+              <button type="button" className="block w-full border-b border-white/15 py-4 text-[31px] font-semibold leading-[1.15]" onClick={() => setMobileSection((p) => p === "facility" ? null : "facility")}>Manufacturing Facilities</button>
+              {mobileSection === "facility" ? (
+                <div className="space-y-1 border-b border-white/15 pb-2 pl-3">
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateFacility?.("production"); setMobileMenuOpen(false); }}>Production</button>
+                  <button type="button" className="block w-full py-2 text-left text-base" onClick={() => { onNavigateFacility?.("quality"); setMobileMenuOpen(false); }}>Quality Operations</button>
+                </div>
+              ) : null}
+
+              <button type="button" className="block w-full border-b border-white/15 py-4 text-[31px] font-semibold leading-[1.15]" onClick={() => { onNavigatePharmacovigilance?.(); setMobileMenuOpen(false); }}>Pharmacovigilance</button>
+              <button type="button" className="block w-full border-b border-white/15 py-4 text-[31px] font-semibold leading-[1.15]" onClick={() => { onNavigateCareers?.(); setMobileMenuOpen(false); }}>Careers</button>
+              <button type="button" className="block w-full border-b border-white/15 py-4 text-[31px] font-semibold leading-[1.15]" onClick={() => { onNavigateContact?.(); setMobileMenuOpen(false); }}>Contact us</button>
+            </div>
+          </div>
+        </div>
+      ) : null}
       <style dangerouslySetInnerHTML={{ __html: `
         html, body, #root { background-color: white !important; margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
       ` }} />
       <div
-        className="home-figma relative h-[5858px] w-[1920px] shrink-0"
+        className="figma-page home-figma relative shrink-0"
+        style={{ "--figma-page-width": 1920, "--figma-page-height": 5858 } as any}
         data-node-id="47:269"
         data-name="Home"
       >
@@ -1039,7 +1397,7 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute contents left-[calc(50%-347px)] top-[71px]"
+          className="absolute contents left-[calc(50%-347px)] top-[71px] max-xl:hidden"
           data-node-id="47:441"
         >
           <p
@@ -1298,7 +1656,7 @@ export default function Home({
             />
           </div>
         </div>
-        <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px]">
+        <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px] max-xl:hidden">
           <button
             type="button"
             className="absolute font-['Google_Sans:Regular',sans-serif] leading-[20px] left-0 not-italic text-[#010c0d] text-[24px] top-[5px] tracking-[-0.144px] whitespace-nowrap cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 rounded-[2px]"

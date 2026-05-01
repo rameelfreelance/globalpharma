@@ -53,10 +53,16 @@ export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onN
           <img alt="" className="absolute inset-0 h-full w-full object-cover img-zoom" src={imgBsc01235Jpg2} />
           <div className="absolute inset-0 bg-black/35" />
           <div className="relative z-10 px-5 pt-24 text-white">
-            <h1 className="text-[34px] leading-[1.12] hero-clip-wrap">
+            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12] text-white">
               <span className="hero-clip-line d0">Ensuring Drug Safety Through</span>
               <span className="hero-clip-line d1">Pharmacovigilance</span>
             </h1>
+            <div className="mt-4 inline-block">
+              <p className="inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+                <span className="clip-line d2">Pharmacovigilance</span>
+              </p>
+              <div className="mt-1 h-[8px] w-full bg-[#9d0b0f] line-reveal" />
+            </div>
           </div>
         </section>
 

@@ -75,10 +75,12 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
               <span className="hero-clip-line d0">Contact us for more</span>
               <span className="hero-clip-line d1">information or support</span>
             </h1>
-            <p className="mt-3 inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
-              <span className="clip-line d2">Contact us</span>
-            </p>
-            <div className="mt-1 h-[8px] w-[132px] bg-[#9d0b0f] line-reveal" />
+            <div className="mt-3 inline-block">
+              <p className="inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+                <span className="clip-line d2">Contact us</span>
+              </p>
+              <div className="mt-1 h-[8px] w-full bg-[#9d0b0f] line-reveal" />
+            </div>
           </div>
         </section>
 

@@ -159,6 +159,13 @@ export default function ProductTemplate({
           onNavigateHome={navigation.onNavigateHome}
           onNavigateAbout={navigation.onNavigateAbout}
           onNavigateProducts={navigation.onNavigateProducts}
+          onNavigateAntibiotics={navForLabel('anti-biotics')}
+          onNavigateAntiInflammatory={navForLabel('anti-inflammatory')}
+          onNavigateGastrointestinal={navForLabel('gastrointestinal')}
+          onNavigateCns={navForLabel('cns')}
+          onNavigateCardiovascular={navForLabel('cardiovascular')}
+          onNavigateRespiratory={navForLabel('respiratory')}
+          onNavigateDermatology={navForLabel('dermatology')}
           onNavigateFacility={navigation.onNavigateFacility}
           onNavigatePharmacovigilance={navigation.onNavigatePharmacovigilance}
           onNavigateCareers={navigation.onNavigateCareers}
@@ -181,13 +188,15 @@ export default function ProductTemplate({
             </div>
           ) : null}
           <div className="relative z-10 px-5 pt-22 text-white">
-            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12] text-[#051c2f]">
+            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12] text-white">
               <span className="hero-clip-line d0">{headline}</span>
             </h1>
-            <p className="mt-4 inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
-              <span className="clip-line d2">{categoryTitle}</span>
-            </p>
-            <div className="mt-1 h-[8px] w-[clamp(120px,45vw,190px)] bg-[#9d0b0f] line-reveal" />
+            <div className="mt-4 inline-block">
+              <p className="inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+                <span className="clip-line d2">{categoryTitle}</span>
+              </p>
+              <div className="mt-1 h-[8px] w-full bg-[#9d0b0f] line-reveal" />
+            </div>
           </div>
         </section>
 

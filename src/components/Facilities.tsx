@@ -152,14 +152,16 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
             <img alt="" className="h-full w-full object-cover img-zoom" src={heroImg} />
           </div>
           <div className="relative z-10 px-5 pt-22 text-white">
-            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12] text-[#051c2f]">
+            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12] text-white">
               <span className="hero-clip-line d0">Precision Engineering</span>
               <span className="hero-clip-line d1">World-Class Excellence</span>
             </h1>
-            <p className="mt-4 inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
-              <span className="clip-line d2">Facility</span>
-            </p>
-            <div className="mt-1 h-[8px] w-[94px] bg-[#9d0b0f] line-reveal" />
+            <div className="mt-4 inline-block">
+              <p className="inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+                <span className="clip-line d2">Facility</span>
+              </p>
+              <div className="mt-1 h-[8px] w-full bg-[#9d0b0f] line-reveal" />
+            </div>
           </div>
         </section>
 

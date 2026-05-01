@@ -76,6 +76,8 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
       title: 'Cardiovascular / Lipid Control',
       body: 'Cholesterol management with Rosuvastatin Calcium formulations.',
       icon: iconTube,
+      iconClass: 'scale-[1.42]',
+      iconWrapperClass: 'overflow-visible',
       onClick: onNavigateCardiovascular,
     },
     {
@@ -119,14 +121,14 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
             key={card.title}
             type="button"
             onClick={card.onClick}
-            className="product-card group absolute block h-[320px] w-[450px] bg-white text-left scale-in"
+            className="product-card group absolute block min-h-[340px] w-[450px] bg-white text-left scale-in"
             style={{ left: card.left, top: card.top, cursor: 'pointer' }}
           >
             <div className="absolute left-[382px] top-[47px] flex h-[20px] w-[20px] items-center justify-center">
               <img alt="" className="block h-auto w-auto max-h-[20px] max-w-[20px] object-contain" src={iconArrowOutward} />
             </div>
-            <div className="absolute left-[46px] top-[37px] flex h-[70px] w-[70px] items-center justify-center overflow-hidden">
-              <img alt="" className="block size-full object-contain" src={card.icon} />
+            <div className={`absolute left-[46px] top-[37px] flex h-[70px] w-[70px] items-center justify-center ${card.iconWrapperClass ?? 'overflow-hidden'}`}>
+              <img alt="" className={`block size-full object-contain ${card.iconClass ?? ''}`} src={card.icon} />
             </div>
             <p className="absolute left-[46px] top-[139px] w-[359px] font-['Google_Sans:Medium',sans-serif] text-[36px] leading-[37px] text-[#0b0f13]">
               {card.title}

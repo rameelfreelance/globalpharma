@@ -71,7 +71,7 @@ export default function AntiInflammatoryAnalgesics({
           <img alt="" className="absolute inset-0 size-full object-cover" src={heroImageB} />
         </div>
 
-        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">
+        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f] fade-up d0">
           Expanding therapeutic segments with automated manufacturing
         </p>
         <div className="absolute left-[-1px] top-[917px] h-[2641px] w-[1921px] border border-[#efefef] bg-[#f5f8f9]" />
@@ -79,7 +79,7 @@ export default function AntiInflammatoryAnalgesics({
         <p className="absolute left-[887px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Anti-inflammatory / Analgesics</span></p>
         <div className="absolute left-[863px] top-[587px] h-[12px] w-[889px] bg-[#9d0b0f] line-reveal" />
 
-        <button type="button" onClick={onNavigateProducts} className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left">
+        <button type="button" onClick={onNavigateProducts} className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left scale-in d2">
           <div className="absolute left-[39px] top-[37px] h-[70px] w-[70px] overflow-hidden"><img alt="" className="size-full object-contain" src={cardIcon} /></div>
           <div className="absolute left-[389px] top-[38px] h-[20px] w-[20px]"><img alt="" className="size-full -scale-x-100" src={backArrow} /></div>
           <p className="absolute left-[39px] top-[139px] w-[359px] font-['Google_Sans:Medium',sans-serif] text-[36px] leading-[37px] text-[#9d0b0f]">Anti-inflammatory / Analgesics</p>

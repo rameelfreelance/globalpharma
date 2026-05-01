@@ -40,8 +40,8 @@ export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onN
         <p className="absolute left-[1173px] top-[498px] whitespace-nowrap text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] tracking-[-0.6px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Pharmacovigilance</span></p>
         <div className="absolute left-[1153px] top-[587px] h-[12px] w-[557px] bg-[#9d0b0f] line-reveal" />
 
-        <div className="absolute left-[91px] top-[1005px] h-[2353px] w-[1677px] bg-[#f5f8f9]" />
-        <div className="absolute left-[157px] top-[1041px] h-[2272px] w-[1607px]">
+        <div className="absolute left-[91px] top-[1005px] h-[2353px] w-[1677px] bg-[#f5f8f9] fade-up d1" />
+        <div className="absolute left-[157px] top-[1041px] h-[2272px] w-[1607px] scale-in d2">
           <img alt="" className="absolute inset-0 size-full object-cover" src={img1011} />
         </div>
         <div className="absolute left-[1768px] top-[1005px] h-[2353px] w-[27px] bg-[#f1f1f1]">
@@ -77,13 +77,13 @@ export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onN
 
         <button
           type="button"
-          className="absolute left-[790px] top-[3478px] flex w-[257px] cursor-pointer items-center justify-center gap-[10px] border-0 bg-black px-[40px] py-[20px] transition-colors duration-300 ease-out hover:bg-[#9d0b0f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50"
+          className="absolute left-[790px] top-[3478px] flex w-[257px] scale-in d3 cursor-pointer items-center justify-center gap-[10px] border-0 bg-black px-[40px] py-[20px] transition-colors duration-300 ease-out hover:bg-[#9d0b0f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50"
         >
           <span className="font-['Inter:Medium',sans-serif] text-[18px] leading-[18px] text-white">Submit</span>
           <span className="relative size-[24px]"><img alt="" className="absolute inset-0 size-full" src={imgArrowRight} /></span>
         </button>
 
-        <div className="absolute bottom-0 left-0 w-[1920px] bg-[#f5f5f5]">
+        <div className="absolute bottom-0 left-0 w-[1920px] bg-[#f5f5f5] fade-up d3">
           <div className="h-[509px] bg-[#4e0a0c] px-[195px] pb-[99px] pt-[98px]">
             <div className="inline-grid place-items-start leading-[0]">
               <div className="flex w-[1532px] flex-col gap-[4px]">

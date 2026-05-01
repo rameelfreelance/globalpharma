@@ -59,7 +59,7 @@ export default function AntiBiotics({
           <img alt="" className="absolute inset-0 size-full object-cover" src={heroImage} />
         </div>
 
-        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">
+        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f] fade-up d0">
           Expanding therapeutic segments with automated manufacturing
         </p>
         <div className="absolute left-[-1px] top-[917px] h-[1286px] w-[1921px] border border-[#efefef] bg-[#f5f8f9]" />
@@ -71,7 +71,7 @@ export default function AntiBiotics({
           type="button"
           onClick={onNavigateProducts}
           aria-label="Go back to products page"
-          className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left"
+          className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left scale-in d2"
         >
           <div className="absolute left-[46px] top-[37px] h-[70px] w-[70px] overflow-hidden">
             <img alt="" className="size-full object-contain" src={capsuleIcon} />
@@ -104,7 +104,7 @@ export default function AntiBiotics({
           <p className="mt-2 font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[28px] text-[#0b0f13]/70">Cefixime (as trihydrate)...400mg</p>
         </div>
 
-        <div className="absolute left-0 top-[2203px] w-[1920px] bg-[#f5f5f5]">
+        <div className="absolute left-0 top-[2203px] w-[1920px] bg-[#f5f5f5] fade-up d3">
           <div className="h-[509px] bg-[#4e0a0c] px-[195px] pb-[99px] pt-[98px]">
             <div className="flex w-[1532px] gap-[63px] text-white">
               <div className="w-[418px]">

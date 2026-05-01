@@ -258,16 +258,20 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
         ))}
 
         <div ref={qualityRef} className="absolute left-[203px] top-[4373px] h-[1px] w-[1px]" />
-        <p className="absolute left-[203px] top-[4373px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line">Quality Operations</span></p>
+        <p className="absolute left-[203px] top-[4373px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f]">
+          Quality Operations
+        </p>
         <p className="absolute left-[203px] top-[4470px] w-[724px] font-['Google_Sans:Regular',sans-serif] text-[27px] leading-[40.5px] text-[#2f4252]">
           Our Quality Management System (QMS) is backed by state-of-the-art analytical instruments, stability chambers, and highly trained professionals. All processes follow Good Laboratory Practices (GLP) with emphasis on validation, quality assurance, and product stability.
         </p>
         <p className="absolute left-[1242px] top-[4443px] font-['Google_Sans:Medium',sans-serif] text-[18px] uppercase tracking-[1.71px] text-[#9d0b0f]">Certifications &amp; compliance</p>
-        <img
-          alt="ISO 9001, ISO 14001, ISO 45001, and GMP certifications"
-          src="/assets/certifications.png"
-          className="absolute left-[1114px] top-[4507px] h-[122px] w-[557px] object-contain"
-        />
+        <div className="absolute left-[1114px] top-[4507px] h-[122px] w-[557px] clip-wrap">
+          <img
+            alt="ISO 9001, ISO 14001, ISO 45001, and GMP certifications"
+            src="/assets/certifications.png"
+            className="clip-line h-[122px] w-[557px] object-contain"
+          />
+        </div>
         <div className="fixed inset-x-0 top-0 z-[70] flex justify-center">
           <div className="relative h-[188px] w-[1920px]">
             <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />

@@ -55,13 +55,13 @@ export default function RespiratoryAntiallergic({
         <div className="absolute left-[1px] top-[476px] h-[455px] w-[1920px] bg-[#9d0b0f]" />
         <div className="absolute left-[-55px] top-[179px] h-[1354px] w-[2031px] -scale-y-100 rotate-180 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[56px_297px] mask-size-[1920px_455px]" style={{ maskImage: `url('${heroMask}')` }}><img alt="" className="size-full object-cover" src={heroImageA} /></div>
         <div className="absolute left-[-41px] top-[315px] h-[1333px] w-[2004px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[42px_161px] mask-size-[1920px_455px]" style={{ maskImage: `url('${heroMask}')` }}><img alt="" className="size-full object-cover" src={heroImageB} /></div>
-        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f]">Expanding therapeutic segments with automated manufacturing</p>
+        <p className="absolute left-[195px] top-[241px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f] fade-up d0">Expanding therapeutic segments with automated manufacturing</p>
         <div className="absolute left-[-1px] top-[917px] h-[1286px] w-[1921px] border border-[#efefef] bg-[#f5f8f9]" />
         <div className="absolute left-[1008px] top-[476px] h-[111px] w-[744px] bg-white" />
         <p className="absolute left-[1037px] top-[494px] font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Respiratory &amp; Antiallergic</span></p>
         <div className="absolute left-[1008px] top-[587px] h-[12px] w-[744px] bg-[#9d0b0f] line-reveal" />
 
-        <button type="button" onClick={onNavigateProducts} className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left">
+        <button type="button" onClick={onNavigateProducts} className="absolute left-[195px] top-[1060px] h-[320px] w-[450px] bg-white text-left scale-in d2">
           <div className="absolute left-[47px] top-[39px] h-[70px] w-[70px] overflow-hidden"><img alt="" className="size-full object-contain" src={iconResp} /></div>
           <div className="absolute left-[395px] top-[39px] h-[20px] w-[20px]"><img alt="" className="size-full -scale-x-100" src={backArrow} /></div>
           <div className="absolute left-[47px] top-[141px] w-[336px]">
@@ -70,7 +70,7 @@ export default function RespiratoryAntiallergic({
           </div>
         </button>
 
-        <div className="absolute left-0 top-[2203px] w-[1920px] bg-[#f5f5f5]">
+        <div className="absolute left-0 top-[2203px] w-[1920px] bg-[#f5f5f5] fade-up d3">
           <div className="h-[509px] bg-[#4e0a0c] px-[195px] pb-[99px] pt-[98px]">
             <div className="flex w-[1532px] gap-[63px] text-white">
               <div className="w-[418px]"><div className="mb-4 flex items-start gap-3"><img alt="" className="h-[44px] w-[44px] object-contain" src={footerLogo} /><div className="font-['Myriad_Pro:Semibold',sans-serif] text-[22px] leading-[23px]"><p>Global</p><p>Pharmaceuticals</p><p>Pakistan</p></div></div><p className="font-['Inter:Regular',sans-serif] text-[21.98px] leading-[39px]">We are committed to manufacturing and<br />delivering high-quality pharmaceutical<br />products that meet stringent regulatory<br />standards.</p><div className="mt-6 flex gap-3"><a href="https://www.facebook.com/globalpharmaceuticalspk" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on Facebook" className="inline-flex rounded-full transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"><img alt="Facebook" className="size-[29px]" src={footerSoc1} /></a><a href="https://www.linkedin.com/company/global-pharmaceuticals-pvt-limited/" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on LinkedIn" className="inline-flex rounded-full transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"><img alt="LinkedIn" className="size-[29px]" src={footerSoc2} /></a></div></div>

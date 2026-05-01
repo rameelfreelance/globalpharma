@@ -103,16 +103,19 @@ export default function AboutUs({
           onNavigateContact={onNavigateContact}
         />
 
-        <section ref={aboutRef} className="relative h-[430px] overflow-hidden bg-[#f5f8f9]">
+        <section ref={aboutRef} className="relative h-[360px] overflow-hidden bg-[#f5f8f9]">
           <img alt="" className="absolute inset-0 h-full w-full object-cover img-zoom" src={imgHeroMain} />
           <img alt="" className="absolute inset-0 h-full w-full object-cover opacity-55" src={imgHeroOverlay} />
           <div className="absolute inset-0 bg-black/20" />
-          <div className="relative z-10 px-5 pb-8 pt-24 text-white">
-            <p className="text-xs uppercase tracking-[1.8px] fade-up d0">About us</p>
-            <h1 className="mt-3 text-[34px] leading-[1.12] hero-clip-wrap">
-              <span className="hero-clip-line d1">Committed to Quality,</span>
-              <span className="hero-clip-line d2">Innovation &amp; Trusted Medicine</span>
+          <div className="relative z-10 px-5 pt-22 text-white">
+            <h1 className="text-[35px] font-semibold leading-[1.12] hero-clip-wrap">
+              <span className="hero-clip-line d0">Committed to Quality,</span>
+              <span className="hero-clip-line d1">Innovation &amp; Trusted Medicine</span>
             </h1>
+            <p className="mt-4 inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+              <span className="clip-line d2">About us</span>
+            </p>
+            <div className="mt-1 h-[8px] w-[132px] bg-[#9d0b0f] line-reveal" />
           </div>
         </section>
 
@@ -121,7 +124,7 @@ export default function AboutUs({
             <span className="clip-line d0">Quality is the Heart of Everything</span>
           </h2>
           <p className="mt-4 text-[15px] leading-7 text-[#2f4252] fade-up d1">
-            Global Pharmaceuticals Pakistan is a quality-driven pharmaceutical manufacturer committed to delivering safe, effective, and affordable medicines worldwide. We operate under strict cGMP compliance and international quality standards to ensure consistency, safety, and reliability.
+            Global Pharmaceuticals Pakistan is a quality-driven pharmaceutical manufacturer committed to delivering safe, effective, and affordable medicines worldwide. We operate under strict cGMP compliance and international quality standards to ensure consistency, safety, and reliability. Our portfolio includes oral and topical dosage forms designed to meet diverse therapeutic needs.
           </p>
           <div className="mt-6 h-[220px] overflow-hidden scale-in d2">
             <img alt="" className="h-full w-full object-cover img-zoom" src={imgVisionMissionRight} />
@@ -147,19 +150,48 @@ export default function AboutUs({
           <img alt="" className="absolute inset-0 h-full w-full object-cover opacity-35 img-zoom" src={imgHeroMain} />
           <div className="relative z-10">
             <p className="text-xs uppercase tracking-[2px] fade-up d0">Manufacturing Process</p>
-            <div className="mt-5 space-y-3">
+            <div className="mt-4 space-y-2">
               {[
-                '1. Weighing & Dispensing',
-                '2. Manufacturing Suites',
-                '3. QC Testing & Analysis',
-                '4. Packaging & Labeling',
-                '5. Final Dispatch',
+                { n: '1', t: 'Weighing & Dispensing' },
+                { n: '2', t: 'Manufacturing Suites' },
+                { n: '3', t: 'QC Testing & Analysis' },
+                { n: '4', t: 'Packaging & Labeling' },
+                { n: '5', t: 'Final Dispatch' },
               ].map((step, idx) => (
-                <div key={step} className={`rounded bg-white/95 p-4 text-[#051c2f] fade-up d${idx}`}>
-                  <p className="text-[17px] font-['Google_Sans:Medium',sans-serif]">{step}</p>
+                <div
+                  key={step.n}
+                  className={`bg-white px-2.5 pb-2.5 pt-2 text-[#051c2f] fade-up d${idx} ${
+                    idx % 2 === 1 ? 'ml-4' : ''
+                  } ${step.n === '5' ? 'w-[88%]' : 'w-full'}`}
+                >
+                  <div className="mb-1.5 inline-flex h-6 w-6 items-center justify-center bg-[#9d0b0f] text-[14px] leading-none text-white">
+                    {step.n}
+                  </div>
+                  <p className="text-[20px] leading-[1.06] tracking-[-0.1px] sm:text-[24px]">{step.t}</p>
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-10">
+          <div className="grid grid-cols-1 gap-3">
+            {[
+              'Quality Control (QC) Laboratory',
+              'Quality Assurance (QA)',
+              'Documentation & Retention',
+              'Research & Development (R&D) Laboratory',
+              'Warehousing',
+              'Regulatory Affairs (RA)',
+            ].map((item, idx) => (
+              <button
+                key={item}
+                type="button"
+                className={`mx-auto flex h-[52px] w-full max-w-[360px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-4 text-center text-[14px] text-[#525866] shadow-[0_1px_2px_rgba(82,88,102,0.06)] transition-all duration-300 hover:bg-[#9d0b0f] hover:text-white fade-up d${idx}`}
+              >
+                {item}
+              </button>
+            ))}
           </div>
         </section>
 

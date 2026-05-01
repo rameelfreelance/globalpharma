@@ -55,15 +55,22 @@ export default function Navbar({
     "absolute top-[77px] z-[2] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] whitespace-nowrap focus-visible:outline-none";
 
   const navClusterRow =
-    "pointer-events-auto absolute left-0 top-[-39px] z-[1] flex h-[108px] items-center gap-[10px]";
+    "pointer-events-auto absolute left-0 top-[-39px] z-[1] flex h-[108px] items-center gap-[8px]";
 
   return (
     <div className="absolute contents z-[80]">
       {/* Home */}
-      <button 
-        type="button" 
-        onClick={onNavigateHome} 
-        className={`${btnBase} left-[calc(50%-347px)] ${activePage === 'home' ? "font-['Google_Sans:Bold',sans-serif] text-[#9d0b0f]" : "text-[#010c0d]"}`}
+      {activePage === 'home' && (
+        <div className="absolute left-[calc(50%-368px)] top-[33px] h-[108px] w-[112px] bg-[#9d0b0f] z-[1]" />
+      )}
+      <button
+        type="button"
+        onClick={onNavigateHome}
+        className={`absolute left-[calc(50%-368px)] top-[33px] z-[30] flex h-[108px] w-[112px] items-center justify-center border-0 bg-transparent px-4 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
+          activePage === 'home'
+            ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
+            : 'text-[#010c0d] hover:text-[#9d0b0f]'
+        }`}
       >
         Home
       </button>
@@ -72,7 +79,7 @@ export default function Navbar({
       <div className="absolute left-[calc(50%-231px)] top-[72px] z-20 h-[228px] w-[270px] pointer-events-none">
         <div
           className={`${navClusterRow} ${
-            activePage === 'about' ? 'bg-[#9d0b0f] px-3' : 'bg-transparent px-0'
+            activePage === 'about' ? 'bg-[#9d0b0f] px-2' : 'bg-transparent px-0'
           }`}
         >
           <button
@@ -106,11 +113,11 @@ export default function Navbar({
       </div>
 
       {/* Products */}
-      <div className="absolute left-[calc(50%-1px)] top-[72px] z-20 h-[440px] w-[365px] pointer-events-none">
+      <div className="absolute left-[calc(50%-8px)] top-[72px] z-20 h-[440px] w-[365px] pointer-events-none">
         <div
           className={`${navClusterRow} ${
             ['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage)
-              ? 'bg-[#9d0b0f] px-3'
+              ? 'bg-[#9d0b0f] px-2'
               : 'bg-transparent px-0'
           }`}
         >
@@ -157,9 +164,9 @@ export default function Navbar({
       </div>
 
       {/* Facility */}
-      <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px] pointer-events-none">
+      <div className="absolute left-[calc(50%+172px)] top-[72px] z-20 h-[228px] w-[270px] pointer-events-none">
         <div
-          className={`${navClusterRow} ${activePage === 'facility' ? 'bg-[#9d0b0f] px-3' : 'bg-transparent px-0'}`}
+          className={`${navClusterRow} ${activePage === 'facility' ? 'bg-[#9d0b0f] pl-4 pr-3' : 'bg-transparent px-0'}`}
         >
           <button
             type="button"
@@ -192,13 +199,13 @@ export default function Navbar({
 
       {/* Pharmacovigilance */}
       {activePage === 'pharmacovigilance' && (
-        <div className="absolute left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] bg-[#9d0b0f] z-[1]" />
+        <div className="absolute left-[calc(50%+314px)] top-[33px] h-[108px] w-[252px] bg-[#9d0b0f] z-[1]" />
       )}
       <button
         type="button"
         aria-label="Pharmacovigilance"
         onClick={onNavigatePharmacovigilance}
-        className={`absolute z-[30] left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] pl-[18px] text-left border-0 bg-transparent font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
+        className={`absolute z-[30] left-[calc(50%+314px)] top-[33px] h-[108px] w-[252px] pl-[18px] text-left border-0 bg-transparent font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
           activePage === 'pharmacovigilance'
             ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
             : 'text-[#010c0d] hover:text-[#9d0b0f]'
@@ -208,12 +215,15 @@ export default function Navbar({
       </button>
 
       {/* Careers */}
+      {activePage === 'careers' && (
+        <div className="absolute left-[calc(50%+576px)] top-[33px] h-[108px] w-[130px] bg-[#9d0b0f] z-[1]" />
+      )}
       <button
         type="button"
         onClick={onNavigateCareers}
-        className={`absolute left-[calc(50%+526px)] top-[33px] z-[3] flex h-[108px] w-[130px] items-center justify-center border-0 bg-transparent px-4 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
+        className={`absolute left-[calc(50%+576px)] top-[33px] z-[30] flex h-[108px] w-[130px] items-center justify-center border-0 bg-transparent px-4 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
           activePage === 'careers'
-            ? "bg-[#9d0b0f] font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
+            ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
             : 'text-[#010c0d] hover:text-[#9d0b0f]'
         }`}
       >
@@ -221,12 +231,15 @@ export default function Navbar({
       </button>
 
       {/* Contact us */}
+      {activePage === 'contact' && (
+        <div className="absolute left-[calc(50%+718px)] top-[33px] h-[108px] w-[153px] bg-[#9d0b0f] z-[1]" />
+      )}
       <button
         type="button"
         onClick={onNavigateContact}
-        className={`absolute left-[calc(50%+663px)] top-[33px] z-[3] flex h-[108px] w-[153px] items-center justify-center border-0 bg-transparent px-4 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
+        className={`absolute left-[calc(50%+718px)] top-[33px] z-[30] flex h-[108px] w-[153px] items-center justify-center border-0 bg-transparent px-4 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
           activePage === 'contact'
-            ? "bg-[#9d0b0f] font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
+            ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
             : 'text-[#010c0d] hover:text-[#9d0b0f]'
         }`}
       >

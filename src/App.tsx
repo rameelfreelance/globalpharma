@@ -24,6 +24,58 @@ export default function App() {
   const [zoomLevel, setZoomLevel] = useState(1)
 
   useEffect(() => {
+    const parseHash = () => {
+      const raw = window.location.hash.replace(/^#/, '')
+      if (!raw) return
+      const [rawPage, rawSection] = raw.split(':')
+      const parsedPage = rawPage as typeof page
+      const validPages = new Set([
+        'home',
+        'about',
+        'contact',
+        'careers',
+        'pharmacovigilance',
+        'facility',
+        'product',
+        'antibiotics',
+        'antiinflammatory',
+        'gastrointestinal',
+        'cns',
+        'cardiovascular',
+        'respiratory',
+        'dermatology',
+      ])
+      if (!validPages.has(parsedPage)) return
+      setPage(parsedPage)
+      if (parsedPage === 'about') {
+        const about = rawSection as typeof aboutSection
+        if (about === 'about' || about === 'vision' || about === 'ims') {
+          setAboutSection(about)
+        }
+      }
+      if (parsedPage === 'facility') {
+        const facility = rawSection as typeof facilitySection
+        if (facility === 'production' || facility === 'quality') {
+          setFacilitySection(facility)
+        }
+      }
+    }
+
+    parseHash()
+    window.addEventListener('hashchange', parseHash)
+    return () => window.removeEventListener('hashchange', parseHash)
+  }, [])
+
+  useEffect(() => {
+    let hash = page
+    if (page === 'about') hash = `about:${aboutSection}`
+    if (page === 'facility') hash = `facility:${facilitySection}`
+    if (window.location.hash !== `#${hash}`) {
+      window.history.replaceState(null, '', `#${hash}`)
+    }
+  }, [page, aboutSection, facilitySection])
+
+  useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth
       setZoomLevel(width < 1920 ? width / 1920 : 1)

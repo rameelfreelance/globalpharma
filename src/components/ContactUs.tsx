@@ -115,7 +115,7 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
                 <path fill="#fff" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.3 22 2 13.7 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z" />
               </svg>
             </div>
-            <div className="font-['Inter:Regular',sans-serif] text-[25px] leading-[35px] text-black fade-up d2">
+            <div className="pt-[4px] font-['Inter:Regular',sans-serif] text-[22px] leading-[32px] text-black fade-up d2">
               <a href="tel:+92514499040" className="block transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">+92 51 4499040</a>
               <a href="tel:+92514499041" className="block transition-colors duration-200 hover:text-[#9d0b0f] hover:underline">+92 51 4499041</a>
             </div>

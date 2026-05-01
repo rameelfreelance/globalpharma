@@ -16,7 +16,7 @@ const iconMicroscope = '/assets/figma/27942b43-7216-4ace-a79e-2509a74f4907.svg'
 const iconSanitizer = '/assets/figma/0ed5bc63-63ff-42ba-9f62-937f869734fb.svg'
 const iconStethoscope = '/assets/figma/4f64c9aa-7a69-414b-af44-51b82c099db5.svg'
 const iconBottle = '/assets/figma/9a881ee6-c85a-4014-ae18-0fdbbfd402fa.svg'
-const iconTube = '/assets/figma/97bc20a4-b7bf-4354-a981-8339a05d183c.svg'
+const iconTube = '/assets/test-tube-line.svg'
 const iconMask = '/assets/figma/f64cded9-f220-4039-825a-ac73fcfec2fa.svg'
 
 type ProductProps = {

@@ -304,14 +304,14 @@ export default function ProductTemplate({
             ) : null}
           </div>
 
-          <div className="absolute left-[1238px] top-[288px] h-[111px] w-[472px] bg-white">
+          <div className="absolute left-[868px] top-[288px] h-[111px] w-[842px] bg-white">
             <div className="px-[30px] py-[8px]">
-              <p className="hero-clip-wrap text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">
+              <p className="hero-clip-wrap whitespace-nowrap text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">
                 <span className="hero-clip-line d2">{categoryTitle}</span>
               </p>
             </div>
           </div>
-          <div className="absolute left-[1238px] top-[399px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
+          <div className="absolute left-[868px] top-[399px] h-[12px] w-[842px] bg-[#9d0b0f] line-reveal" />
         </section>
 
         <section className="py-14" style={{ backgroundColor: 'var(--color-bg-section)' }}>

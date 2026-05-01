@@ -25,6 +25,7 @@ type Props = {
   onNavigateGastrointestinal: () => void
   onNavigateCns: () => void
   onNavigateCardiovascular: () => void
+  onNavigateDermatology: () => void
   onNavigatePharmacovigilance: () => void
   onNavigateCareers: () => void
   onNavigateContact: () => void
@@ -34,6 +35,7 @@ type Props = {
 export default function RespiratoryAntiallergic({
   onNavigateHome, onNavigateAbout, onNavigateProducts, onNavigateAntibiotics, onNavigateAntiInflammatory,
   onNavigateGastrointestinal, onNavigateCns, onNavigateCardiovascular, onNavigatePharmacovigilance,
+  onNavigateDermatology,
   onNavigateCareers, onNavigateContact, onNavigateFacility,
 }: Props) {
   return (
@@ -74,7 +76,7 @@ export default function RespiratoryAntiallergic({
         { label: 'Gastrointestinal Agents', onClick: onNavigateGastrointestinal },
         { label: 'CNS / Psychiatric', onClick: onNavigateCns },
         { label: 'Cardiovascular / Lipid Control', onClick: onNavigateCardiovascular },
-        { label: 'Dermatology', onClick: onNavigateProducts },
+        { label: 'Dermatology', onClick: onNavigateDermatology },
         { label: 'Respiratory & Antiallergic', onClick: () => {}, isActive: true },
       ]}
     />

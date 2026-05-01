@@ -115,6 +115,11 @@ export default function App() {
         onNavigateAbout={() => setPage('about')}
         onNavigateProducts={() => setPage('product')}
         onNavigateAntiInflammatory={() => setPage('antiinflammatory')}
+        onNavigateGastrointestinal={() => setPage('gastrointestinal')}
+        onNavigateCns={() => setPage('cns')}
+        onNavigateCardiovascular={() => setPage('cardiovascular')}
+        onNavigateRespiratory={() => setPage('respiratory')}
+        onNavigateDermatology={() => setPage('dermatology')}
         onNavigatePharmacovigilance={() => setPage('pharmacovigilance')}
         onNavigateCareers={() => setPage('careers')}
         onNavigateContact={() => setPage('contact')}
@@ -128,6 +133,11 @@ export default function App() {
         onNavigateAbout={() => setPage('about')}
         onNavigateProducts={() => setPage('product')}
         onNavigateAntibiotics={() => setPage('antibiotics')}
+        onNavigateGastrointestinal={() => setPage('gastrointestinal')}
+        onNavigateCns={() => setPage('cns')}
+        onNavigateCardiovascular={() => setPage('cardiovascular')}
+        onNavigateRespiratory={() => setPage('respiratory')}
+        onNavigateDermatology={() => setPage('dermatology')}
         onNavigatePharmacovigilance={() => setPage('pharmacovigilance')}
         onNavigateCareers={() => setPage('careers')}
         onNavigateContact={() => setPage('contact')}
@@ -142,6 +152,10 @@ export default function App() {
         onNavigateProducts={() => setPage('product')}
         onNavigateAntibiotics={() => setPage('antibiotics')}
         onNavigateAntiInflammatory={() => setPage('antiinflammatory')}
+        onNavigateCns={() => setPage('cns')}
+        onNavigateCardiovascular={() => setPage('cardiovascular')}
+        onNavigateRespiratory={() => setPage('respiratory')}
+        onNavigateDermatology={() => setPage('dermatology')}
         onNavigatePharmacovigilance={() => setPage('pharmacovigilance')}
         onNavigateCareers={() => setPage('careers')}
         onNavigateContact={() => setPage('contact')}
@@ -157,6 +171,9 @@ export default function App() {
         onNavigateAntibiotics={() => setPage('antibiotics')}
         onNavigateAntiInflammatory={() => setPage('antiinflammatory')}
         onNavigateGastrointestinal={() => setPage('gastrointestinal')}
+        onNavigateCardiovascular={() => setPage('cardiovascular')}
+        onNavigateRespiratory={() => setPage('respiratory')}
+        onNavigateDermatology={() => setPage('dermatology')}
         onNavigatePharmacovigilance={() => setPage('pharmacovigilance')}
         onNavigateCareers={() => setPage('careers')}
         onNavigateContact={() => setPage('contact')}
@@ -173,6 +190,8 @@ export default function App() {
         onNavigateAntiInflammatory={() => setPage('antiinflammatory')}
         onNavigateGastrointestinal={() => setPage('gastrointestinal')}
         onNavigateCns={() => setPage('cns')}
+        onNavigateRespiratory={() => setPage('respiratory')}
+        onNavigateDermatology={() => setPage('dermatology')}
         onNavigatePharmacovigilance={() => setPage('pharmacovigilance')}
         onNavigateCareers={() => setPage('careers')}
         onNavigateContact={() => setPage('contact')}
@@ -190,6 +209,7 @@ export default function App() {
         onNavigateGastrointestinal={() => setPage('gastrointestinal')}
         onNavigateCns={() => setPage('cns')}
         onNavigateCardiovascular={() => setPage('cardiovascular')}
+        onNavigateDermatology={() => setPage('dermatology')}
         onNavigatePharmacovigilance={() => setPage('pharmacovigilance')}
         onNavigateCareers={() => setPage('careers')}
         onNavigateContact={() => setPage('contact')}

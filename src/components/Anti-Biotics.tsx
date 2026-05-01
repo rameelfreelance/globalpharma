@@ -22,6 +22,11 @@ type AntiBioticsProps = {
   onNavigateAbout: () => void
   onNavigateProducts: () => void
   onNavigateAntiInflammatory: () => void
+  onNavigateGastrointestinal: () => void
+  onNavigateCns: () => void
+  onNavigateCardiovascular: () => void
+  onNavigateRespiratory: () => void
+  onNavigateDermatology: () => void
   onNavigatePharmacovigilance: () => void
   onNavigateCareers: () => void
   onNavigateContact: () => void
@@ -33,6 +38,11 @@ export default function AntiBiotics({
   onNavigateAbout,
   onNavigateProducts,
   onNavigateAntiInflammatory,
+  onNavigateGastrointestinal,
+  onNavigateCns,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology,
   onNavigatePharmacovigilance,
   onNavigateCareers,
   onNavigateContact,
@@ -84,11 +94,11 @@ export default function AntiBiotics({
       productMenuLinks={[
         { label: 'Anti-biotics', onClick: () => {}, isActive: true },
         { label: 'Anti-inflammatory / Analgesics', onClick: onNavigateAntiInflammatory },
-        { label: 'Gastrointestinal Agents', onClick: onNavigateProducts },
-        { label: 'CNS / Psychiatric', onClick: onNavigateProducts },
-        { label: 'Cardiovascular / Lipid Control', onClick: onNavigateProducts },
-        { label: 'Dermatology', onClick: onNavigateProducts },
-        { label: 'Respiratory & Antiallergic', onClick: onNavigateProducts },
+        { label: 'Gastrointestinal Agents', onClick: onNavigateGastrointestinal },
+        { label: 'CNS / Psychiatric', onClick: onNavigateCns },
+        { label: 'Cardiovascular / Lipid Control', onClick: onNavigateCardiovascular },
+        { label: 'Dermatology', onClick: onNavigateDermatology },
+        { label: 'Respiratory & Antiallergic', onClick: onNavigateRespiratory },
       ]}
     />
   )

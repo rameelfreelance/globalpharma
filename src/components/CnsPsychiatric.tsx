@@ -52,6 +52,9 @@ type Props = {
   onNavigateAntibiotics: () => void
   onNavigateAntiInflammatory: () => void
   onNavigateGastrointestinal: () => void
+  onNavigateCardiovascular: () => void
+  onNavigateRespiratory: () => void
+  onNavigateDermatology: () => void
   onNavigatePharmacovigilance: () => void
   onNavigateCareers: () => void
   onNavigateContact: () => void
@@ -65,6 +68,9 @@ export default function CnsPsychiatric({
   onNavigateAntibiotics,
   onNavigateAntiInflammatory,
   onNavigateGastrointestinal,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology,
   onNavigatePharmacovigilance,
   onNavigateCareers,
   onNavigateContact,
@@ -111,9 +117,9 @@ export default function CnsPsychiatric({
         { label: 'Anti-biotics', onClick: onNavigateAntibiotics },
         { label: 'Gastrointestinal Agents', onClick: onNavigateGastrointestinal },
         { label: 'CNS / Psychiatric', onClick: () => {}, isActive: true },
-        { label: 'Cardiovascular / Lipid Control', onClick: onNavigateProducts },
-        { label: 'Dermatology', onClick: onNavigateProducts },
-        { label: 'Respiratory & Antiallergic', onClick: onNavigateProducts },
+        { label: 'Cardiovascular / Lipid Control', onClick: onNavigateCardiovascular },
+        { label: 'Dermatology', onClick: onNavigateDermatology },
+        { label: 'Respiratory & Antiallergic', onClick: onNavigateRespiratory },
       ]}
     />
   )

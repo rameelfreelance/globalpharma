@@ -24,6 +24,8 @@ type Props = {
   onNavigateAntiInflammatory: () => void
   onNavigateGastrointestinal: () => void
   onNavigateCns: () => void
+  onNavigateRespiratory: () => void
+  onNavigateDermatology: () => void
   onNavigatePharmacovigilance: () => void
   onNavigateCareers: () => void
   onNavigateContact: () => void
@@ -38,6 +40,8 @@ export default function CardiovascularLipidControl({
   onNavigateAntiInflammatory,
   onNavigateGastrointestinal,
   onNavigateCns,
+  onNavigateRespiratory,
+  onNavigateDermatology,
   onNavigatePharmacovigilance,
   onNavigateCareers,
   onNavigateContact,
@@ -81,8 +85,8 @@ export default function CardiovascularLipidControl({
         { label: 'Gastrointestinal Agents', onClick: onNavigateGastrointestinal },
         { label: 'CNS / Psychiatric', onClick: onNavigateCns },
         { label: 'Cardiovascular / Lipid Control', onClick: () => {}, isActive: true },
-        { label: 'Dermatology', onClick: onNavigateProducts },
-        { label: 'Respiratory & Antiallergic', onClick: onNavigateProducts },
+        { label: 'Dermatology', onClick: onNavigateDermatology },
+        { label: 'Respiratory & Antiallergic', onClick: onNavigateRespiratory },
       ]}
     />
   )

@@ -27,6 +27,10 @@ type GastrointestinalProps = {
   onNavigateProducts: () => void
   onNavigateAntibiotics: () => void
   onNavigateAntiInflammatory: () => void
+  onNavigateCns: () => void
+  onNavigateCardiovascular: () => void
+  onNavigateRespiratory: () => void
+  onNavigateDermatology: () => void
   onNavigatePharmacovigilance: () => void
   onNavigateCareers: () => void
   onNavigateContact: () => void
@@ -39,6 +43,10 @@ export default function Gastrointestinal({
   onNavigateProducts,
   onNavigateAntibiotics,
   onNavigateAntiInflammatory,
+  onNavigateCns,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology,
   onNavigatePharmacovigilance,
   onNavigateCareers,
   onNavigateContact,
@@ -96,10 +104,10 @@ export default function Gastrointestinal({
         { label: 'Anti-inflammatory / Analgesics', onClick: onNavigateAntiInflammatory },
         { label: 'Anti-biotics', onClick: onNavigateAntibiotics },
         { label: 'Gastrointestinal Agents', onClick: () => {}, isActive: true },
-        { label: 'CNS / Psychiatric', onClick: onNavigateProducts },
-        { label: 'Cardiovascular / Lipid Control', onClick: onNavigateProducts },
-        { label: 'Dermatology', onClick: onNavigateProducts },
-        { label: 'Respiratory & Antiallergic', onClick: onNavigateProducts },
+        { label: 'CNS / Psychiatric', onClick: onNavigateCns },
+        { label: 'Cardiovascular / Lipid Control', onClick: onNavigateCardiovascular },
+        { label: 'Dermatology', onClick: onNavigateDermatology },
+        { label: 'Respiratory & Antiallergic', onClick: onNavigateRespiratory },
       ]}
     />
   )

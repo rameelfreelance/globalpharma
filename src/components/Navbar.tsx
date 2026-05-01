@@ -51,9 +51,6 @@ export default function Navbar({
     setOpenMenu(prev => prev === menu ? null : menu);
   };
 
-  const btnBase =
-    "absolute top-[77px] z-[2] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] whitespace-nowrap focus-visible:outline-none";
-
   const navClusterRow =
     "pointer-events-auto absolute left-0 top-[-39px] z-[1] flex h-[108px] items-center gap-[8px]";
 

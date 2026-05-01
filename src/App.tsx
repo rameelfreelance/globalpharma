@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { initScrollReveal } from './scroll-reveal'
+import {
+  parseAndApplyHash,
+  syncHash,
+  type AboutSection,
+  type FacilitySection,
+  type Page,
+} from './utils/navigation'
+import { bootstrapScrollReveal } from './utils/animations'
 import AboutUs from './components/AboutUs'
 import AntiBiotics from './components/Anti-Biotics'
 import AntiInflammatoryAnalgesics from './components/AntiInflammatoryAnalgesics'
@@ -18,79 +25,26 @@ import Product from './components/Product'
 
 export default function App() {
   const reduceMotion = useReducedMotion()
-  const [page, setPage] = useState<'home' | 'about' | 'contact' | 'careers' | 'pharmacovigilance' | 'facility' | 'product' | 'antibiotics' | 'antiinflammatory' | 'gastrointestinal' | 'cns' | 'cardiovascular' | 'respiratory' | 'dermatology'>('home')
-  const [aboutSection, setAboutSection] = useState<'about' | 'vision' | 'ims'>('about')
-  const [facilitySection, setFacilitySection] = useState<'production' | 'quality'>('production')
-  const [zoomLevel, setZoomLevel] = useState(1)
+  const [page, setPage] = useState<Page>('home')
+  const [aboutSection, setAboutSection] = useState<AboutSection>('about')
+  const [facilitySection, setFacilitySection] = useState<FacilitySection>('production')
 
   useEffect(() => {
-    const parseHash = () => {
-      const raw = window.location.hash.replace(/^#/, '')
-      if (!raw) return
-      const [rawPage, rawSection] = raw.split(':')
-      const parsedPage = rawPage as typeof page
-      const validPages = new Set([
-        'home',
-        'about',
-        'contact',
-        'careers',
-        'pharmacovigilance',
-        'facility',
-        'product',
-        'antibiotics',
-        'antiinflammatory',
-        'gastrointestinal',
-        'cns',
-        'cardiovascular',
-        'respiratory',
-        'dermatology',
-      ])
-      if (!validPages.has(parsedPage)) return
-      setPage(parsedPage)
-      if (parsedPage === 'about') {
-        const about = rawSection as typeof aboutSection
-        if (about === 'about' || about === 'vision' || about === 'ims') {
-          setAboutSection(about)
-        }
-      }
-      if (parsedPage === 'facility') {
-        const facility = rawSection as typeof facilitySection
-        if (facility === 'production' || facility === 'quality') {
-          setFacilitySection(facility)
-        }
-      }
-    }
+    const handleHashChange = () =>
+      parseAndApplyHash({ setPage, setAboutSection, setFacilitySection })
 
-    parseHash()
-    window.addEventListener('hashchange', parseHash)
-    return () => window.removeEventListener('hashchange', parseHash)
+    handleHashChange()
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
 
   useEffect(() => {
-    let hash = page
-    if (page === 'about') hash = `about:${aboutSection}`
-    if (page === 'facility') hash = `facility:${facilitySection}`
-    if (window.location.hash !== `#${hash}`) {
-      window.history.replaceState(null, '', `#${hash}`)
-    }
+    syncHash(page, aboutSection, facilitySection)
   }, [page, aboutSection, facilitySection])
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth
-      setZoomLevel(width < 1920 ? width / 1920 : 1)
-    }
-    window.addEventListener('resize', handleResize)
-    handleResize()
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
 
   // Re-run scroll observer on every page change (after DOM settles)
   useEffect(() => {
-    const raf = requestAnimationFrame(() => {
-      setTimeout(initScrollReveal, 80)
-    })
-    return () => cancelAnimationFrame(raf)
+    return bootstrapScrollReveal()
   }, [page])
 
   let currentPage = (
@@ -263,7 +217,7 @@ export default function App() {
   }
 
   return (
-    <div style={{ zoom: zoomLevel }}>
+    <div className="overflow-x-hidden w-full max-w-[100vw]">
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={page}

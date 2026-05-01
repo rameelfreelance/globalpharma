@@ -172,7 +172,7 @@ export default function ProductTemplate({
           onNavigateContact={navigation.onNavigateContact}
         />
 
-        <section className="relative h-[360px] overflow-hidden bg-[#9d0b0f]">
+        <section className="relative h-[440px] overflow-hidden bg-[#9d0b0f]">
           <div
             className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"
             style={{ maskImage: `url('${heroMaskSrc}')` }}
@@ -187,11 +187,11 @@ export default function ProductTemplate({
               <img alt="" className="h-full w-full object-cover img-zoom" src={heroImageSecondarySrc} />
             </div>
           ) : null}
-          <div className="relative z-10 px-5 pt-22 text-white">
-            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12] text-white">
+          <div className="relative z-10 px-5 pt-24 text-white">
+            <h1 className="hero-clip-wrap max-w-[95%] text-[clamp(1.9rem,7vw,2.25rem)] font-semibold leading-[1.08] text-white">
               <span className="hero-clip-line d0">{headline}</span>
             </h1>
-            <div className="mt-4 inline-block">
+            <div className="mt-5 inline-block">
               <p className="inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
                 <span className="clip-line d2">{categoryTitle}</span>
               </p>

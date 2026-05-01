@@ -1,4 +1,5 @@
 import { type FormEvent, useEffect, useState } from 'react'
+import MobileFooter from './MobileFooter'
 import Navbar from './Navbar'
 
 const heroImage = '/assets/figma/0044fa93-564e-4e4c-aed2-9f21699640a2.jpg'
@@ -176,15 +177,12 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
           </div>
         </section>
 
-        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
-          <p className="text-[30px] font-semibold leading-[1.15]">Global Pharmaceuticals Pakistan</p>
-          <p className="mt-3 text-[16px] leading-8 text-white/90">We are committed to manufacturing and delivering high-quality pharmaceutical products.</p>
-          <div className="mt-5 space-y-3 text-[16px]">
-            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
-            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">info@globalpharmaceuticalspk.com</a>
-          </div>
-          <p className="mt-6 text-[13px] text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
-        </footer>
+        <MobileFooter
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={() => onNavigateAbout('about')}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateCareers={onNavigateCareers}
+        />
       </div>
     )
   }

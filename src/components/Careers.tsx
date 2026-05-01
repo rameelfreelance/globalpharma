@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import MobileFooter from './MobileFooter'
 import Navbar from './Navbar'
 
 const logoShape = '/assets/figma/b4a5d6d7-b42c-40e9-9d79-0b211ffa688b.svg'
@@ -111,15 +112,12 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
           <button type="button" className="group mt-7 flex w-full items-center justify-center gap-2 bg-[#0b0f13] px-5 py-3 text-white transition-colors duration-200 hover:bg-[#9d0b0f] fade-up d5"><span className="text-[16px] font-medium">Apply Now</span><span className="transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
         </section>
 
-        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
-          <p className="text-[30px] font-semibold leading-[1.15]">Global Pharmaceuticals Pakistan</p>
-          <p className="mt-3 text-[16px] leading-8 text-white/90">We are committed to manufacturing and delivering high-quality pharmaceutical products.</p>
-          <div className="mt-5 space-y-3 text-[16px]">
-            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
-            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">info@globalpharmaceuticalspk.com</a>
-          </div>
-          <p className="mt-6 text-[13px] text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
-        </footer>
+        <MobileFooter
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={() => onNavigateAbout('about')}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateContact={onNavigateContact}
+        />
       </div>
     )
   }

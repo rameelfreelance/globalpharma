@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import MobileFooter from "./MobileFooter";
 
 type HomeProps = {
   onNavigateAbout?: (section?: "about" | "vision" | "ims") => void;
@@ -498,19 +499,12 @@ export default function Home({
           </button>
         </section>
 
-        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
-          <p className="text-[22px] font-semibold">Global Pharmaceuticals Pakistan</p>
-          <p className="mt-2 text-sm leading-7 text-white/90">
-            We are committed to manufacturing and delivering high-quality pharmaceutical products.
-          </p>
-          <div className="mt-4 space-y-2 text-sm">
-            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
-            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">
-              info@globalpharmaceuticalspk.com
-            </a>
-          </div>
-          <p className="mt-5 text-xs text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
-        </footer>
+        <MobileFooter
+          onNavigateAbout={onNavigateAbout ? () => onNavigateAbout("about") : undefined}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateCareers={onNavigateCareers}
+          onNavigateContact={onNavigateContact}
+        />
       </div>
     );
   }

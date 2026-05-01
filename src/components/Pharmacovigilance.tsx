@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import MobileFooter from './MobileFooter'
 import Navbar from './Navbar'
 const imgBsc01235Jpg2 = '/assets/figma/d53587fc-a68d-4d4f-bb3d-3bb91089cab7.jpg'
 const img1011 = '/assets/figma/ae15aeab-3de0-4810-b236-69fff35ed127.jpg'
@@ -24,6 +26,64 @@ type PharmacovigilanceProps = {
 }
 
 export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onNavigateContact, onNavigateCareers, onNavigateFacility, onNavigateProducts }: PharmacovigilanceProps) {
+  const [isMobileLayout, setIsMobileLayout] = useState(false)
+
+  useEffect(() => {
+    const applyViewportLayout = () => setIsMobileLayout(window.innerWidth < 1024)
+    applyViewportLayout()
+    window.addEventListener('resize', applyViewportLayout)
+    return () => window.removeEventListener('resize', applyViewportLayout)
+  }, [])
+
+  if (isMobileLayout) {
+    return (
+      <div className="min-h-screen w-full bg-white">
+        <Navbar
+          activePage="pharmacovigilance"
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={onNavigateAbout}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateFacility={onNavigateFacility}
+          onNavigatePharmacovigilance={() => {}}
+          onNavigateCareers={onNavigateCareers}
+          onNavigateContact={onNavigateContact}
+        />
+
+        <section className="relative h-[420px] overflow-hidden bg-[#9d0b0f]">
+          <img alt="" className="absolute inset-0 h-full w-full object-cover img-zoom" src={imgBsc01235Jpg2} />
+          <div className="absolute inset-0 bg-black/35" />
+          <div className="relative z-10 px-5 pt-24 text-white">
+            <h1 className="text-[34px] leading-[1.12] hero-clip-wrap">
+              <span className="hero-clip-line d0">Ensuring Drug Safety Through</span>
+              <span className="hero-clip-line d1">Pharmacovigilance</span>
+            </h1>
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <div className="overflow-hidden rounded scale-in d0">
+            <img alt="" className="h-auto w-full object-cover img-zoom" src={img1011} />
+          </div>
+          <button
+            type="button"
+            className="mt-6 flex w-full items-center justify-center gap-2 rounded bg-black px-5 py-3 text-white transition-colors duration-300 hover:bg-[#9d0b0f]"
+          >
+            <span className="text-[16px]">Submit</span>
+            <img alt="" className="size-[20px]" src={imgArrowRight} />
+          </button>
+        </section>
+
+        <MobileFooter
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={() => onNavigateAbout('about')}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateCareers={onNavigateCareers}
+          onNavigateContact={onNavigateContact}
+        />
+      </div>
+    )
+  }
+
   return (
     
     <div className="flex w-full justify-center overflow-hidden bg-white">

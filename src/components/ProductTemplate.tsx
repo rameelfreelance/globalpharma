@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import MobileFooter from './MobileFooter'
 
 type ProductMenuLink = {
   label: string
@@ -66,9 +67,19 @@ export default function ProductTemplate({
   navigation,
   productMenuLinks,
 }: ProductTemplateProps) {
+  const [isMobileLayout, setIsMobileLayout] = useState(false)
   const [showCompanyMenu, setShowCompanyMenu] = useState(false)
   const [showProductsMenu, setShowProductsMenu] = useState(false)
   const cardRefs = useRef<Array<HTMLElement | null>>([])
+
+  useEffect(() => {
+    const applyViewportLayout = () => {
+      setIsMobileLayout(window.innerWidth < 1024)
+    }
+    applyViewportLayout()
+    window.addEventListener('resize', applyViewportLayout)
+    return () => window.removeEventListener('resize', applyViewportLayout)
+  }, [])
 
   useEffect(() => {
     const closeMenus = () => {
@@ -304,6 +315,15 @@ export default function ProductTemplate({
         </section>
       </main>
 
+      {isMobileLayout ? (
+        <MobileFooter
+          onNavigateHome={navigation.onNavigateHome}
+          onNavigateAbout={navigation.onNavigateAbout}
+          onNavigateProducts={navigation.onNavigateProducts}
+          onNavigateCareers={navigation.onNavigateCareers}
+          onNavigateContact={navigation.onNavigateContact}
+        />
+      ) : (
       <footer className="fade-up d3" style={{ backgroundColor: 'var(--color-bg-muted)' }}>
         <div className="mx-auto w-full max-w-[var(--container-max)] pb-[99px] pt-[98px]" style={{ backgroundColor: 'var(--color-primary-dark)', paddingLeft: 'clamp(24px, 5vw, 80px)', paddingRight: 'clamp(24px, 5vw, 80px)' }}>
           <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4" style={{ color: 'var(--color-text-on-dark)' }}>
@@ -351,6 +371,7 @@ export default function ProductTemplate({
           </p>
         </div>
       </footer>
+      )}
     </div>
   )
 }

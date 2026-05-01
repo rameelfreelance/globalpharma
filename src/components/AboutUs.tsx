@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import MobileFooter from './MobileFooter'
 import Navbar from './Navbar'
 
 const imgHeroMask = '/assets/figma/59a450e9-e908-436e-80c0-39633be13a5a.svg'
@@ -201,27 +202,13 @@ export default function AboutUs({
           </div>
         </section>
 
-        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
-          <p className="text-[22px] font-semibold">Global Pharmaceuticals Pakistan</p>
-          <p className="mt-2 text-sm leading-7 text-white/90">
-            We are committed to manufacturing and delivering high-quality pharmaceutical products that meet stringent regulatory standards.
-          </p>
-          <div className="mt-4 space-y-2 text-sm">
-            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
-            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">
-              info@globalpharmaceuticalspk.com
-            </a>
-          </div>
-          <div className="mt-5 flex gap-3">
-            <a href="https://www.facebook.com/globalpharmaceuticalspk" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on Facebook">
-              <img alt="Facebook" className="size-[28px]" src={footerSoc1} />
-            </a>
-            <a href="https://www.linkedin.com/company/global-pharmaceuticals-pvt-limited/" target="_blank" rel="noreferrer noopener" aria-label="Global Pharmaceuticals on LinkedIn">
-              <img alt="LinkedIn" className="size-[28px]" src={footerSoc2} />
-            </a>
-          </div>
-          <p className="mt-5 text-xs text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
-        </footer>
+        <MobileFooter
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={() => scrollToSection('about')}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateCareers={onNavigateCareers}
+          onNavigateContact={onNavigateContact}
+        />
       </div>
     )
   }

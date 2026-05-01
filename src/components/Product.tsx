@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import MobileFooter from './MobileFooter'
 import Navbar from './Navbar'
 
 const heroMask = '/assets/figma/96f475a0-f388-4434-9401-0ebce11221c2.svg'
@@ -179,15 +180,13 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
           </div>
         </section>
 
-        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
-          <p className="text-[30px] font-semibold leading-[1.15]">Global Pharmaceuticals Pakistan</p>
-          <p className="mt-3 text-[16px] leading-8 text-white/90">We are committed to manufacturing and delivering high-quality pharmaceutical products.</p>
-          <div className="mt-5 space-y-3 text-[16px]">
-            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
-            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">info@globalpharmaceuticalspk.com</a>
-          </div>
-          <p className="mt-6 text-[13px] text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
-        </footer>
+        <MobileFooter
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={() => onNavigateAbout('about')}
+          onNavigateProducts={() => {}}
+          onNavigateCareers={onNavigateCareers}
+          onNavigateContact={onNavigateContact}
+        />
       </div>
     )
   }

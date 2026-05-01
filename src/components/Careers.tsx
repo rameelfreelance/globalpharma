@@ -4,6 +4,7 @@ const logoShape = '/assets/figma/b4a5d6d7-b42c-40e9-9d79-0b211ffa688b.svg'
 const logoMark = '/assets/figma/0679b012-2e3f-4008-8d7a-227ed0ca862d.svg'
 const heroImage = '/assets/figma/77889ecf-8dda-4b36-9c4a-a945d9aa46cb.png'
 const heroImageMask = '/assets/figma/76ef87b2-09c9-473c-b1f4-3428c141bf07.png'
+const searchIcon = '/assets/icons8-search.svg'
 
 type CareersProps = {
   onNavigateHome: () => void
@@ -74,7 +75,9 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
         <div className="absolute left-[457px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd] fade-up d1"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Location</p><p>▾</p></div>
         <div className="absolute left-[719px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd] fade-up d2"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Categories</p><p>▾</p></div>
         <button type="button" className="group absolute left-[981px] top-[1631px] flex items-center gap-[10px] bg-[#0b0f13] px-[40px] py-[20px] transition-colors duration-200 hover:bg-[#9d0b0f] fade-up d3"><span className="font-['Inter:Medium',sans-serif] text-[20px] leading-[20px] text-white">View Jobs</span><span className="text-white transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
-        <div className="absolute left-[1247px] top-[1631px] h-[64px] w-[463px] border border-[#d0d7dd] line-reveal d4" />
+        <div className="absolute left-[1247px] top-[1631px] flex h-[64px] w-[463px] items-center justify-start border border-[#d0d7dd] pl-5 line-reveal d4">
+          <img alt="" className="h-5 w-5 opacity-60" src={searchIcon} />
+        </div>
 
         <div className="absolute left-[213px] top-[1949px] h-[250px] w-[540px] border border-transparent hover:border-[#9d0b0f] transition-colors duration-200 cursor-pointer bg-white p-[28px] scale-in card-hover d0">
           <p className="font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>

@@ -68,7 +68,7 @@ export default function ProductTemplate({
   navigation,
   productMenuLinks,
 }: ProductTemplateProps) {
-  const [isMobileLayout, setIsMobileLayout] = useState(false)
+  const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
   const cardRefs = useRef<Array<HTMLElement | null>>([])
 
   useEffect(() => {

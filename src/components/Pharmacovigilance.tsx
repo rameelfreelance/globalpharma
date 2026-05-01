@@ -47,7 +47,7 @@ export default function Pharmacovigilance({
   onNavigateRespiratory,
   onNavigateDermatology,
 }: PharmacovigilanceProps) {
-  const [isMobileLayout, setIsMobileLayout] = useState(false)
+  const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
 
   useEffect(() => {
     const applyViewportLayout = () => setIsMobileLayout(window.innerWidth < 1024)

@@ -38,7 +38,7 @@ type ProductProps = {
 }
 
 export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePharmacovigilance, onNavigateCareers, onNavigateContact, onNavigateFacility, onNavigateAntibiotics, onNavigateAntiInflammatory, onNavigateGastrointestinal, onNavigateCns, onNavigateCardiovascular, onNavigateRespiratory, onNavigateDermatology }: ProductProps) {
-  const [isMobileLayout, setIsMobileLayout] = useState(false)
+  const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
 
   useEffect(() => {
     const applyViewportLayout = () => setIsMobileLayout(window.innerWidth < 1024)

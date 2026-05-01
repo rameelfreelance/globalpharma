@@ -56,7 +56,7 @@ export default function Facilities({
   onNavigateDermatology,
   initialSection = 'production',
 }: FacilitiesProps) {
-  const [isMobileLayout, setIsMobileLayout] = useState(false)
+  const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
   const productionRef = useRef<HTMLDivElement | null>(null)
   const qualityRef = useRef<HTMLDivElement | null>(null)
   const statsRef = useRef<HTMLDivElement | null>(null)

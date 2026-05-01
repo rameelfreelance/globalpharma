@@ -39,7 +39,7 @@ export default function Careers({
   onNavigateRespiratory,
   onNavigateDermatology,
 }: CareersProps) {
-  const [isMobileLayout, setIsMobileLayout] = useState(false)
+  const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
   const [activeJob, setActiveJob] = useState('Production Pharmacist')
 
   useEffect(() => {

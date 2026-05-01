@@ -143,7 +143,7 @@ export default function Home({
   onNavigateRespiratory,
   onNavigateDermatology,
 }: HomeProps) {
-  const [isMobileLayout, setIsMobileLayout] = useState(false);
+  const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024);
   const [showCompanyMenu, setShowCompanyMenu] = useState(false);
   const [showProductsMenu, setShowProductsMenu] = useState(false);
   const [showFacilityMenu, setShowFacilityMenu] = useState(false);

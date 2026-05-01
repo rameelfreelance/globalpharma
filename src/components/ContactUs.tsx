@@ -40,7 +40,7 @@ export default function ContactUs({
   onNavigateRespiratory,
   onNavigateDermatology,
 }: ContactUsProps) {
-  const [isMobileLayout, setIsMobileLayout] = useState(false)
+  const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [touched, setTouched] = useState<Record<string, boolean>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)

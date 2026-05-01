@@ -52,7 +52,7 @@ export default function AboutUs({
   onNavigateDermatology,
   initialSection = 'about'
 }: AboutUsProps) {
-  const [isMobileLayout, setIsMobileLayout] = useState(false)
+  const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
   const aboutRef = useRef<HTMLDivElement | null>(null)
   const visionRef = useRef<HTMLDivElement | null>(null)
   const imsRef = useRef<HTMLDivElement | null>(null)

@@ -282,35 +282,36 @@ export default function ProductTemplate({
       </div>
 
       <main className="mx-auto w-full max-w-[var(--container-max)] pt-[188px]">
-        <section className="relative overflow-hidden" style={{ backgroundColor: 'var(--color-primary)' }}>
-          <div
-            className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"
-            style={{ maskImage: `url('${heroMaskSrc}')` }}
-          >
-            <img alt="" className="h-full w-full object-cover" src={heroImagePrimarySrc} />
-          </div>
-          {heroImageSecondarySrc ? (
+        <section className="relative h-[743px] overflow-hidden bg-white">
+          <p className="absolute left-[195px] top-[53px] w-[1600px] font-['Google_Sans:Medium',sans-serif] text-[80px] leading-[92.8px] text-[#051c2f] hero-clip-wrap">
+            <span className="hero-clip-line d0">{headline}</span>
+          </p>
+
+          <div className="absolute left-0 top-[288px] h-[455px] w-[1920px] overflow-hidden bg-[#9d0b0f]">
             <div
-              className="absolute inset-0 opacity-90 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"
+              className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"
               style={{ maskImage: `url('${heroMaskSrc}')` }}
             >
-              <img alt="" className="h-full w-full object-cover" src={heroImageSecondarySrc} />
+              <img alt="" className="h-full w-full object-cover" src={heroImagePrimarySrc} />
             </div>
-          ) : null}
-
-          <div className="relative grid min-h-[455px] grid-cols-1 gap-10 py-16 lg:grid-cols-[1fr_auto] lg:items-end" style={{ paddingLeft: 'clamp(24px, 5vw, 80px)', paddingRight: 'clamp(24px, 5vw, 80px)' }}>
-            <p className="max-w-[56rem] font-['Google_Sans:Medium',sans-serif] leading-[1.16] fade-up d0" style={{ color: 'var(--color-text-strong)', fontSize: 'var(--text-hero)' }}>
-              {headline}
-            </p>
-            <div className="w-full max-w-[28rem] self-end">
-              <div className="bg-white px-8 py-5">
-                <p className="hero-clip-wrap font-['Google_Sans:Medium',sans-serif] leading-[1.1]" style={{ color: 'var(--color-text-strong)', fontSize: 'var(--text-heading)' }}>
-                  <span className="hero-clip-line d2">{categoryTitle}</span>
-                </p>
+            {heroImageSecondarySrc ? (
+              <div
+                className="absolute inset-0 opacity-90 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"
+                style={{ maskImage: `url('${heroMaskSrc}')` }}
+              >
+                <img alt="" className="h-full w-full object-cover" src={heroImageSecondarySrc} />
               </div>
-              <div className="mt-0.5 h-[12px] line-reveal" style={{ backgroundColor: 'var(--color-primary)' }} />
+            ) : null}
+          </div>
+
+          <div className="absolute left-[1238px] top-[288px] h-[111px] w-[472px] bg-white">
+            <div className="px-[30px] py-[8px]">
+              <p className="hero-clip-wrap text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] text-[#051c2f]">
+                <span className="hero-clip-line d2">{categoryTitle}</span>
+              </p>
             </div>
           </div>
+          <div className="absolute left-[1238px] top-[399px] h-[12px] w-[472px] bg-[#9d0b0f] line-reveal" />
         </section>
 
         <section className="py-14" style={{ backgroundColor: 'var(--color-bg-section)' }}>

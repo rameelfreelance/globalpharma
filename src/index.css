@@ -25,7 +25,7 @@ body,
 
 body {
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: visible;
   margin: 0;
   background-color: white;
   font-family: "Inter", "Roboto", sans-serif;

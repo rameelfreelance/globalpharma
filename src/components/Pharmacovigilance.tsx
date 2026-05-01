@@ -23,9 +23,30 @@ type PharmacovigilanceProps = {
   onNavigateCareers: () => void
   onNavigateFacility?: (section?: 'production' | 'quality') => void
   onNavigateProducts?: () => void
+  onNavigateAntibiotics?: () => void
+  onNavigateAntiInflammatory?: () => void
+  onNavigateGastrointestinal?: () => void
+  onNavigateCns?: () => void
+  onNavigateCardiovascular?: () => void
+  onNavigateRespiratory?: () => void
+  onNavigateDermatology?: () => void
 }
 
-export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onNavigateContact, onNavigateCareers, onNavigateFacility, onNavigateProducts }: PharmacovigilanceProps) {
+export default function Pharmacovigilance({
+  onNavigateHome,
+  onNavigateAbout,
+  onNavigateContact,
+  onNavigateCareers,
+  onNavigateFacility,
+  onNavigateProducts,
+  onNavigateAntibiotics,
+  onNavigateAntiInflammatory,
+  onNavigateGastrointestinal,
+  onNavigateCns,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology,
+}: PharmacovigilanceProps) {
   const [isMobileLayout, setIsMobileLayout] = useState(false)
 
   useEffect(() => {
@@ -43,6 +64,13 @@ export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onN
           onNavigateHome={onNavigateHome}
           onNavigateAbout={onNavigateAbout}
           onNavigateProducts={onNavigateProducts}
+          onNavigateAntibiotics={onNavigateAntibiotics}
+          onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+          onNavigateGastrointestinal={onNavigateGastrointestinal}
+          onNavigateCns={onNavigateCns}
+          onNavigateCardiovascular={onNavigateCardiovascular}
+          onNavigateRespiratory={onNavigateRespiratory}
+          onNavigateDermatology={onNavigateDermatology}
           onNavigateFacility={onNavigateFacility}
           onNavigatePharmacovigilance={() => {}}
           onNavigateCareers={onNavigateCareers}
@@ -138,6 +166,13 @@ export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onN
           onNavigateHome={onNavigateHome}
           onNavigateAbout={onNavigateAbout}
           onNavigateProducts={onNavigateProducts}
+          onNavigateAntibiotics={onNavigateAntibiotics}
+          onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+          onNavigateGastrointestinal={onNavigateGastrointestinal}
+          onNavigateCns={onNavigateCns}
+          onNavigateCardiovascular={onNavigateCardiovascular}
+          onNavigateRespiratory={onNavigateRespiratory}
+          onNavigateDermatology={onNavigateDermatology}
           onNavigateFacility={onNavigateFacility}
           onNavigatePharmacovigilance={() => {}}
           onNavigateCareers={onNavigateCareers}

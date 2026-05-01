@@ -15,9 +15,30 @@ type CareersProps = {
   onNavigatePharmacovigilance?: () => void
   onNavigateFacility?: (section?: 'production' | 'quality') => void
   onNavigateProducts?: () => void
+  onNavigateAntibiotics?: () => void
+  onNavigateAntiInflammatory?: () => void
+  onNavigateGastrointestinal?: () => void
+  onNavigateCns?: () => void
+  onNavigateCardiovascular?: () => void
+  onNavigateRespiratory?: () => void
+  onNavigateDermatology?: () => void
 }
 
-export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateContact, onNavigatePharmacovigilance, onNavigateFacility, onNavigateProducts }: CareersProps) {
+export default function Careers({
+  onNavigateHome,
+  onNavigateAbout,
+  onNavigateContact,
+  onNavigatePharmacovigilance,
+  onNavigateFacility,
+  onNavigateProducts,
+  onNavigateAntibiotics,
+  onNavigateAntiInflammatory,
+  onNavigateGastrointestinal,
+  onNavigateCns,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology,
+}: CareersProps) {
   const [isMobileLayout, setIsMobileLayout] = useState(false)
   const [activeJob, setActiveJob] = useState('Production Pharmacist')
 
@@ -36,6 +57,13 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
           onNavigateHome={onNavigateHome}
           onNavigateAbout={onNavigateAbout}
           onNavigateProducts={onNavigateProducts}
+          onNavigateAntibiotics={onNavigateAntibiotics}
+          onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+          onNavigateGastrointestinal={onNavigateGastrointestinal}
+          onNavigateCns={onNavigateCns}
+          onNavigateCardiovascular={onNavigateCardiovascular}
+          onNavigateRespiratory={onNavigateRespiratory}
+          onNavigateDermatology={onNavigateDermatology}
           onNavigateFacility={onNavigateFacility}
           onNavigatePharmacovigilance={onNavigatePharmacovigilance}
           onNavigateCareers={() => {}}
@@ -149,6 +177,13 @@ export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateCon
           onNavigateHome={onNavigateHome}
           onNavigateAbout={onNavigateAbout}
           onNavigateProducts={onNavigateProducts}
+          onNavigateAntibiotics={onNavigateAntibiotics}
+          onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+          onNavigateGastrointestinal={onNavigateGastrointestinal}
+          onNavigateCns={onNavigateCns}
+          onNavigateCardiovascular={onNavigateCardiovascular}
+          onNavigateRespiratory={onNavigateRespiratory}
+          onNavigateDermatology={onNavigateDermatology}
           onNavigateFacility={onNavigateFacility}
           onNavigatePharmacovigilance={onNavigatePharmacovigilance}
           onNavigateCareers={() => {}}

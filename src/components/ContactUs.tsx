@@ -16,9 +16,30 @@ type ContactUsProps = {
   onNavigatePharmacovigilance?: () => void
   onNavigateFacility?: (section?: 'production' | 'quality') => void
   onNavigateProducts?: () => void
+  onNavigateAntibiotics?: () => void
+  onNavigateAntiInflammatory?: () => void
+  onNavigateGastrointestinal?: () => void
+  onNavigateCns?: () => void
+  onNavigateCardiovascular?: () => void
+  onNavigateRespiratory?: () => void
+  onNavigateDermatology?: () => void
 }
 
-export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateCareers, onNavigatePharmacovigilance, onNavigateFacility, onNavigateProducts }: ContactUsProps) {
+export default function ContactUs({
+  onNavigateHome,
+  onNavigateAbout,
+  onNavigateCareers,
+  onNavigatePharmacovigilance,
+  onNavigateFacility,
+  onNavigateProducts,
+  onNavigateAntibiotics,
+  onNavigateAntiInflammatory,
+  onNavigateGastrointestinal,
+  onNavigateCns,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology,
+}: ContactUsProps) {
   const [isMobileLayout, setIsMobileLayout] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [touched, setTouched] = useState<Record<string, boolean>>({})
@@ -60,6 +81,13 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
           onNavigateHome={onNavigateHome}
           onNavigateAbout={onNavigateAbout}
           onNavigateProducts={onNavigateProducts}
+          onNavigateAntibiotics={onNavigateAntibiotics}
+          onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+          onNavigateGastrointestinal={onNavigateGastrointestinal}
+          onNavigateCns={onNavigateCns}
+          onNavigateCardiovascular={onNavigateCardiovascular}
+          onNavigateRespiratory={onNavigateRespiratory}
+          onNavigateDermatology={onNavigateDermatology}
           onNavigateFacility={onNavigateFacility}
           onNavigatePharmacovigilance={onNavigatePharmacovigilance}
           onNavigateCareers={onNavigateCareers}
@@ -216,6 +244,13 @@ export default function ContactUs({ onNavigateHome, onNavigateAbout, onNavigateC
           onNavigateHome={onNavigateHome}
           onNavigateAbout={onNavigateAbout}
           onNavigateProducts={onNavigateProducts}
+          onNavigateAntibiotics={onNavigateAntibiotics}
+          onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+          onNavigateGastrointestinal={onNavigateGastrointestinal}
+          onNavigateCns={onNavigateCns}
+          onNavigateCardiovascular={onNavigateCardiovascular}
+          onNavigateRespiratory={onNavigateRespiratory}
+          onNavigateDermatology={onNavigateDermatology}
           onNavigateFacility={onNavigateFacility}
           onNavigatePharmacovigilance={onNavigatePharmacovigilance}
           onNavigateCareers={onNavigateCareers}

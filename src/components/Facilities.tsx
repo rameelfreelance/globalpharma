@@ -30,10 +30,32 @@ type FacilitiesProps = {
   onNavigateCareers: () => void
   onNavigateContact: () => void
   onNavigateProducts: () => void
+  onNavigateAntibiotics?: () => void
+  onNavigateAntiInflammatory?: () => void
+  onNavigateGastrointestinal?: () => void
+  onNavigateCns?: () => void
+  onNavigateCardiovascular?: () => void
+  onNavigateRespiratory?: () => void
+  onNavigateDermatology?: () => void
   initialSection?: 'production' | 'quality'
 }
 
-export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigatePharmacovigilance, onNavigateCareers, onNavigateContact, onNavigateProducts, initialSection = 'production' }: FacilitiesProps) {
+export default function Facilities({
+  onNavigateHome,
+  onNavigateAbout,
+  onNavigatePharmacovigilance,
+  onNavigateCareers,
+  onNavigateContact,
+  onNavigateProducts,
+  onNavigateAntibiotics,
+  onNavigateAntiInflammatory,
+  onNavigateGastrointestinal,
+  onNavigateCns,
+  onNavigateCardiovascular,
+  onNavigateRespiratory,
+  onNavigateDermatology,
+  initialSection = 'production',
+}: FacilitiesProps) {
   const [isMobileLayout, setIsMobileLayout] = useState(false)
   const productionRef = useRef<HTMLDivElement | null>(null)
   const qualityRef = useRef<HTMLDivElement | null>(null)
@@ -135,6 +157,13 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           onNavigateHome={onNavigateHome}
           onNavigateAbout={onNavigateAbout}
           onNavigateProducts={onNavigateProducts}
+          onNavigateAntibiotics={onNavigateAntibiotics}
+          onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+          onNavigateGastrointestinal={onNavigateGastrointestinal}
+          onNavigateCns={onNavigateCns}
+          onNavigateCardiovascular={onNavigateCardiovascular}
+          onNavigateRespiratory={onNavigateRespiratory}
+          onNavigateDermatology={onNavigateDermatology}
           onNavigateFacility={(section = 'production') => {
             if (section === 'quality') {
               scrollToQuality()
@@ -482,6 +511,13 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
               onNavigateHome={onNavigateHome}
               onNavigateAbout={onNavigateAbout}
               onNavigateProducts={onNavigateProducts}
+              onNavigateAntibiotics={onNavigateAntibiotics}
+              onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+              onNavigateGastrointestinal={onNavigateGastrointestinal}
+              onNavigateCns={onNavigateCns}
+              onNavigateCardiovascular={onNavigateCardiovascular}
+              onNavigateRespiratory={onNavigateRespiratory}
+              onNavigateDermatology={onNavigateDermatology}
               onNavigateFacility={(section = 'production') => {
                 if (section === 'quality') {
                   scrollToQuality()

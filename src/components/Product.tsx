@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 
 const heroMask = '/assets/figma/96f475a0-f388-4434-9401-0ebce11221c2.svg'
@@ -36,6 +37,15 @@ type ProductProps = {
 }
 
 export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePharmacovigilance, onNavigateCareers, onNavigateContact, onNavigateFacility, onNavigateAntibiotics, onNavigateAntiInflammatory, onNavigateGastrointestinal, onNavigateCns, onNavigateCardiovascular, onNavigateRespiratory, onNavigateDermatology }: ProductProps) {
+  const [isMobileLayout, setIsMobileLayout] = useState(false)
+
+  useEffect(() => {
+    const applyViewportLayout = () => setIsMobileLayout(window.innerWidth < 1024)
+    applyViewportLayout()
+    window.addEventListener('resize', applyViewportLayout)
+    return () => window.removeEventListener('resize', applyViewportLayout)
+  }, [])
+
   const cards = [
     {
       left: 255,
@@ -97,6 +107,90 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
       onClick: onNavigateDermatology,
     },
   ]
+
+  if (isMobileLayout) {
+    return (
+      <div className="min-h-screen w-full bg-white">
+        <Navbar
+          activePage="product"
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={onNavigateAbout}
+          onNavigateProducts={() => {}}
+          onNavigateAntibiotics={onNavigateAntibiotics}
+          onNavigateAntiInflammatory={onNavigateAntiInflammatory}
+          onNavigateGastrointestinal={onNavigateGastrointestinal}
+          onNavigateCns={onNavigateCns}
+          onNavigateCardiovascular={onNavigateCardiovascular}
+          onNavigateRespiratory={onNavigateRespiratory}
+          onNavigateDermatology={onNavigateDermatology}
+          onNavigateFacility={onNavigateFacility}
+          onNavigatePharmacovigilance={onNavigatePharmacovigilance}
+          onNavigateCareers={onNavigateCareers}
+          onNavigateContact={onNavigateContact}
+        />
+
+        <section className="relative h-[360px] overflow-hidden bg-[#9d0b0f]">
+          <div
+            className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"
+            style={{ maskImage: `url('${heroMask}')` }}
+          >
+            <img alt="" className="h-full w-full object-cover img-zoom" src={heroImage} />
+          </div>
+          <div className="relative z-10 px-5 pt-22 text-white">
+            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12] text-[#051c2f]">
+              <span className="hero-clip-line d0">Expanding therapeutic segments</span>
+              <span className="hero-clip-line d1">with automated manufacturing</span>
+            </h1>
+            <p className="mt-4 inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+              <span className="clip-line d2">Our Products</span>
+            </p>
+            <div className="mt-1 h-[8px] w-[152px] bg-[#9d0b0f] line-reveal" />
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <div className="space-y-4">
+            {cards.map((card, idx) => (
+              <button
+                key={card.title}
+                type="button"
+                onClick={card.onClick}
+                className={`product-card group w-full bg-white p-5 text-left shadow-sm transition-all duration-300 hover:bg-[#9d0b0f] active:scale-[0.99] fade-up d${Math.min(idx, 6)}`}
+              >
+                <div className="flex items-start justify-between">
+                  <div className={`flex h-[52px] w-[52px] items-center justify-center ${card.iconWrapperClass ?? 'overflow-hidden'}`}>
+                    <img alt="" className={`block h-full w-full object-contain ${card.iconClass ?? ''}`} src={card.icon} />
+                  </div>
+                  <img alt="" className="h-[18px] w-[18px] opacity-80 transition-transform duration-200 group-hover:translate-x-[2px]" src={iconArrowOutward} />
+                </div>
+                <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-300 group-hover:text-white">
+                  {card.title}
+                </p>
+                {card.subtitle ? (
+                  <p className="mt-1 text-[17px] leading-[1.45] text-[#0b0f13] transition-colors duration-300 group-hover:text-white/95">
+                    {card.subtitle}
+                  </p>
+                ) : null}
+                <p className="mt-3 text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-300 group-hover:text-white/90">
+                  {card.body}
+                </p>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
+          <p className="text-[30px] font-semibold leading-[1.15]">Global Pharmaceuticals Pakistan</p>
+          <p className="mt-3 text-[16px] leading-8 text-white/90">We are committed to manufacturing and delivering high-quality pharmaceutical products.</p>
+          <div className="mt-5 space-y-3 text-[16px]">
+            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
+            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">info@globalpharmaceuticalspk.com</a>
+          </div>
+          <p className="mt-6 text-[13px] text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
+        </footer>
+      </div>
+    )
+  }
 
   return (
     

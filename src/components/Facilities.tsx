@@ -33,6 +33,7 @@ type FacilitiesProps = {
 }
 
 export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigatePharmacovigilance, onNavigateCareers, onNavigateContact, onNavigateProducts, initialSection = 'production' }: FacilitiesProps) {
+  const [isMobileLayout, setIsMobileLayout] = useState(false)
   const productionRef = useRef<HTMLDivElement | null>(null)
   const qualityRef = useRef<HTMLDivElement | null>(null)
   const statsRef = useRef<HTMLDivElement | null>(null)
@@ -48,6 +49,13 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
   }
 
   useEffect(() => {
+    const applyViewportLayout = () => setIsMobileLayout(window.innerWidth < 1024)
+    applyViewportLayout()
+    window.addEventListener('resize', applyViewportLayout)
+    return () => window.removeEventListener('resize', applyViewportLayout)
+  }, [])
+
+  useEffect(() => {
     if (initialSection === 'production') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       return
@@ -59,20 +67,34 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
   }, [initialSection])
 
   useEffect(() => {
-    const checkInView = () => {
-      if (startStatsCounter || !statsRef.current) return
-      const rect = statsRef.current.getBoundingClientRect()
-      const viewportHeight = window.innerHeight
-      const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0)
-      const visibilityRatio = Math.max(0, visibleHeight) / Math.max(rect.height, 1)
-      if (visibilityRatio >= 0.6) {
+    if (startStatsCounter || !statsRef.current) return
+    const node = statsRef.current
+    const maybeStartImmediately = () => {
+      const rect = node.getBoundingClientRect()
+      const vh = window.innerHeight || document.documentElement.clientHeight
+      if (rect.top < vh * 0.95 && rect.bottom > vh * 0.2) {
         setStartStatsCounter(true)
+        return true
       }
+      return false
     }
 
-    checkInView()
-    window.addEventListener('scroll', checkInView, { passive: true })
-    return () => window.removeEventListener('scroll', checkInView)
+    if (maybeStartImmediately()) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries
+        if (!entry?.isIntersecting) return
+        setStartStatsCounter(true)
+        observer.disconnect()
+      },
+      {
+        threshold: 0.01,
+        rootMargin: '0px 0px -5% 0px',
+      }
+    )
+    observer.observe(node)
+    return () => observer.disconnect()
   }, [startStatsCounter])
 
   useEffect(() => {
@@ -95,6 +117,153 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
     const raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
   }, [startStatsCounter])
+
+  if (isMobileLayout) {
+    return (
+      <div className="min-h-screen w-full bg-white">
+        <Navbar
+          activePage="facility"
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={onNavigateAbout}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateFacility={(section = 'production') => {
+            if (section === 'quality') {
+              scrollToQuality()
+              return
+            }
+            scrollToProduction()
+          }}
+          onNavigatePharmacovigilance={onNavigatePharmacovigilance}
+          onNavigateCareers={onNavigateCareers}
+          onNavigateContact={onNavigateContact}
+        />
+
+        <section className="relative h-[360px] overflow-hidden bg-[#9d0b0f]">
+          <div className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]" style={{ maskImage: `url('${heroMask}')` }}>
+            <img alt="" className="h-full w-full object-cover img-zoom" src={heroImg} />
+          </div>
+          <div className="relative z-10 px-5 pt-22 text-white">
+            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12] text-[#051c2f]">
+              <span className="hero-clip-line d0">Precision Engineering</span>
+              <span className="hero-clip-line d1">World-Class Excellence</span>
+            </h1>
+            <p className="mt-4 inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+              <span className="clip-line d2">Facility</span>
+            </p>
+            <div className="mt-1 h-[8px] w-[94px] bg-[#9d0b0f] line-reveal" />
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <p className="text-[30px] font-medium leading-[1.12] text-[#9d0b0f] clip-wrap"><span className="clip-line d0">Unidirectional Workflow Philosophy</span></p>
+          <p className="mt-4 text-[16px] leading-7 text-[#2f4252] fade-up d1">
+            Our architecture minimizes cross-contamination through physical separation and strict personnel flow protocols.
+          </p>
+          <div className="mt-6 space-y-4">
+            {[
+              { title: 'Production Building', body: 'Specialized sections for capsule and tablet manufacturing, ointments, creams, gels, lotions, syrup formulations and a dedicated cephalosporin section.', icon: iconProduction },
+              { title: 'Separate Cephalosporin Block', body: 'Dedicated unit ensuring strict segregation and compliance with regulatory standards for dry suspensions and capsules.', icon: iconCephalosporin },
+              { title: 'Detached Administrative Building', body: 'Independent structural unit for corporate strategy and regulatory compliance teams.', icon: iconAdministrative },
+            ].map((c, idx) => (
+              <div key={c.title} className={`group bg-white p-5 transition-colors duration-200 hover:bg-[#9d0b0f] card-hover fade-up d${idx}`}>
+                <div className="flex items-center justify-between">
+                  <img alt="" className="h-[52px] w-[52px] object-contain transition-[filter] duration-200 group-hover:brightness-0 group-hover:invert" src={c.icon} />
+                  <img alt="" className="h-[26px] w-[26px] transition-[filter] duration-200 group-hover:brightness-0 group-hover:invert" src={imgArrowOutward} />
+                </div>
+                <p className="mt-4 text-[28px] font-medium leading-[1.15] text-[#0b0f13] transition-colors duration-200 group-hover:text-white">{c.title}</p>
+                <p className="mt-3 text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-200 group-hover:text-white/90">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-10">
+          <p className="text-[18px] uppercase tracking-[1.71px] text-black fade-up d0">Logistics Excellence</p>
+          <p className="mt-4 text-[30px] font-medium leading-[1.12] text-[#9d0b0f] clip-wrap"><span className="clip-line d1">Smart Warehousing Ecosystem</span></p>
+          <div className="mt-6 h-[220px] w-full overflow-hidden mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]">
+            <img alt="" className="h-full w-full object-cover img-zoom" src={imgWarehouse} />
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-4">
+            {[
+              { n: '1', t: 'Quarantine', d: 'Secured isolation zone for incoming raw materials awaiting quality control clearance.' },
+              { n: '2', t: 'Approved Materials', d: 'Temperature-controlled storage for validated excipients and active ingredients.' },
+              { n: '3', t: 'Finished Goods', d: 'Distribution-ready inventory managed via advanced batch-tracking systems.' },
+              { n: '4', t: 'Rejected Materials', d: 'Strictly controlled, gated access area for materials failing rigorous QA protocols.' },
+            ].map((i, idx) => (
+              <div key={i.n} className={`fade-up d${idx}`}>
+                <div className="mb-3 flex size-[48px] items-center justify-center bg-[#9d0b0f] text-[30px] font-semibold text-white box-hover-invert">{i.n}</div>
+                <p className="text-[28px] font-medium leading-[1.12] text-[#051c2f]">{i.t}</p>
+                <p className="mt-2 text-[15px] leading-7 text-[#808586]">{i.d}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section ref={statsRef} className="bg-[#9d0b0f] px-5 py-10 text-white">
+          <p className="text-center text-[36px] font-bold leading-[1.12] fade-up d0">Designed for Scalability</p>
+          <p className="mt-3 text-center text-[16px] leading-7 fade-up d1">
+            Our facility is a modular ecosystem ready to adapt to the next generation of medicinal science.
+          </p>
+          <div className="mt-6 grid grid-cols-2 gap-3">
+            {[
+              { v: `${statsValues.production}+`, l: 'Production Lines' },
+              { v: `${statsValues.hvac}/7`, l: 'HVAC Monitoring' },
+              { v: `ISO ${statsValues.iso}`, l: 'Cleanroom Grading' },
+              { v: `${statsValues.compliance}%`, l: 'Compliance Rate' },
+            ].map((s, idx) => (
+              <div key={s.l} className={`bg-white p-4 text-center fade-up d${idx}`}>
+                <p className="text-[36px] font-bold leading-[1] text-[#9d0b0f]">{s.v}</p>
+                <p className="mt-2 text-[12px] font-semibold uppercase tracking-[0.6px] text-black">{s.l}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section ref={productionRef} className="bg-[#f5f8f9] px-5 py-10">
+          <p className="text-[18px] uppercase tracking-[1.71px] text-black fade-up d0">Our Capabilities</p>
+          <p className="mt-4 text-[30px] font-medium leading-[1.12] text-[#9d0b0f] clip-wrap"><span className="clip-line d1">Production & Quality Facilities</span></p>
+          <p className="mt-4 text-[16px] leading-7 text-[#2f4252] fade-up d2">
+            Global Pharmaceuticals Pakistan operates cGMP-compliant, automated manufacturing facilities across multiple therapeutic categories.
+          </p>
+          <div className="mt-6 grid grid-cols-1 gap-4">
+            {[
+              { img: imgCapTab, t: 'Capsule & Tablet', d: 'Dedicated lines for solid dosage forms with automated compression and encapsulation processes.' },
+              { img: imgTopical, t: 'Topical Formulations', d: 'Specialized units for ointments, creams, gels, and lotions with strict contamination controls.' },
+              { img: imgSyrup, t: 'Syrup & Liquid', d: 'Liquid dosage manufacturing with precision filling, sealing, and quality checkpoints.' },
+              { img: imgCepha, t: 'Cephalosporin Section', d: 'Strictly segregated area for dry suspensions and capsules, ensuring cross-contamination prevention.' },
+            ].map((c, idx) => (
+              <div key={c.t} className={`bg-white box-hover fade-up d${idx}`}>
+                <img alt="" className="h-[185px] w-full object-cover img-zoom" src={c.img} />
+                <div className="p-4">
+                  <p className="text-[26px] font-medium text-[#0b0f13]">{c.t}</p>
+                  <p className="mt-2 text-[15px] leading-7 text-[#0b0f13]/70">{c.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section ref={qualityRef} className="bg-white px-5 py-10">
+          <p className="text-[30px] font-medium leading-[1.12] text-[#9d0b0f]">Quality Operations</p>
+          <p className="mt-4 text-[16px] leading-7 text-[#2f4252]">
+            Our Quality Management System (QMS) is backed by advanced instruments and trained professionals with emphasis on validation, quality assurance, and product stability.
+          </p>
+          <p className="mt-6 text-[16px] font-medium uppercase tracking-[1px] text-[#9d0b0f]">Certifications & compliance</p>
+          <img alt="ISO and GMP certifications" src="/assets/certifications.png" className="mt-3 h-auto w-full max-w-[320px] object-contain" />
+        </section>
+
+        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
+          <p className="text-[30px] font-semibold leading-[1.15]">Global Pharmaceuticals Pakistan</p>
+          <p className="mt-3 text-[16px] leading-8 text-white/90">We are committed to manufacturing and delivering high-quality pharmaceutical products.</p>
+          <div className="mt-5 space-y-3 text-[16px]">
+            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
+            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">info@globalpharmaceuticalspk.com</a>
+          </div>
+          <p className="mt-6 text-[13px] text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
+        </footer>
+      </div>
+    )
+  }
 
   return (
     

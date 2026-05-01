@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 
 const logoShape = '/assets/figma/b4a5d6d7-b42c-40e9-9d79-0b211ffa688b.svg'
@@ -16,6 +17,113 @@ type CareersProps = {
 }
 
 export default function Careers({ onNavigateHome, onNavigateAbout, onNavigateContact, onNavigatePharmacovigilance, onNavigateFacility, onNavigateProducts }: CareersProps) {
+  const [isMobileLayout, setIsMobileLayout] = useState(false)
+  const [activeJob, setActiveJob] = useState('Production Pharmacist')
+
+  useEffect(() => {
+    const applyViewportLayout = () => setIsMobileLayout(window.innerWidth < 1024)
+    applyViewportLayout()
+    window.addEventListener('resize', applyViewportLayout)
+    return () => window.removeEventListener('resize', applyViewportLayout)
+  }, [])
+
+  if (isMobileLayout) {
+    return (
+      <div className="min-h-screen w-full bg-white">
+        <Navbar
+          activePage="careers"
+          onNavigateHome={onNavigateHome}
+          onNavigateAbout={onNavigateAbout}
+          onNavigateProducts={onNavigateProducts}
+          onNavigateFacility={onNavigateFacility}
+          onNavigatePharmacovigilance={onNavigatePharmacovigilance}
+          onNavigateCareers={() => {}}
+          onNavigateContact={onNavigateContact}
+        />
+
+        <section className="relative h-[360px] overflow-hidden bg-[#9d0b0f]">
+          <div
+            className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"
+            style={{ maskImage: `url('${heroImageMask}')` }}
+          >
+            <img alt="" className="h-full w-full object-cover object-left img-zoom" style={{ transform: 'scaleX(-1)' }} src={heroImage} />
+          </div>
+          <div className="relative z-10 px-5 pt-22 text-white">
+            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12]">
+              <span className="hero-clip-line d0">Grow Your Career With Global</span>
+              <span className="hero-clip-line d1">Pharmaceutical Pakistan</span>
+            </h1>
+            <p className="mt-4 inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+              <span className="clip-line d2">Careers</span>
+            </p>
+            <div className="mt-1 h-[8px] w-[104px] bg-[#9d0b0f] line-reveal" />
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-10">
+          <p className="text-[17px] leading-8 text-[#2f4252] fade-up d0">
+            Global Pharmaceuticals Pakistan offers a dynamic and growth-oriented work environment that fosters both individual and professional development. We believe attracting and nurturing top talent is the cornerstone of continued success.
+          </p>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <div className="grid grid-cols-1 gap-3">
+            <button type="button" className="flex h-[54px] items-center justify-between border border-[#d0d7dd] bg-white px-4 fade-up d0"><span className="text-[14px] text-[#040f24]">All Experience Level</span><span>▾</span></button>
+            <button type="button" className="flex h-[54px] items-center justify-between border border-[#d0d7dd] bg-white px-4 fade-up d1"><span className="text-[14px] text-[#040f24]">All Location</span><span>▾</span></button>
+            <button type="button" className="flex h-[54px] items-center justify-between border border-[#d0d7dd] bg-white px-4 fade-up d2"><span className="text-[14px] text-[#040f24]">All Categories</span><span>▾</span></button>
+            <button type="button" className="group flex h-[54px] items-center justify-center gap-2 bg-[#0b0f13] text-white transition-colors duration-200 hover:bg-[#9d0b0f] fade-up d3"><span className="text-[16px] font-medium">View Jobs</span><span className="transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
+            <div className="flex h-[54px] items-center gap-3 border border-[#d0d7dd] bg-white px-4 fade-up d4">
+              <img alt="" className="h-5 w-5 opacity-60" src={searchIcon} />
+              <span className="text-[14px] text-[#7b8594]">Search jobs</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-10">
+          <div className="space-y-4">
+            {['Production Pharmacist', 'Production Pharmacist', 'Production Pharmacist'].map((title, i) => (
+              <button
+                key={`${title}-${i}`}
+                type="button"
+                onClick={() => setActiveJob(title)}
+                className="w-full border border-transparent bg-white p-5 text-left shadow-sm transition-colors duration-200 hover:border-[#9d0b0f] card-hover fade-up"
+              >
+                <p className="text-[24px] font-bold leading-[1.2] text-[#9d0b0f]">{title}</p>
+                <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
+                <p className="mt-4 text-[15px] leading-7 text-[#4f5665]">Primary responsibility includes interface implementation, collaboration, and process excellence.</p>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <p className="text-[28px] font-bold leading-[1.2] text-[#040f24] fade-up d0">{activeJob}</p>
+          <div className="mt-4 flex gap-2 fade-up d1"><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[14px] font-semibold text-[#4f5665]">Mid-Level</span><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[14px] font-semibold text-[#4f5665]">Islamabad</span></div>
+          <p className="mt-6 text-[16px] font-semibold text-[#4f5665] fade-up d2">Primary Responsibility:</p>
+          <p className="mt-3 text-[15px] leading-7 text-[#4f5665] fade-up d3">Designing and implementing user interfaces, maintaining application logic, collaborating with cross-functional teams, and ensuring quality and security best practices across releases.</p>
+          <div className="mt-6 grid grid-cols-1 gap-4 text-[15px] leading-6 fade-up d4">
+            <div><p className="text-black">Employment Type:</p><p className="text-[#4f5665]">Full-time</p></div>
+            <div><p className="text-black">Work place Type:</p><p className="text-[#4f5665]">Hybrid</p></div>
+            <div><p className="text-black">Experience Required:</p><p className="text-[#4f5665]">Minimum 3 Years</p></div>
+            <div><p className="text-black">Salary:</p><p className="text-[#4f5665]">Commensurate with experience and skills</p></div>
+            <div><p className="text-black">Job Location:</p><p className="text-[#4f5665]">Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p></div>
+          </div>
+          <button type="button" className="group mt-7 flex w-full items-center justify-center gap-2 bg-[#0b0f13] px-5 py-3 text-white transition-colors duration-200 hover:bg-[#9d0b0f] fade-up d5"><span className="text-[16px] font-medium">Apply Now</span><span className="transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
+        </section>
+
+        <footer className="bg-[#4e0a0c] px-5 py-10 text-white">
+          <p className="text-[30px] font-semibold leading-[1.15]">Global Pharmaceuticals Pakistan</p>
+          <p className="mt-3 text-[16px] leading-8 text-white/90">We are committed to manufacturing and delivering high-quality pharmaceutical products.</p>
+          <div className="mt-5 space-y-3 text-[16px]">
+            <a href="tel:+9251449302" className="block hover:underline">+92-51-449-302</a>
+            <a href="mailto:info@globalpharmaceuticalspk.com" className="block break-all hover:underline">info@globalpharmaceuticalspk.com</a>
+          </div>
+          <p className="mt-6 text-[13px] text-white/80">© 2026 Global Pharmaceuticals Pakistan. All Rights Reserved.</p>
+        </footer>
+      </div>
+    )
+  }
+
   return (
     
     <div className="flex w-full justify-center overflow-hidden bg-white">

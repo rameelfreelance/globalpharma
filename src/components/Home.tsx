@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type HomeProps = {
   onNavigateAbout?: (section?: "about" | "vision" | "ims") => void;
@@ -60,31 +60,6 @@ const imgRectangle3468149 =
   "/assets/figma/2ffc29e1-9247-4c46-a6c1-b07fcbbf8f01.svg";
 const imgGroup2 = "/assets/figma/5269e67b-f146-46b0-a2bc-af442005a890.svg";
 const imgVector7 = "/assets/figma/7e8a7b0c-6b0c-4b40-9f47-9c71148f7b89.svg";
-const imgVector8 = "/assets/figma/f298c1fd-5993-4429-b9d9-1c340c68161f.svg";
-const imgVector9 = "/assets/figma/45bacc05-dc49-4720-9525-316add0c7650.svg";
-const imgVector10 = "/assets/figma/e4749329-4060-4015-925b-9bc94405a5ce.svg";
-const imgVector11 = "/assets/figma/bd490c60-9078-40eb-ae85-79f28cda51e9.svg";
-const imgVector12 = "/assets/figma/777f7483-7203-4353-b23a-fb68c575e249.svg";
-const imgVector13 = "/assets/figma/a54cea2a-8813-4941-a3e3-1201541445ad.svg";
-const imgVector14 = "/assets/figma/6c2f59c2-addc-4735-b9fb-4ee612965ea0.svg";
-const imgVector15 = "/assets/figma/1eb89b31-2d18-4919-8b15-bb7a35219e17.svg";
-const imgVector16 = "/assets/figma/5e8a06f0-6c5d-4f45-bdec-d3c8795521a5.svg";
-const imgVector17 = "/assets/figma/497081a9-bc1d-4fd5-a92a-40305e0f6af6.svg";
-const imgVector18 = "/assets/figma/d7856a0c-457d-478d-88e9-7a5c3f1267ac.svg";
-const imgVector19 = "/assets/figma/7792a219-b8cf-4e28-b638-d23de428e446.svg";
-const imgVector20 = "/assets/figma/6689ccff-ac4d-4431-a0c0-5ed90a57a942.svg";
-const imgVector21 = "/assets/figma/ab5cb56c-d505-4caa-a9d5-48d714c9a608.svg";
-const imgVector22 = "/assets/figma/c026e1ef-fb59-462d-b38f-f0174c74a19c.svg";
-const imgVector23 = "/assets/figma/e42e0c36-e7f7-49e4-8dad-1d7ef236e8bb.svg";
-const imgVector24 = "/assets/figma/65615be5-ed61-4780-a55c-c308e1808209.svg";
-const imgVector25 = "/assets/figma/ae8fa830-cdb0-4900-adbb-1e1fe3dff127.svg";
-const imgVector26 = "/assets/figma/3d0bdefd-f48d-4292-9d03-c000010ed55d.svg";
-const imgVector27 = "/assets/figma/21b2722f-e8a2-4625-9c28-2fd3b82c0592.svg";
-const imgVector28 = "/assets/figma/a3bfa673-0434-47c6-a8fb-90806d35d7f0.svg";
-const imgVector29 = "/assets/figma/db344e16-2fea-49a9-8d8e-62bb0dde3e3e.svg";
-const imgVector30 = "/assets/figma/cd75a91f-bd47-43c8-ae10-2118f669f02e.svg";
-const imgVector31 = "/assets/figma/69a9a63b-0dbe-4c7a-9a00-faef08f12382.svg";
-const imgVector32 = "/assets/figma/88fc5a2e-439f-4921-b677-a4ad7834169f.svg";
 
 function StethoscopeLine({ className }: { className?: string }) {
   return (
@@ -170,6 +145,72 @@ export default function Home({
   const [showCompanyMenu, setShowCompanyMenu] = useState(false);
   const [showProductsMenu, setShowProductsMenu] = useState(false);
   const [showFacilityMenu, setShowFacilityMenu] = useState(false);
+  const [commitmentPercent, setCommitmentPercent] = useState(0);
+  const commitmentCounterRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const el = commitmentCounterRef.current;
+    if (!el) return;
+
+    let countRaf = 0;
+    let scrollRaf: number | null = null;
+    let started = false;
+
+    const cleanupScroll = () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (scrollRaf !== null) {
+        cancelAnimationFrame(scrollRaf);
+        scrollRaf = null;
+      }
+    };
+
+    const runCounter = () => {
+      if (started) return;
+      started = true;
+      cleanupScroll();
+
+      const durationMs = 1600;
+      const t0 = performance.now();
+
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - t0) / durationMs);
+        const eased = 1 - (1 - t) ** 3;
+        setCommitmentPercent(Math.round(eased * 100));
+        if (t < 1) {
+          countRaf = requestAnimationFrame(tick);
+        }
+      };
+      countRaf = requestAnimationFrame(tick);
+    };
+
+    const tryStart = () => {
+      if (started) return;
+      const rect = el.getBoundingClientRect();
+      const wh = window.innerHeight;
+      if (rect.top < wh * 0.92 && rect.bottom > 0) {
+        runCounter();
+      }
+    };
+
+    const onScroll = () => {
+      if (started) return;
+      if (scrollRaf !== null) return;
+      scrollRaf = requestAnimationFrame(() => {
+        scrollRaf = null;
+        tryStart();
+      });
+    };
+
+    tryStart();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    return () => {
+      cleanupScroll();
+      cancelAnimationFrame(countRaf);
+    };
+  }, []);
 
   useEffect(() => {
     const closeMenus = () => {
@@ -748,10 +789,11 @@ export default function Home({
             data-node-id="47:372"
           />
           <p
-            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[calc(50%-180.2px)] not-italic text-[#9d0b0f] text-[48px] top-[calc(50%-825px)] tracking-[-2.4px] w-[131.458px]"
+            ref={commitmentCounterRef}
+            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[calc(50%-180.2px)] not-italic text-[#9d0b0f] text-[48px] top-[calc(50%-825px)] tracking-[-2.4px] w-[131.458px] tabular-nums"
             data-node-id="47:373"
           >
-            100%
+            {commitmentPercent}%
           </p>
           <p
             className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.3] left-[calc(50%-176.94px)] not-italic text-[#051c2f] text-[28px] top-[calc(50%-762px)] w-[369.387px]"
@@ -816,7 +858,7 @@ export default function Home({
               <div className="absolute bg-[#eaeef1] content-stretch flex items-center justify-center left-[22px] overflow-clip p-[10px] rounded-[96px] top-[35px] w-[40px]">
                 <div className="overflow-clip relative shrink-0 size-[20px]">
                   <div className={`absolute ${c.inset}`}>
-                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={c.iconSrc} />
+                    <img alt="" className="absolute block inset-0 max-w-none size-full object-contain" src={c.iconSrc} />
                   </div>
                 </div>
               </div>
@@ -1217,116 +1259,6 @@ export default function Home({
           </button>
         </div>
         <div
-          className="absolute inset-[14.74%_77.77%_85.09%_21.65%]"
-          data-node-id="47:451"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector8}
-          />
-        </div>
-        <div
-          className="absolute inset-[14.74%_72.53%_85.09%_26.88%]"
-          data-node-id="47:452"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector8}
-          />
-        </div>
-        <div
-          className="absolute inset-[14.69%_77.39%_85.17%_22.2%]"
-          data-node-id="47:453"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector9}
-          />
-        </div>
-        <div
-          className="absolute inset-[14.69%_72.15%_85.17%_27.43%]"
-          data-node-id="47:454"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector9}
-          />
-        </div>
-        <div
-          className="absolute inset-[14.69%_77.08%_85.17%_22.75%]"
-          data-node-id="47:455"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector10}
-          />
-        </div>
-        <div
-          className="absolute inset-[14.69%_71.84%_85.17%_27.98%]"
-          data-node-id="47:456"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector10}
-          />
-        </div>
-        <div
-          className="absolute inset-[14.7%_76.53%_85.16%_23.02%]"
-          data-node-id="47:457"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector11}
-          />
-        </div>
-        <div
-          className="absolute inset-[14.7%_71.29%_85.16%_28.26%]"
-          data-node-id="47:458"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector11}
-          />
-        </div>
-        <div
-          className="absolute inset-[14.77%_76.25%_85.09%_23.44%]"
-          data-node-id="47:459"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector12}
-          />
-        </div>
-        <div
-          className="absolute inset-[14.77%_71.02%_85.09%_28.67%]"
-          data-node-id="47:460"
-          data-name="Vector"
-        >
-          <img
-            alt=""
-            className="absolute block inset-0 max-w-none size-full"
-            src={imgVector12}
-          />
-        </div>
-        <div
           className="absolute contents left-[194px] top-[335px]"
           data-node-id="47:461"
         >
@@ -1352,824 +1284,15 @@ export default function Home({
             force in pharmaceutical manufacturing.
           </p>
           <div
-            className="absolute contents left-[194px] top-[857px]"
+            className="absolute left-[calc(50%-764px)] top-[857px] w-[min(620px,calc(100vw-388px))] max-w-[620px] scale-in d2"
             data-node-id="47:465"
           >
-            <div
-              className="absolute contents left-[194px] top-[857px]"
-              data-node-id="47:466"
-            >
-              <div
-                className="absolute inset-[14.63%_85.69%_83.99%_10.1%]"
-                data-node-id="47:467"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector13}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.63%_80.46%_83.99%_15.34%]"
-                data-node-id="47:468"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector13}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.56%_88.97%_84.29%_10.59%]"
-                data-node-id="47:469"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector14}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.56%_83.73%_84.29%_15.82%]"
-                data-node-id="47:470"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector14}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.69%_88.59%_84.16%_10.93%]"
-                data-node-id="47:471"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector15}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.69%_83.35%_84.16%_16.17%]"
-                data-node-id="47:472"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector15}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.76%_88%_84.06%_11.41%]"
-                data-node-id="47:473"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector16}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.76%_82.76%_84.06%_16.65%]"
-                data-node-id="47:474"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector16}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.8%_87.55%_84.05%_12.1%]"
-                data-node-id="47:475"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector17}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.8%_82.32%_84.05%_17.34%]"
-                data-node-id="47:476"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector17}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.77%_86.97%_84.06%_12.58%]"
-                data-node-id="47:477"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector18}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.77%_81.73%_84.06%_17.82%]"
-                data-node-id="47:478"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector18}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.67%_86.49%_84.14%_12.93%]"
-                data-node-id="47:479"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector19}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.67%_81.25%_84.14%_18.17%]"
-                data-node-id="47:480"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector19}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.53%_86.17%_84.31%_13.31%]"
-                data-node-id="47:481"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector20}
-                />
-              </div>
-              <div
-                className="absolute inset-[15.53%_80.94%_84.31%_18.54%]"
-                data-node-id="47:482"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector20}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.99%_89.1%_84.86%_10.45%]"
-                data-node-id="47:483"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector21}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.99%_83.87%_84.86%_15.69%]"
-                data-node-id="47:484"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector21}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.83%_88.72%_84.99%_10.72%]"
-                data-node-id="47:485"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector22}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.83%_83.49%_84.99%_15.96%]"
-                data-node-id="47:486"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector22}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.74%_88.28%_85.09%_11.14%]"
-                data-node-id="47:487"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector23}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.74%_83.04%_85.09%_16.37%]"
-                data-node-id="47:488"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector23}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.69%_87.9%_85.17%_11.69%]"
-                data-node-id="47:489"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector24}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.69%_82.66%_85.17%_16.93%]"
-                data-node-id="47:490"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector24}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.69%_87.59%_85.17%_12.24%]"
-                data-node-id="47:491"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector25}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.69%_82.35%_85.17%_17.48%]"
-                data-node-id="47:492"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector25}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.7%_87.04%_85.16%_12.52%]"
-                data-node-id="47:493"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector26}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.7%_81.8%_85.16%_17.75%]"
-                data-node-id="47:494"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector26}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.77%_86.76%_85.09%_12.93%]"
-                data-node-id="47:495"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector27}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.77%_81.52%_85.09%_18.17%]"
-                data-node-id="47:496"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector27}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.83%_86.31%_84.99%_13.14%]"
-                data-node-id="47:497"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector28}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.83%_81.08%_84.99%_18.37%]"
-                data-node-id="47:498"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector28}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.98%_86.04%_84.86%_13.45%]"
-                data-node-id="47:499"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector29}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.98%_80.8%_84.86%_18.68%]"
-                data-node-id="47:500"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector29}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.87%_86.42%_84.23%_10.83%]"
-                data-node-id="47:501"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector30}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.87%_81.18%_84.23%_16.06%]"
-                data-node-id="47:502"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector30}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.9%_86.52%_84.26%_10.93%]"
-                data-node-id="47:503"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector31}
-                />
-              </div>
-              <div
-                className="absolute inset-[14.9%_81.28%_84.26%_16.17%]"
-                data-node-id="47:504"
-                data-name="Vector"
-              >
-                <img
-                  alt=""
-                  className="absolute block inset-0 max-w-none size-full"
-                  src={imgVector32}
-                />
-              </div>
-              <div
-                className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-608px)] not-italic text-black text-center top-[883px]"
-                data-node-id="47:505"
-              >
-                <p
-                  className="-translate-x-1/2 absolute h-[19.183px] left-[calc(50%-607px)] text-[17px] text-center top-[calc(50%-2044px)] w-[39.028px]"
-                  data-node-id="47:506"
-                  style={{
-                    fontFamily: "'Times New Roman', serif",
-                    fontWeight: 700,
-                  }}
-                >
-                  ISO
-                </p>
-                <p
-                  className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-607.3px)] text-[5.5px] text-center top-[901.54px] w-[33.074px]"
-                  data-node-id="47:507"
-                >
-                  14001:2015
-                </p>
-              </div>
-              <div
-                className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-708px)] not-italic text-black text-center top-[883px]"
-                data-node-id="47:508"
-              >
-                <p
-                  className="-translate-x-1/2 absolute h-[19.183px] left-[calc(50%-707px)] text-[17px] text-center top-[calc(50%-2044px)] w-[39.028px]"
-                  data-node-id="47:509"
-                  style={{
-                    fontFamily: "'Times New Roman', serif",
-                    fontWeight: 700,
-                  }}
-                >
-                  ISO
-                </p>
-                <p
-                  className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-707.3px)] text-[5.5px] text-center top-[901.54px] w-[33.074px]"
-                  data-node-id="47:510"
-                >
-                  9001:2008
-                </p>
-              </div>
-            </div>
-            <div
-              className="absolute inset-[14.63%_75.18%_83.99%_20.61%]"
-              data-node-id="47:511"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector13}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.63%_69.95%_83.99%_25.85%]"
-              data-node-id="47:512"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector13}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.56%_78.46%_84.29%_21.09%]"
-              data-node-id="47:513"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector14}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.56%_73.22%_84.29%_26.33%]"
-              data-node-id="47:514"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector14}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.69%_78.08%_84.16%_21.44%]"
-              data-node-id="47:515"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector15}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.69%_72.84%_84.16%_26.68%]"
-              data-node-id="47:516"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector15}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.76%_77.49%_84.06%_21.92%]"
-              data-node-id="47:517"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector16}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.76%_72.26%_84.06%_27.16%]"
-              data-node-id="47:518"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector16}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.8%_77.05%_84.05%_22.61%]"
-              data-node-id="47:519"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector17}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.8%_71.81%_84.05%_27.85%]"
-              data-node-id="47:520"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector17}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.77%_76.46%_84.06%_23.09%]"
-              data-node-id="47:521"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector18}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.77%_71.22%_84.06%_28.33%]"
-              data-node-id="47:522"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector18}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.67%_75.98%_84.14%_23.44%]"
-              data-node-id="47:523"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector19}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.67%_70.74%_84.14%_28.67%]"
-              data-node-id="47:524"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector19}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.53%_75.67%_84.31%_23.82%]"
-              data-node-id="47:525"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector20}
-              />
-            </div>
-            <div
-              className="absolute inset-[15.53%_70.43%_84.31%_29.05%]"
-              data-node-id="47:526"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector20}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.99%_78.6%_84.86%_20.96%]"
-              data-node-id="47:527"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector21}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.99%_73.36%_84.86%_26.19%]"
-              data-node-id="47:528"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector21}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.83%_78.22%_84.99%_21.23%]"
-              data-node-id="47:529"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector22}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.83%_72.98%_84.99%_26.47%]"
-              data-node-id="47:530"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector22}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.83%_75.8%_84.99%_23.64%]"
-              data-node-id="47:531"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector28}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.83%_70.57%_84.99%_28.88%]"
-              data-node-id="47:532"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector28}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.98%_75.53%_84.86%_23.95%]"
-              data-node-id="47:533"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector29}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.98%_70.29%_84.86%_29.19%]"
-              data-node-id="47:534"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector29}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.87%_75.91%_84.23%_21.34%]"
-              data-node-id="47:535"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector30}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.87%_70.67%_84.23%_26.57%]"
-              data-node-id="47:536"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector30}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.9%_76.01%_84.26%_21.44%]"
-              data-node-id="47:537"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector32}
-              />
-            </div>
-            <div
-              className="absolute inset-[14.9%_70.78%_84.26%_26.67%]"
-              data-node-id="47:538"
-              data-name="Vector"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgVector32}
-              />
-            </div>
-            <div
-              className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-405px)] not-italic text-[#0b0f13] text-center top-[885px]"
-              data-node-id="47:539"
-            >
-              <p
-                className="-translate-x-1/2 absolute h-[19.183px] left-[calc(50%-404px)] text-[17px] text-center top-[calc(50%-2044px)] w-[39.028px]"
-                data-node-id="47:540"
-                style={{
-                  fontFamily: "'Times New Roman', serif",
-                  fontWeight: 700,
-                }}
-              >
-                GMP
-              </p>
-              <p
-                className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-404.6px)] text-[5.5px] text-center top-[901.54px] w-[33.074px]"
-                data-node-id="47:541"
-              >
-                14001:2015
-              </p>
-            </div>
-            <div
-              className="-translate-x-1/2 absolute contents leading-[normal] left-[calc(50%-506px)] not-italic text-black text-center top-[883px]"
-              data-node-id="47:542"
-            >
-              <p
-                className="-translate-x-1/2 absolute h-[19.183px] left-[calc(50%-505px)] text-[17px] text-center top-[calc(50%-2044px)] w-[39.028px]"
-                data-node-id="47:543"
-                style={{
-                  fontFamily: "'Times New Roman', serif",
-                  fontWeight: 700,
-                }}
-              >
-                ISO
-              </p>
-              <p
-                className="-translate-x-1/2 absolute font-['Times_New_Roman:Bold',sans-serif] h-[7.938px] left-[calc(50%-505.3px)] text-[5.5px] text-center top-[901.54px] w-[33.074px]"
-                data-node-id="47:544"
-              >
-                45001:2018
-              </p>
-            </div>
+            <img
+              alt="ISO 9001, ISO 14001, ISO 45001, and GMP certified company seals"
+              className="block h-auto w-full max-h-[min(118px,17vh)] object-contain object-left drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]"
+              decoding="async"
+              src="/assets/group-1000002029.png"
+            />
           </div>
         </div>
         <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px]">

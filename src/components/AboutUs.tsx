@@ -125,31 +125,39 @@ export default function AboutUs({
           { left: 1115.5, top: 2571, title: 'Packaging\n& Labeling', n: '4' },
           { left: 1421.5, top: 2631, title: 'Final\nDispatch', n: '5', dim: true },
         ].map((item, index) => (
-          <div key={item.n}>
-            <div className={`absolute h-[259px] w-[306px] border-r border-[#e9e9e9] bg-white transition-colors duration-300 ease-out hover:bg-[#e6e6e6] process-reveal pd${index} ${item.dim ? 'h-[246px] border-r-0' : ''}`} style={{ left: item.left, top: item.top }} />
-            <div className={`absolute left-0 top-0 h-[56px] w-[56px] bg-[#9d0b0f] process-reveal pd${index}`} style={{ left: item.left + 27, top: item.top + 60 }} />
-            <p className={`absolute font-['Google_Sans:Medium',sans-serif] text-[40px] leading-[44px] text-white process-reveal pd${index}`} style={{ left: item.left + 45, top: item.top + 66 }}>{item.n}</p>
-            <p className={`absolute whitespace-pre-line font-['Google_Sans:Medium',sans-serif] text-[35px] leading-[38.5px] text-[#051c2f] process-reveal pd${index}`} style={{ left: item.left + 27, top: item.top + 129 }}>{item.title}</p>
+          <div
+            key={item.n}
+            className="absolute process-scroll group cursor-pointer select-none"
+            style={{
+              left: item.left,
+              top: item.top,
+              ['--process-depth' as string]: String(index),
+            }}
+          >
+            <div className={`h-[259px] w-[306px] border-r border-[#e9e9e9] bg-white transition-colors duration-300 ease-out group-hover:bg-[#e6e6e6] ${item.dim ? 'h-[246px] border-r-0' : ''}`} />
+            <div className="absolute left-[27px] top-[60px] h-[56px] w-[56px] bg-[#9d0b0f]" />
+            <p className="pointer-events-none absolute left-[45px] top-[66px] font-['Google_Sans:Medium',sans-serif] text-[40px] leading-[44px] text-white">{item.n}</p>
+            <p className="pointer-events-none absolute left-[27px] top-[129px] whitespace-pre-line font-['Google_Sans:Medium',sans-serif] text-[35px] leading-[38.5px] text-[#051c2f]">{item.title}</p>
           </div>
         ))}
 
-        <button type="button" aria-pressed={false} className="group absolute left-[339.5px] top-[2971px] flex h-[70.5px] w-[408.22px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Quality Control (QC) Laboratory</p>
+        <button type="button" aria-pressed={false} className="absolute left-[339.5px] top-[2971px] flex h-[70.5px] w-[408.22px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Quality Control (QC) Laboratory</p>
         </button>
-        <button type="button" aria-pressed={false} className="group absolute left-[781.84px] top-[2971px] flex h-[70.5px] w-[405.95px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Quality Assurance (QA)</p>
+        <button type="button" aria-pressed={false} className="absolute left-[781.84px] top-[2971px] flex h-[70.5px] w-[405.95px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Quality Assurance (QA)</p>
         </button>
-        <button type="button" aria-pressed={false} className="group absolute left-[1221.9px] top-[2971px] flex h-[70.5px] w-[361.6px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Documentation &amp; Retention</p>
+        <button type="button" aria-pressed={false} className="absolute left-[1221.9px] top-[2971px] flex h-[70.5px] w-[361.6px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Documentation &amp; Retention</p>
         </button>
-        <button type="button" aria-pressed={false} className="group absolute left-[396.5px] top-[3081.3px] flex h-[70.5px] w-[525.35px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Research &amp; Development (R&amp;D) Laboratory</p>
+        <button type="button" aria-pressed={false} className="absolute left-[396.5px] top-[3081.3px] flex h-[70.5px] w-[525.35px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Research &amp; Development (R&amp;D) Laboratory</p>
         </button>
-        <button type="button" aria-pressed={false} className="group absolute left-[955.96px] top-[3081.3px] flex h-[70.5px] w-[210.37px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Warehousing</p>
+        <button type="button" aria-pressed={false} className="absolute left-[955.96px] top-[3081.3px] flex h-[70.5px] w-[210.37px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Warehousing</p>
         </button>
-        <button type="button" aria-pressed={false} className="group absolute left-[1211.81px] top-[3081.3px] flex h-[70.5px] w-[313.84px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#9d0b0f] hover:shadow-[0_10px_20px_rgba(40,6,7,0.32)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
-          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out group-hover:text-white">Regulatory Affairs (RA)</p>
+        <button type="button" aria-pressed={false} className="absolute left-[1211.81px] top-[3081.3px] flex h-[70.5px] w-[313.84px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+          <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Regulatory Affairs (RA)</p>
         </button>
 
         <div className="absolute left-[2.5px] top-[3249px] h-[563px] w-[1921px] bg-[#f5f8f9]" />
@@ -169,7 +177,7 @@ export default function AboutUs({
           <img alt="" className="absolute inset-0 size-full object-cover" src={imgQhseImage} />
         </div>
 
-        <div className="absolute left-[985.5px] top-[4209px] w-[723px] font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[30px] text-[#2f4252] fade-up d2">
+        <div className="absolute left-[985.5px] top-[4209px] w-[723px] font-['Google_Sans:Regular',sans-serif] text-[25px] leading-[30px] text-[#2f4252]">
           {[
             'Ensuring compliance with all applicable national and international regulatory, legal, and cGMP requirements.',
             'Delivering safe, effective, and high-quality pharmaceutical products that meet customer and patient expectations.',
@@ -179,8 +187,11 @@ export default function AboutUs({
             'Enhancing employee competence through training, awareness, and development programs.',
             'Encouraging a culture of quality, responsibility, and ethical conduct at all levels of the Organization.',
             'Ensuring customer satisfaction through consistent product quality, reliability, and timely delivery.',
-          ].map((line) => (
-            <div key={line} className="mb-[17px] flex items-start gap-[14px]">
+          ].map((line, index) => (
+            <div
+              key={line}
+              className={`mb-[17px] flex items-start gap-[14px] fade-up d${index}`}
+            >
               <div className="mt-[6px] h-[22px] w-[22px] shrink-0 bg-[#9d0b0f] p-[4px]">
                 <img alt="" className="h-full w-full" src={imgCheck} />
               </div>

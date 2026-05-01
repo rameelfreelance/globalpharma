@@ -110,6 +110,8 @@
 .d3 { transition-delay: 0.36s;  }
 .d4 { transition-delay: 0.48s;  }
 .d5 { transition-delay: 0.60s;  }
+.d6 { transition-delay: 0.72s;  }
+.d7 { transition-delay: 0.84s;  }
 
 /* ── Slower reveal for manufacturing process cards ─────── */
 .process-reveal {
@@ -130,6 +132,12 @@
 .pd2 { transition-delay: 0.44s; }
 .pd3 { transition-delay: 0.66s; }
 .pd4 { transition-delay: 0.88s; }
+
+/* Scroll-linked motion for manufacturing process boxes */
+.process-scroll {
+  transform: translateY(var(--process-shift, 0px));
+  will-change: transform;
+}
 
 /* ── Image hover zoom (martindow-style) ────────────────── */
 

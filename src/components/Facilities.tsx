@@ -126,19 +126,35 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           { x: 256, title: 'Production\nBuilding', body: 'Specialized sections for capsule and tablet manufacturing, ointments, creams, gels, lotions, syrup formulations and a dedicated cephalosporin section.', bodySize: 17, icon: iconProduction },
           { x: 736, title: 'Separate\nCephalosporin Block', body: 'Dedicated unit ensuring strict segregation and compliance with regulatory standards for dry suspensions and capsules.', bodySize: 18, icon: iconCephalosporin },
           { x: 1216, title: 'Detached\nAdministrative Building', body: 'Independent structural unit for corporate strategy and regulatory compliance teams.', bodySize: 18, icon: iconAdministrative },
-        ].map((c) => (
-          <div key={c.x}>
-            <div className="absolute top-[1300px] h-[418px] w-[450px] bg-white scale-in box-hover" style={{ left: c.x }} />
-            <div className="absolute top-[1341px] h-[70px] w-[70px]" style={{ left: c.x + 31 }}>
-              <img alt="" className="size-full object-contain" src={c.icon} />
+        ].map((c, index) => (
+          <div
+            key={c.x}
+            className={`absolute top-[1300px] h-[418px] w-[450px] scale-in d${index}`}
+            style={{ left: c.x }}
+          >
+            <div className="group relative h-full w-full cursor-default bg-white transition-[background-color] duration-200 ease-out hover:bg-[#9d0b0f]">
+              <div className="absolute left-[31px] top-[41px] h-[70px] w-[70px]">
+                <img
+                  alt=""
+                  className="size-full object-contain transition-[filter] duration-200 ease-out group-hover:brightness-0 group-hover:invert"
+                  src={c.icon}
+                />
+              </div>
+              <img
+                alt=""
+                className="absolute left-[376px] top-[46px] size-[38px] transition-[filter] duration-200 ease-out group-hover:brightness-0 group-hover:invert"
+                src={imgArrowOutward}
+              />
+              <p className="absolute left-[35px] top-[161px] w-[379px] whitespace-pre-line font-['Google_Sans:Medium',sans-serif] text-[36px] leading-[43px] text-[#0b0f13] transition-colors duration-200 ease-out group-hover:text-white">
+                {c.title}
+              </p>
+              <p
+                className="absolute left-[35px] top-[265px] w-[379px] font-['Google_Sans:Regular',sans-serif] leading-[28px] text-[#0b0f13]/70 transition-colors duration-200 ease-out group-hover:text-white/90"
+                style={{ fontSize: `${c.bodySize}px` }}
+              >
+                {c.body}
+              </p>
             </div>
-            <img alt="" className="absolute left-[calc(var(--x)+376px)] top-[1346px] size-[38px]" style={{ ['--x' as string]: `${c.x}px` }} src={imgArrowOutward} />
-            <p className="absolute top-[1461px] w-[379px] whitespace-pre-line font-['Google_Sans:Medium',sans-serif] text-[36px] leading-[43px] text-[#0b0f13]" style={{ left: c.x + 35 }}>
-              {c.title}
-            </p>
-            <p className="absolute top-[1565px] w-[379px] font-['Google_Sans:Regular',sans-serif] leading-[28px] text-[#0b0f13]/70" style={{ left: c.x + 35, fontSize: `${c.bodySize}px` }}>
-              {c.body}
-            </p>
           </div>
         ))}
 
@@ -160,22 +176,36 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
           </div>
         ))}
 
-        <p className="absolute left-[638px] top-[2727px] text-center font-['Google_Sans:Bold',sans-serif] text-[55px] leading-[60px] text-[#f9f9f9]">Designed for Scalability</p>
-        <p className="absolute left-[490px] top-[2798px] w-[940px] text-center font-['Poppins:Regular',sans-serif] text-[23px] leading-[39px] text-[#f9f9f9]">
-          Our facility is not just a building; it's a modular ecosystem ready to adapt to the next generation of medicinal science.
-        </p>
-        {[
-          { x: 560, v: `${statsValues.production}+`, l: 'Production Lines' },
-          { x: 777, v: `${statsValues.hvac}/7`, l: 'HVAC Monitoring' },
-          { x: 994, v: `ISO ${statsValues.iso}`, l: 'Cleanroom Grading' },
-          { x: 1211, v: `${statsValues.compliance}%`, l: 'Compliance Rate' },
-        ].map((s) => (
-          <div key={s.x}>
-            <div className="absolute top-[2922px] size-[165px] bg-white scale-in" style={{ left: s.x }} />
-            <p className="absolute top-[2973px] w-[199px] text-center font-['Google_Sans:Bold',sans-serif] text-[50px] leading-[40px] text-[#9d0b0f]" style={{ left: s.x - 17 }}>{s.v}</p>
-            <p className="absolute top-[3022px] w-[199px] text-center font-['Google_Sans:Bold',sans-serif] text-[14px] leading-[14px] text-black" style={{ left: s.x - 17 }}>{s.l}</p>
-          </div>
-        ))}
+        <div className="absolute left-0 top-[2727px] h-[360px] w-[1920px] scale-in">
+          <p className="absolute left-[638px] top-0 text-center font-['Google_Sans:Bold',sans-serif] text-[55px] leading-[60px] text-[#f9f9f9]">
+            Designed for Scalability
+          </p>
+          <p className="absolute left-[490px] top-[71px] w-[940px] text-center font-['Poppins:Regular',sans-serif] text-[23px] leading-[39px] text-[#f9f9f9]">
+            Our facility is not just a building; it's a modular ecosystem ready to adapt to the next generation of medicinal science.
+          </p>
+          {[
+            { x: 560, v: `${statsValues.production}+`, l: 'Production Lines' },
+            { x: 777, v: `${statsValues.hvac}/7`, l: 'HVAC Monitoring' },
+            { x: 994, v: `ISO ${statsValues.iso}`, l: 'Cleanroom Grading' },
+            { x: 1211, v: `${statsValues.compliance}%`, l: 'Compliance Rate' },
+          ].map((s) => (
+            <div key={s.x}>
+              <div className="absolute top-[195px] size-[165px] bg-white" style={{ left: s.x }} />
+              <p
+                className="absolute top-[246px] w-[199px] text-center font-['Google_Sans:Bold',sans-serif] text-[50px] leading-[40px] text-[#9d0b0f]"
+                style={{ left: s.x - 17 }}
+              >
+                {s.v}
+              </p>
+              <p
+                className="absolute top-[295px] w-[199px] text-center font-['Google_Sans:Bold',sans-serif] text-[14px] leading-[14px] text-black"
+                style={{ left: s.x - 17 }}
+              >
+                {s.l}
+              </p>
+            </div>
+          ))}
+        </div>
 
         <div ref={productionRef} className="absolute left-[203px] top-[3381px] h-[1px] w-[1px]" />
         <p className="absolute left-[203px] top-[3381px] font-['Google_Sans:Medium',sans-serif] text-[18px] uppercase tracking-[1.71px] text-black fade-up d0">Our Capabilities</p>
@@ -204,34 +234,28 @@ export default function Facilities({ onNavigateHome, onNavigateAbout, onNavigate
         <p className="absolute left-[203px] top-[3907px] font-['Google_Sans:Medium',sans-serif] text-[18px] leading-[18px] tracking-[1.71px] text-[#9d0b0f] uppercase whitespace-nowrap">
           Therapeutic categories
         </p>
-        <div className="absolute left-[203px] top-[3966px] h-[51px] w-[229px] border border-[#dadada] bg-[#f7f4f4]" />
-        <div className="absolute left-[444px] top-[3966px] h-[51px] w-[143px] border border-[#dadada] bg-[#f7f4f4]" />
-        <div className="absolute left-[599px] top-[3966px] h-[51px] w-[73px] border border-[#dadada] bg-[#f7f4f4]" />
-        <div className="absolute left-[203px] top-[4031px] h-[51px] w-[229px] border border-[#dadada] bg-[#f7f4f4]" />
-        <div className="absolute left-[203px] top-[4096px] h-[51px] w-[229px] border border-[#dadada] bg-[#f7f4f4]" />
-        <div className="absolute left-[444px] top-[4031px] h-[51px] w-[229px] border border-[#dadada] bg-[#f7f4f4]" />
-        <div className="absolute left-[444px] top-[4096px] h-[51px] w-[229px] border border-[#dadada] bg-[#f7f4f4]" />
-        <p className="absolute left-[223px] top-[3983px] font-['Google_Sans:Medium',sans-serif] text-[18px] leading-[18px] text-black uppercase whitespace-nowrap">
-          Anti-inflammatory
-        </p>
-        <p className="absolute left-[461px] top-[3983px] font-['Google_Sans:Medium',sans-serif] text-[18px] leading-[18px] text-black uppercase whitespace-nowrap">
-          Antibiotics
-        </p>
-        <p className="absolute left-[617px] top-[3983px] font-['Google_Sans:Medium',sans-serif] text-[18px] leading-[18px] text-black uppercase whitespace-nowrap">
-          CNS
-        </p>
-        <p className="absolute left-[237px] top-[4048px] font-['Google_Sans:Medium',sans-serif] text-[18px] leading-[18px] text-black uppercase whitespace-nowrap">
-          Cardiovascular
-        </p>
-        <p className="absolute left-[259px] top-[4113px] font-['Google_Sans:Medium',sans-serif] text-[18px] leading-[18px] text-black uppercase whitespace-nowrap">
-          Respiratory
-        </p>
-        <p className="absolute left-[476px] top-[4048px] font-['Google_Sans:Medium',sans-serif] text-[18px] leading-[18px] text-black uppercase whitespace-nowrap">
-          Dermatological
-        </p>
-        <p className="absolute left-[473px] top-[4113px] font-['Google_Sans:Medium',sans-serif] text-[18px] leading-[18px] text-black uppercase whitespace-nowrap">
-          Gastrointestinal
-        </p>
+        {[
+          { left: 203, top: 3966, w: 229, label: 'Anti-inflammatory', stagger: 'd0' },
+          { left: 444, top: 3966, w: 143, label: 'Antibiotics', stagger: 'd1' },
+          { left: 599, top: 3966, w: 73, label: 'CNS', stagger: 'd2' },
+          { left: 203, top: 4031, w: 229, label: 'Cardiovascular', stagger: 'd3' },
+          { left: 444, top: 4031, w: 229, label: 'Dermatological', stagger: 'd3' },
+          { left: 203, top: 4096, w: 229, label: 'Respiratory', stagger: 'd4' },
+          { left: 444, top: 4096, w: 229, label: 'Gastrointestinal', stagger: 'd5' },
+        ].map((cat) => (
+          <div
+            key={cat.label}
+            className={`absolute h-[51px] fade-up ${cat.stagger}`}
+            style={{ left: cat.left, top: cat.top, width: cat.w }}
+          >
+            <button
+              type="button"
+              className="flex h-full w-full cursor-pointer items-center justify-center border border-[#dadada] bg-[#f7f4f4] px-2 font-['Google_Sans:Medium',sans-serif] text-[18px] leading-[18px] uppercase whitespace-nowrap text-[#0b0f13] transition-[background-color,color] duration-200 ease-out hover:bg-[#9d0b0f] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50"
+            >
+              {cat.label}
+            </button>
+          </div>
+        ))}
 
         <div ref={qualityRef} className="absolute left-[203px] top-[4373px] h-[1px] w-[1px]" />
         <p className="absolute left-[203px] top-[4373px] w-[542px] font-['Google_Sans:Medium',sans-serif] text-[64px] leading-[70.4px] text-[#9d0b0f] clip-wrap"><span className="clip-line">Quality Operations</span></p>

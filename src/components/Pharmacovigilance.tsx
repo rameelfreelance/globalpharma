@@ -75,7 +75,10 @@ export default function Pharmacovigilance({ onNavigateHome, onNavigateAbout, onN
           onNavigateContact={onNavigateContact}
         />
 
-        <button type="button" className="absolute left-[790px] top-[3478px] flex w-[257px] items-center justify-center gap-[10px] bg-[#9d0b0f] px-[40px] py-[20px]">
+        <button
+          type="button"
+          className="absolute left-[790px] top-[3478px] flex w-[257px] cursor-pointer items-center justify-center gap-[10px] border-0 bg-black px-[40px] py-[20px] transition-colors duration-300 ease-out hover:bg-[#9d0b0f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50"
+        >
           <span className="font-['Inter:Medium',sans-serif] text-[18px] leading-[18px] text-white">Submit</span>
           <span className="relative size-[24px]"><img alt="" className="absolute inset-0 size-full" src={imgArrowRight} /></span>
         </button>

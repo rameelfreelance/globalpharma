@@ -10,6 +10,22 @@
 let scrollHandler: (() => void) | null = null;
 let rafId: number | null = null;
 
+function updateProcessScroll() {
+  const targets = document.querySelectorAll<HTMLElement>('.process-scroll');
+  const wh = window.innerHeight;
+  targets.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    const progress = Math.min(
+      1,
+      Math.max(0, (wh - rect.top) / (wh + rect.height))
+    );
+    const depth = Number(el.style.getPropertyValue('--process-depth') || 0);
+    const baseShift = 92 - progress * 150;
+    const staggerOffset = depth * 14;
+    el.style.setProperty('--process-shift', `${baseShift + staggerOffset}px`);
+  });
+}
+
 function checkReveal() {
   const targets = document.querySelectorAll<HTMLElement>(
     '.fade-up, .scale-in, .clip-wrap, .line-reveal, .process-reveal'
@@ -23,6 +39,7 @@ function checkReveal() {
       el.classList.add('in-view');
     }
   });
+  updateProcessScroll();
 }
 
 export function initScrollReveal() {

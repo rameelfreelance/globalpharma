@@ -51,7 +51,11 @@ export default function Navbar({
     setOpenMenu(prev => prev === menu ? null : menu);
   };
 
-  const btnBase = "absolute top-[77px] z-[2] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] whitespace-nowrap focus-visible:outline-none";
+  const btnBase =
+    "absolute top-[77px] z-[2] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] whitespace-nowrap focus-visible:outline-none";
+
+  const navClusterRow =
+    "pointer-events-auto absolute left-0 top-[-39px] z-[1] flex h-[108px] items-center gap-[10px]";
 
   return (
     <div className="absolute contents z-[80]">
@@ -66,26 +70,32 @@ export default function Navbar({
 
       {/* Our Company */}
       <div className="absolute left-[calc(50%-231px)] top-[72px] z-20 h-[228px] w-[270px] pointer-events-none">
-        {activePage === 'about' && (
-          <div className="absolute left-[-23px] top-[-39px] h-[108px] w-[231px] bg-[#9d0b0f] z-[-1]" />
-        )}
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); onNavigateAbout?.('about'); }}
-          className={`pointer-events-auto absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'about' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+        <div
+          className={`${navClusterRow} ${
+            activePage === 'about' ? 'bg-[#9d0b0f] px-3' : 'bg-transparent px-0'
+          }`}
         >
-          Our Company
-        </button>
-        <button
-          type="button"
-          aria-label="Toggle company menu"
-          onClick={(e) => toggleMenu(e, 'company')}
-          className="pointer-events-auto absolute left-[151px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
-        >
-          <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
-            <img alt="" className="size-full" src={activePage === 'about' ? imgArrowLight : imgArrowDark} />
-          </div>
-        </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onNavigateAbout?.('about');
+            }}
+            className={`relative border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'about' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+          >
+            Our Company
+          </button>
+          <button
+            type="button"
+            aria-label="Toggle company menu"
+            onClick={(e) => toggleMenu(e, 'company')}
+            className="relative flex size-[32px] shrink-0 items-center justify-center overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+          >
+            <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
+              <img alt="" className="size-full" src={activePage === 'about' ? imgArrowLight : imgArrowDark} />
+            </div>
+          </button>
+        </div>
         {openMenu === 'company' && (
           <div className="pointer-events-auto absolute left-0 top-[74px] w-[270px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
             <button type="button" onClick={() => { onNavigateAbout?.('about'); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">About Us</button>
@@ -97,26 +107,42 @@ export default function Navbar({
 
       {/* Products */}
       <div className="absolute left-[calc(50%-1px)] top-[72px] z-20 h-[440px] w-[365px] pointer-events-none">
-        {['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) && (
-          <div className="absolute left-[-23px] top-[-39px] h-[108px] w-[180px] bg-[#9d0b0f] z-[-1]" />
-        )}
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); onNavigateProducts?.(); }}
-          className={`pointer-events-auto absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+        <div
+          className={`${navClusterRow} ${
+            ['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage)
+              ? 'bg-[#9d0b0f] px-3'
+              : 'bg-transparent px-0'
+          }`}
         >
-          Products
-        </button>
-        <button
-          type="button"
-          aria-label="Toggle products menu"
-          onClick={(e) => toggleMenu(e, 'products')}
-          className="pointer-events-auto absolute left-[95px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
-        >
-          <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
-            <img alt="" className="size-full" src={['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) ? imgArrowLight : imgArrowDark} />
-          </div>
-        </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onNavigateProducts?.();
+            }}
+            className={`relative border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage) ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+          >
+            Products
+          </button>
+          <button
+            type="button"
+            aria-label="Toggle products menu"
+            onClick={(e) => toggleMenu(e, 'products')}
+            className="relative flex size-[32px] shrink-0 items-center justify-center overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+          >
+            <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
+              <img
+                alt=""
+                className="size-full"
+                src={
+                  ['product', 'antibiotics', 'antiinflammatory', 'gastrointestinal', 'cns', 'cardiovascular', 'respiratory', 'dermatology'].includes(activePage)
+                    ? imgArrowLight
+                    : imgArrowDark
+                }
+              />
+            </div>
+          </button>
+        </div>
         {openMenu === 'products' && (
           <div className="pointer-events-auto absolute left-0 top-[74px] w-[365px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
             <button type="button" onClick={() => { onNavigateAntiInflammatory?.() ?? onNavigateProducts?.(); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Anti-inflammatory / Analgesics</button>
@@ -132,26 +158,30 @@ export default function Navbar({
 
       {/* Facility */}
       <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px] pointer-events-none">
-        {activePage === 'facility' && (
-          <div className="absolute left-[-23px] top-[-39px] h-[108px] w-[150px] bg-[#9d0b0f] z-[-1]" />
-        )}
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); onNavigateFacility?.(); }}
-          className={`pointer-events-auto absolute left-[0px] top-[5px] border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'facility' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+        <div
+          className={`${navClusterRow} ${activePage === 'facility' ? 'bg-[#9d0b0f] px-3' : 'bg-transparent px-0'}`}
         >
-          Facility
-        </button>
-        <button
-          type="button"
-          aria-label="Toggle facility menu"
-          onClick={(e) => toggleMenu(e, 'facility')}
-          className="pointer-events-auto absolute left-[75px] top-0 size-[32px] overflow-clip border-0 bg-transparent p-0 cursor-pointer"
-        >
-          <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
-            <img alt="" className="size-full" src={activePage === 'facility' ? imgArrowLight : imgArrowDark} />
-          </div>
-        </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onNavigateFacility?.();
+            }}
+            className={`relative border-0 bg-transparent p-0 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] ${activePage === 'facility' ? 'text-white hover:text-white' : 'text-[#010c0d]'}`}
+          >
+            Facility
+          </button>
+          <button
+            type="button"
+            aria-label="Toggle facility menu"
+            onClick={(e) => toggleMenu(e, 'facility')}
+            className="relative flex size-[32px] shrink-0 items-center justify-center overflow-clip border-0 bg-transparent p-0 cursor-pointer"
+          >
+            <div className="absolute inset-[35.83%_26.13%_35%_26.14%]">
+              <img alt="" className="size-full" src={activePage === 'facility' ? imgArrowLight : imgArrowDark} />
+            </div>
+          </button>
+        </div>
         {openMenu === 'facility' && (
           <div className="pointer-events-auto absolute left-0 top-[74px] w-[270px] shadow-lg rounded-b-md overflow-hidden bg-[#827f7f]">
             <button type="button" onClick={() => { onNavigateFacility?.('production'); setOpenMenu(null); }} className="block h-[49px] w-full border-b border-[#f2f2f2] pl-[23px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[49px] text-white cursor-pointer transition-colors duration-200 hover:bg-[#6f6c6c]">Production</button>
@@ -168,31 +198,37 @@ export default function Navbar({
         type="button"
         aria-label="Pharmacovigilance"
         onClick={onNavigatePharmacovigilance}
-        className={`absolute left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] z-[3] border-0 bg-transparent pl-[18px] text-left font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] cursor-pointer transition-colors duration-200 hover:text-[#9d0b0f] whitespace-nowrap focus-visible:outline-none ${activePage === 'pharmacovigilance' ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white" : "text-[#010c0d]"}`}
+        className={`absolute z-[30] left-[calc(50%+284px)] top-[33px] h-[108px] w-[252px] pl-[18px] text-left border-0 bg-transparent font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
+          activePage === 'pharmacovigilance'
+            ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
+            : 'text-[#010c0d] hover:text-[#9d0b0f]'
+        }`}
       >
         Pharmacovigilance
       </button>
 
       {/* Careers */}
-      {activePage === 'careers' && (
-        <div className="absolute left-[calc(50%+526px)] top-[33px] h-[108px] w-[130px] bg-[#9d0b0f] z-[1]" />
-      )}
-      <button 
-        type="button" 
-        onClick={onNavigateCareers} 
-        className={`${btnBase} left-[calc(50%+550px)] ${activePage === 'careers' ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white" : "text-[#010c0d]"}`}
+      <button
+        type="button"
+        onClick={onNavigateCareers}
+        className={`absolute left-[calc(50%+526px)] top-[33px] z-[3] flex h-[108px] w-[130px] items-center justify-center border-0 bg-transparent px-4 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
+          activePage === 'careers'
+            ? "bg-[#9d0b0f] font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
+            : 'text-[#010c0d] hover:text-[#9d0b0f]'
+        }`}
       >
         Careers
       </button>
 
       {/* Contact us */}
-      {activePage === 'contact' && (
-        <div className="absolute left-[calc(50%+663px)] top-[33px] h-[108px] w-[153px] bg-[#9d0b0f] z-[1]" />
-      )}
-      <button 
-        type="button" 
-        onClick={onNavigateContact} 
-        className={`${btnBase} left-[calc(50%+682px)] ${activePage === 'contact' ? "font-['Google_Sans:Bold',sans-serif] text-white hover:text-white" : "text-[#010c0d]"}`}
+      <button
+        type="button"
+        onClick={onNavigateContact}
+        className={`absolute left-[calc(50%+663px)] top-[33px] z-[3] flex h-[108px] w-[153px] items-center justify-center border-0 bg-transparent px-4 font-['Google_Sans:Regular',sans-serif] text-[24px] leading-[20px] whitespace-nowrap transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50 ${
+          activePage === 'contact'
+            ? "bg-[#9d0b0f] font-['Google_Sans:Bold',sans-serif] text-white hover:text-white"
+            : 'text-[#010c0d] hover:text-[#9d0b0f]'
+        }`}
       >
         Contact us
       </button>

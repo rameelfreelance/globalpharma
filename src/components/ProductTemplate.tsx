@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import MobileFooter from './MobileFooter'
+import Navbar from './Navbar'
 
 type ProductMenuLink = {
   label: string
@@ -68,8 +69,6 @@ export default function ProductTemplate({
   productMenuLinks,
 }: ProductTemplateProps) {
   const [isMobileLayout, setIsMobileLayout] = useState(false)
-  const [showCompanyMenu, setShowCompanyMenu] = useState(false)
-  const [showProductsMenu, setShowProductsMenu] = useState(false)
   const cardRefs = useRef<Array<HTMLElement | null>>([])
 
   useEffect(() => {
@@ -79,15 +78,6 @@ export default function ProductTemplate({
     applyViewportLayout()
     window.addEventListener('resize', applyViewportLayout)
     return () => window.removeEventListener('resize', applyViewportLayout)
-  }, [])
-
-  useEffect(() => {
-    const closeMenus = () => {
-      setShowCompanyMenu(false)
-      setShowProductsMenu(false)
-    }
-    window.addEventListener('click', closeMenus)
-    return () => window.removeEventListener('click', closeMenus)
   }, [])
 
   useEffect(() => {
@@ -136,88 +126,162 @@ export default function ProductTemplate({
     return () => observer.disconnect()
   }, [cards.length])
 
+  const navForLabel = (needle: string) => {
+    const item = productMenuLinks.find((link) => link.label.toLowerCase().includes(needle.toLowerCase()))
+    return item?.onClick
+  }
+
+  const activeProductPage: 'product' | 'antibiotics' | 'antiinflammatory' | 'gastrointestinal' | 'cns' | 'cardiovascular' | 'respiratory' | 'dermatology' =
+    productMenuLinks.find((l) => l.isActive)?.label.toLowerCase().includes('anti-inflammatory')
+      ? 'antiinflammatory'
+      : productMenuLinks.find((l) => l.isActive)?.label.toLowerCase().includes('anti-biotics')
+      ? 'antibiotics'
+      : productMenuLinks.find((l) => l.isActive)?.label.toLowerCase().includes('gastrointestinal')
+      ? 'gastrointestinal'
+      : productMenuLinks.find((l) => l.isActive)?.label.toLowerCase().includes('cns')
+      ? 'cns'
+      : productMenuLinks.find((l) => l.isActive)?.label.toLowerCase().includes('cardiovascular')
+      ? 'cardiovascular'
+      : productMenuLinks.find((l) => l.isActive)?.label.toLowerCase().includes('respiratory')
+      ? 'respiratory'
+      : productMenuLinks.find((l) => l.isActive)?.label.toLowerCase().includes('dermatology')
+      ? 'dermatology'
+      : 'product'
+
+  if (isMobileLayout) {
+    return (
+      <div className="min-h-screen w-full bg-white">
+        <Navbar
+          activePage="product"
+          onNavigateHome={navigation.onNavigateHome}
+          onNavigateAbout={navigation.onNavigateAbout}
+          onNavigateProducts={navigation.onNavigateProducts}
+          onNavigateFacility={navigation.onNavigateFacility}
+          onNavigatePharmacovigilance={navigation.onNavigatePharmacovigilance}
+          onNavigateCareers={navigation.onNavigateCareers}
+          onNavigateContact={navigation.onNavigateContact}
+        />
+
+        <section className="relative h-[360px] overflow-hidden bg-[#9d0b0f]">
+          <div
+            className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"
+            style={{ maskImage: `url('${heroMaskSrc}')` }}
+          >
+            <img alt="" className="h-full w-full object-cover img-zoom" src={heroImagePrimarySrc} />
+          </div>
+          {heroImageSecondarySrc ? (
+            <div
+              className="absolute inset-0 opacity-90 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"
+              style={{ maskImage: `url('${heroMaskSrc}')` }}
+            >
+              <img alt="" className="h-full w-full object-cover img-zoom" src={heroImageSecondarySrc} />
+            </div>
+          ) : null}
+          <div className="relative z-10 px-5 pt-22 text-white">
+            <h1 className="hero-clip-wrap text-[35px] font-semibold leading-[1.12] text-[#051c2f]">
+              <span className="hero-clip-line d0">{headline}</span>
+            </h1>
+            <p className="mt-4 inline-block bg-white px-4 py-2 text-[24px] font-medium text-[#051c2f] clip-wrap">
+              <span className="clip-line d2">{categoryTitle}</span>
+            </p>
+            <div className="mt-1 h-[8px] w-[clamp(120px,45vw,190px)] bg-[#9d0b0f] line-reveal" />
+          </div>
+        </section>
+
+        <section className="bg-[#f5f8f9] px-5 py-10">
+          <button
+            type="button"
+            onClick={navigation.onNavigateProducts}
+            className="product-card group w-full bg-white p-5 text-left shadow-sm transition-all duration-300 hover:bg-[#9d0b0f] active:scale-[0.99] fade-up d0"
+          >
+            <div className="flex items-start justify-between">
+              <div className="h-[52px] w-[52px] overflow-hidden">
+                <img alt="" className="size-full object-contain" src={icon} />
+              </div>
+              <img alt="" className="h-[18px] w-[18px] opacity-80 transition-transform duration-200 group-hover:translate-x-[2px]" src={backArrow} />
+            </div>
+            <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-300 group-hover:text-white">
+              {categoryTitle}
+            </p>
+            {subtitle ? (
+              <p className="mt-1 text-[17px] leading-[1.45] text-[#0b0f13] transition-colors duration-300 group-hover:text-white/95">
+                {subtitle}
+              </p>
+            ) : null}
+            <p className="mt-3 text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-300 group-hover:text-white/90">
+              {description}
+            </p>
+          </button>
+
+          <div className="mt-5 space-y-4">
+            {cards.map((card, idx) => (
+              <article
+                key={`${card.title}-${idx}`}
+                className={`product-card group w-full bg-white p-5 text-left shadow-sm transition-all duration-300 hover:bg-[#9d0b0f] fade-up d${Math.min(idx + 1, 6)}`}
+              >
+                <div className="flex h-[220px] items-center justify-center bg-[#f5f8f9] p-3 img-zoom">
+                  <img alt="" className="max-h-[200px] w-full object-contain" src={card.imageSrc} />
+                </div>
+                <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-300 group-hover:text-white">
+                  {card.title}
+                </p>
+                <p className="mt-2 whitespace-pre-line text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-300 group-hover:text-white/90">
+                  {card.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <MobileFooter
+          onNavigateHome={navigation.onNavigateHome}
+          onNavigateAbout={navigation.onNavigateAbout}
+          onNavigateProducts={navigation.onNavigateProducts}
+          onNavigateCareers={navigation.onNavigateCareers}
+          onNavigateContact={navigation.onNavigateContact}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="w-full" style={{ backgroundColor: 'var(--color-bg-page)' }}>
-      <header className="sticky top-0 z-[70] border-b" style={{ backgroundColor: 'var(--color-bg-page)', borderColor: 'var(--color-border-subtle)', boxShadow: 'var(--shadow-soft)' }}>
-        <div className="mx-auto flex w-full max-w-[var(--container-max)] items-center justify-between gap-6 py-4" style={{ paddingLeft: 'clamp(24px, 5vw, 80px)', paddingRight: 'clamp(24px, 5vw, 80px)' }}>
-          <div className="flex shrink-0 items-center gap-3">
-            <img alt="" className="h-[4.5rem] w-auto object-contain" src={assets.logoShape} />
-            <img alt="" className="h-[3.25rem] w-[3.25rem]" src={assets.logoMark} />
-            <div className="font-['Myriad_Pro:Semibold',sans-serif] leading-tight" style={{ color: 'var(--color-text-strong)', fontSize: 'clamp(1rem, 1.5vw, 1.375rem)' }}>
-              <p>Global</p><p>Pharmaceuticals</p><p>Pakistan</p>
-            </div>
+      <div className="fixed inset-x-0 top-0 z-[70] flex justify-center">
+        <div className="relative h-[188px] w-[1920px]">
+          <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />
+          <div className="absolute left-[-1px] top-[33px] h-[108px] w-[1922px] bg-white shadow-[0_1px_4px_rgba(25,33,61,0.06)]" />
+          <div className="absolute left-0 top-[22px] h-[131px] w-[510.5px]">
+            <img alt="" className="h-full w-full object-fill" src={assets.logoShape} />
           </div>
-
-          <div className="flex min-w-0 flex-1 flex-wrap items-center justify-end gap-4 lg:gap-6">
-            <button type="button" onClick={navigation.onNavigateHome} className="leading-tight" style={{ color: 'var(--color-primary)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>Home</button>
-
-            <div className="relative">
-              <button type="button" onClick={navigation.onNavigateAbout} className="leading-tight" style={{ color: 'var(--color-text-default)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>Our Company</button>
-              <button
-                type="button"
-                aria-label="Toggle company menu"
-                onClick={(event) => {
-                  event.stopPropagation()
-                  setShowCompanyMenu((prev) => !prev)
-                  setShowProductsMenu(false)
-                }}
-                className="ml-1 inline-flex size-[24px] items-center justify-center border-0 bg-transparent p-0 align-middle"
-              >
-                <img alt="" className="size-full" src={assets.navArrowDark} />
-              </button>
-              {showCompanyMenu ? (
-                <div className="absolute left-0 top-[110%] w-[270px]">
-                  <button type="button" onClick={navigation.onNavigateAbout} className="block h-[49px] w-full border-b pl-[23px] text-left text-white transition-colors duration-200 hover:bg-[var(--color-dropdown-hover)]" style={{ borderColor: 'var(--color-dropdown-border)', backgroundColor: 'var(--color-dropdown-bg)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>About Us</button>
-                  <button type="button" onClick={navigation.onNavigateAbout} className="block h-[49px] w-full border-b pl-[23px] text-left text-white transition-colors duration-200 hover:bg-[var(--color-dropdown-hover)]" style={{ borderColor: 'var(--color-dropdown-border)', backgroundColor: 'var(--color-dropdown-bg)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>Vision &amp; Mission</button>
-                  <button type="button" onClick={navigation.onNavigateAbout} className="block h-[49px] w-full pl-[23px] text-left text-white transition-colors duration-200 hover:bg-[var(--color-dropdown-hover)]" style={{ backgroundColor: 'var(--color-dropdown-bg)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>IMS Policy</button>
-                </div>
-              ) : null}
-            </div>
-
-            <div className="relative">
-              <button type="button" onClick={navigation.onNavigateProducts} className="rounded px-2 py-1 text-white leading-tight" style={{ backgroundColor: 'var(--color-primary)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>Products</button>
-              <button
-                type="button"
-                aria-label="Toggle products menu"
-                onClick={(event) => {
-                  event.stopPropagation()
-                  setShowProductsMenu((prev) => !prev)
-                  setShowCompanyMenu(false)
-                }}
-                className="ml-1 inline-flex size-[24px] items-center justify-center border-0 bg-transparent p-0 align-middle"
-              >
-                <img alt="" className="size-full" src={assets.navArrowLight} />
-              </button>
-              {showProductsMenu ? (
-                <div className="absolute left-0 top-[110%] w-[365px]">
-                  {productMenuLinks.map((link) => (
-                    <button
-                      key={link.label}
-                      type="button"
-                      onClick={link.onClick}
-                      className="block h-[49px] w-full border-b pl-[23px] text-left text-white transition-colors duration-200 hover:bg-[var(--color-dropdown-hover)]"
-                      style={{
-                        borderColor: 'var(--color-dropdown-border)',
-                        backgroundColor: link.isActive ? 'var(--color-primary)' : 'var(--color-dropdown-bg)',
-                        fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)',
-                      }}
-                    >
-                      {link.label}
-                    </button>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-
-            <button type="button" onClick={navigation.onNavigateFacility} className="leading-tight" style={{ color: 'var(--color-text-default)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>Facility</button>
-            <button type="button" onClick={navigation.onNavigatePharmacovigilance} className="leading-tight" style={{ color: 'var(--color-text-default)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>Pharmacovigilance</button>
-            <button type="button" onClick={navigation.onNavigateCareers} className="leading-tight" style={{ color: 'var(--color-text-default)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>Careers</button>
-            <button type="button" onClick={navigation.onNavigateContact} className="leading-tight" style={{ color: 'var(--color-text-default)', fontSize: 'clamp(0.95rem, 1.5vw, 1.5rem)' }}>Contact us</button>
+          <div className="absolute left-[137px] top-[47px] h-[80.61px] w-[79.34px]">
+            <img alt="" className="h-full w-full" src={assets.logoMark} />
           </div>
+          <div className="absolute left-[228px] top-[49.61px] font-['Myriad_Pro:Semibold',sans-serif] text-[28px] leading-[28px] text-white">
+            <p>Global</p>
+            <p>Pharmaceuticals</p>
+            <p>Pakistan</p>
+          </div>
+          <Navbar
+            activePage={activeProductPage}
+            onNavigateHome={navigation.onNavigateHome}
+            onNavigateAbout={() => navigation.onNavigateAbout()}
+            onNavigateProducts={navigation.onNavigateProducts}
+            onNavigateAntibiotics={navForLabel('anti-biotics')}
+            onNavigateAntiInflammatory={navForLabel('anti-inflammatory')}
+            onNavigateGastrointestinal={navForLabel('gastrointestinal')}
+            onNavigateCns={navForLabel('cns')}
+            onNavigateCardiovascular={navForLabel('cardiovascular')}
+            onNavigateRespiratory={navForLabel('respiratory')}
+            onNavigateDermatology={navForLabel('dermatology')}
+            onNavigateFacility={() => navigation.onNavigateFacility()}
+            onNavigatePharmacovigilance={navigation.onNavigatePharmacovigilance}
+            onNavigateCareers={navigation.onNavigateCareers}
+            onNavigateContact={navigation.onNavigateContact}
+          />
         </div>
-      </header>
+      </div>
 
-      <main className="mx-auto w-full max-w-[var(--container-max)]">
+      <main className="mx-auto w-full max-w-[var(--container-max)] pt-[188px]">
         <section className="relative overflow-hidden" style={{ backgroundColor: 'var(--color-primary)' }}>
           <div
             className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[center] mask-size-[100%_100%]"

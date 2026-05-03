@@ -94,13 +94,13 @@ export default function Pharmacovigilance({
         </section>
 
         <section className="overflow-x-hidden overscroll-x-none bg-white py-10">
-          {/* Full-bleed; clip any subpixel overflow so the page does not pan sideways. */}
-          <div className="pdf-embed-shell fade-up d0 w-full max-w-full touch-pan-y overflow-x-hidden overscroll-x-none border-y border-[#dadada] bg-white shadow-[0_1px_0_rgba(0,0,0,0.04)]">
+          {/* No fade-up/transform here: transforms break native PDF sizing inside iframes on many phones. */}
+          <div className="pdf-embed-shell relative w-full max-w-[100vw] touch-pan-y overflow-hidden overscroll-x-none border-y border-[#dadada] bg-[#f0f0f0] shadow-[0_1px_0_rgba(0,0,0,0.04)] [isolation:isolate]">
             <iframe
               title="Suspected adverse drug reaction reporting form for healthcare professionals"
-              src={`${adrReportingFormPdf}#view=FitH&toolbar=0`}
+              src={`${adrReportingFormPdf}#page=1&toolbar=0&navpanes=0&view=FitH`}
               width="100%"
-              className="block h-[min(70dvh,680px)] w-full max-w-full min-w-0 border-0 bg-white"
+              className="pdf-embed-iframe block min-h-[78dvh] h-[min(90dvh,960px)] w-full max-w-full min-w-0 border-0 bg-white"
             />
           </div>
           <div className="mt-3 space-y-6 px-5">

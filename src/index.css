@@ -113,6 +113,25 @@ button.product-brand-row:active {
   filter: none;
 }
 
+/* Pharmacovigilance PDF: mobile browsers often mis-scale PDF iframes; lock layout + width */
+@media (max-width: 1023px) {
+  .pdf-embed-shell {
+    width: 100%;
+    max-width: 100vw;
+    min-height: min(82dvh, 900px);
+  }
+
+  .pdf-embed-shell .pdf-embed-iframe,
+  .pdf-embed-shell iframe {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+    min-height: 78dvh;
+    height: min(90dvh, 960px);
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* Monochrome / vector <img> icons: stay visible when a Tailwind `group` uses brand red on hover */
 .icon-on-brand-hover {
   transition: filter 0.2s ease;

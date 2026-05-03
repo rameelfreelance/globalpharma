@@ -8,6 +8,25 @@ const heroImage = '/assets/figma/77889ecf-8dda-4b36-9c4a-a945d9aa46cb.png'
 const heroImageMask = '/assets/figma/76ef87b2-09c9-473c-b1f4-3428c141bf07.png'
 const searchIcon = '/assets/icons8-search.svg'
 
+const jobCategories = [
+  'Production / Manufacturing',
+  'Quality Assurance & QC',
+  'Regulatory Affairs',
+  'Research & Development',
+  'Sales & Marketing',
+  'Supply Chain & Logistics',
+  'Pharmacovigilance',
+  'Engineering & Maintenance',
+  'Human Resources',
+  'Finance & Administration',
+]
+
+const experienceLevels = ['Entry Level', 'Mid-Level', 'Senior', 'Lead / Manager', 'Executive']
+
+const jobLocations = ['Islamabad', 'Rawalpindi', 'Lahore', 'Karachi', 'Remote / Hybrid']
+
+type CareersFilterKey = 'experience' | 'location' | 'categories'
+
 type CareersProps = {
   onNavigateHome: () => void
   onNavigateAbout: (section?: 'about' | 'vision' | 'ims') => void
@@ -41,6 +60,18 @@ export default function Careers({
 }: CareersProps) {
   const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
   const [activeJob, setActiveJob] = useState('Production Pharmacist')
+  const [experienceLabel, setExperienceLabel] = useState('All Experience Level')
+  const [locationLabel, setLocationLabel] = useState('All Location')
+  const [categoryLabel, setCategoryLabel] = useState('All Categories')
+  const [mobileFilterOpen, setMobileFilterOpen] = useState<CareersFilterKey | null>(null)
+  const [desktopFilterOpen, setDesktopFilterOpen] = useState<CareersFilterKey | null>(null)
+
+  const toggleMobileFilter = (key: CareersFilterKey) => {
+    setMobileFilterOpen((prev) => (prev === key ? null : key))
+  }
+  const toggleDesktopFilter = (key: CareersFilterKey) => {
+    setDesktopFilterOpen((prev) => (prev === key ? null : key))
+  }
 
   useEffect(() => {
     const applyViewportLayout = () => setIsMobileLayout(window.innerWidth < 1024)
@@ -97,15 +128,132 @@ export default function Careers({
           </p>
         </section>
 
-        <section className="bg-[#f5f8f9] px-5 py-10">
-          <div className="grid grid-cols-1 gap-3">
-            <button type="button" className="flex h-[54px] items-center justify-between border border-[#d0d7dd] bg-white px-4 fade-up d0"><span className="text-[14px] text-[#040f24]">All Experience Level</span><span>▾</span></button>
-            <button type="button" className="flex h-[54px] items-center justify-between border border-[#d0d7dd] bg-white px-4 fade-up d1"><span className="text-[14px] text-[#040f24]">All Location</span><span>▾</span></button>
-            <button type="button" className="flex h-[54px] items-center justify-between border border-[#d0d7dd] bg-white px-4 fade-up d2"><span className="text-[14px] text-[#040f24]">All Categories</span><span>▾</span></button>
-            <button type="button" className="group flex h-[54px] items-center justify-center gap-2 bg-[#0b0f13] text-white transition-colors duration-200 hover:bg-[#9d0b0f] fade-up d3"><span className="text-[16px] font-medium">View Jobs</span><span className="transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
-            <div className="flex h-[54px] items-center gap-3 border border-[#d0d7dd] bg-white px-4 fade-up d4">
-              <img alt="" className="h-5 w-5 opacity-60" src={searchIcon} />
-              <span className="text-[14px] text-[#7b8594]">Search jobs</span>
+        <section className="relative z-[130] bg-[#f5f8f9] px-5 py-10">
+          <div className="relative z-[130] grid grid-cols-1 gap-3">
+            <div className={`relative ${mobileFilterOpen === 'experience' ? 'z-[600]' : 'z-10'}`}>
+              <button
+                type="button"
+                onClick={() => toggleMobileFilter('experience')}
+                aria-expanded={mobileFilterOpen === 'experience'}
+                className="fade-up d0 flex w-full min-h-[54px] items-center justify-between border border-[#d0d7dd] bg-white px-4 py-2 text-left"
+              >
+                <span className="min-w-0 flex-1 truncate text-[14px] text-[#040f24] md:text-[16px]">{experienceLabel}</span>
+                <span className="shrink-0">▾</span>
+              </button>
+              {mobileFilterOpen === 'experience' ? (
+                <div className="absolute left-0 right-0 top-full z-[300] mt-1 max-h-[240px] overflow-y-auto border border-[#d0d7dd] bg-white shadow-lg">
+                  <button
+                    type="button"
+                    className="block w-full px-4 py-3 text-left text-[14px] text-[#040f24] hover:bg-[#f5f8f9] md:text-[16px]"
+                    onClick={() => {
+                      setExperienceLabel('All Experience Level')
+                      setMobileFilterOpen(null)
+                    }}
+                  >
+                    All Experience Level
+                  </button>
+                  {experienceLevels.map((label) => (
+                    <button
+                      key={label}
+                      type="button"
+                      className="block w-full border-t border-[#ececec] px-4 py-3 text-left text-[14px] text-[#040f24] hover:bg-[#f5f8f9] md:text-[16px]"
+                      onClick={() => {
+                        setExperienceLabel(label)
+                        setMobileFilterOpen(null)
+                      }}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+            <div className={`relative ${mobileFilterOpen === 'location' ? 'z-[600]' : 'z-10'}`}>
+              <button
+                type="button"
+                onClick={() => toggleMobileFilter('location')}
+                aria-expanded={mobileFilterOpen === 'location'}
+                className="fade-up d1 flex w-full min-h-[54px] items-center justify-between border border-[#d0d7dd] bg-white px-4 py-2 text-left"
+              >
+                <span className="min-w-0 flex-1 truncate text-[14px] text-[#040f24] md:text-[16px]">{locationLabel}</span>
+                <span className="shrink-0">▾</span>
+              </button>
+              {mobileFilterOpen === 'location' ? (
+                <div className="absolute left-0 right-0 top-full z-[300] mt-1 max-h-[240px] overflow-y-auto border border-[#d0d7dd] bg-white shadow-lg">
+                  <button
+                    type="button"
+                    className="block w-full px-4 py-3 text-left text-[14px] text-[#040f24] hover:bg-[#f5f8f9] md:text-[16px]"
+                    onClick={() => {
+                      setLocationLabel('All Location')
+                      setMobileFilterOpen(null)
+                    }}
+                  >
+                    All Location
+                  </button>
+                  {jobLocations.map((label) => (
+                    <button
+                      key={label}
+                      type="button"
+                      className="block w-full border-t border-[#ececec] px-4 py-3 text-left text-[14px] text-[#040f24] hover:bg-[#f5f8f9] md:text-[16px]"
+                      onClick={() => {
+                        setLocationLabel(label)
+                        setMobileFilterOpen(null)
+                      }}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+            <div className={`relative ${mobileFilterOpen === 'categories' ? 'z-[600]' : 'z-10'}`}>
+              <button
+                type="button"
+                onClick={() => toggleMobileFilter('categories')}
+                aria-expanded={mobileFilterOpen === 'categories'}
+                className="fade-up d2 flex w-full min-h-[54px] items-center justify-between border border-[#d0d7dd] bg-white px-4 py-2 text-left"
+              >
+                <span className="min-w-0 flex-1 truncate text-[14px] text-[#040f24] md:text-[16px]">{categoryLabel}</span>
+                <span className="shrink-0">▾</span>
+              </button>
+              {mobileFilterOpen === 'categories' ? (
+                <div className="absolute left-0 right-0 top-full z-[300] mt-1 max-h-[240px] overflow-y-auto border border-[#d0d7dd] bg-white shadow-lg">
+                  <button
+                    type="button"
+                    className="block w-full px-4 py-3 text-left text-[14px] text-[#040f24] hover:bg-[#f5f8f9] md:text-[16px]"
+                    onClick={() => {
+                      setCategoryLabel('All Categories')
+                      setMobileFilterOpen(null)
+                    }}
+                  >
+                    All Categories
+                  </button>
+                  {jobCategories.map((label) => (
+                    <button
+                      key={label}
+                      type="button"
+                      className="block w-full border-t border-[#ececec] px-4 py-3 text-left text-[14px] text-[#040f24] hover:bg-[#f5f8f9] md:text-[16px]"
+                      onClick={() => {
+                        setCategoryLabel(label)
+                        setMobileFilterOpen(null)
+                      }}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+            <button
+              type="button"
+              className="branded-solid-cta group relative z-[1] flex h-[54px] items-center justify-center gap-2 bg-[#0b0f13] text-white transition-colors duration-100 ease-out hover:bg-[#9d0b0f] fade-up d3"
+            >
+              <span className="text-[16px] font-medium text-white">View Jobs</span>
+              <span className="text-white transition-transform duration-150 ease-out group-hover:translate-x-[3px]">→</span>
+            </button>
+            <div className="relative z-[1] flex min-h-[54px] items-center gap-3 border border-[#d0d7dd] bg-white px-4 py-2 fade-up d4">
+              <img alt="" className="h-5 w-5 shrink-0 opacity-60" src={searchIcon} />
+              <span className="text-[14px] text-[#7b8594] md:text-[16px]">Search jobs</span>
             </div>
           </div>
         </section>
@@ -117,11 +265,14 @@ export default function Careers({
                 key={`${title}-${i}`}
                 type="button"
                 onClick={() => setActiveJob(title)}
-                className="w-full border border-transparent bg-white p-5 text-left shadow-sm transition-colors duration-200 hover:border-[#9d0b0f] card-hover fade-up"
+                className="careers-job-card branded-solid-cta w-full border border-transparent bg-white p-5 text-left shadow-sm fade-up"
               >
-                <p className="text-[24px] font-bold leading-[1.2] text-[#9d0b0f]">{title}</p>
-                <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span></div>
-                <p className="mt-4 text-[15px] leading-7 text-[#4f5665]">Primary responsibility includes interface implementation, collaboration, and process excellence.</p>
+                <p className="careers-job-card-title text-[24px] font-bold leading-[1.2] text-[#9d0b0f]">{title}</p>
+                <div className="mt-3 flex gap-2">
+                  <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span>
+                  <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span>
+                </div>
+                <p className="careers-job-card-desc mt-4 text-[15px] leading-7 text-[#4f5665]">Primary responsibility includes interface implementation, collaboration, and process excellence.</p>
               </button>
             ))}
           </div>
@@ -139,7 +290,13 @@ export default function Careers({
             <div><p className="text-black">Salary:</p><p className="text-[#4f5665]">Commensurate with experience and skills</p></div>
             <div><p className="text-black">Job Location:</p><p className="text-[#4f5665]">Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p></div>
           </div>
-          <button type="button" className="group mt-7 flex w-full items-center justify-center gap-2 bg-[#0b0f13] px-5 py-3 text-white transition-colors duration-200 hover:bg-[#9d0b0f] fade-up d5"><span className="text-[16px] font-medium">Apply Now</span><span className="transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
+          <button
+            type="button"
+            className="branded-solid-cta group mt-7 flex w-full items-center justify-center gap-2 bg-[#0b0f13] px-5 py-3 text-white transition-colors duration-100 ease-out hover:bg-[#9d0b0f] fade-up d5"
+          >
+            <span className="text-[16px] font-medium text-white">Apply Now</span>
+            <span className="text-white transition-transform duration-150 ease-out group-hover:translate-x-[3px]">→</span>
+          </button>
         </section>
 
         <MobileFooter
@@ -154,9 +311,9 @@ export default function Careers({
 
   return (
     
-    <div className="flex w-full justify-center overflow-hidden bg-white">
+    <div className="flex w-full justify-center overflow-x-hidden overflow-y-visible bg-white">
       <div
-        className="figma-page contact-figma relative shrink-0 overflow-hidden bg-white"
+        className="figma-page contact-figma relative shrink-0 overflow-visible bg-white"
         style={{ "--figma-page-width": 1920, "--figma-page-height": 3454 } as any}
       >
         <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />
@@ -214,31 +371,169 @@ export default function Careers({
           {'\n'}As an equal opportunity employer, Global Pharmaceuticals Pakistan welcomes and values high-caliber, talented, and results-driven professionals who demonstrate strong teamwork, effective communication skills, and a solid work ethic.
         </p>
 
-        <p className="absolute left-[195px] top-[1592px] font-['Lato:Regular',sans-serif] text-[18px] fade-up d0">Experience Level</p>
-        <p className="absolute left-[457px] top-[1592px] font-['Lato:Regular',sans-serif] text-[18px] fade-up d1">Location</p>
-        <p className="absolute left-[719px] top-[1592px] font-['Lato:Regular',sans-serif] text-[18px] fade-up d2">Categories</p>
-        <div className="absolute left-[195px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd] fade-up d0"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Experience Level</p><p>▾</p></div>
-        <div className="absolute left-[457px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd] fade-up d1"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Location</p><p>▾</p></div>
-        <div className="absolute left-[719px] top-[1631px] flex h-[64px] w-[202px] items-center justify-center gap-[14px] border border-[#d0d7dd] fade-up d2"><p className="font-['Lato:Regular',sans-serif] text-[14px] text-[#040f24]">All Categories</p><p>▾</p></div>
-        <button type="button" className="group absolute left-[981px] top-[1631px] flex items-center gap-[10px] bg-[#0b0f13] px-[40px] py-[20px] transition-colors duration-200 hover:bg-[#9d0b0f] fade-up d3"><span className="font-['Inter:Medium',sans-serif] text-[20px] leading-[20px] text-white">View Jobs</span><span className="text-white transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
-        <div className="absolute left-[1247px] top-[1631px] flex h-[64px] w-[463px] items-center justify-start border border-[#d0d7dd] pl-5 line-reveal d4">
+        <p className="absolute left-[195px] top-[1592px] font-['Lato:Regular',sans-serif] text-[16px] fade-up d0">Experience Level</p>
+        <p className="absolute left-[457px] top-[1592px] font-['Lato:Regular',sans-serif] text-[16px] fade-up d1">Location</p>
+        <p className="absolute left-[719px] top-[1592px] font-['Lato:Regular',sans-serif] text-[16px] fade-up d2">Categories</p>
+        <div className={`absolute left-[195px] top-[1631px] ${desktopFilterOpen === 'experience' ? 'z-[600]' : 'z-[200]'}`}>
+          <button
+            type="button"
+            onClick={() => toggleDesktopFilter('experience')}
+            aria-expanded={desktopFilterOpen === 'experience'}
+            className="fade-up d0 flex min-h-[64px] w-[202px] items-center justify-between gap-2 border border-[#d0d7dd] bg-white px-3 py-2"
+          >
+            <span className="min-w-0 flex-1 truncate text-left font-['Lato:Regular',sans-serif] text-[16px] text-[#040f24]">{experienceLabel}</span>
+            <span className="shrink-0">▾</span>
+          </button>
+          {desktopFilterOpen === 'experience' ? (
+            <div className="absolute left-0 top-full z-[300] mt-1 w-[280px] max-h-[280px] overflow-y-auto border border-[#d0d7dd] bg-white shadow-lg">
+              <button
+                type="button"
+                className="block w-full px-4 py-2.5 text-left font-['Lato:Regular',sans-serif] text-[16px] text-[#040f24] hover:bg-[#f5f8f9]"
+                onClick={() => {
+                  setExperienceLabel('All Experience Level')
+                  setDesktopFilterOpen(null)
+                }}
+              >
+                All Experience Level
+              </button>
+              {experienceLevels.map((label) => (
+                <button
+                  key={label}
+                  type="button"
+                  className="block w-full border-t border-[#ececec] px-4 py-2.5 text-left font-['Lato:Regular',sans-serif] text-[16px] text-[#040f24] hover:bg-[#f5f8f9]"
+                  onClick={() => {
+                    setExperienceLabel(label)
+                    setDesktopFilterOpen(null)
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+        <div className={`absolute left-[457px] top-[1631px] ${desktopFilterOpen === 'location' ? 'z-[600]' : 'z-[200]'}`}>
+          <button
+            type="button"
+            onClick={() => toggleDesktopFilter('location')}
+            aria-expanded={desktopFilterOpen === 'location'}
+            className="fade-up d1 flex min-h-[64px] w-[202px] items-center justify-between gap-2 border border-[#d0d7dd] bg-white px-3 py-2"
+          >
+            <span className="min-w-0 flex-1 truncate text-left font-['Lato:Regular',sans-serif] text-[16px] text-[#040f24]">{locationLabel}</span>
+            <span className="shrink-0">▾</span>
+          </button>
+          {desktopFilterOpen === 'location' ? (
+            <div className="absolute left-0 top-full z-[300] mt-1 w-[280px] max-h-[280px] overflow-y-auto border border-[#d0d7dd] bg-white shadow-lg">
+              <button
+                type="button"
+                className="block w-full px-4 py-2.5 text-left font-['Lato:Regular',sans-serif] text-[16px] text-[#040f24] hover:bg-[#f5f8f9]"
+                onClick={() => {
+                  setLocationLabel('All Location')
+                  setDesktopFilterOpen(null)
+                }}
+              >
+                All Location
+              </button>
+              {jobLocations.map((label) => (
+                <button
+                  key={label}
+                  type="button"
+                  className="block w-full border-t border-[#ececec] px-4 py-2.5 text-left font-['Lato:Regular',sans-serif] text-[16px] text-[#040f24] hover:bg-[#f5f8f9]"
+                  onClick={() => {
+                    setLocationLabel(label)
+                    setDesktopFilterOpen(null)
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+        <div className={`absolute left-[719px] top-[1631px] ${desktopFilterOpen === 'categories' ? 'z-[600]' : 'z-[200]'}`}>
+          <button
+            type="button"
+            onClick={() => toggleDesktopFilter('categories')}
+            aria-expanded={desktopFilterOpen === 'categories'}
+            className="fade-up d2 flex min-h-[64px] w-[202px] items-center justify-between gap-2 border border-[#d0d7dd] bg-white px-3 py-2"
+          >
+            <span className="min-w-0 flex-1 truncate text-left font-['Lato:Regular',sans-serif] text-[16px] text-[#040f24]">{categoryLabel}</span>
+            <span className="shrink-0">▾</span>
+          </button>
+          {desktopFilterOpen === 'categories' ? (
+            <div className="absolute left-0 top-full z-[300] mt-1 w-[280px] max-h-[280px] overflow-y-auto border border-[#d0d7dd] bg-white shadow-lg">
+              <button
+                type="button"
+                className="block w-full px-4 py-2.5 text-left font-['Lato:Regular',sans-serif] text-[16px] text-[#040f24] hover:bg-[#f5f8f9]"
+                onClick={() => {
+                  setCategoryLabel('All Categories')
+                  setDesktopFilterOpen(null)
+                }}
+              >
+                All Categories
+              </button>
+              {jobCategories.map((label) => (
+                <button
+                  key={label}
+                  type="button"
+                  className="block w-full border-t border-[#ececec] px-4 py-2.5 text-left font-['Lato:Regular',sans-serif] text-[16px] text-[#040f24] hover:bg-[#f5f8f9]"
+                  onClick={() => {
+                    setCategoryLabel(label)
+                    setDesktopFilterOpen(null)
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+        <button
+          type="button"
+          className="branded-solid-cta group absolute left-[981px] top-[1631px] z-[180] flex items-center gap-[10px] bg-[#0b0f13] px-[40px] py-[20px] text-white transition-colors duration-100 ease-out hover:bg-[#9d0b0f] fade-up d3"
+        >
+          <span className="font-['Inter:Medium',sans-serif] text-[20px] leading-[20px] text-white">View Jobs</span>
+          <span className="text-white transition-transform duration-150 ease-out group-hover:translate-x-[3px]">→</span>
+        </button>
+        <div className="absolute left-[1247px] top-[1631px] z-[180] flex h-[64px] w-[463px] items-center justify-start border border-[#d0d7dd] bg-white pl-5 line-reveal d4">
           <img alt="" className="h-5 w-5 opacity-60" src={searchIcon} />
         </div>
 
-        <div className="absolute left-[213px] top-[1949px] h-[250px] w-[540px] border border-transparent hover:border-[#9d0b0f] transition-colors duration-200 cursor-pointer bg-white p-[28px] scale-in card-hover d0">
-          <p className="font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>
-          <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span></div>
-          <p className="mt-5 text-[17px] leading-[26px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
+        <div
+          className="careers-job-card absolute left-[213px] top-[1949px] h-[250px] w-[540px] cursor-pointer border border-transparent bg-white p-[28px] scale-in d0"
+          tabIndex={0}
+          role="button"
+        >
+          <p className="careers-job-card-title font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>
+          <div className="mt-3 flex gap-2">
+            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span>
+            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span>
+          </div>
+          <p className="careers-job-card-desc mt-5 text-[17px] leading-[26px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
         </div>
-        <div className="absolute left-[213px] top-[2231px] h-[250px] w-[540px] border border-transparent hover:border-[#9d0b0f] transition-colors duration-200 cursor-pointer bg-white p-[28px] scale-in card-hover d1">
-          <p className="font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>
-          <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span></div>
-          <p className="mt-5 text-[17px] leading-[26px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
+        <div
+          className="careers-job-card absolute left-[213px] top-[2231px] h-[250px] w-[540px] cursor-pointer border border-transparent bg-white p-[28px] scale-in d1"
+          tabIndex={0}
+          role="button"
+        >
+          <p className="careers-job-card-title font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>
+          <div className="mt-3 flex gap-2">
+            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span>
+            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span>
+          </div>
+          <p className="careers-job-card-desc mt-5 text-[17px] leading-[26px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
         </div>
-        <div className="absolute left-[213px] top-[2513px] h-[250px] w-[540px] border border-transparent hover:border-[#9d0b0f] transition-colors duration-200 cursor-pointer bg-white p-[28px] scale-in card-hover d2">
-          <p className="font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>
-          <div className="mt-3 flex gap-2"><span className="bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span><span className="bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span></div>
-          <p className="mt-5 text-[17px] leading-[26px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
+        <div
+          className="careers-job-card absolute left-[213px] top-[2513px] h-[250px] w-[540px] cursor-pointer border border-transparent bg-white p-[28px] scale-in d2"
+          tabIndex={0}
+          role="button"
+        >
+          <p className="careers-job-card-title font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>
+          <div className="mt-3 flex gap-2">
+            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span>
+            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span>
+          </div>
+          <p className="careers-job-card-desc mt-5 text-[17px] leading-[26px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
         </div>
 
         <div className="absolute left-[794px] top-[1928px] h-[840px] w-[914px] bg-white p-[64px] fade-up d1">
@@ -253,7 +548,13 @@ export default function Careers({
             <div><p className="text-black">Salary:</p><p className="text-[#4f5665]">Commensurate with experience and skills</p></div>
             <div className="col-span-2"><p className="text-black">Job Location:</p><p className="text-[#4f5665]">Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p></div>
           </div>
-          <button type="button" className="group mt-8 flex items-center gap-[10px] bg-[#0b0f13] px-[40px] py-[20px] fade-up d5 transition-colors duration-200 hover:bg-[#9d0b0f]"><span className="font-['Inter:Medium',sans-serif] text-[20px] leading-[20px] text-white transition-colors duration-200 group-hover:text-white">Apply Now</span><span className="text-white transition-transform duration-200 group-hover:translate-x-[3px]">→</span></button>
+          <button
+            type="button"
+            className="branded-solid-cta group mt-8 flex items-center gap-[10px] bg-[#0b0f13] px-[40px] py-[20px] text-white transition-colors duration-100 ease-out hover:bg-[#9d0b0f] fade-up d5"
+          >
+            <span className="font-['Inter:Medium',sans-serif] text-[20px] leading-[20px] text-white">Apply Now</span>
+            <span className="text-white transition-transform duration-150 ease-out group-hover:translate-x-[3px]">→</span>
+          </button>
         </div>
 
         <div className="absolute left-0 top-[2799px] w-[1920px] bg-[#f5f5f5]">

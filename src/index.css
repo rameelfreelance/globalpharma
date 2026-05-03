@@ -64,6 +64,48 @@ a[href]:active,
   transform: scale(0.99);
 }
 
+/* Skip global hover dim on solid brand CTAs (filter fights bg + text color transitions). */
+button.branded-solid-cta:hover,
+button.branded-solid-cta:focus-visible {
+  filter: none;
+}
+
+button.branded-solid-cta:active {
+  filter: none;
+  transform: none;
+}
+
+/* Careers job list: one-step red fill + white copy (hover / keyboard / touch press). */
+.careers-job-card {
+  transition:
+    background-color 0.12s ease,
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.careers-job-card:is(:hover, :focus-visible, :active) {
+  background-color: #9d0b0f;
+  border-color: #9d0b0f;
+  box-shadow: 0 12px 32px rgba(157, 11, 15, 0.25);
+}
+
+.careers-job-card:is(:hover, :focus-visible, :active) .careers-job-card-title {
+  color: #fff;
+}
+
+.careers-job-card:is(:hover, :focus-visible, :active) .careers-job-card-desc {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.careers-job-card:is(:hover, :focus-visible, :active) .careers-job-card-meta {
+  background-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+button.careers-job-card:active {
+  transform: none;
+}
+
 /* Map Figma exported font tokens to real browser fonts + weights */
 .home-figma [class*="Google_Sans:Regular"] {
   font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;

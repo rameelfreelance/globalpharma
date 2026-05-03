@@ -205,10 +205,10 @@ export default function Facilities({
               { title: 'Separate Cephalosporin Block', body: 'Dedicated unit ensuring strict segregation and compliance with regulatory standards for dry suspensions and capsules.', icon: iconCephalosporin },
               { title: 'Detached Administrative Building', body: 'Independent structural unit for corporate strategy and regulatory compliance teams.', icon: iconAdministrative },
             ].map((c, idx) => (
-              <div key={c.title} className={`group bg-white p-5 transition-colors duration-200 hover:bg-[#9d0b0f] card-hover fade-up d${idx}`}>
+              <div key={c.title} className={`group bg-white p-5 transition-colors duration-100 ease-out hover:bg-[#9d0b0f] fade-up d${idx}`}>
                 <div className="flex items-center justify-between">
-                  <img alt="" className="h-[52px] w-[52px] object-contain transition-[filter] duration-200 group-hover:brightness-0 group-hover:invert" src={c.icon} />
-                  <img alt="" className="h-[26px] w-[26px] transition-[filter] duration-200 group-hover:brightness-0 group-hover:invert" src={imgArrowOutward} />
+                  <img alt="" className="icon-on-brand-hover h-[52px] w-[52px] object-contain" src={c.icon} />
+                  <img alt="" className="icon-on-brand-hover h-[26px] w-[26px] object-contain" src={imgArrowOutward} />
                 </div>
                 <p className="mt-4 text-[28px] font-medium leading-[1.15] text-[#0b0f13] transition-colors duration-200 group-hover:text-white">{c.title}</p>
                 <p className="mt-3 text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-200 group-hover:text-white/90">{c.body}</p>
@@ -344,17 +344,9 @@ export default function Facilities({
           >
             <div className="group relative h-full w-full cursor-default bg-white transition-[background-color] duration-200 ease-out hover:bg-[#9d0b0f]">
               <div className="absolute left-[31px] top-[41px] h-[70px] w-[70px]">
-                <img
-                  alt=""
-                  className="size-full object-contain transition-[filter] duration-200 ease-out group-hover:brightness-0 group-hover:invert"
-                  src={c.icon}
-                />
+                <img alt="" className="icon-on-brand-hover size-full object-contain" src={c.icon} />
               </div>
-              <img
-                alt=""
-                className="absolute left-[376px] top-[46px] size-[38px] transition-[filter] duration-200 ease-out group-hover:brightness-0 group-hover:invert"
-                src={imgArrowOutward}
-              />
+              <img alt="" className="icon-on-brand-hover absolute left-[376px] top-[46px] size-[38px] object-contain" src={imgArrowOutward} />
               <p className="absolute left-[35px] top-[161px] w-[379px] whitespace-pre-line font-['Google_Sans:Medium',sans-serif] text-[36px] leading-[43px] text-[#0b0f13] transition-colors duration-200 ease-out group-hover:text-white">
                 {c.title}
               </p>

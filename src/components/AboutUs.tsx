@@ -189,7 +189,7 @@ export default function AboutUs({
               <button
                 key={item}
                 type="button"
-                className={`mx-auto flex h-[52px] w-full max-w-[360px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-4 text-center text-[14px] text-[#525866] shadow-[0_1px_2px_rgba(82,88,102,0.06)] transition-all duration-300 hover:bg-[#9d0b0f] hover:text-white fade-up d${idx}`}
+                className={`branded-solid-cta mx-auto flex h-[52px] w-full max-w-[360px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-4 text-center text-[14px] text-[#525866] shadow-[0_1px_2px_rgba(82,88,102,0.06)] transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] hover:text-white fade-up d${idx}`}
               >
                 {item}
               </button>
@@ -321,22 +321,22 @@ export default function AboutUs({
           </div>
         ))}
 
-        <button type="button" aria-pressed={false} className="absolute left-[339.5px] top-[2971px] flex h-[70.5px] w-[408.22px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+        <button type="button" aria-pressed={false} className="absolute left-[339.5px] top-[2971px] flex h-[70.5px] w-[408.22px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] branded-solid-cta cursor-pointer transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
           <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Quality Control (QC) Laboratory</p>
         </button>
-        <button type="button" aria-pressed={false} className="absolute left-[781.84px] top-[2971px] flex h-[70.5px] w-[405.95px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+        <button type="button" aria-pressed={false} className="absolute left-[781.84px] top-[2971px] flex h-[70.5px] w-[405.95px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] branded-solid-cta cursor-pointer transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
           <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Quality Assurance (QA)</p>
         </button>
-        <button type="button" aria-pressed={false} className="absolute left-[1221.9px] top-[2971px] flex h-[70.5px] w-[361.6px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+        <button type="button" aria-pressed={false} className="absolute left-[1221.9px] top-[2971px] flex h-[70.5px] w-[361.6px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] branded-solid-cta cursor-pointer transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
           <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Documentation &amp; Retention</p>
         </button>
-        <button type="button" aria-pressed={false} className="absolute left-[396.5px] top-[3081.3px] flex h-[70.5px] w-[525.35px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+        <button type="button" aria-pressed={false} className="absolute left-[396.5px] top-[3081.3px] flex h-[70.5px] w-[525.35px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] branded-solid-cta cursor-pointer transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
           <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Research &amp; Development (R&amp;D) Laboratory</p>
         </button>
-        <button type="button" aria-pressed={false} className="absolute left-[955.96px] top-[3081.3px] flex h-[70.5px] w-[210.37px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+        <button type="button" aria-pressed={false} className="absolute left-[955.96px] top-[3081.3px] flex h-[70.5px] w-[210.37px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] branded-solid-cta cursor-pointer transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
           <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Warehousing</p>
         </button>
-        <button type="button" aria-pressed={false} className="absolute left-[1211.81px] top-[3081.3px] flex h-[70.5px] w-[313.84px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] cursor-pointer transition-colors duration-300 ease-out hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
+        <button type="button" aria-pressed={false} className="absolute left-[1211.81px] top-[3081.3px] flex h-[70.5px] w-[313.84px] items-center justify-center rounded-[8px] border border-[#e2e4e9] bg-white px-2 shadow-[0_1px_2px_rgba(82,88,102,0.06)] branded-solid-cta cursor-pointer transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] hover:[&_p]:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9d0b0f]/50">
           <p className="font-['Google_Sans:Medium',sans-serif] text-[20px] leading-[20px] text-[#525866] transition-colors duration-300 ease-out">Regulatory Affairs (RA)</p>
         </button>
 

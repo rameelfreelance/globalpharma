@@ -208,9 +208,13 @@ export default function ProductTemplate({
           >
             <div className="flex items-start justify-between">
               <div className="h-[52px] w-[52px] overflow-hidden">
-                <img alt="" className="size-full object-contain" src={icon} />
+                <img alt="" className="icon-on-brand-hover size-full object-contain" src={icon} />
               </div>
-              <img alt="" className="h-[18px] w-[18px] opacity-80 transition-transform duration-200 group-hover:translate-x-[2px]" src={backArrow} />
+              <img
+                alt=""
+                className="icon-on-brand-hover h-[18px] w-[18px] opacity-80 transition-[filter,transform] duration-200 group-hover:translate-x-[2px]"
+                src={backArrow}
+              />
             </div>
             <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-300 group-hover:text-white">
               {categoryTitle}

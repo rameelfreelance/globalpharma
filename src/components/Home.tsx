@@ -410,36 +410,68 @@ export default function Home({
           </div>
           <div className="mt-6 grid grid-cols-1 gap-4">
             <div
-              className={`rounded bg-white p-4 shadow-sm transition-all duration-300 ${activeMobileCard === "cgmp" ? "bg-[#9d0b0f] text-white" : "box-hover"}`}
+              className={`group rounded border border-transparent bg-white p-4 shadow-sm transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] ${activeMobileCard === "cgmp" ? "border-[#9d0b0f] bg-[#9d0b0f]" : ""}`}
               onTouchStart={() => setActiveMobileCard("cgmp")}
               onTouchEnd={() => setActiveMobileCard(null)}
             >
-              <p className={`text-lg font-semibold ${activeMobileCard === "cgmp" ? "text-white" : "text-[#9d0b0f]"}`}>cGMP Operations</p>
-              <p className={`mt-1 text-sm ${activeMobileCard === "cgmp" ? "text-white/90" : "text-[#2f4252]"}`}>Strictly compliant with global manufacturing standards.</p>
+              <p
+                className={`text-lg font-semibold transition-colors duration-100 ${activeMobileCard === "cgmp" ? "text-white" : "text-[#9d0b0f] group-hover:text-white"}`}
+              >
+                cGMP Operations
+              </p>
+              <p
+                className={`mt-1 text-sm transition-colors duration-100 ${activeMobileCard === "cgmp" ? "text-white/90" : "text-[#2f4252] group-hover:text-white/90"}`}
+              >
+                Strictly compliant with global manufacturing standards.
+              </p>
             </div>
             <div
-              className={`rounded bg-white p-4 shadow-sm transition-all duration-300 ${activeMobileCard === "reg" ? "bg-[#9d0b0f] text-white" : "box-hover"}`}
+              className={`group rounded border border-transparent bg-white p-4 shadow-sm transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] ${activeMobileCard === "reg" ? "border-[#9d0b0f] bg-[#9d0b0f]" : ""}`}
               onTouchStart={() => setActiveMobileCard("reg")}
               onTouchEnd={() => setActiveMobileCard(null)}
             >
-              <p className={`text-lg font-semibold ${activeMobileCard === "reg" ? "text-white" : "text-[#9d0b0f]"}`}>Regulatory Approved</p>
-              <p className={`mt-1 text-sm ${activeMobileCard === "reg" ? "text-white/90" : "text-[#2f4252]"}`}>Inspected and approved by leading authorities.</p>
+              <p
+                className={`text-lg font-semibold transition-colors duration-100 ${activeMobileCard === "reg" ? "text-white" : "text-[#9d0b0f] group-hover:text-white"}`}
+              >
+                Regulatory Approved
+              </p>
+              <p
+                className={`mt-1 text-sm transition-colors duration-100 ${activeMobileCard === "reg" ? "text-white/90" : "text-[#2f4252] group-hover:text-white/90"}`}
+              >
+                Inspected and approved by leading authorities.
+              </p>
             </div>
             <div
-              className={`rounded bg-white p-4 shadow-sm transition-all duration-300 ${activeMobileCard === "qms" ? "bg-[#9d0b0f] text-white" : "box-hover"}`}
+              className={`group rounded border border-transparent bg-white p-4 shadow-sm transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] ${activeMobileCard === "qms" ? "border-[#9d0b0f] bg-[#9d0b0f]" : ""}`}
               onTouchStart={() => setActiveMobileCard("qms")}
               onTouchEnd={() => setActiveMobileCard(null)}
             >
-              <p className={`text-lg font-semibold ${activeMobileCard === "qms" ? "text-white" : "text-[#9d0b0f]"}`}>Quality Management</p>
-              <p className={`mt-1 text-sm ${activeMobileCard === "qms" ? "text-white/90" : "text-[#2f4252]"}`}>QMS from raw material to final release.</p>
+              <p
+                className={`text-lg font-semibold transition-colors duration-100 ${activeMobileCard === "qms" ? "text-white" : "text-[#9d0b0f] group-hover:text-white"}`}
+              >
+                Quality Management
+              </p>
+              <p
+                className={`mt-1 text-sm transition-colors duration-100 ${activeMobileCard === "qms" ? "text-white/90" : "text-[#2f4252] group-hover:text-white/90"}`}
+              >
+                QMS from raw material to final release.
+              </p>
             </div>
             <div
-              className={`rounded bg-white p-4 shadow-sm transition-all duration-300 ${activeMobileCard === "growth" ? "bg-[#9d0b0f] text-white" : "box-hover"}`}
+              className={`group rounded border border-transparent bg-white p-4 shadow-sm transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] ${activeMobileCard === "growth" ? "border-[#9d0b0f] bg-[#9d0b0f]" : ""}`}
               onTouchStart={() => setActiveMobileCard("growth")}
               onTouchEnd={() => setActiveMobileCard(null)}
             >
-              <p className={`text-lg font-semibold ${activeMobileCard === "growth" ? "text-white" : "text-[#9d0b0f]"}`}>Sustainable Growth</p>
-              <p className={`mt-1 text-sm ${activeMobileCard === "growth" ? "text-white/90" : "text-[#2f4252]"}`}>Designed for consistent and scalable supply.</p>
+              <p
+                className={`text-lg font-semibold transition-colors duration-100 ${activeMobileCard === "growth" ? "text-white" : "text-[#9d0b0f] group-hover:text-white"}`}
+              >
+                Sustainable Growth
+              </p>
+              <p
+                className={`mt-1 text-sm transition-colors duration-100 ${activeMobileCard === "growth" ? "text-white/90" : "text-[#2f4252] group-hover:text-white/90"}`}
+              >
+                Designed for consistent and scalable supply.
+              </p>
             </div>
           </div>
         </section>
@@ -479,19 +511,27 @@ export default function Home({
                 key={item.title}
                 type="button"
                 onClick={item.onClick}
-                className={`group w-full rounded p-4 text-left shadow-sm transition-all duration-300 active:scale-[0.99] ${activeMobileCard === item.title ? "bg-[#9d0b0f]" : "bg-white hover:bg-[#9d0b0f]"}`}
+                className={`branded-solid-cta group w-full rounded border border-transparent p-4 text-left shadow-sm transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] ${activeMobileCard === item.title ? "border-[#9d0b0f] bg-[#9d0b0f]" : "bg-white"}`}
                 onTouchStart={() => setActiveMobileCard(item.title)}
                 onTouchEnd={() => setActiveMobileCard(null)}
               >
-                <p className={`text-lg font-semibold transition-colors duration-300 group-hover:text-white ${activeMobileCard === item.title ? "text-white" : "text-[#051c2f]"}`}>{item.title}</p>
-                <p className={`mt-1 text-sm transition-colors duration-300 group-hover:text-white/90 ${activeMobileCard === item.title ? "text-white/90" : "text-[#808586]"}`}>{item.desc}</p>
+                <p
+                  className={`text-lg font-semibold transition-colors duration-100 ${activeMobileCard === item.title ? "text-white" : "text-[#051c2f] group-hover:text-white"}`}
+                >
+                  {item.title}
+                </p>
+                <p
+                  className={`mt-1 text-sm transition-colors duration-100 ${activeMobileCard === item.title ? "text-white/90" : "text-[#808586] group-hover:text-white/90"}`}
+                >
+                  {item.desc}
+                </p>
               </button>
             ))}
           </div>
           <button
             type="button"
             onClick={onNavigateProducts}
-            className={`mt-6 w-full rounded px-5 py-3 text-white transition-all duration-200 hover:-translate-y-px hover:bg-[#9d0b0f] hover:shadow-[0_10px_22px_rgba(157,11,15,0.3)] active:scale-[0.99] ${mobileAllProductsActive ? "bg-[#9d0b0f]" : "bg-[#0b0f13]"}`}
+            className={`branded-solid-cta mt-6 w-full rounded px-5 py-3 text-white transition-colors duration-100 ease-out hover:bg-[#9d0b0f] ${mobileAllProductsActive ? "bg-[#9d0b0f]" : "bg-[#0b0f13]"}`}
             onTouchStart={() => setMobileAllProductsActive(true)}
             onTouchEnd={() => setMobileAllProductsActive(false)}
           >
@@ -993,11 +1033,7 @@ export default function Home({
             data-node-id="I47:343;3:128"
             data-name="arrow-right"
           >
-            <img
-              alt=""
-              className="absolute block inset-0 max-w-none size-full transition duration-200 group-hover:brightness-125"
-              src={imgArrowRight}
-            />
+            <img alt="" className="icon-on-brand-hover absolute inset-0 block size-full max-w-none object-contain" src={imgArrowRight} />
           </div>
         </div>
         <button
@@ -1208,20 +1244,24 @@ export default function Home({
           ].map((c, i) => (
             <div
               key={i}
-              className={`absolute border-0 border-[#c2c2c2] border-solid h-[154px] top-[2303px] w-[358.458px] scale-in card-hover ${c.d} bg-white transition-colors duration-300 hover:bg-[#9d0b0f] group cursor-default`}
+              className={`group absolute h-[154px] cursor-default border border-transparent bg-white transition-colors duration-100 ease-out hover:border-[#9d0b0f] hover:bg-[#9d0b0f] top-[2303px] w-[358.458px] scale-in ${c.d}`}
               style={{ left: c.left }}
             >
-              <div className="absolute bg-[#eaeef1] content-stretch flex items-center justify-center left-[22px] overflow-clip p-[10px] rounded-[96px] top-[35px] w-[40px]">
-                <div className="overflow-clip relative shrink-0 size-[20px]">
+              <div className="absolute left-[22px] top-[35px] flex w-[40px] items-center justify-center rounded-[96px] bg-[#eaeef1] p-[10px] transition-colors duration-100 ease-out group-hover:bg-white/30">
+                <div className="relative size-[20px] shrink-0 overflow-clip">
                   <div className={`absolute ${c.inset}`}>
-                    <img alt="" className="absolute block inset-0 max-w-none size-full object-contain" src={c.iconSrc} />
+                    <img alt="" className="icon-on-brand-hover absolute inset-0 block size-full max-w-none object-contain" src={c.iconSrc} />
                   </div>
                 </div>
               </div>
-              <p className={`absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[75px] not-italic text-[#9d0b0f] group-hover:text-white transition-colors duration-300 text-[25px] top-[35px] ${c.titleW}`}>
+              <p
+                className={`absolute left-[75px] top-[35px] font-['Google_Sans:Bold',sans-serif] text-[25px] leading-[1.3] text-[#9d0b0f] transition-colors duration-100 ease-out group-hover:text-white not-italic ${c.titleW}`}
+              >
                 {c.title}
               </p>
-              <p className={`absolute font-['Google_Sans:Regular',sans-serif] leading-[1.4] left-[75px] not-italic text-[#2f4252] group-hover:text-white transition-colors duration-300 text-[18px] top-[75px] ${c.descW}`}>
+              <p
+                className={`absolute left-[75px] top-[75px] font-['Google_Sans:Regular',sans-serif] text-[18px] leading-[1.4] text-[#2f4252] transition-colors duration-100 ease-out group-hover:text-white not-italic ${c.descW}`}
+              >
                 {c.desc}
               </p>
             </div>

@@ -162,9 +162,13 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
               >
                 <div className="flex items-start justify-between">
                   <div className={`flex h-[52px] w-[52px] items-center justify-center ${card.iconWrapperClass ?? 'overflow-hidden'}`}>
-                    <img alt="" className={`block h-full w-full object-contain ${card.iconClass ?? ''}`} src={card.icon} />
+                    <img alt="" className={`icon-on-brand-hover block h-full w-full object-contain ${card.iconClass ?? ''}`} src={card.icon} />
                   </div>
-                  <img alt="" className="h-[18px] w-[18px] opacity-80 transition-transform duration-200 group-hover:translate-x-[2px]" src={iconArrowOutward} />
+                  <img
+                    alt=""
+                    className="icon-on-brand-hover h-[18px] w-[18px] opacity-80 transition-[filter,transform] duration-200 group-hover:translate-x-[2px]"
+                    src={iconArrowOutward}
+                  />
                 </div>
                 <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-300 group-hover:text-white">
                   {card.title}

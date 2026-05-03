@@ -106,6 +106,20 @@ button.careers-job-card:active {
   transform: none;
 }
 
+/* Monochrome / vector <img> icons: stay visible when a Tailwind `group` uses brand red on hover */
+.icon-on-brand-hover {
+  transition: filter 0.1s ease;
+}
+
+.group:hover .icon-on-brand-hover,
+.group:focus-within .icon-on-brand-hover {
+  filter: brightness(0) invert(1);
+}
+
+.careers-job-card:is(:hover, :focus-visible, :active) .icon-on-brand-hover {
+  filter: brightness(0) invert(1);
+}
+
 /* Map Figma exported font tokens to real browser fonts + weights */
 .home-figma [class*="Google_Sans:Regular"] {
   font-family: "Google Sans", "Product Sans", "Inter", sans-serif !important;

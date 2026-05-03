@@ -158,27 +158,27 @@ export default function Product({ onNavigateHome, onNavigateAbout, onNavigatePha
                 key={card.title}
                 type="button"
                 onClick={card.onClick}
-                className={`product-card group w-full bg-white p-5 text-left shadow-sm transition-all duration-300 hover:bg-[#9d0b0f] active:scale-[0.99] fade-up d${Math.min(idx, 6)}`}
+                className={`group product-brand-row w-full border-0 bg-white p-5 text-left shadow-sm transition-[background-color,box-shadow] duration-200 ease-out hover:bg-[#9d0b0f] active:scale-[0.99] fade-up d${Math.min(idx, 6)}`}
               >
                 <div className="flex items-start justify-between">
-                  <div className={`flex h-[52px] w-[52px] items-center justify-center ${card.iconWrapperClass ?? 'overflow-hidden'}`}>
+                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center ${card.iconWrapperClass ?? 'overflow-hidden'}`}>
                     <img alt="" className={`icon-on-brand-hover block h-full w-full object-contain ${card.iconClass ?? ''}`} src={card.icon} />
                   </div>
                   <img
                     alt=""
-                    className="icon-on-brand-hover h-[18px] w-[18px] opacity-80 transition-[filter,transform] duration-200 group-hover:translate-x-[2px]"
+                    className="icon-on-brand-hover h-4 w-4 shrink-0 opacity-80 transition-[filter,transform] duration-200 group-hover:translate-x-[2px]"
                     src={iconArrowOutward}
                   />
                 </div>
-                <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-300 group-hover:text-white">
+                <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-200 ease-out group-hover:text-white">
                   {card.title}
                 </p>
                 {card.subtitle ? (
-                  <p className="mt-1 text-[17px] leading-[1.45] text-[#0b0f13] transition-colors duration-300 group-hover:text-white/95">
+                  <p className="mt-1 text-[17px] leading-[1.45] text-[#0b0f13] transition-colors duration-200 ease-out group-hover:text-white/95">
                     {card.subtitle}
                   </p>
                 ) : null}
-                <p className="mt-3 text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-300 group-hover:text-white/90">
+                <p className="mt-3 text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-200 ease-out group-hover:text-white/90">
                   {card.body}
                 </p>
               </button>

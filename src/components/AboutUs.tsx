@@ -103,11 +103,13 @@ export default function AboutUs({
           onNavigateContact={onNavigateContact}
         />
 
-        <section ref={aboutRef} className="relative h-[360px] overflow-hidden bg-[#f5f8f9]">
-          <img alt="" className="absolute inset-0 h-full w-full object-cover img-zoom" src={imgHeroMain} />
-          <img alt="" className="absolute inset-0 h-full w-full object-cover opacity-55" src={imgHeroOverlay} />
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="relative z-10 px-5 pt-22 text-white">
+        <section ref={aboutRef} className="relative isolate min-h-[min(92vw,420px)] overflow-hidden bg-[#f5f8f9]">
+          <div className="absolute inset-0 overflow-hidden" aria-hidden>
+            <img alt="" className="absolute inset-0 h-full w-full object-cover" src={imgHeroMain} />
+            <img alt="" className="absolute inset-0 h-full w-full object-cover opacity-55" src={imgHeroOverlay} />
+            <div className="absolute inset-0 bg-black/20" />
+          </div>
+          <div className="relative z-10 px-5 pb-10 pt-[max(7rem,env(safe-area-inset-top,0px)+4.5rem)] text-white">
             <h1 className="text-[35px] font-semibold leading-[1.12] hero-clip-wrap">
               <span className="hero-clip-line d0">Committed to Quality,</span>
               <span className="hero-clip-line d1">Innovation &amp; Trusted Medicine</span>
@@ -128,8 +130,8 @@ export default function AboutUs({
           <p className="mt-4 text-[15px] leading-7 text-[#2f4252] fade-up d1">
             Global Pharmaceuticals Pakistan is a quality-driven pharmaceutical manufacturer committed to delivering safe, effective, and affordable medicines worldwide. We operate under strict cGMP compliance and international quality standards to ensure consistency, safety, and reliability. Our portfolio includes oral and topical dosage forms designed to meet diverse therapeutic needs.
           </p>
-          <div className="mt-6 h-[220px] overflow-hidden scale-in d2">
-            <img alt="" className="h-full w-full object-cover img-zoom" src={imgVisionMissionRight} />
+          <div className="mt-8 h-[220px] w-full overflow-hidden rounded-sm scale-in d2 img-zoom">
+            <img alt="" className="h-full w-full object-cover" src={imgVisionMissionRight} />
           </div>
         </section>
 
@@ -162,9 +164,7 @@ export default function AboutUs({
               ].map((step, idx) => (
                 <div
                   key={step.n}
-                  className={`bg-white px-2.5 pb-2.5 pt-2 text-[#051c2f] fade-up d${idx} ${
-                    idx % 2 === 1 ? 'ml-4' : ''
-                  } ${step.n === '5' ? 'w-[88%]' : 'w-full'}`}
+                  className={`w-full bg-white px-2.5 pb-2.5 pt-2 text-[#051c2f] fade-up d${idx}`}
                 >
                   <div className="mb-1.5 inline-flex h-6 w-6 items-center justify-center bg-[#9d0b0f] text-[14px] leading-none text-white">
                     {step.n}

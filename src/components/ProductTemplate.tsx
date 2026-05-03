@@ -69,7 +69,10 @@ export default function ProductTemplate({
   productMenuLinks,
 }: ProductTemplateProps) {
   const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
+  const [mobileFocusedCardIndex, setMobileFocusedCardIndex] = useState<number | null>(null)
   const cardRefs = useRef<Array<HTMLElement | null>>([])
+  const mobileProductCardRefs = useRef<Array<HTMLElement | null>>([])
+  const mobileCategoryButtonRef = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
     const applyViewportLayout = () => {
@@ -97,9 +100,6 @@ export default function ProductTemplate({
       card.style.transitionDelay = `${index * 100}ms`
     })
 
-    // Debug visibility of refs during observer setup.
-    console.log('ProductTemplate cardRefs:', cardRefs.current)
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -125,6 +125,16 @@ export default function ProductTemplate({
 
     return () => observer.disconnect()
   }, [cards.length])
+
+  useEffect(() => {
+    setMobileFocusedCardIndex(null)
+  }, [categoryTitle, cards.length])
+
+  useEffect(() => {
+    if (!isMobileLayout) {
+      setMobileFocusedCardIndex(null)
+    }
+  }, [isMobileLayout])
 
   const navForLabel = (needle: string) => {
     const item = productMenuLinks.find((link) => link.label.toLowerCase().includes(needle.toLowerCase()))
@@ -202,49 +212,70 @@ export default function ProductTemplate({
 
         <section className="bg-[#f5f8f9] px-5 py-10">
           <button
+            ref={mobileCategoryButtonRef}
             type="button"
-            onClick={navigation.onNavigateProducts}
-            className="product-card group w-full bg-white p-5 text-left shadow-sm transition-all duration-300 hover:bg-[#9d0b0f] active:scale-[0.99] fade-up d0"
+            aria-label={mobileFocusedCardIndex !== null ? 'Back to category list' : 'Back to all products'}
+            onClick={() => {
+              if (mobileFocusedCardIndex !== null) {
+                setMobileFocusedCardIndex(null)
+                mobileCategoryButtonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                return
+              }
+              navigation.onNavigateProducts()
+            }}
+            className="group product-brand-row w-full border-0 bg-white p-5 text-left shadow-sm transition-[background-color,box-shadow] duration-200 ease-out hover:bg-[#9d0b0f] active:scale-[0.99] fade-up d0"
           >
             <div className="flex items-start justify-between">
-              <div className="h-[52px] w-[52px] overflow-hidden">
+              <div className="h-11 w-11 shrink-0 overflow-hidden">
                 <img alt="" className="icon-on-brand-hover size-full object-contain" src={icon} />
               </div>
               <img
                 alt=""
-                className="icon-on-brand-hover h-[18px] w-[18px] opacity-80 transition-[filter,transform] duration-200 group-hover:translate-x-[2px]"
+                className="icon-on-brand-hover h-4 w-4 shrink-0 opacity-80 transition-[filter,transform] duration-200 ease-out -scale-x-100 group-hover:-translate-x-[2px]"
                 src={backArrow}
               />
             </div>
-            <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-300 group-hover:text-white">
+            <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-200 ease-out group-hover:text-white">
               {categoryTitle}
             </p>
             {subtitle ? (
-              <p className="mt-1 text-[17px] leading-[1.45] text-[#0b0f13] transition-colors duration-300 group-hover:text-white/95">
+              <p className="mt-1 text-[17px] leading-[1.45] text-[#0b0f13] transition-colors duration-200 ease-out group-hover:text-white/95">
                 {subtitle}
               </p>
             ) : null}
-            <p className="mt-3 text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-300 group-hover:text-white/90">
+            <p className="mt-3 text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-200 ease-out group-hover:text-white/90">
               {description}
             </p>
           </button>
 
           <div className="mt-5 space-y-4">
             {cards.map((card, idx) => (
-              <article
+              <button
                 key={`${card.title}-${idx}`}
-                className={`product-card group w-full bg-white p-5 text-left shadow-sm transition-all duration-300 hover:bg-[#9d0b0f] fade-up d${Math.min(idx + 1, 6)}`}
+                type="button"
+                aria-pressed={mobileFocusedCardIndex === idx}
+                aria-label={`View ${card.title}`}
+                onClick={() => {
+                  setMobileFocusedCardIndex(idx)
+                  requestAnimationFrame(() => {
+                    mobileProductCardRefs.current[idx]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+                  })
+                }}
+                ref={(node) => {
+                  mobileProductCardRefs.current[idx] = node
+                }}
+                className={`group product-brand-row w-full border-0 bg-white p-5 text-left shadow-sm transition-[background-color,box-shadow] duration-200 ease-out hover:bg-[#9d0b0f] fade-up d${Math.min(idx + 1, 6)}`}
               >
                 <div className="flex h-[220px] items-center justify-center bg-[#f5f8f9] p-3 img-zoom">
                   <img alt="" className="max-h-[200px] w-full object-contain" src={card.imageSrc} />
                 </div>
-                <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-300 group-hover:text-white">
+                <p className="mt-4 text-[28px] font-medium leading-[1.08] text-[#0b0f13] transition-colors duration-200 ease-out group-hover:text-white">
                   {card.title}
                 </p>
-                <p className="mt-2 whitespace-pre-line text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-300 group-hover:text-white/90">
+                <p className="mt-2 whitespace-pre-line text-[15px] leading-7 text-[#0b0f13]/70 transition-colors duration-200 ease-out group-hover:text-white/90">
                   {card.body}
                 </p>
-              </article>
+              </button>
             ))}
           </div>
         </section>

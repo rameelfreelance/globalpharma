@@ -106,9 +106,16 @@ button.careers-job-card:active {
   transform: none;
 }
 
+/* Product hub / category cards: skip global button hover dim — it composites with text and causes a black→white flash */
+button.product-brand-row:hover,
+button.product-brand-row:focus-visible,
+button.product-brand-row:active {
+  filter: none;
+}
+
 /* Monochrome / vector <img> icons: stay visible when a Tailwind `group` uses brand red on hover */
 .icon-on-brand-hover {
-  transition: filter 0.1s ease;
+  transition: filter 0.2s ease;
 }
 
 .group:hover .icon-on-brand-hover,

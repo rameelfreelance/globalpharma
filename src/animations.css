@@ -2,13 +2,11 @@
    GLOBAL ANIMATION SYSTEM
    ═══════════════════════════════════════════════════════ */
 
-/* Premium ease-out — long, soft landing (Martin Dow–style pacing) */
+/* Silky ease-out — long deceleration, minimal “snap” at the end */
 :root {
-  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-  /* Scroll / section reveals: slower editorial feel */
-  --reveal-duration: 1.38s;
-  /* Hero lines: extra time so large type settles like martindow.com */
-  --reveal-duration-hero: 1.58s;
+  --ease-smooth: cubic-bezier(0.25, 1, 0.45, 1);
+  --reveal-duration: 1.22s;
+  --reveal-duration-hero: 1.36s;
 }
 
 /* ── Keyframes ─────────────────────────────────────────── */
@@ -16,7 +14,7 @@
 @keyframes heroLineIn {
   from {
     opacity: 0;
-    transform: translate3d(0, 105%, 0) rotate(0.75deg);
+    transform: translate3d(0, 102%, 0) rotate(0.55deg);
   }
   to {
     opacity: 1;
@@ -32,11 +30,11 @@
 /* ── Page transition ───────────────────────────────────── */
 
 .page-enter {
-  animation: pageFadeUp 0.85s var(--ease-smooth) both;
+  animation: pageFadeUp 0.78s var(--ease-smooth) both;
 }
 
 @keyframes pageFadeUp {
-  from { opacity: 0; transform: translate3d(0, 32px, 0); }
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
   to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
@@ -52,7 +50,7 @@
 .hero-clip-line {
   display: block;
   opacity: 0;
-  transform: translate3d(0, 105%, 0) rotate(0.75deg);
+  transform: translate3d(0, 102%, 0) rotate(0.55deg);
   transform-origin: center bottom;
   backface-visibility: hidden;
   animation: heroLineIn var(--reveal-duration-hero) var(--ease-smooth) both;
@@ -75,13 +73,13 @@
 
 .clip-line {
   display: block;
-  transform: translate3d(0, 105%, 0) rotate(0.5deg);
+  transform: translate3d(0, 102%, 0) rotate(0.4deg);
   opacity: 0;
   transform-origin: center bottom;
   backface-visibility: hidden;
-  transition:
-    transform var(--reveal-duration) var(--ease-smooth),
-    opacity var(--reveal-duration) var(--ease-smooth);
+  transition-property: transform, opacity;
+  transition-duration: var(--reveal-duration);
+  transition-timing-function: var(--ease-smooth);
 }
 
 .clip-wrap.in-view .clip-line {
@@ -93,11 +91,11 @@
 
 .fade-up {
   opacity: 0;
-  transform: translate3d(0, 36px, 0);
+  transform: translate3d(0, 26px, 0);
   backface-visibility: hidden;
-  transition:
-    opacity var(--reveal-duration) var(--ease-smooth),
-    transform var(--reveal-duration) var(--ease-smooth);
+  transition-property: opacity, transform;
+  transition-duration: var(--reveal-duration);
+  transition-timing-function: var(--ease-smooth);
 }
 
 .fade-up.in-view {
@@ -109,11 +107,11 @@
 
 .scale-in {
   opacity: 0;
-  transform: translate3d(0, 28px, 0) scale(0.97);
+  transform: translate3d(0, 22px, 0) scale(0.975);
   backface-visibility: hidden;
-  transition:
-    opacity var(--reveal-duration) var(--ease-smooth),
-    transform var(--reveal-duration) var(--ease-smooth);
+  transition-property: opacity, transform;
+  transition-duration: var(--reveal-duration);
+  transition-timing-function: var(--ease-smooth);
 }
 
 .scale-in.in-view {
@@ -135,11 +133,11 @@
 /* ── Slower reveal for manufacturing process cards ─────── */
 .process-reveal {
   opacity: 0;
-  transform: translate3d(0, 40px, 0);
+  transform: translate3d(0, 32px, 0);
   backface-visibility: hidden;
-  transition:
-    opacity 1.45s var(--ease-smooth),
-    transform 1.45s var(--ease-smooth);
+  transition-property: opacity, transform;
+  transition-duration: 1.28s;
+  transition-timing-function: var(--ease-smooth);
 }
 
 .process-reveal.in-view {
@@ -155,7 +153,7 @@
 
 /* Scroll-linked motion for manufacturing process boxes */
 .process-scroll {
-  transform: translateY(var(--process-shift, 0px));
+  transform: translate3d(0, var(--process-shift, 0px), 0);
   will-change: transform;
 }
 
@@ -166,12 +164,13 @@
 }
 
 .img-zoom img {
-  transition: transform 1s var(--ease-smooth);
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: transform 0.95s var(--ease-smooth);
   will-change: transform;
 }
 
 .img-zoom:hover img {
-  transform: scale(1.07);
+  transform: translate3d(0, 0, 0) scale(1.07);
 }
 
 /* ── Card hover lift ───────────────────────────────────── */
@@ -209,12 +208,13 @@
 
 .line-reveal {
   transform-origin: left center;
-  transform: scaleX(0);
-  transition: transform 0.78s var(--ease-smooth);
+  transform: scale3d(0, 1, 1);
+  backface-visibility: hidden;
+  transition: transform 0.72s var(--ease-smooth);
 }
 
 .line-reveal.in-view {
-  transform: scaleX(1);
+  transform: scale3d(1, 1, 1);
 }
 
 /* ── Box hover — theme colour flash ────────────────────── */

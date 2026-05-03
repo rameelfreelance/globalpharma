@@ -390,19 +390,31 @@ export default function Home({
             <span className="clip-line d0">Our Trusted Group Companies And Strategic Partners</span>
           </p>
           <div className="mt-6 space-y-5 fade-up d1">
-            <div className="flex items-center justify-center gap-2">
-              <img alt="" className="h-[28px] w-[28px] object-contain" src={imgGroup1000000720} />
-              <p className="text-[17px] font-semibold leading-[1.2] text-[#9d0b0f]">
+            <a
+              href="https://global-final-rxq1.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex max-w-full flex-wrap items-center justify-center gap-2 no-underline text-inherit"
+            >
+              <span className="inline-flex size-[28px] shrink-0 items-center justify-center overflow-hidden">
+                <img alt="" className="max-h-full max-w-full object-contain" src={imgGroup1000000720} />
+              </span>
+              <p className="max-w-full text-center text-[17px] font-semibold leading-[1.2] text-[#9d0b0f]">
                 Global Pharmaceuticals Pvt. Ltd.
               </p>
-            </div>
-            <div className="mx-auto flex h-[88px] w-full max-w-[300px] items-center justify-center overflow-hidden rounded-sm bg-white">
+            </a>
+            <a
+              href="https://dwatson.pk/?srsltid=AfmBOoo7gV0FY0FJMqEkzaycDXdwJEu0z58CPZr6K-DitpcaEhtO899n"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-auto flex h-[88px] w-full min-w-0 max-w-[300px] items-center justify-center overflow-hidden rounded-sm bg-white no-underline"
+            >
               <img
                 alt=""
-                className="max-h-[64px] w-auto max-w-full object-contain"
+                className="block h-auto max-h-[64px] min-w-0 w-auto max-w-full self-center object-contain"
                 src={imgGroup1000001909}
               />
-            </div>
+            </a>
           </div>
         </section>
 
@@ -1335,7 +1347,12 @@ export default function Home({
             className="mt-[74px] flex items-center justify-between fade-up d1"
             data-node-id="47:400"
           >
-            <div className="flex items-center gap-[8px]">
+            <a
+              href="https://global-final-rxq1.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-[8px] no-underline text-inherit"
+            >
               <div className="h-[57px] w-[56px]" data-node-id="47:403">
                 <img
                   alt=""
@@ -1349,13 +1366,20 @@ export default function Home({
               >
                 Global Pharmaceuticals Pvt. Ltd.
               </p>
-            </div>
-            <img
-              alt=""
-              className="h-[52px] w-[639px] object-contain"
-              src={imgGroup1000001909}
-              data-node-id="47:415"
-            />
+            </a>
+            <a
+              href="https://dwatson.pk/?srsltid=AfmBOoo7gV0FY0FJMqEkzaycDXdwJEu0z58CPZr6K-DitpcaEhtO899n"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex no-underline"
+            >
+              <img
+                alt=""
+                className="h-[52px] w-[639px] object-contain"
+                src={imgGroup1000001909}
+                data-node-id="47:415"
+              />
+            </a>
           </div>
         </div>
         <div

@@ -197,13 +197,31 @@ export default function ContactUs({
             <span className="clip-line d0">Our Trusted Group Companies and Strategic Partners</span>
           </p>
           <div className="mt-6 space-y-4 fade-up d1">
-            <div className="flex items-center justify-center gap-2">
-              <img alt="" className="h-[28px] w-[28px] object-contain" src={partnerMark} />
-              <p className="text-[17px] font-semibold text-[#9d0b0f]">Global Pharmaceuticals Pvt. Ltd.</p>
-            </div>
-            <div className="mx-auto flex h-[84px] w-full max-w-[300px] items-center justify-center overflow-hidden rounded-sm bg-white">
-              <img alt="" className="max-h-[60px] w-auto max-w-full object-contain" src={partnerLogo} />
-            </div>
+            <a
+              href="https://global-final-rxq1.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex max-w-full flex-wrap items-center justify-center gap-2 no-underline text-inherit"
+            >
+              <span className="inline-flex size-[28px] shrink-0 items-center justify-center overflow-hidden">
+                <img alt="" className="max-h-full max-w-full object-contain" src={partnerMark} />
+              </span>
+              <p className="max-w-full text-center text-[17px] font-semibold text-[#9d0b0f]">
+                Global Pharmaceuticals Pvt. Ltd.
+              </p>
+            </a>
+            <a
+              href="https://dwatson.pk/?srsltid=AfmBOoo7gV0FY0FJMqEkzaycDXdwJEu0z58CPZr6K-DitpcaEhtO899n"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-auto flex h-[84px] w-full min-w-0 max-w-[300px] items-center justify-center overflow-hidden rounded-sm bg-white no-underline"
+            >
+              <img
+                alt=""
+                className="block h-auto max-h-[60px] min-w-0 w-auto max-w-full self-center object-contain"
+                src={partnerLogo}
+              />
+            </a>
           </div>
         </section>
 
@@ -381,13 +399,27 @@ export default function ContactUs({
         <div className="absolute left-[283px] top-[1807px] w-[1354px] text-center font-['Google_Sans:Regular',sans-serif] text-[40px] leading-[40.8px] text-[#051c2f] clip-wrap">
           <p className="clip-line d0">Our Trusted Group Companies and Strategic Partners</p>
         </div>
-        <div className="absolute left-[287px] top-[1883px] h-[57px] w-[56px] scale-in d1">
-          <img alt="" className="h-full w-full object-contain" src={partnerMark} />
-        </div>
-        <p className="absolute left-[351px] top-[1900px] w-[586px] whitespace-nowrap font-['Google_Sans:Bold',sans-serif] text-[40px] font-bold leading-[23px] text-[#9d0b0f] fade-up d2">
-          Global Pharmaceuticals Pvt. Ltd.
-        </p>
-        <img alt="" className="absolute left-[994px] top-[1881px] h-[52px] w-[639px] object-contain fade-up d3" src={partnerLogo} />
+        <a
+          href="https://global-final-rxq1.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute left-[287px] top-[1883px] flex items-start gap-[8px] no-underline text-inherit"
+        >
+          <div className="h-[57px] w-[56px] shrink-0 scale-in d1">
+            <img alt="" className="h-full w-full object-contain" src={partnerMark} />
+          </div>
+          <p className="w-[586px] whitespace-nowrap pt-[17px] font-['Google_Sans:Bold',sans-serif] text-[40px] font-bold leading-[23px] text-[#9d0b0f] fade-up d2">
+            Global Pharmaceuticals Pvt. Ltd.
+          </p>
+        </a>
+        <a
+          href="https://dwatson.pk/?srsltid=AfmBOoo7gV0FY0FJMqEkzaycDXdwJEu0z58CPZr6K-DitpcaEhtO899n"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute left-[994px] top-[1881px] inline-flex fade-up d3 no-underline"
+        >
+          <img alt="" className="h-[52px] w-[639px] object-contain" src={partnerLogo} />
+        </a>
 
         <div className="absolute left-0 top-[2043px] w-[1920px] bg-[#f5f5f5]">
           <div className="h-[509px] bg-[#4e0a0c] px-[195px] pb-[99px] pt-[98px]">

@@ -93,14 +93,14 @@ export default function Pharmacovigilance({
           </div>
         </section>
 
-        <section className="bg-white py-10">
-          {/* Full-bleed width on small screens so the PDF iframe matches viewport (px-5 was leaving side gaps + gray). */}
-          <div className="fade-up d0 w-full overflow-hidden border-y border-[#dadada] bg-white shadow-[0_1px_0_rgba(0,0,0,0.04)]">
+        <section className="overflow-x-hidden overscroll-x-none bg-white py-10">
+          {/* Full-bleed; clip any subpixel overflow so the page does not pan sideways. */}
+          <div className="pdf-embed-shell fade-up d0 w-full max-w-full touch-pan-y overflow-x-hidden overscroll-x-none border-y border-[#dadada] bg-white shadow-[0_1px_0_rgba(0,0,0,0.04)]">
             <iframe
               title="Suspected adverse drug reaction reporting form for healthcare professionals"
               src={`${adrReportingFormPdf}#view=FitH&toolbar=0`}
               width="100%"
-              className="block h-[min(70dvh,680px)] w-full min-w-full border-0 bg-white"
+              className="block h-[min(70dvh,680px)] w-full max-w-full min-w-0 border-0 bg-white"
             />
           </div>
           <div className="mt-3 space-y-6 px-5">
@@ -163,11 +163,11 @@ export default function Pharmacovigilance({
         <div className="absolute left-[1153px] top-[587px] h-[12px] w-[557px] bg-[#9d0b0f] line-reveal" />
 
         <div className="absolute left-[91px] top-[1005px] h-[2353px] w-[1677px] bg-white fade-up d1" />
-        <div className="absolute left-[157px] top-[1041px] h-[2272px] w-[1607px] overflow-hidden rounded-sm border border-[#e2e4e9] bg-white shadow-sm scale-in d2">
+        <div className="pdf-embed-shell absolute left-[157px] top-[1041px] h-[2272px] w-[1607px] overflow-hidden rounded-sm border border-[#e2e4e9] bg-white shadow-sm scale-in d2">
           <iframe
             title="Suspected adverse drug reaction reporting form for healthcare professionals"
             src={`${adrReportingFormPdf}#view=FitH&toolbar=0`}
-            className="absolute inset-0 size-full border-0 bg-white"
+            className="absolute inset-0 size-full max-w-full border-0 bg-white"
           />
         </div>
 

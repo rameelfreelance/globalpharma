@@ -57,7 +57,7 @@ export default function Pharmacovigilance({
 
   if (isMobileLayout) {
     return (
-      <div className="min-h-screen w-full bg-white">
+      <div className="min-h-screen w-full overflow-x-hidden bg-white">
         <Navbar
           activePage="pharmacovigilance"
           onNavigateHome={onNavigateHome}
@@ -93,39 +93,43 @@ export default function Pharmacovigilance({
           </div>
         </section>
 
-        <section className="bg-white px-5 py-10">
-          <div className="scale-in d0 overflow-hidden rounded-lg border border-[#dadada] bg-white shadow-sm">
+        <section className="bg-white py-10">
+          {/* Full-bleed width on small screens so the PDF iframe matches viewport (px-5 was leaving side gaps + gray). */}
+          <div className="fade-up d0 w-full overflow-hidden border-y border-[#dadada] bg-white shadow-[0_1px_0_rgba(0,0,0,0.04)]">
             <iframe
               title="Suspected adverse drug reaction reporting form for healthcare professionals"
               src={`${adrReportingFormPdf}#view=FitH&toolbar=0`}
-              className="block h-[min(72vh,720px)] w-full border-0 bg-white"
+              width="100%"
+              className="block h-[min(70dvh,680px)] w-full min-w-full border-0 bg-white"
             />
           </div>
-          <p className="mt-3 text-center text-[13px] leading-5 text-[#4f5665]">
-            <a
-              href={adrReportingFormPdf}
-              download
-              className="font-medium text-[#9d0b0f] underline underline-offset-2 hover:opacity-90"
+          <div className="mt-3 space-y-6 px-5">
+            <p className="text-center text-[13px] leading-5 text-[#4f5665]">
+              <a
+                href={adrReportingFormPdf}
+                download
+                className="font-medium text-[#9d0b0f] underline underline-offset-2 hover:opacity-90"
+              >
+                Download form (PDF)
+              </a>
+              <span className="mx-2 text-[#b0b8c4]">|</span>
+              <a
+                href={adrReportingFormPdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#9d0b0f] underline underline-offset-2 hover:opacity-90"
+              >
+                Open in new tab
+              </a>
+            </p>
+            <button
+              type="button"
+              className="flex w-full items-center justify-center gap-2 rounded bg-black px-5 py-3 text-white transition-colors duration-300 hover:bg-[#9d0b0f]"
             >
-              Download form (PDF)
-            </a>
-            <span className="mx-2 text-[#b0b8c4]">|</span>
-            <a
-              href={adrReportingFormPdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-[#9d0b0f] underline underline-offset-2 hover:opacity-90"
-            >
-              Open in new tab
-            </a>
-          </p>
-          <button
-            type="button"
-            className="mt-6 flex w-full items-center justify-center gap-2 rounded bg-black px-5 py-3 text-white transition-colors duration-300 hover:bg-[#9d0b0f]"
-          >
-            <span className="text-[16px]">Submit</span>
-            <img alt="" className="size-[20px]" src={imgArrowRight} />
-          </button>
+              <span className="text-[16px]">Submit</span>
+              <img alt="" className="size-[20px]" src={imgArrowRight} />
+            </button>
+          </div>
         </section>
 
         <MobileFooter

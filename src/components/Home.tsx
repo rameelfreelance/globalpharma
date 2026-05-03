@@ -34,8 +34,8 @@ const imgWhatsAppImage20260407At40919Pm1 =
   "/assets/figma/2878d3e6-8baa-4083-9b60-e3b37c72d9bc.jpg";
 const imgAsc01300Jpg1 =
   "/assets/figma/77394743-12ab-4a6d-bdf6-ed90b141e5c4.jpg";
-const imgDsc01471Copy2 =
-  "/assets/figma/a8926ecc-b464-43de-b606-8b87c5638a6b.jpg";
+/** Looped hero background (replaces static hero still above the fold). */
+const homeHeroVideo = "/assets/home-hero-video.mp4";
 const imgDsc01471Copy1 =
   "/assets/figma/5307df76-c637-4d12-8f92-9ac0373b849a.jpg";
 const imgGroup1 = "/assets/figma/bec08ab6-3d2f-4ff8-866d-65ad12fc2969.svg";
@@ -282,13 +282,22 @@ export default function Home({
   }, []);
 
   if (isMobileLayout) {
-    return (
+  return (
       <div className="min-h-screen w-full bg-white">
         <div className="relative h-[420px] overflow-hidden bg-[#4e0a0c]">
-          <img
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover opacity-70 img-zoom"
-            src={imgDsc01471Copy2}
+          <video
+            aria-hidden
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 h-full w-full object-cover img-zoom pointer-events-none"
+            src={homeHeroVideo}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/62 via-black/52 to-black/68"
           />
           <button
             type="button"
@@ -1364,10 +1373,19 @@ export default function Home({
           }}
           data-name="DSC01471 copy 1"
         >
-          <img
-            alt=""
-            className="absolute inset-0 size-full max-w-none object-cover pointer-events-none"
-            src={imgDsc01471Copy2}
+          <video
+            aria-hidden
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="pointer-events-none absolute inset-0 size-full max-w-none object-cover"
+            src={homeHeroVideo}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/58 via-black/48 to-black/62"
           />
         </div>
         <div
@@ -1681,15 +1699,15 @@ export default function Home({
           <div
             className="absolute left-[calc(50%-764px)] top-[857px] w-[min(620px,calc(100vw-388px))] max-w-[620px] scale-in d2"
             data-node-id="47:465"
-          >
-            <img
+              >
+                <img
               alt="ISO 9001, ISO 14001, ISO 45001, and GMP certified company seals"
               className="block h-auto w-full max-h-[min(118px,17vh)] object-contain object-left drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]"
               decoding="async"
               src="/assets/group-1000002029.png"
-            />
-          </div>
-        </div>
+                />
+              </div>
+              </div>
         <div className="absolute left-[calc(50%+162px)] top-[72px] z-20 h-[228px] w-[270px] max-xl:hidden">
           <button
             type="button"

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import MobileFooter from './MobileFooter'
 import Navbar from './Navbar'
 const imgBsc01235Jpg2 = '/assets/figma/d53587fc-a68d-4d4f-bb3d-3bb91089cab7.jpg'
-const img1011 = '/assets/figma/ae15aeab-3de0-4810-b236-69fff35ed127.jpg'
+/** Fillable ADR reporting form (replaces static hero form graphic). */
+const adrReportingFormPdf = '/assets/suspected-adverse-reaction-reporting-form.pdf'
 const imgBsc01235Jpg1 = '/assets/figma/d0900fa1-6dad-473e-84ee-67346a0ebe35.svg'
 const imgGroup1 = '/assets/figma/b6cae630-7301-45a1-bc7a-ceb3fd237a86.svg'
 const imgIcon = '/assets/figma/509d9f6c-e996-496c-865d-4898552ea9de.svg'
@@ -95,9 +96,31 @@ export default function Pharmacovigilance({
         </section>
 
         <section className="bg-[#f5f8f9] px-5 py-10">
-          <div className="overflow-hidden rounded scale-in d0">
-            <img alt="" className="h-auto w-full object-cover img-zoom" src={img1011} />
+          <div className="scale-in d0 overflow-hidden rounded-lg border border-[#dadada] bg-white shadow-sm">
+            <iframe
+              title="Suspected adverse drug reaction reporting form for healthcare professionals"
+              src={`${adrReportingFormPdf}#view=FitH`}
+              className="block h-[min(78vh,820px)] w-full min-h-[560px] border-0"
+            />
           </div>
+          <p className="mt-3 text-center text-[13px] leading-5 text-[#4f5665]">
+            <a
+              href={adrReportingFormPdf}
+              download
+              className="font-medium text-[#9d0b0f] underline underline-offset-2 hover:opacity-90"
+            >
+              Download form (PDF)
+            </a>
+            <span className="mx-2 text-[#b0b8c4]">|</span>
+            <a
+              href={adrReportingFormPdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-[#9d0b0f] underline underline-offset-2 hover:opacity-90"
+            >
+              Open in new tab
+            </a>
+          </p>
           <button
             type="button"
             className="mt-6 flex w-full items-center justify-center gap-2 rounded bg-black px-5 py-3 text-white transition-colors duration-300 hover:bg-[#9d0b0f]"
@@ -138,8 +161,12 @@ export default function Pharmacovigilance({
         <div className="absolute left-[1153px] top-[587px] h-[12px] w-[557px] bg-[#9d0b0f] line-reveal" />
 
         <div className="absolute left-[91px] top-[1005px] h-[2353px] w-[1677px] bg-[#f5f8f9] fade-up d1" />
-        <div className="absolute left-[157px] top-[1041px] h-[2272px] w-[1607px] scale-in d2">
-          <img alt="" className="absolute inset-0 size-full object-cover" src={img1011} />
+        <div className="absolute left-[157px] top-[1041px] h-[2272px] w-[1607px] overflow-hidden rounded-sm border border-[#e2e4e9] bg-white shadow-sm scale-in d2">
+          <iframe
+            title="Suspected adverse drug reaction reporting form for healthcare professionals"
+            src={`${adrReportingFormPdf}#view=FitH`}
+            className="absolute inset-0 size-full border-0"
+          />
         </div>
         <div className="absolute left-[1768px] top-[1005px] h-[2353px] w-[27px] bg-[#f1f1f1]">
           <div className="absolute left-[7px] top-[1164px] h-[25px] w-[13px] bg-[#c1c1c1]" />

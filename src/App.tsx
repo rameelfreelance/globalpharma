@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import {
   parseAndApplyHash,
+  readRouteFromLocation,
   syncHash,
   type AboutSection,
   type FacilitySection,
@@ -25,15 +26,18 @@ import Product from './components/Product'
 
 export default function App() {
   const reduceMotion = useReducedMotion()
-  const [page, setPage] = useState<Page>('home')
-  const [aboutSection, setAboutSection] = useState<AboutSection>('about')
-  const [facilitySection, setFacilitySection] = useState<FacilitySection>('production')
+  const [page, setPage] = useState<Page>(() => readRouteFromLocation().page)
+  const [aboutSection, setAboutSection] = useState<AboutSection>(
+    () => readRouteFromLocation().aboutSection
+  )
+  const [facilitySection, setFacilitySection] = useState<FacilitySection>(
+    () => readRouteFromLocation().facilitySection
+  )
 
   useEffect(() => {
     const handleHashChange = () =>
       parseAndApplyHash({ setPage, setAboutSection, setFacilitySection })
 
-    handleHashChange()
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])

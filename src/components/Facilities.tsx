@@ -60,6 +60,11 @@ export default function Facilities({
   const productionRef = useRef<HTMLDivElement | null>(null)
   const qualityRef = useRef<HTMLDivElement | null>(null)
   const statsRef = useRef<HTMLDivElement | null>(null)
+  const suppressInitialScrollAfterReload = useRef(
+    typeof performance !== 'undefined' &&
+      (performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined)
+        ?.type === 'reload'
+  )
   const [startStatsCounter, setStartStatsCounter] = useState(false)
   const [statsValues, setStatsValues] = useState({ production: 0, hvac: 0, iso: 0, compliance: 0 })
 
@@ -86,6 +91,10 @@ export default function Facilities({
   }, [])
 
   useEffect(() => {
+    if (suppressInitialScrollAfterReload.current) {
+      suppressInitialScrollAfterReload.current = false
+      return
+    }
     const run = () => {
       if (initialSection === 'quality') {
         scrollToQuality()

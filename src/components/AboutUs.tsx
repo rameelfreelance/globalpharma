@@ -56,6 +56,11 @@ export default function AboutUs({
   const aboutRef = useRef<HTMLDivElement | null>(null)
   const visionRef = useRef<HTMLDivElement | null>(null)
   const imsRef = useRef<HTMLDivElement | null>(null)
+  const suppressInitialScrollAfterReload = useRef(
+    typeof performance !== 'undefined' &&
+      (performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined)
+        ?.type === 'reload'
+  )
 
   const scrollToSection = (section: 'about' | 'vision' | 'ims') => {
     if (section === 'about') {
@@ -78,6 +83,10 @@ export default function AboutUs({
   }, [])
 
   useEffect(() => {
+    if (suppressInitialScrollAfterReload.current) {
+      suppressInitialScrollAfterReload.current = false
+      return
+    }
     const id = window.setTimeout(() => scrollToSection(initialSection), 0)
     return () => window.clearTimeout(id)
   }, [initialSection, isMobileLayout])

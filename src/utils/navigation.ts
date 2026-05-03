@@ -40,33 +40,68 @@ type ParseHashParams = {
   setFacilitySection: (section: FacilitySection) => void
 }
 
-export function parseAndApplyHash({
-  setPage,
-  setAboutSection,
-  setFacilitySection,
-}: ParseHashParams) {
-  const raw = window.location.hash.replace(/^#/, '')
-  if (!raw) return
+const defaultRoute = {
+  page: 'home' as Page,
+  aboutSection: 'about' as AboutSection,
+  facilitySection: 'production' as FacilitySection,
+}
+
+/** Parse `#page` / `#about:vision` etc. Returns null if hash missing or page token invalid. */
+function parseHashInput(raw: string): {
+  page: Page
+  aboutSection: AboutSection
+  facilitySection: FacilitySection
+} | null {
+  if (!raw) return null
 
   const [rawPage, rawSection] = raw.split(':')
   const parsedPage = rawPage as Page
 
-  if (!validPages.has(parsedPage)) return
-  setPage(parsedPage)
+  if (!validPages.has(parsedPage)) return null
+
+  let aboutSection: AboutSection = 'about'
+  let facilitySection: FacilitySection = 'production'
 
   if (parsedPage === 'about') {
     const about = rawSection as AboutSection
     if (about === 'about' || about === 'vision' || about === 'ims') {
-      setAboutSection(about)
+      aboutSection = about
     }
   }
 
   if (parsedPage === 'facility') {
     const facility = rawSection as FacilitySection
     if (facility === 'production' || facility === 'quality') {
-      setFacilitySection(facility)
+      facilitySection = facility
     }
   }
+
+  return { page: parsedPage, aboutSection, facilitySection }
+}
+
+/** Synchronous route from the URL — use for `useState` initializers so refresh / StrictMode remount match `#hash`. */
+export function readRouteFromLocation(): {
+  page: Page
+  aboutSection: AboutSection
+  facilitySection: FacilitySection
+} {
+  if (typeof window === 'undefined') return { ...defaultRoute }
+  const raw = window.location.hash.replace(/^#/, '')
+  return parseHashInput(raw) ?? { ...defaultRoute }
+}
+
+export function parseAndApplyHash({
+  setPage,
+  setAboutSection,
+  setFacilitySection,
+}: ParseHashParams) {
+  const raw = window.location.hash.replace(/^#/, '')
+  const parsed = parseHashInput(raw)
+  if (!parsed) return
+
+  setPage(parsed.page)
+  setAboutSection(parsed.aboutSection)
+  setFacilitySection(parsed.facilitySection)
 }
 
 export function syncHash(

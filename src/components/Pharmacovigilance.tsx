@@ -11,8 +11,6 @@ const imgIcon1 = '/assets/figma/fe1e2c6b-0cbb-4ca4-a370-a48a4662dc5a.svg'
 const imgIcon2 = '/assets/figma/50ffa3f1-c02a-4cb2-8ad6-a361307e4e07.svg'
 const imgGroup1000001883 = '/assets/figma/acda6195-44c6-48d1-96fa-f32c65043ea4.svg'
 const imgFrame1000001885 = '/assets/figma/11731a1a-29e0-4300-a519-529cfb8637f6.svg'
-const imgPolygon2 = '/assets/figma/9e27e41b-1209-4562-8133-24450f2b91a0.svg'
-const imgPolygon3 = '/assets/figma/0ac20d1a-0cfb-4834-98e0-8a1c8a147e36.svg'
 const imgRectangle3468149 = '/assets/figma/edcb440a-1b39-48e8-99f7-9834a54eb8f5.svg'
 const imgGroup2 = '/assets/figma/e9b037fe-0250-4c48-99dd-2508869b6a6d.svg'
 const imgArrowRight = '/assets/figma/56a79664-4e62-4e0b-a316-8501fb9df5a4.svg'
@@ -95,12 +93,12 @@ export default function Pharmacovigilance({
           </div>
         </section>
 
-        <section className="bg-[#f5f8f9] px-5 py-10">
+        <section className="bg-white px-5 py-10">
           <div className="scale-in d0 overflow-hidden rounded-lg border border-[#dadada] bg-white shadow-sm">
             <iframe
               title="Suspected adverse drug reaction reporting form for healthcare professionals"
-              src={`${adrReportingFormPdf}#view=FitH`}
-              className="block h-[min(78vh,820px)] w-full min-h-[560px] border-0"
+              src={`${adrReportingFormPdf}#view=FitH&toolbar=0`}
+              className="block h-[min(72vh,720px)] w-full border-0 bg-white"
             />
           </div>
           <p className="mt-3 text-center text-[13px] leading-5 text-[#4f5665]">
@@ -160,25 +158,14 @@ export default function Pharmacovigilance({
         <p className="absolute left-[1173px] top-[498px] whitespace-nowrap text-center font-['Google_Sans:Medium',sans-serif] text-[60px] leading-[66px] tracking-[-0.6px] text-[#051c2f] hero-clip-wrap"><span className="hero-clip-line d2">Pharmacovigilance</span></p>
         <div className="absolute left-[1153px] top-[587px] h-[12px] w-[557px] bg-[#9d0b0f] line-reveal" />
 
-        <div className="absolute left-[91px] top-[1005px] h-[2353px] w-[1677px] bg-[#f5f8f9] fade-up d1" />
+        <div className="absolute left-[91px] top-[1005px] h-[2353px] w-[1677px] bg-white fade-up d1" />
         <div className="absolute left-[157px] top-[1041px] h-[2272px] w-[1607px] overflow-hidden rounded-sm border border-[#e2e4e9] bg-white shadow-sm scale-in d2">
           <iframe
             title="Suspected adverse drug reaction reporting form for healthcare professionals"
-            src={`${adrReportingFormPdf}#view=FitH`}
-            className="absolute inset-0 size-full border-0"
+            src={`${adrReportingFormPdf}#view=FitH&toolbar=0`}
+            className="absolute inset-0 size-full border-0 bg-white"
           />
         </div>
-        <div className="absolute left-[1768px] top-[1005px] h-[2353px] w-[27px] bg-[#f1f1f1]">
-          <div className="absolute left-[7px] top-[1164px] h-[25px] w-[13px] bg-[#c1c1c1]" />
-        </div>
-        <div className="absolute left-[1778px] top-[3333px] flex size-[21px] items-center justify-center">
-          <div className="rotate-180">
-            <div className="relative size-[21px]">
-              <div className="absolute inset-x-[6.7%] bottom-1/4 top-0"><img alt="" className="size-full" src={imgPolygon2} /></div>
-            </div>
-          </div>
-        </div>
-        <div className="absolute left-[1778px] top-[1012px] size-[21px]"><div className="absolute inset-x-[6.7%] bottom-1/4 top-0"><img alt="" className="size-full" src={imgPolygon3} /></div></div>
 
         <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />
         <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />

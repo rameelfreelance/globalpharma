@@ -34,11 +34,11 @@ function checkReveal() {
   targets.forEach((el) => {
     if (el.classList.contains('in-view')) return;
     const rect = el.getBoundingClientRect();
-    // Trigger card/text reveals a bit later so motion is visible on screen.
+    // Earlier trigger so longer martindow-style eases finish while content is still on-screen.
     const triggerRatio =
       el.classList.contains('fade-up') || el.classList.contains('scale-in')
-        ? 0.82
-        : 0.92;
+        ? 0.91
+        : 0.93;
     if (rect.top < wh * triggerRatio && rect.bottom > 0) {
       el.classList.add('in-view');
     }

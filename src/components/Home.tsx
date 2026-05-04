@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import MobileFooter from "./MobileFooter";
+import MobileTopLogo from "./MobileTopLogo";
 
 type HomeProps = {
   onNavigateAbout?: (section?: "about" | "vision" | "ims") => void;
@@ -299,16 +300,20 @@ export default function Home({
             aria-hidden
             className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/62 via-black/52 to-black/68"
           />
+          <MobileTopLogo
+            className="pointer-events-auto absolute left-4 top-4 z-[32]"
+            onActivate={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          />
           <button
             type="button"
             aria-label="Open menu"
             onClick={() => setMobileMenuOpen(true)}
-            className="absolute right-4 top-4 z-30 flex h-11 w-11 items-center justify-center rounded-md border border-white/60 bg-white/95 text-[#9d0b0f] shadow-sm"
+            className="absolute right-4 top-4 z-30 flex h-9 w-9 items-center justify-center rounded-md border border-white/60 bg-white/95 text-[#9d0b0f] shadow-sm"
           >
-            <span className="flex w-6 flex-col gap-1" aria-hidden>
-              <span className="h-0.5 w-full rounded-full bg-current" />
-              <span className="h-0.5 w-full rounded-full bg-current" />
-              <span className="h-0.5 w-full rounded-full bg-current" />
+            <span className="flex w-[18px] flex-col gap-[3px]" aria-hidden>
+              <span className="h-[1.5px] w-full rounded-full bg-current" />
+              <span className="h-[1.5px] w-full rounded-full bg-current" />
+              <span className="h-[1.5px] w-full rounded-full bg-current" />
             </span>
           </button>
           <div className="relative z-10 px-5 pt-20 text-white">
@@ -576,16 +581,20 @@ export default function Home({
 
   return (
     <div className="w-full overflow-x-hidden bg-white min-h-screen flex justify-center">
+      <MobileTopLogo
+        className="pointer-events-auto fixed left-4 top-12 z-[155]"
+        onActivate={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      />
       <button
         type="button"
         aria-label="Open menu"
         onClick={() => setMobileMenuOpen(true)}
-        className="fixed right-4 top-12 z-[160] flex h-11 w-11 items-center justify-center rounded-md border border-[#9d0b0f]/35 bg-white text-[#9d0b0f] shadow-sm xl:hidden"
+        className="fixed right-4 top-12 z-[160] flex h-9 w-9 items-center justify-center rounded-md border border-[#9d0b0f]/35 bg-white text-[#9d0b0f] shadow-sm xl:hidden"
       >
-        <span className="flex w-6 flex-col gap-1" aria-hidden>
-          <span className="h-0.5 w-full rounded-full bg-current" />
-          <span className="h-0.5 w-full rounded-full bg-current" />
-          <span className="h-0.5 w-full rounded-full bg-current" />
+        <span className="flex w-[18px] flex-col gap-[3px]" aria-hidden>
+          <span className="h-[1.5px] w-full rounded-full bg-current" />
+          <span className="h-[1.5px] w-full rounded-full bg-current" />
+          <span className="h-[1.5px] w-full rounded-full bg-current" />
         </span>
       </button>
       {mobileMenuOpen ? (

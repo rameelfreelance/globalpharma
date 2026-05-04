@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import MobileTopLogo from './MobileTopLogo';
 
 const imgArrowLight = '/assets/figma/87f39614-7293-4298-b70b-ea0666986aee.svg';
 const imgArrowDark = '/assets/figma/7e8a7b0c-6b0c-4b40-9f47-9c71148f7b89.svg';
@@ -71,16 +72,20 @@ export default function Navbar({
 
   return (
     <>
+      <MobileTopLogo
+        className="pointer-events-auto fixed left-4 top-12 z-[135]"
+        onActivate={() => onNavigateHome?.()}
+      />
       <button
         type="button"
         aria-label="Open menu"
         onClick={() => setMobileOpen(true)}
-        className="fixed right-4 top-12 z-[140] flex h-11 w-11 items-center justify-center rounded-md border border-[#9d0b0f]/35 bg-white text-[#9d0b0f] shadow-sm xl:hidden"
+        className="fixed right-4 top-12 z-[140] flex h-9 w-9 items-center justify-center rounded-md border border-[#9d0b0f]/35 bg-white text-[#9d0b0f] shadow-sm xl:hidden"
       >
-        <span className="flex w-6 flex-col gap-1" aria-hidden>
-          <span className="h-0.5 w-full rounded-full bg-current" />
-          <span className="h-0.5 w-full rounded-full bg-current" />
-          <span className="h-0.5 w-full rounded-full bg-current" />
+        <span className="flex w-[18px] flex-col gap-[3px]" aria-hidden>
+          <span className="h-[1.5px] w-full rounded-full bg-current" />
+          <span className="h-[1.5px] w-full rounded-full bg-current" />
+          <span className="h-[1.5px] w-full rounded-full bg-current" />
         </span>
       </button>
 

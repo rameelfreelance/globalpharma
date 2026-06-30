@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import MobileFooter from './MobileFooter'
 import Navbar from './Navbar'
-const imgBsc01235Jpg2 = '/assets/figma/d53587fc-a68d-4d4f-bb3d-3bb91089cab7.jpg'
+const imgBsc01235Jpg2 = '/assets/figma/pharmacovigilance-hero.png'
 /** Fillable ADR reporting form (replaces static hero form graphic). */
 const adrReportingFormPdf = '/assets/suspected-adverse-reaction-reporting-form.pdf'
 const imgBsc01235Jpg1 = '/assets/figma/d0900fa1-6dad-473e-84ee-67346a0ebe35.svg'

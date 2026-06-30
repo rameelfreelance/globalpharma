@@ -22,7 +22,7 @@ const imgVector = "/assets/figma/fe834eb7-b0e7-4831-97db-d7fc7ec1de7a.svg";
 const imgVector1 = "/assets/figma/32fcc45e-4989-4220-89c8-dee0c90a4533.svg";
 const imgVector2 = "/assets/figma/fc557ff4-b445-4796-a0ea-dcb444a65f8b.svg";
 const imgAsc00405Jpg2 =
-  "/assets/figma/10e1e937-3ca3-4360-98e2-264a8c704998.jpg";
+  "/assets/figma/homepage-warehouse.png";
 const imgBsc00308Jpg2 =
   "/assets/figma/6561dde1-b13f-41d4-8efd-763ad597ce84.jpg";
 const imgAsc00405Jpg1 =

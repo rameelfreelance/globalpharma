@@ -24,8 +24,7 @@ body,
 }
 
 body {
-  overflow-x: hidden;
-  overflow-y: visible;
+  overflow: visible;
   margin: 0;
   background-color: white;
   font-family: "Inter", "Roboto", sans-serif;
@@ -293,6 +292,29 @@ button.product-brand-row:active {
     transform: scale(var(--figma-scale));
     transform-origin: top center;
     height: calc(var(--figma-page-height, 3000) * 1px * var(--figma-scale));
+  }
+}
+
+/* Sibling sections below .figma-page — same width + scale so they match at ~67% viewport */
+.figma-scale-section {
+  width: calc(var(--figma-page-width, 1920) * 1px * var(--figma-scale, 1));
+  height: calc(var(--figma-section-height, 420) * 1px * var(--figma-scale, 1));
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.figma-scale-section-inner {
+  width: calc(var(--figma-page-width, 1920) * 1px);
+  transform-origin: top center;
+}
+
+@media (max-width: 1919px) {
+  .figma-scale-section {
+    --figma-scale: calc(100vw / (var(--figma-page-width, 1920) * 1px));
+  }
+
+  .figma-scale-section-inner {
+    transform: scale(var(--figma-scale));
   }
 }
 

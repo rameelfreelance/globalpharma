@@ -25,6 +25,48 @@ const experienceLevels = ['Entry Level', 'Mid-Level', 'Senior', 'Lead / Manager'
 
 const jobLocations = ['Islamabad', 'Rawalpindi', 'Lahore', 'Karachi', 'Remote / Hybrid']
 
+const JOB_DEFAULTS = {
+  level: 'Mid-Level',
+  location: 'Islamabad',
+  employmentType: 'Full-time',
+  workplaceType: 'Hybrid',
+  experienceRequired: 'Minimum 3 Years',
+  salary: 'Commensurate with experience and skills',
+  jobLocation: 'Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan',
+} as const
+
+type JobListing = {
+  name: string
+  description: string
+}
+
+const jobListings: JobListing[] = [
+  {
+    name: 'SAP Administrator',
+    description:
+      'Are you ready to embark on a journey where your expertise in SAP Business One (B1) can shine? Global Pharmaceuticals (Pvt) Ltd. is seeking a skilled SAP Administrator to join our dynamic team in Islamabad. If you’re passionate about leveraging technology to streamline operations and drive business success, we want to hear from you.',
+  },
+  {
+    name: 'Warehouse In Charge',
+    description: `Supervision of Raw Material Store to include the following tasks
+Execute, plan and supervise all warehouse on time according to production plan.To maintain minimum inventory level of all items raw material items and generate demands with the help of planning department.He is responsible to maintain record of official ledgers of inactive/active material along with COA’s, purchase invoices and QC reports. Sampled, Quarantine and release slips must be pasted on all raw materials.To manage receiving and issuance of all raw material according to M.O.Receive delivery challan and COA from purchase department, unload materials in de-dusting area, after de-dusting recheck and count quantity, make GRR of materials and submit to office (Purchase/Accounts) Send request for analysis in Q.C and after receiving the release slip transfer all the material in release area.`,
+  },
+  {
+    name: 'Deputy Operation Manager',
+    description: `Monitor/control the production Operations & make arrangements for step by step improvement to increase productivity & Quality of the products in all production Areas. Maintaining cGMP compliance is the prime responsibility.
+Set monthly improvements Targets by monitoring, scheduling & execution of weekly & daily improvements plan in all production Areas.
+To make a system to ensure that there is no critical and major deficiency as per the DRAP GMP guidelines.
+Training of Production, QA, and Warehouse staff for the implementation of the SOPs and monitoring of implementation of SOPs at periodic intervals.
+Ensure that the documentation of all the steps is completed timely along with the completion of operations To ensure that the equipment calibration and qualification is performed as per plan, systems are validated as per plan`,
+  },
+]
+
+function truncateJobDescription(text: string, maxLength: number): string {
+  const normalized = text.replace(/\s+/g, ' ').trim()
+  if (normalized.length <= maxLength) return normalized
+  return `${normalized.slice(0, maxLength).trimEnd()}...`
+}
+
 type CareersFilterKey = 'experience' | 'location' | 'categories'
 
 type CareersProps = {
@@ -59,7 +101,8 @@ export default function Careers({
   onNavigateDermatology,
 }: CareersProps) {
   const [isMobileLayout, setIsMobileLayout] = useState(() => window.innerWidth < 1024)
-  const [activeJob, setActiveJob] = useState('Production Pharmacist')
+  const [activeJobIndex, setActiveJobIndex] = useState(0)
+  const selectedJob = jobListings[activeJobIndex] ?? jobListings[0]
   const [experienceLabel, setExperienceLabel] = useState('All Experience Level')
   const [locationLabel, setLocationLabel] = useState('All Location')
   const [categoryLabel, setCategoryLabel] = useState('All Categories')
@@ -260,35 +303,36 @@ export default function Careers({
 
         <section className="bg-white px-5 py-10">
           <div className="space-y-4">
-            {['Production Pharmacist', 'Production Pharmacist', 'Production Pharmacist'].map((title, i) => (
+            {jobListings.map((job, index) => (
               <button
-                key={`${title}-${i}`}
+                key={job.name}
                 type="button"
-                onClick={() => setActiveJob(title)}
+                onClick={() => setActiveJobIndex(index)}
+                aria-pressed={activeJobIndex === index}
                 className="careers-job-card branded-solid-cta w-full border border-transparent bg-white p-5 text-left shadow-sm fade-up"
               >
-                <p className="careers-job-card-title text-[24px] font-bold leading-[1.2] text-[#9d0b0f]">{title}</p>
+                <p className="careers-job-card-title text-[24px] font-bold leading-[1.2] text-[#9d0b0f]">{job.name}</p>
                 <div className="mt-3 flex gap-2">
-                  <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Mid-Level</span>
-                  <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">Islamabad</span>
+                  <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">{JOB_DEFAULTS.level}</span>
+                  <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[13px] font-semibold text-[#4f5665]">{JOB_DEFAULTS.location}</span>
                 </div>
-                <p className="careers-job-card-desc mt-4 text-[15px] leading-7 text-[#4f5665]">Primary responsibility includes interface implementation, collaboration, and process excellence.</p>
+                <p className="careers-job-card-desc mt-4 text-[15px] leading-7 text-[#4f5665]">{truncateJobDescription(job.description, 120)}</p>
               </button>
             ))}
           </div>
         </section>
 
         <section className="bg-[#f5f8f9] px-5 py-10">
-          <p className="text-[28px] font-bold leading-[1.2] text-[#040f24] fade-up d0">{activeJob}</p>
-          <div className="mt-4 flex gap-2 fade-up d1"><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[14px] font-semibold text-[#4f5665]">Mid-Level</span><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[14px] font-semibold text-[#4f5665]">Islamabad</span></div>
+          <p className="text-[28px] font-bold leading-[1.2] text-[#040f24] fade-up d0">{selectedJob.name}</p>
+          <div className="mt-4 flex gap-2 fade-up d1"><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[14px] font-semibold text-[#4f5665]">{JOB_DEFAULTS.level}</span><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[14px] font-semibold text-[#4f5665]">{JOB_DEFAULTS.location}</span></div>
           <p className="mt-6 text-[16px] font-semibold text-[#4f5665] fade-up d2">Primary Responsibility:</p>
-          <p className="mt-3 text-[15px] leading-7 text-[#4f5665] fade-up d3">Designing and implementing user interfaces, maintaining application logic, collaborating with cross-functional teams, and ensuring quality and security best practices across releases.</p>
+          <p className="mt-3 whitespace-pre-line text-[15px] leading-7 text-[#4f5665] fade-up d3">{selectedJob.description}</p>
           <div className="mt-6 grid grid-cols-1 gap-4 text-[15px] leading-6 fade-up d4">
-            <div><p className="text-black">Employment Type:</p><p className="text-[#4f5665]">Full-time</p></div>
-            <div><p className="text-black">Work place Type:</p><p className="text-[#4f5665]">Hybrid</p></div>
-            <div><p className="text-black">Experience Required:</p><p className="text-[#4f5665]">Minimum 3 Years</p></div>
-            <div><p className="text-black">Salary:</p><p className="text-[#4f5665]">Commensurate with experience and skills</p></div>
-            <div><p className="text-black">Job Location:</p><p className="text-[#4f5665]">Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p></div>
+            <div><p className="text-black">Employment Type:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.employmentType}</p></div>
+            <div><p className="text-black">Work place Type:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.workplaceType}</p></div>
+            <div><p className="text-black">Experience Required:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.experienceRequired}</p></div>
+            <div><p className="text-black">Salary:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.salary}</p></div>
+            <div><p className="text-black">Job Location:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.jobLocation}</p></div>
           </div>
           <button
             type="button"
@@ -499,54 +543,42 @@ export default function Careers({
           <img alt="" className="h-5 w-5 opacity-60" src={searchIcon} />
         </div>
 
-        <div
-          className="careers-job-card absolute left-[213px] top-[1949px] h-[250px] w-[540px] cursor-pointer border border-transparent bg-white p-[28px] scale-in d0"
-          tabIndex={0}
-          role="button"
-        >
-          <p className="careers-job-card-title font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>
-          <div className="mt-3 flex gap-2">
-            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span>
-            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span>
+        {jobListings.map((job, index) => (
+          <div
+            key={job.name}
+            className={`careers-job-card absolute left-[213px] h-[250px] w-[540px] cursor-pointer border border-transparent bg-white p-[28px] scale-in d${index}`}
+            style={{ top: `${1949 + index * 282}px` }}
+            tabIndex={0}
+            role="button"
+            aria-pressed={activeJobIndex === index}
+            onClick={() => setActiveJobIndex(index)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                setActiveJobIndex(index)
+              }
+            }}
+          >
+            <p className="careers-job-card-title font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">{job.name}</p>
+            <div className="mt-3 flex gap-2">
+              <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">{JOB_DEFAULTS.level}</span>
+              <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">{JOB_DEFAULTS.location}</span>
+            </div>
+            <p className="careers-job-card-desc mt-5 text-[17px] leading-[26px] text-[#4f5665]">{truncateJobDescription(job.description, 160)}</p>
           </div>
-          <p className="careers-job-card-desc mt-5 text-[17px] leading-[26px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
-        </div>
-        <div
-          className="careers-job-card absolute left-[213px] top-[2231px] h-[250px] w-[540px] cursor-pointer border border-transparent bg-white p-[28px] scale-in d1"
-          tabIndex={0}
-          role="button"
-        >
-          <p className="careers-job-card-title font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>
-          <div className="mt-3 flex gap-2">
-            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span>
-            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span>
-          </div>
-          <p className="careers-job-card-desc mt-5 text-[17px] leading-[26px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
-        </div>
-        <div
-          className="careers-job-card absolute left-[213px] top-[2513px] h-[250px] w-[540px] cursor-pointer border border-transparent bg-white p-[28px] scale-in d2"
-          tabIndex={0}
-          role="button"
-        >
-          <p className="careers-job-card-title font-['Lato:Bold',sans-serif] text-[28px] leading-[32px] text-[#9d0b0f]">Production Pharmacist</p>
-          <div className="mt-3 flex gap-2">
-            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span>
-            <span className="careers-job-card-meta rounded-sm bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span>
-          </div>
-          <p className="careers-job-card-desc mt-5 text-[17px] leading-[26px] text-[#4f5665]">Primary Responsibility:Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases....</p>
-        </div>
+        ))}
 
         <div className="absolute left-[794px] top-[1928px] h-[840px] w-[914px] bg-white p-[64px] fade-up d1">
-          <p className="font-['Lato:Bold',sans-serif] text-[30px] leading-[34px] text-[#040f24] fade-up d2">Production Pharmacist</p>
-          <div className="mt-5 flex gap-3 fade-up d3"><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Mid-Level</span><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">Islamabad</span></div>
+          <p className="font-['Lato:Bold',sans-serif] text-[30px] leading-[34px] text-[#040f24] fade-up d2">{selectedJob.name}</p>
+          <div className="mt-5 flex gap-3 fade-up d3"><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">{JOB_DEFAULTS.level}</span><span className="rounded-[4px] bg-[#e7ebf1] px-2 py-1 text-[15px] font-semibold text-[#4f5665]">{JOB_DEFAULTS.location}</span></div>
           <p className="mt-7 text-[20px] font-semibold leading-[26px] text-[#4f5665] fade-up d3">Primary Responsibility:</p>
-          <p className="mt-3 text-[17px] leading-[27px] text-[#4f5665] fade-up d4">Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases and APIs using technologies such as Node.js, Python, Ruby, or Java.Designing, implementing, and managing databases (SQL or NoSQL) to ensure data integrity and efficient retrieval.Using version control systems like Git to manage code changes and collaborate with other developers.Implementing security best practices to protect applications from vulnerabilities and threats.Automating deployment processes and managing CI/CD pipelines to streamline development and release cycles.Working with cross-functional teams, including designers, product managers, and other developers, to deliver high-quality software.</p>
+          <p className="mt-3 whitespace-pre-line text-[17px] leading-[27px] text-[#4f5665] fade-up d4">{selectedJob.description}</p>
           <div className="mt-8 grid grid-cols-3 gap-7 text-[17px] leading-[25px] fade-up d5">
-            <div><p className="text-black">Employment Type:</p><p className="text-[#4f5665]">Full-time</p></div>
-            <div><p className="text-black">Work place Type:</p><p className="text-[#4f5665]">Hybrid</p></div>
-            <div><p className="text-black">Experience Required:</p><p className="text-[#4f5665]">Minimum 3 Years</p></div>
-            <div><p className="text-black">Salary:</p><p className="text-[#4f5665]">Commensurate with experience and skills</p></div>
-            <div className="col-span-2"><p className="text-black">Job Location:</p><p className="text-[#4f5665]">Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p></div>
+            <div><p className="text-black">Employment Type:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.employmentType}</p></div>
+            <div><p className="text-black">Work place Type:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.workplaceType}</p></div>
+            <div><p className="text-black">Experience Required:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.experienceRequired}</p></div>
+            <div><p className="text-black">Salary:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.salary}</p></div>
+            <div className="col-span-2"><p className="text-black">Job Location:</p><p className="text-[#4f5665]">{JOB_DEFAULTS.jobLocation}</p></div>
           </div>
           <button
             type="button"

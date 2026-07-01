@@ -261,6 +261,26 @@
   background-color: rgba(157, 11, 15, 0.08);
 }
 
+/* ── Products carousel — continuous marquee ───────────── */
+
+@keyframes products-carousel-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-100% / 3), 0, 0);
+  }
+}
+
+.products-carousel-track {
+  animation: products-carousel-marquee var(--products-carousel-duration, 50s) linear infinite;
+  will-change: transform;
+}
+
+.products-carousel-viewport:hover .products-carousel-track {
+  animation-play-state: paused;
+}
+
 /* ── Respect reduced motion ───────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

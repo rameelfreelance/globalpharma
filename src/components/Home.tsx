@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import MobileFooter from "./MobileFooter";
 import MobileTopLogo from "./MobileTopLogo";
+import ProductsCarousel from "./ProductsCarousel";
 
 type HomeProps = {
   onNavigateAbout?: (section?: "about" | "vision" | "ims") => void;
@@ -528,6 +529,8 @@ export default function Home({
           </div>
         </section>
 
+        <ProductsCarousel />
+
         <section className="bg-[#f5f8f9] px-5 py-10">
           <p className="text-sm font-medium uppercase tracking-[1.2px] text-[#9d0b0f] fade-up d0">Therapeutic Portfolio</p>
           <h3 className="mt-3 text-[34px] leading-[1.1] text-[#010c0d] clip-wrap"><span className="clip-line d1">Our Product Line</span></h3>
@@ -580,7 +583,7 @@ export default function Home({
   }
 
   return (
-    <div className="w-full overflow-x-hidden bg-white min-h-screen flex justify-center">
+    <div className="w-full overflow-x-hidden bg-white min-h-screen flex flex-col items-center">
       <MobileTopLogo
         className="pointer-events-auto fixed left-4 top-12 z-[155]"
         onActivate={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -654,11 +657,12 @@ export default function Home({
         </div>
       ) : null}
       <style dangerouslySetInnerHTML={{ __html: `
-        html, body, #root { background-color: white !important; margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+        html, body, #root { background-color: white !important; margin: 0; padding: 0; width: 100%; }
+        html { overflow-x: hidden; }
       ` }} />
       <div
         className="figma-page home-figma relative shrink-0"
-        style={{ "--figma-page-width": 1920, "--figma-page-height": 5858 } as any}
+        style={{ "--figma-page-width": 1920, "--figma-page-height": 6580 } as any}
         data-node-id="47:269"
         data-name="Home"
       >
@@ -677,7 +681,7 @@ export default function Home({
         </svg>
         <div className="absolute inset-0 bg-white -z-10 w-[200vw] left-1/2 -translate-x-1/2" />
         <div
-          className="absolute bg-[#f5f5f5] bottom-[2px] content-stretch flex flex-col items-start left-1/2 -translate-x-1/2 w-[100vw]"
+          className="absolute bg-[#f5f5f5] bottom-[2px] z-30 content-stretch flex flex-col items-start left-1/2 -translate-x-1/2 w-[100vw]"
           data-node-id="47:272"
         >
           <div
@@ -978,7 +982,7 @@ export default function Home({
             data-node-id="47:330"
           >
             <div
-              className="absolute bg-[#f5f8f9] h-[1147px] left-1/2 -translate-x-1/2 w-[100vw] top-[4051px]"
+              className="absolute bg-[#f5f8f9] h-[880px] left-1/2 -translate-x-1/2 w-[100vw] top-[4927px]"
               data-node-id="47:331"
             />
           </div>
@@ -1054,7 +1058,7 @@ export default function Home({
           <span className="leading-[1.6]">{`, reflecting our commitment to quality, trust, and industry excellence. Through these strategic relationships and strong engagement with healthcare professionals, we continue to strengthen our position in key therapeutic segments and deliver reliable healthcare solutions worldwide `}</span>
         </p>
         <div
-          className="group absolute bg-[#0b0f13] content-stretch flex gap-[10px] items-center justify-center left-[calc(50%+124px)] pl-[40px] pr-[34px] py-[20px] top-[4987px] transition-all duration-200 hover:bg-[#9d0b0f] hover:-translate-y-[1px] hover:shadow-[0_10px_22px_rgba(157,11,15,0.3)]"
+          className="group absolute bg-[#0b0f13] content-stretch flex gap-[10px] items-center justify-center left-[calc(50%+124px)] pl-[40px] pr-[34px] py-[20px] top-[5684px] transition-all duration-200 hover:bg-[#9d0b0f] hover:-translate-y-[1px] hover:shadow-[0_10px_22px_rgba(157,11,15,0.3)]"
           data-node-id="47:343"
           data-name="Button"
         >
@@ -1077,7 +1081,7 @@ export default function Home({
         <button
           type="button"
           onClick={onNavigateAntibiotics}
-          className="absolute left-[calc(50%+124px)] top-[4423px] w-[641px] h-[100px] border-0 bg-transparent p-0 text-left cursor-pointer group fade-up d0 focus-visible:outline-none"
+          className="absolute left-[calc(50%+124px)] top-[5120px] w-[641px] h-[100px] border-0 bg-transparent p-0 text-left cursor-pointer group fade-up d0 focus-visible:outline-none"
         >
           <div className="absolute bg-[#9d0b0f] left-0 overflow-clip size-[100px] top-0 transition-transform duration-200 group-hover:scale-[1.04]">
             <CapsuleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
@@ -1094,7 +1098,7 @@ export default function Home({
           </div>
         </button>
         <div
-          className="absolute h-0 left-[calc(50%+124px)] top-[4567px] w-[624px]"
+          className="absolute h-0 left-[calc(50%+124px)] top-[5264px] w-[624px]"
           data-node-id="47:350"
         >
           <div className="absolute inset-[-1px_0_0_0]">
@@ -1104,7 +1108,7 @@ export default function Home({
         <button
           type="button"
           onClick={onNavigateAntiInflammatory}
-          className="absolute left-[calc(50%+124px)] top-[4611px] w-[641px] h-[100px] border-0 bg-transparent p-0 text-left cursor-pointer group fade-up d1 focus-visible:outline-none"
+          className="absolute left-[calc(50%+124px)] top-[5308px] w-[641px] h-[100px] border-0 bg-transparent p-0 text-left cursor-pointer group fade-up d1 focus-visible:outline-none"
         >
           <div className="absolute bg-[#9d0b0f] left-0 overflow-clip size-[100px] top-0 transition-transform duration-200 group-hover:scale-[1.04]">
             <MedicineBottleLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
@@ -1120,7 +1124,7 @@ export default function Home({
           </div>
         </button>
         <div
-          className="absolute h-0 left-[calc(50%+124px)] top-[4755px] w-[624px]"
+          className="absolute h-0 left-[calc(50%+124px)] top-[5452px] w-[624px]"
           data-node-id="47:356"
         >
           <div className="absolute inset-[-1px_0_0_0]">
@@ -1130,7 +1134,7 @@ export default function Home({
         <button
           type="button"
           onClick={onNavigateGastrointestinal}
-          className="absolute left-[calc(50%+124px)] top-[4799px] w-[641px] h-[100px] border-0 bg-transparent p-0 text-left cursor-pointer group fade-up d2 focus-visible:outline-none"
+          className="absolute left-[calc(50%+124px)] top-[5496px] w-[641px] h-[100px] border-0 bg-transparent p-0 text-left cursor-pointer group fade-up d2 focus-visible:outline-none"
         >
           <div className="absolute bg-[#9d0b0f] left-0 overflow-clip size-[100px] top-0 transition-transform duration-200 group-hover:scale-[1.04]">
             <StethoscopeLine className="absolute left-[25px] overflow-clip size-[50px] top-[25px]" />
@@ -1146,15 +1150,18 @@ export default function Home({
           </div>
         </button>
         <div
-          className="absolute h-0 left-[calc(50%+124px)] top-[4943px] w-[624px]"
+          className="absolute h-0 left-[calc(50%+124px)] top-[5640px] w-[624px]"
           data-node-id="47:362"
         >
           <div className="absolute inset-[-1px_0_0_0]">
             <img alt="" className="block max-w-none size-full" src={imgLine2} />
           </div>
         </div>
+        <div className="absolute left-0 top-[4180px] w-[1920px]">
+          <ProductsCarousel scaledDesktop />
+        </div>
         <div
-          className="absolute bg-[#808586] h-[785px] left-[calc(50%-764px)] overflow-clip top-[4266px] w-[764px] scale-in img-zoom"
+          className="absolute bg-[#808586] h-[785px] left-[calc(50%-764px)] overflow-clip top-[4963px] w-[764px] scale-in img-zoom"
           data-node-id="47:363"
           data-name="Image"
         >
@@ -1176,13 +1183,13 @@ export default function Home({
           </div>
         </div>
         <p
-          className="absolute font-['Inter:Medium',sans-serif] font-medium leading-none left-[calc(50%+124px)] not-italic text-[#9d0b0f] text-[25px] top-[4266px] uppercase whitespace-nowrap fade-up d0"
+          className="absolute font-['Inter:Medium',sans-serif] font-medium leading-none left-[calc(50%+124px)] not-italic text-[#9d0b0f] text-[25px] top-[4963px] uppercase whitespace-nowrap fade-up d0"
           data-node-id="47:366"
         >
           Therapeutic Portfolio
         </p>
         <p
-          className="absolute font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[1.4] left-[calc(50%+124px)] not-italic text-[#010c0d] text-[56px] top-[4299px] w-[474px] clip-wrap"
+          className="absolute font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[1.4] left-[calc(50%+124px)] not-italic text-[#010c0d] text-[56px] top-[4996px] w-[474px] clip-wrap"
           data-node-id="47:367"
         >
           <span className="clip-line d1">Our Product Line</span>
@@ -1220,19 +1227,19 @@ export default function Home({
           />
           <p
             ref={commitmentCounterRef}
-            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[calc(50%-180.2px)] not-italic text-[#9d0b0f] text-[48px] top-[calc(50%-825px)] tracking-[-2.4px] w-[131.458px] tabular-nums"
+            className="absolute font-['Google_Sans:Bold',sans-serif] leading-[1.3] left-[calc(50%-180.2px)] not-italic text-[#9d0b0f] text-[48px] top-[2104px] tracking-[-2.4px] w-[131.458px] tabular-nums"
             data-node-id="47:373"
           >
             {commitmentPercent}%
           </p>
           <p
-            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.3] left-[calc(50%-176.94px)] not-italic text-[#051c2f] text-[28px] top-[calc(50%-762px)] w-[369.387px]"
+            className="absolute font-['Google_Sans:Regular',sans-serif] leading-[1.3] left-[calc(50%-176.94px)] not-italic text-[#051c2f] text-[28px] top-[2167px] w-[369.387px]"
             data-node-id="47:374"
           >
             Commitment to Excellence
           </p>
           <p
-            className="absolute font-['Google_Sans:Regular',sans-serif] h-[87px] leading-[1.4] left-[calc(50%+212px)] not-italic text-[#2f4252] text-[21px] text-justify top-[calc(50%-819px)] w-[504px]"
+            className="absolute font-['Google_Sans:Regular',sans-serif] h-[87px] leading-[1.4] left-[calc(50%+212px)] not-italic text-[#2f4252] text-[21px] text-justify top-[2110px] w-[504px]"
             data-node-id="47:375"
           >
             Every batch, every product, every partner held to the same

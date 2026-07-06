@@ -289,11 +289,24 @@ button.product-brand-row:active {
 @media (max-width: 1919px) {
   .figma-page {
     --figma-scale: calc(100vw / (var(--figma-page-width, 1920) * 1px));
-    transform: scale(var(--figma-scale));
-    transform-origin: top center;
-    height: calc(var(--figma-page-height, 3000) * 1px * var(--figma-scale));
+    zoom: var(--figma-scale);
   }
 }
+
+/* Dynamic height scaled pages (e.g. ProductTemplate) */
+.figma-page-dynamic {
+  width: 1920px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+@media (max-width: 1919px) {
+  .figma-page-dynamic {
+    --figma-scale: calc(100vw / 1920);
+    zoom: var(--figma-scale);
+  }
+}
+
 
 /* Sibling sections below .figma-page — same width + scale so they match at ~67% viewport */
 .figma-scale-section {
@@ -317,4 +330,18 @@ button.product-brand-row:active {
     transform: scale(var(--figma-scale));
   }
 }
+/* Inside desktop layout containers, always show desktop header elements and hide mobile header elements, ignoring media queries */
+:root:has(.figma-page) .xl\:hidden,
+:root:has(.figma-page-dynamic) .xl\:hidden {
+  display: none !important;
+}
 
+:root:has(.figma-page) .max-xl\:hidden.contents,
+:root:has(.figma-page-dynamic) .max-xl\:hidden.contents {
+  display: contents !important;
+}
+
+:root:has(.figma-page) div.max-xl\:hidden:not(.contents),
+:root:has(.figma-page-dynamic) div.max-xl\:hidden:not(.contents) {
+  display: block !important;
+}

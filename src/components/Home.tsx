@@ -679,9 +679,9 @@ export default function Home({
             </clipPath>
           </defs>
         </svg>
-        <div className="absolute inset-0 bg-white -z-10 w-[200vw] left-1/2 -translate-x-1/2" />
+        <div className="absolute inset-0 bg-white -z-10 w-[3840px] left-1/2 -translate-x-1/2" />
         <div
-          className="absolute bg-[#f5f5f5] bottom-[2px] z-30 content-stretch flex flex-col items-start left-1/2 -translate-x-1/2 w-[100vw]"
+          className="absolute bg-[#f5f5f5] bottom-[2px] z-30 content-stretch flex flex-col items-start left-0 w-[1920px]"
           data-node-id="47:272"
         >
           <div
@@ -970,7 +970,7 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute bg-[#f5f8f9] h-[1093px] left-1/2 -translate-x-1/2 w-[100vw] top-[1464px]"
+          className="absolute bg-[#f5f8f9] h-[1093px] left-0 w-[1920px] top-[1464px]"
           data-node-id="47:328"
         />
         <div
@@ -982,7 +982,7 @@ export default function Home({
             data-node-id="47:330"
           >
             <div
-              className="absolute bg-[#f5f8f9] h-[880px] left-1/2 -translate-x-1/2 w-[100vw] top-[4927px]"
+              className="absolute bg-[#f5f8f9] h-[880px] left-0 w-[1920px] top-[4927px]"
               data-node-id="47:331"
             />
           </div>
@@ -1346,7 +1346,7 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute h-[1124px] left-1/2 -translate-x-1/2 w-[110vw] top-0 bg-white"
+          className="absolute h-[1124px] left-1/2 -translate-x-1/2 w-[2112px] top-0 bg-white"
           data-node-id="47:397"
         >
           <img
@@ -1407,7 +1407,7 @@ export default function Home({
           </div>
         </div>
         <div
-          className="absolute h-[1124px] left-1/2 -translate-x-1/2 w-[110vw] top-0 overflow-hidden bg-white"
+          className="absolute h-[1124px] left-1/2 -translate-x-1/2 w-[2112px] top-0 overflow-hidden bg-white"
           data-node-id="47:421"
           style={{
             WebkitMaskImage:
@@ -1452,7 +1452,7 @@ export default function Home({
           data-node-id="47:424"
         >
           <div
-            className="absolute bg-white h-[108px] left-1/2 -translate-x-1/2 w-[120vw] shadow-[0px_1px_4px_0px_rgba(25,33,61,0.06)] top-[33px]"
+            className="absolute bg-white h-[108px] left-1/2 -translate-x-1/2 w-[2304px] shadow-[0px_1px_4px_0px_rgba(25,33,61,0.06)] top-[33px]"
             data-node-id="47:425"
           />
         </div>

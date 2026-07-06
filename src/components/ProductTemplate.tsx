@@ -292,7 +292,7 @@ export default function ProductTemplate({
   }
 
   return (
-    <div className="w-full" style={{ backgroundColor: 'var(--color-bg-page)' }}>
+    <div className="figma-page-dynamic w-full" style={{ backgroundColor: 'var(--color-bg-page)' }}>
       <div className="fixed inset-x-0 top-0 z-[70] flex justify-center">
         <div className="relative h-[188px] w-[1920px]">
           <div className="absolute left-0 top-0 h-[188px] w-[1919px] bg-[#f5f8f9]" />

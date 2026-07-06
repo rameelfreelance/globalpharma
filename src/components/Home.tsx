@@ -420,8 +420,8 @@ export default function Home({
               className="mx-auto flex h-[88px] w-full min-w-0 max-w-[300px] items-center justify-center overflow-hidden rounded-sm bg-white no-underline"
             >
               <img
-                alt=""
-                className="block h-auto max-h-[64px] min-w-0 w-auto max-w-full self-center object-contain"
+                alt="Vision Pharmaceuticals (Pvt) Ltd. Logo"
+                className="block h-[24px] w-auto self-center object-contain"
                 src={imgGroup1000001909}
               />
             </a>

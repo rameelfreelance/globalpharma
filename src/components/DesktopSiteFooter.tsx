@@ -81,7 +81,7 @@ export default function DesktopSiteFooter({
           <div className="mt-[50px] flex flex-col gap-[22px]">
             <div className="flex items-start gap-[19px]">
               <img alt="" className="mt-1 h-5 w-4 shrink-0" src={footerIconMap} />
-              <p className="font-['Inter:Regular',sans-serif] text-[clamp(15px,1.1vw,22px)] leading-[28px]">Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p>
+              <p className="font-['Inter:Regular',sans-serif] text-[clamp(15px,1.1vw,22px)] leading-[28px]">Plot No.08, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p>
             </div>
             <div className="flex items-center gap-[19px]">
               <img alt="" className="h-[15px] w-4 shrink-0" src={footerIconPhone} />

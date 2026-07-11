@@ -58,7 +58,7 @@ export default function MobileFooter({
         <div className="mx-auto mt-3 max-w-[320px] space-y-2.5 text-sm">
           <div className="flex items-start justify-center gap-1.5">
             <img alt="" className="mt-[3px] h-3.5 w-3 shrink-0 opacity-95" src={footerIconMap} />
-            <p className="max-w-[280px] text-left">Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p>
+            <p className="max-w-[280px] text-left">Plot No.08, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p>
           </div>
           <div className="flex items-center justify-center gap-1.5">
             <img alt="" className="h-3 w-3" src={footerIconPhone} />

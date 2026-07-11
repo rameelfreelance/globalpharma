@@ -868,7 +868,7 @@ export default function Home({
                           className="font-['Inter:Regular',sans-serif] font-normal h-[56px] leading-[28px] not-italic relative shrink-0 text-[#f6fafb] text-[22px] w-[364px]"
                           data-node-id="47:311"
                         >
-                          Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad,
+                          Plot No.08, Street No. S8, RCCI Rawat, Islamabad,
                           Pakistan
                         </p>
                       </div>

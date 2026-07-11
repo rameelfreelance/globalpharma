@@ -476,7 +476,7 @@ export default function ProductTemplate({
               <div className="w-full max-w-[25rem]">
                 <p className="font-['Inter:Bold',sans-serif]" style={{ fontSize: 'clamp(1.5rem, 2.3vw, 2.5rem)' }}>Our Location</p>
                 <div className="mt-[50px] flex flex-col gap-[22px]">
-                  <div className="flex items-center gap-[19px]"><img alt="" className="h-[20px] w-[16px]" src={assets.footerIconMap} /><p className="font-['Inter:Regular',sans-serif] leading-[1.45]" style={{ fontSize: 'clamp(1rem, 1.3vw, 1.375rem)' }}>Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p></div>
+                  <div className="flex items-center gap-[19px]"><img alt="" className="h-[20px] w-[16px]" src={assets.footerIconMap} /><p className="font-['Inter:Regular',sans-serif] leading-[1.45]" style={{ fontSize: 'clamp(1rem, 1.3vw, 1.375rem)' }}>Plot No.08, Street No. S8, RCCI Rawat, Islamabad, Pakistan</p></div>
                   <div className="flex items-center gap-[19px]"><img alt="" className="h-[15px] w-[16px]" src={assets.footerIconPhone} /><a href="tel:+9251449302" className="font-['Inter:Regular',sans-serif] transition-colors duration-200 hover:text-[var(--color-footer-link-hover)] hover:underline" style={{ fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>+92-51-449-302</a></div>
                   <div className="flex items-center gap-[18px]"><img alt="" className="h-[12px] w-[18px]" src={assets.footerIconMail} /><a href="mailto:info@globalpharmaceuticalspk.com" className="font-['Inter:Regular',sans-serif] transition-colors duration-200 hover:text-[var(--color-footer-link-hover)] hover:underline" style={{ fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>info@globalpharmaceuticalspk.com</a></div>
                 </div>

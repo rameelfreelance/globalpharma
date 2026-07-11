@@ -120,7 +120,7 @@ export default function ContactUs({
                   <path fill="#fff" d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
                 </svg>
               </div>
-              <p className="text-[16px] leading-7 text-black">Plot No.08-A, Street No. S8, RCCI Rawat, Pakistan</p>
+              <p className="text-[16px] leading-7 text-black">Plot No.08, Street No. S8, RCCI Rawat, Pakistan</p>
             </div>
             <div className="flex items-center gap-4 fade-up d1">
               <div className="flex size-[48px] shrink-0 items-center justify-center bg-[#9d0b0f] box-hover-invert">
@@ -296,7 +296,7 @@ export default function ContactUs({
               </svg>
             </div>
             <p className="font-['Inter:Regular',sans-serif] text-[25px] leading-[35px] text-black fade-up d0">
-              Plot No.08-A, Street No. S8,
+              Plot No.08, Street No. S8,
               <br />
               RCCI Rawat, Pakistan
             </p>
@@ -477,7 +477,7 @@ export default function ContactUs({
                       <path fill="#fff" d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
                     </svg>
                     <p className="font-['Inter:Regular',sans-serif] text-[22px] leading-[28px] text-[#f6fafb]">
-                      Plot No.08-A, Street No. S8, RCCI
+                      Plot No.08, Street No. S8, RCCI
                       <br />
                       Rawat, Islamabad, Pakistan
                     </p>

@@ -32,7 +32,7 @@ const JOB_DEFAULTS = {
   workplaceType: 'Hybrid',
   experienceRequired: 'Minimum 3 Years',
   salary: 'Commensurate with experience and skills',
-  jobLocation: 'Plot No.08-A, Street No. S8, RCCI Rawat, Islamabad, Pakistan',
+  jobLocation: 'Plot No.08, Street No. S8, RCCI Rawat, Islamabad, Pakistan',
 } as const
 
 type JobListing = {
@@ -628,7 +628,7 @@ export default function Careers({
                 <div className="mt-[50px] flex flex-col gap-[22px]">
                   <div className="flex items-center gap-[12px]">
                     <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] shrink-0" aria-hidden="true"><path fill="#fff" d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" /></svg>
-                    <p className="font-['Inter:Regular',sans-serif] text-[22px] leading-[28px] text-[#f6fafb]">Plot No.08-A, Street No. S8, RCCI<br />Rawat, Islamabad, Pakistan</p>
+                    <p className="font-['Inter:Regular',sans-serif] text-[22px] leading-[28px] text-[#f6fafb]">Plot No.08, Street No. S8, RCCI<br />Rawat, Islamabad, Pakistan</p>
                   </div>
                   <div className="flex items-center gap-[12px]">
                     <svg viewBox="0 0 24 24" className="h-[17px] w-[18px] shrink-0" aria-hidden="true"><path fill="#fff" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.3 22 2 13.7 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z" /></svg>
